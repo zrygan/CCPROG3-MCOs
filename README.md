@@ -2,7 +2,7 @@
 
 Repository for CCPROG3 (Object-Oriented Programming) course projects at De La Salle University.
 
-[Zhean Ganituen](github.com/zr-gntn), and Jaztin Jimenez.
+[Zhean Ganituen](github.com/zrygan), and Jaztin Jimenez.
 2024
 
 ## How To
