@@ -5,7 +5,9 @@
 
 **To do list for the first part of the project implementation.**
 
-- [ ] task 1
+- [ ] Make UML
+- [ ] Make Javadoc.
+- [ ] 
 
 **To do list for the second part of the project implementation.**
 
