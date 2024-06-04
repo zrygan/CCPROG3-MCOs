@@ -6,8 +6,9 @@
 **To do list for the first part of the project implementation.**
 
 - [ ] Make UML
-- [ ] Make Javadoc.
-- [ ] 
+- [ ] Make Javadoc and internal documentation.
+- [ ] Test script
+- [ ] Video demo
 
 **To do list for the second part of the project implementation.**
 
