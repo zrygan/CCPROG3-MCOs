@@ -1,4 +1,4 @@
-REM By: Zhean Ganituen (zr-gntn).
+REM By: Zhean Ganituen (zry).
 REM Batch file to run all commands needed for the Driver file.
 
 cls
