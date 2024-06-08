@@ -15,3 +15,7 @@ Repository for CCPROG3 (Object-Oriented Programming) course projects at De La Sa
    2. Using `javac` and `java` separately:
       1. Run `javac Driver.java`
       2. Then, `java Driver`
+
+## Make javadoc Documentation
+
+Simply run `mkd` in cmd.
