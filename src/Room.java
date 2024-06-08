@@ -1,4 +1,3 @@
-package src;
 /* Room Class
  * An object that represents the rooms in a hotel.
  * 

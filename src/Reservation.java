@@ -1,4 +1,3 @@
-package src;
 /* Reservation Class
  * An object for the reservation of a room
  *
