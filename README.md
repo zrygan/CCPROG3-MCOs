@@ -18,4 +18,4 @@ Repository for CCPROG3 (Object-Oriented Programming) course projects at De La Sa
 
 ## Make javadoc Documentation
 
-Simply run `mkd` in cmd.
+Simply run `MAKE_DOC` in cmd.
