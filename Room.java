@@ -2,8 +2,8 @@
  * An object that represents the rooms in a hotel.
  * 
  * @params:
- *  - name      : String : the name of the room, must be different for each room
- *  - basePrice : int    : the base price of the room, always 1299.00 but can be changed using the manage hotel method 
+ *  - name      : String  : the name of the room, must be different for each room
+ *  - basePrice : int     : the base price of the room, always 1299.00 but can be changed using the manage hotel method
  */
 public class Room {
     // Variables
@@ -33,4 +33,5 @@ public class Room {
     public double getBasePrice(){
         return basePrice;
     }
+
 }
