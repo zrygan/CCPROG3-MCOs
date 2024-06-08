@@ -2,9 +2,13 @@ public class Driver {
     public static void main(String[] args) {
         Hotel a = new Hotel("MyHotel", 10);
 
-        /// create a new room
-        a.create();
+        // create a new room
+        a.newRoom();
 
-        System.out.println("Total rooms in hotel: " + a.getRoomTotal());
+        a.getRooms()[0].checkIn();
+        a.getRooms()[0].checkIn();
+        a.getRooms()[0].checkIn();
+
+        a.manage("ROOM", 0);
     }
 }

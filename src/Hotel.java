@@ -63,31 +63,29 @@ public class Hotel{
         return rooms;
     }
 
-    public double getEarnings(){
-        return earnings;
-    }
+    public double getEarnings(){ return earnings; }
 
     // Methods
 
-    /* create
-     * creates a hotel with a name, specifies number of rooms and room names
-     *
+    /* newRoom
+     * creates a new room in the hotel, if possible
+     * 
      * @params:
      *  - none
-     *
+     * 
      * @returns:
      *  - none
-     *
+     * 
      * @author: Zhean Ganituen
      */
-    public void create(){
+    public void newRoom() {
         // check if a room can still be created in the hotel
-        if (roomTotal < 50){
+        if (roomTotal < 50) {
             // make a unique room name
             String roomName = name + "_Room_" + roomCount;
 
             // create a new room with the new room name
-            Room newRoom = new Room(roomName);
+            Room newRoom = new Room(roomName, this); // WHAT WILL BE THE HOTEL PARAMETER HERE?
 
             // add the created room in the array of rooms
             rooms[roomCount] = newRoom;
@@ -104,14 +102,58 @@ public class Hotel{
      * in and -out dates, total price for the booking, and price breakdown per night.
      *
      * @params:
-     *  -
+     *  - action : String : determines the action chose to manage the hotel
      *
      * @returns:
      *  - none
      *
      * @author: Zhean Ganituen
      */
-    public void view(){
+    public void manage(String action){
+        /* Menu
+            1. view : show name, total rooms, total earnings 
+         */
+        action = action.toUpperCase();
 
+        if (action.equals("VIEW")){
+            // show name, total rooms, total earnings
+            // print information
+            System.out.printf("Hotel \"%s\" with %d rooms has earned PHP %.2f", this.getName(), this.getRoomTotal(), this.getEarnings());
+        }
+    }
+
+    /* manage
+     * manages a hotel, allows the user to view information about the chosen hotel
+     * shows the name, total number of rooms, earnings, available and booked rooms,
+     * room names, price per night, availability, guest and room information, check-
+     * in and -out dates, total price for the booking, and price breakdown per night.
+     *
+     * @params:
+     *  - action     : String : determines the action chose to manage the hotel
+     *  - roomNumber : int    : the room number for the specific query
+     *
+     * @returns:
+     *  - none
+     *
+     * @author: Zhean Ganituen
+     */
+    public void manage(String action, int roomNumber){
+        /*  Menu
+            1.
+         */
+
+        if (action.equals("ROOM")){
+            // if room number is not out of bounds
+            if (0 <= roomNumber && roomNumber < roomCount) {
+                Room room = rooms[roomNumber];
+                // calculate availability
+
+                int availability = 31 - room.getDaysBooked();
+
+                System.out.printf("The Room \"%s\" in Hotel \"%s\" costs %.2f per night and is available for %d days of the month.\n", room.getName(), name, room.getBasePrice(), availability);
+            } else {
+                System.out.printf("ERROR! Room number not found in hotel \"%s\".\n", name);
+            }
+        }
     }
 }
