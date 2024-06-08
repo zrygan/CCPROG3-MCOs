@@ -11,7 +11,7 @@ Repository for CCPROG3 (Object-Oriented Programming) course projects at De La Sa
 2. Using the command line, go to the directory location of the driver class `Driver.java`
 3. Execute the java files via:
    1. Using the `bat` file:
-      1. Run the command `zen`.
+      1. Run the command `zry`.
    2. Using `javac` and `java` separately:
       1. Run `javac Driver.java`
       2. Then, `java Driver`
