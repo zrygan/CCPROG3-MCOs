@@ -16,7 +16,8 @@ public class Reservation {
     private double total;
     private double breakdown;
 
-    Reservation(String guest, int checkin, int checkout, double total, double breakdown) {
+    // Constructor
+    public Reservation(String guest, int checkin, int checkout, double total, double breakdown) {
         this.guest = guest;
         this.checkin = checkin;
         this.checkout = checkout;
