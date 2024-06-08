@@ -1,3 +1,4 @@
+package src;
 /* Hotel Class
  * An object for the hotels in the system 
  * 

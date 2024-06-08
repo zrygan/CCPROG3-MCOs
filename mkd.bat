@@ -11,4 +11,4 @@ mkdir javadoc
 
 REM Make the javadocs
 
-javadoc -d javadoc -sourcepath 
+javadoc -d javadoc -sourcepath src
