@@ -27,7 +27,8 @@ public class HotelReservationSystem {
                 }
                 case 2 -> { 
                     String hotelName = scanner.nextLine();
-                    viewHotel(hotelName);
+                    Hotel hotel = new Hotel(hotelName);
+                    hotel.viewHotel();
                 }
                 case 3 -> {
                     System.out.println("TODO"); // added placeholders
