@@ -100,9 +100,9 @@ public class HotelReservationSystem {
 
                     }
                 }
-                default -> System.out.println("Hotel not found.");
             }
         }
+    }
         else {
             System.out.println("Hotel not found.");
             }
