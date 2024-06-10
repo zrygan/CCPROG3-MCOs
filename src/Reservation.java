@@ -9,6 +9,7 @@
  *  - breakdown : double : the breakdown of the cost, price per day
  */
 public class Reservation {
+
     // Variables
     private String guest;
     private int checkin;
