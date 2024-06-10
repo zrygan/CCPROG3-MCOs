@@ -19,4 +19,8 @@ REM Display
 
 echo All `.class` files have been deleted.
 
+REM Go back to home directory
+
+cd..
+
 REM END OF FILE
