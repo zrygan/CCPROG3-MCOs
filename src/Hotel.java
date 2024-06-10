@@ -76,7 +76,8 @@ public class Hotel {
      *  - none
      * 
      * @returns:
-     *  - boolean
+     *  - true  : boolen  : if a new room was created
+     *  - false : boolean : if not 
      * 
      * @author: Zhean Ganituen
      */
@@ -103,13 +104,14 @@ public class Hotel {
     }
 
     /* fetchRoom
-     * a function get returns the room given the name of the room of a hotelName
+     * returns the room given the name of the room of a hotelName
      * 
      * @params:
      *  - name : String : name of the room
      * 
      * @returns:
      *  - room : Room : the room with the room name in the hotel
+     *  - null : null : the room was not found
      * 
      * @author: Zhean Ganituen
      */
