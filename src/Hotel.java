@@ -176,6 +176,7 @@ public class Hotel {
                 }
             }
         }
+        scanner.close(); // remember to close scanner
     }
 }
 
