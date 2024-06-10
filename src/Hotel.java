@@ -1,4 +1,6 @@
+
 import java.util.*;
+
 /* Hotel Class
  * An object for the hotels in the system 
  * 
@@ -9,7 +11,8 @@ import java.util.*;
  *  - rooms[]      : Room          : the rooms in the hotel, an array of Room objects, maximum of 50
  *  - earnings     : double        : the total earnings of the hotel through room bookings
  */
-public class Hotel{
+public class Hotel {
+
     // Variables
     private String name;
     private int roomCount;
@@ -18,7 +21,7 @@ public class Hotel{
     private double earnings;
 
     // Constructor
-    public Hotel(String name){
+    public Hotel(String name) {
         this.name = name;
         this.roomCount = 0; // initialize current numner of rooms as 0
         this.earnings = 0; // initialize total earnings as 0
@@ -27,28 +30,28 @@ public class Hotel{
     }
 
     // Setters
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setRoomCount(int roomCount){
+    public void setRoomCount(int roomCount) {
         this.roomCount = roomCount;
     }
 
-    public void setRooms(List<Room> rooms){
+    public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
     }
 
-    public void setEarnings(double earnings){
+    public void setEarnings(double earnings) {
         this.earnings = earnings;
     }
 
     // Getters
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public int getRoomCount(){
+    public int getRoomCount() {
         return roomCount;
     }
 
@@ -60,7 +63,9 @@ public class Hotel{
         return reservations;
     }
 
-    public double getEarnings(){ return earnings; }
+    public double getEarnings() {
+        return earnings;
+    }
 
     // Methods
 
@@ -83,7 +88,7 @@ public class Hotel{
 
             // create a new room with the new room name
             Room newRoom = new Room(roomName, this); // WHAT WILL BE THE HOTEL PARAMETER HERE?
-                                                     // this
+            // this
 
             // add the created room in the array of rooms
             rooms.add(newRoom);
@@ -96,4 +101,81 @@ public class Hotel{
 
         return false;
     }
+
+    /* fetchRoom
+     * a function get returns the room given the name of the room of a hotelName
+     * 
+     * @params:
+     *  - name : String : name of the room
+     * 
+     * @returns:
+     *  - room : Room : the room with the room name in the hotel
+     * 
+     * @author: Zhean Ganituen
+     */
+    public Room fetchRoom(String name){
+        for (Room room : rooms){
+            if(room.getName().equals(name)){
+                return room;
+            }
+        }
+
+        return null; // room not found
+    }
+
+    /* viewHotel
+     * views the hotel information, checks either high-level information or low-level information from
+     * the hotel.
+     * 
+     * @params:
+     *  - none
+     *
+     * @returns:
+     *  - none
+     *
+     * @author: Zhean Ganituen and Jaztin Jimenez
+     */
+    public void viewHotel() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter 1 to view high-level hotel information or 2 to view low-level hotel information: ");
+        int level = scanner.nextInt();
+
+        switch (level) {
+            case 1 ->
+                System.out.printf("Hotel \"%s\" with %d rooms has earned PHP %.2f", this.getName(), this.getRooms().size(), this.getEarnings());
+            case 2 -> {
+                System.out.print("Enter 1 to view available/booked rooms for a selected date or 2 to view details of a specific room or reservation: ");
+                int option = scanner.nextInt();
+                if (option == 1) {
+                    System.out.print("Enter date (1-31): ");
+                    int date = scanner.nextInt();
+                    List<String> availableRooms = new ArrayList<>();
+                    List<String> bookedRooms = new ArrayList<>();
+                    for (Room room : this.getRooms()) {
+                        if (room.isAvailable(date)) {
+                            availableRooms.add(room.getName());
+                        } else {
+                            bookedRooms.add(room.getName());
+                        }
+                    }
+                    System.out.println("Available Rooms on day " + date + ": " + availableRooms);
+                    System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
+                } else if (option == 2) {
+                    System.out.print("Enter room number: ");
+                    String roomName = scanner.nextLine(); // changed this to stirng because room names are Strings not int
+                    // get room
+                    Room roomQuery = this.fetchRoom(roomName);
+                    if (roomQuery != null) {
+                        // calculate availability
+                        int availability = 31 - roomQuery.getDaysBooked();
+
+                        System.out.printf("The Room \"%s\" in Hotel \"%s\" costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), name, roomQuery.getBasePrice(), availability);
+                    } else {
+                        System.out.println("The room \"%s\" in Hotel \"%s\" does not exist.");
+                    }
+                }
+            }
+        }
+    }
 }
+
