@@ -15,14 +15,16 @@ public class Room {
     private boolean isBooked;
     private int daysBooked;
     private Hotel hotel;
+    private boolean[] availability;
 
     // Constructor
-    public Room(String name, Hotel hotel){
+    public Room(){
         this.name = name;
         this.basePrice = 1299.0;
         this.isBooked = false; // init the isBooked as false
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
+        this.availability = new boolean[31];
     }
 
     // Setters
@@ -88,4 +90,16 @@ public class Room {
     public void checkOut(){
         this.isBooked = false;
     }
+
+    public void bookLength(int checkin, int checkout) {
+        for (int i = checkin; i <= checkout; i++) {
+            this.availability[i] = true;
+        }
+    }
+
+    public boolean isAvailable(int day) {
+        return !availability[day - 1];
+    }
+
+
 }
