@@ -1,17 +1,23 @@
+/* HotelReservationSystem (HRS) Class
+ * An object that handles the reservation system.
+ * 
+ * @params:
+ *  - hotel : List<Hotel> : the list of hotels in the system
+ */
+
 import java.util.*;
 
 public class HotelReservationSystem {
-    
+
     // Variables
     private List<Hotel> hotels;
 
     // Constructor
-    public HotelReservationSystem(){
+    public HotelReservationSystem() {
         this.hotels = new ArrayList<>();
     }
-    
+
     // Methods
-    
     /* createHotel
      * creates a new hotel with a given name
      * 
@@ -21,12 +27,15 @@ public class HotelReservationSystem {
      * @returns: 
      *  - none
      * 
+     * @fixme:
+     *  - add a way to check if the name is unique or not
+     * 
      * @author: Zhean Ganituen
      */
-    public void createHotel(String name){
+    public void createHotel(String name) {
         Hotel hotel = new Hotel(name);
         hotels.add(hotel);
-    }    
+    }
 
     /* fetchHotel
      * returnss the hotel given the name of the hotel
@@ -40,9 +49,9 @@ public class HotelReservationSystem {
      * 
      * @author: Zhean Ganituen
      */
-    public Hotel fetchHotel(String name){
-        for(Hotel hotel : hotels){
-            if(hotel.getName().equals(name)){
+    public Hotel fetchHotel(String name) {
+        for (Hotel hotel : hotels) {
+            if (hotel.getName().equals(name)) {
                 return hotel;
             }
         }
@@ -50,7 +59,7 @@ public class HotelReservationSystem {
         return null;
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         HotelReservationSystem HRS = new HotelReservationSystem(); // create instance of the HRS
 
         Scanner scanner = new Scanner(System.in); // make scanner
@@ -64,8 +73,7 @@ public class HotelReservationSystem {
         max.newRoom(); // so we can expect we have 2 rooms in Hotel "max"
         max.getRooms().get(0).checkIn(); // check in one of the rooms
                                            // so now we can also expect some earnings
-        */
-
+         */
         while (run) {
             System.out.println("1. Create Hotel");
             System.out.println("2. View Hotel");
@@ -79,19 +87,18 @@ public class HotelReservationSystem {
             switch (option) {
                 case 1 -> {
                     System.out.print("Enter the name of the hotel: ");
-                    String hotelName = scanner.nextLine(); 
+                    String hotelName = scanner.nextLine();
                     // We don't use: createHotel(hotelName); to create a hotel
-                    HRS.createHotel(hotelName); 
+                    HRS.createHotel(hotelName);
                     break;
                 }
-                case 2 -> { 
+                case 2 -> {
                     System.out.print("Enter the name of the hotel: ");
                     String hotelName = scanner.nextLine();
                     Hotel hotel = HRS.fetchHotel(hotelName);
                     if (hotel != null) {
                         hotel.viewHotel();
-                    }
-                    else {
+                    } else {
                         System.out.printf("Hotel \"%s\" is not found\n", hotelName);
                     }
                 }
@@ -108,7 +115,8 @@ public class HotelReservationSystem {
                     scanner.close();
                     run = false;
                 }
-                default -> System.out.println("Invalid option. Please try again.");
+                default ->
+                    System.out.println("Invalid option. Please try again.");
             }
         }
     }

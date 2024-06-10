@@ -7,7 +7,9 @@
  *  - checkout  : int    : the check-out date (DD)
  *  - total     : double : the total cost of the booking
  *  - breakdown : double : the breakdown of the cost, price per day
+ *  - room      : Room   : the room to be reserved
  */
+
 public class Reservation {
 
     // Variables
@@ -74,6 +76,20 @@ public class Reservation {
         return room;
     }
 
+    /* isRoomAvailable
+     * to check if the room is available for the day
+     * 
+     * @params:
+     *  - room        : Room : the room to check the avaulability
+     *  - checkInDay  : int  : the day of check in, 1 < checkInDay > 31 (can't check in on day 31)
+     *  - checkOutDay : int  : the day of check out, 1 < checkOutDay > 31 (can't check out on day 1)
+     * 
+     * @returns:
+     *  - false : Boolean : if room is not available
+     *  - true  : Boolean : if room is available
+     * 
+     * @author: Jaztin Jimenez 
+     */
     public boolean isRoomAvailable(Room room, int checkInDay, int checkOutDay) {
         for (int i = checkInDay; i < checkOutDay; i++) {
             if (!room.isAvailable(i)) {

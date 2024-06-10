@@ -1,6 +1,3 @@
-
-import java.util.*;
-
 /* Hotel Class
  * An object for the hotels in the system 
  * 
@@ -11,6 +8,9 @@ import java.util.*;
  *  - rooms[]      : Room          : the rooms in the hotel, an array of Room objects, maximum of 50
  *  - earnings     : double        : the total earnings of the hotel through room bookings
  */
+
+import java.util.*;
+
 public class Hotel {
 
     // Variables
@@ -115,9 +115,9 @@ public class Hotel {
      * 
      * @author: Zhean Ganituen
      */
-    public Room fetchRoom(String name){
-        for (Room room : rooms){
-            if(room.getName().equals(name)){
+    public Room fetchRoom(String name) {
+        for (Room room : rooms) {
+            if (room.getName().equals(name)) {
                 return room;
             }
         }
@@ -181,4 +181,3 @@ public class Hotel {
         scanner.close(); // remember to close scanner
     }
 }
-
