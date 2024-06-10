@@ -82,7 +82,8 @@ public class Hotel{
             String roomName = name + "_Room_" + roomCount;
 
             // create a new room with the new room name
-            Room newRoom = new Room(); // WHAT WILL BE THE HOTEL PARAMETER HERE?
+            Room newRoom = new Room(roomName, this); // WHAT WILL BE THE HOTEL PARAMETER HERE?
+                                                     // this
 
             // add the created room in the array of rooms
             rooms.add(newRoom);
@@ -95,6 +96,4 @@ public class Hotel{
 
         return false;
     }
-    
-    
 }
