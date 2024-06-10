@@ -15,10 +15,10 @@ public class Room {
     private boolean isBooked;
     private int daysBooked;
     private Hotel hotel;
-    private boolean[] availability;
+    private final boolean[] availability;
 
     // Constructor
-    public Room(){
+    public Room(String name, Hotel hotel){
         this.name = name;
         this.basePrice = 1299.0;
         this.isBooked = false; // init the isBooked as false
