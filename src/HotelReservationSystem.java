@@ -20,15 +20,20 @@ public class HotelReservationSystem {
             scanner.nextLine();  // Consume newline
 
             switch (option) {
-                case 1 -> { String hotelName = scanner.nextLine(); 
+                case 1 -> { 
+                    String hotelName = scanner.nextLine(); 
                     createHotel(hotelName);
-
                 }
-                case 2 -> { String hotelName = scanner.nextLine();
+                case 2 -> { 
+                    String hotelName = scanner.nextLine();
                     viewHotel(hotelName);
                 }
-                case 3 -> 
-                case 4 -> 
+                case 3 -> {
+                    System.out.println("TODO"); // added placeholders
+                }
+                case 4 -> {
+                    System.out.println("TODO"); // added placeholders
+                }
                 case 5 -> {
                     System.out.println("Exiting...");
                     scanner.close();
@@ -107,8 +112,4 @@ public class HotelReservationSystem {
             System.out.println("Hotel not found.");
             }
     }
-
-            
-
-            
 }
