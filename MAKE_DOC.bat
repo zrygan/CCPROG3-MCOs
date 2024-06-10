@@ -14,7 +14,7 @@ if not exist "javadoc" mkdir "javadoc"
 REM Make the javadocs
 REM REMEMBER. To add all the java files in `src` here
 
-javadoc -d javadoc src/Driver.java 
+javadoc -d javadoc src/HotelReservationSystem.java 
 javadoc -d javadoc src/Hotel.java 
 javadoc -d javadoc src/Reservation.java 
 javadoc -d javadoc src/Room.java

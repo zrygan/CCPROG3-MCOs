@@ -9,55 +9,66 @@
  *  - hotel      : Hotel   : the hotel of the room
  * */
 public class Room {
+
     // Variables
     private String name;
     private double basePrice;
     private boolean isBooked;
     private int daysBooked;
     private Hotel hotel;
+    private final boolean[] availability;
 
     // Constructor
-    public Room(String name, Hotel hotel){
+    public Room(String name, Hotel hotel) {
         this.name = name;
         this.basePrice = 1299.0;
         this.isBooked = false; // init the isBooked as false
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
+        this.availability = new boolean[31];
     }
 
     // Setters
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setBasePrice(double basePrice){
+    public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
     }
 
-    public void setIsBooked(boolean isBooked){
+    public void setIsBooked(boolean isBooked) {
         this.isBooked = isBooked;
     }
 
-    public void setDaysBooked(int daysBooked){this.daysBooked = daysBooked;}
+    public void setDaysBooked(int daysBooked) {
+        this.daysBooked = daysBooked;
+    }
 
-    public void setHotel(Hotel hotel){ this.hotel = hotel;}
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
 
     // Getters
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public double getBasePrice(){
+    public double getBasePrice() {
         return basePrice;
     }
 
-    public boolean getIsBooked(){
+    public boolean getIsBooked() {
         return isBooked;
     }
 
-    public int getDaysBooked(){ return daysBooked;}
+    public int getDaysBooked() {
+        return daysBooked;
+    }
 
-    public Hotel getHotel(){ return hotel; }
+    public Hotel getHotel() {
+        return hotel;
+    }
 
     /* checkIn
      * function that sets the booking checker of the room to true
@@ -67,7 +78,7 @@ public class Room {
      * 
      * @author: Zhean Ganituen
      */
-    public void checkIn(){
+    public void checkIn() {
         this.isBooked = true;
 
         // increment daysBooked
@@ -85,7 +96,18 @@ public class Room {
      * 
      * @author: Zhean Ganiuen
      */
-    public void checkOut(){
+    public void checkOut() {
         this.isBooked = false;
     }
+
+    public void bookLength(int checkin, int checkout) {
+        for (int i = checkin; i <= checkout; i++) {
+            this.availability[i] = true;
+        }
+    }
+
+    public boolean isAvailable(int day) {
+        return !availability[day - 1];
+    }
+
 }

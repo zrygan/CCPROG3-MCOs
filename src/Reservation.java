@@ -3,18 +3,20 @@
  *
  * @params:
  *  - guest     : String : the guest name
- *  - checkin   : int    : the check-in date (YYYYDDMM)
- *  - checkout  : int    : the check-out date (YYYYDDMM)
+ *  - checkin   : int    : the check-in date (DD)
+ *  - checkout  : int    : the check-out date (DD)
  *  - total     : double : the total cost of the booking
  *  - breakdown : double : the breakdown of the cost, price per day
  */
 public class Reservation {
+
     // Variables
     private String guest;
     private int checkin;
     private int checkout;
     private double total;
     private double breakdown;
+    private Room room;
 
     // Constructor
     public Reservation(String guest, int checkin, int checkout, double total, double breakdown) {
@@ -23,6 +25,7 @@ public class Reservation {
         this.checkout = checkout;
         this.total = total;
         this.breakdown = breakdown;
+        room.bookLength(checkin, checkout);
     }
 
     // Setters
@@ -65,5 +68,18 @@ public class Reservation {
 
     public double getBreakdown() {
         return breakdown;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public boolean isRoomAvailable(Room room, int checkInDay, int checkOutDay) {
+        for (int i = checkInDay; i < checkOutDay; i++) {
+            if (!room.isAvailable(i)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
