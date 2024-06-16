@@ -70,7 +70,7 @@ public class Hotel {
      * 
      * @author: Zhean Ganituen
      */
-    public boolean newRoom() {
+    public void newRoom() {
         // check if a room can still be created in the hotel
         if (roomCount < 50) {
             // make a unique room name
@@ -85,11 +85,7 @@ public class Hotel {
 
             // increment the number of rooms
             roomCount++;
-
-            return true;
         }
-
-        return false;
     }
 
     /* fetchRoom

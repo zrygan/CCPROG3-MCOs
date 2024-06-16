@@ -12,12 +12,12 @@
 public class Room {
 
     // Variables
-    private String name;
+    private final String name;
     private double basePrice;
     private boolean isBooked;
     private int daysBooked;
-    private Hotel hotel;
-    private final boolean[] availability;
+    private final Hotel hotel;
+    private boolean[] availability;
 
     // Constructor
     public Room(String name, Hotel hotel) {
@@ -27,11 +27,6 @@ public class Room {
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
-    }
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setBasePrice(double basePrice) {
@@ -46,8 +41,8 @@ public class Room {
         this.daysBooked = daysBooked;
     }
 
-    public void setHotel(Hotel hotel) {
-        this.hotel = hotel;
+    public void setAvailability(boolean[] availability) {
+        this.availability = availability;
     }
 
     // Getters
@@ -69,6 +64,10 @@ public class Room {
 
     public Hotel getHotel() {
         return hotel;
+    }
+
+    public boolean[] getAvailability() {
+        return availability;
     }
 
     /* checkIn
@@ -101,12 +100,35 @@ public class Room {
         this.isBooked = false;
     }
 
+    /* bookLength
+     * determines the days the room is booked and make it's availability for those days false
+     * and increment the number of days the room is booked by the total book book length
+     * 
+     * @params:
+     *  - checkin  : int : day the customer checks in
+     *  - checkout : int : day the customer checks out
+     * 
+     * @author: Jaztin Jimenez
+     */
     public void bookLength(int checkin, int checkout) {
         for (int i = checkin; i <= checkout; i++) {
             this.availability[i] = true;
         }
+
+        this.daysBooked += checkout - checkin; // increment days booked with the total book length
     }
 
+    /* isAvailable
+     * a checker that determines if the room is a available for some day 
+     * 
+     * @params:
+     *  - checkin  : int : day the customer checks in
+     *  - checkout : int : day the customer checks out
+     * 
+     * @fixme: since we have this already, do we need getters and setters for availability?
+     * 
+     * @author: Jaztin Jimenez
+     */
     public boolean isAvailable(int day) {
         return !availability[day - 1];
     }
