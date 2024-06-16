@@ -14,10 +14,10 @@ import java.util.*;
 public class Hotel {
 
     // Variables
-    private String name;
+    private final String name;
     private int roomCount;
     private List<Room> rooms; // potential maximum of 50 rooms
-    private List<Reservation> reservations;
+    private List<Reservation> reservations; // list of reservations
     private double earnings;
 
     // Constructor
@@ -31,8 +31,16 @@ public class Hotel {
 
     // Setters
     // Since the name and rooms cannot be changed, don't include it here
-    public void setReservation(Reservation reservation){
+    public void setReservation(List<Reservation> reservation){
         this.reservations = reservation;
+    }
+
+    public void setRooms(List<Room> rooms){
+        this.rooms = rooms;
+    }
+
+    public void setEarnings(double earnings){
+        this.earnings = earnings;
     }
 
     // Getters
@@ -123,7 +131,7 @@ public class Hotel {
      * @author: Zhean Ganituen and Jaztin Jimenez
      */
     public void viewHotel() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); // make scanner
         System.out.println("Enter 1 to view high-level hotel information or 2 to view low-level hotel information: ");
         int level = scanner.nextInt();
 

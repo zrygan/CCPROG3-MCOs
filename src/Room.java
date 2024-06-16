@@ -85,7 +85,7 @@ public class Room {
         this.daysBooked++;
 
         // update earnings as the current earnings + basePrice of the room
-        hotel.setEarnings(hotel.getEarnings() + basePrice);
+        this.hotel.setEarnings(hotel.getEarnings() + basePrice);
     }
 
     /* checkOut
