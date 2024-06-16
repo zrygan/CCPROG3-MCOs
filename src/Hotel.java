@@ -30,20 +30,9 @@ public class Hotel {
     }
 
     // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setRoomCount(int roomCount) {
-        this.roomCount = roomCount;
-    }
-
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    public void setEarnings(double earnings) {
-        this.earnings = earnings;
+    // Since the name and rooms cannot be changed, don't include it here
+    public void setReservation(Reservation reservation){
+        this.reservations = reservation;
     }
 
     // Getters
