@@ -173,4 +173,25 @@ public class Hotel {
         }
         scanner.close(); // remember to close scanner
     }
+
+    /* changePrice
+     * changes the price of all rooms in the hotel, if and only if there are no reseravations
+     * 
+     * @params:
+     *  - newPrice : double : the new price, constraint: newPrice >= 100
+     * 
+     * @returns:
+     *  - none
+     */
+    public void changePrice(double newPrice){
+        // check if a reservation is empty
+        // if reseravation is empty (then no reseravation is made yet)
+        // and if newPrice is greater than the minimum amount: 100
+        if (!this.reservations.isEmpty() && newPrice >= 100){
+            // iterate through the rooms and set the price to newPrice
+            for (Room room : this.rooms) {
+                room.setBasePrice(newPrice);
+            }
+        }
+    }
 }
