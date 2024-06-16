@@ -31,15 +31,15 @@ public class Hotel {
 
     // Setters
     // Since the name and rooms cannot be changed, don't include it here
-    public void setReservation(List<Reservation> reservation){
+    public void setReservation(List<Reservation> reservation) {
         this.reservations = reservation;
     }
 
-    public void setRooms(List<Room> rooms){
+    public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
     }
 
-    public void setEarnings(double earnings){
+    public void setEarnings(double earnings) {
         this.earnings = earnings;
     }
 
@@ -131,47 +131,62 @@ public class Hotel {
      * @author: Zhean Ganituen and Jaztin Jimenez
      */
     public void viewHotel() {
-        Scanner scanner = new Scanner(System.in); // make scanner
-        System.out.println("Enter 1 to view high-level hotel information or 2 to view low-level hotel information: ");
-        int level = scanner.nextInt();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter 1 to view high-level hotel information or 2 to view low-level hotel information: ");
+            String level = scanner.nextLine();
+            scanner.nextLine(); // consume new line
 
-        switch (level) {
-            case 1 ->
-                System.out.printf("Hotel \"%s\" with %d rooms has earned PHP %.2f", this.getName(), this.getRooms().size(), this.getEarnings());
-            case 2 -> {
-                System.out.print("Enter 1 to view available/booked rooms for a selected date or 2 to view details of a specific room or reservation: ");
-                int option = scanner.nextInt();
-                if (option == 1) {
-                    System.out.print("Enter date (1-31): ");
-                    int date = scanner.nextInt();
-                    List<String> availableRooms = new ArrayList<>();
-                    List<String> bookedRooms = new ArrayList<>();
-                    for (Room room : this.getRooms()) {
-                        if (room.isAvailable(date)) {
-                            availableRooms.add(room.getName());
-                        } else {
-                            bookedRooms.add(room.getName());
+            switch (level) {
+                case "1" ->
+                    System.out.printf("Hotel \"%s\" with %d rooms has earned PHP %.2f.\n", this.getName(), this.getRooms().size(), this.getEarnings());
+
+                case "2" -> {
+                    System.out.println("Enter 1 to view available/booked rooms for a selected date or 2 to view details of a specific room or reservation: ");
+
+                    String option = scanner.nextLine();
+                    
+
+                    if ("1".equals(option)) {
+                        System.out.print("Enter date (1-31): ");
+
+                        String date = scanner.nextLine();
+                        int dateInt = Integer.parseInt(date);
+
+                        List<String> availableRooms = new ArrayList<>();
+                        List<String> bookedRooms = new ArrayList<>();
+                        
+                        for (Room room : this.getRooms()) {
+                            if (room.isAvailable(dateInt)) {
+                                availableRooms.add(room.getName());
+                            } else {
+                                bookedRooms.add(room.getName());
+                            }
                         }
-                    }
-                    System.out.println("Available Rooms on day " + date + ": " + availableRooms);
-                    System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
-                } else if (option == 2) {
-                    System.out.print("Enter room number: ");
-                    String roomName = scanner.nextLine(); // changed this to stirng because room names are Strings not int
-                    // get room
-                    Room roomQuery = this.fetchRoom(roomName);
-                    if (roomQuery != null) {
-                        // calculate availability
-                        int availability = 31 - roomQuery.getDaysBooked();
 
-                        System.out.printf("The Room \"%s\" in Hotel \"%s\" costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), name, roomQuery.getBasePrice(), availability);
-                    } else {
-                        System.out.println("The room \"%s\" in Hotel \"%s\" does not exist.");
+                        System.out.println("Available Rooms on day " + date + ": " + availableRooms);
+                        System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
+
+                    } else if ("2".equals(option)) {
+                        System.out.println("Enter room number: ");
+                        String roomName = scanner.nextLine(); // changed this to stirng because room names are Strings not int
+
+                        // get room
+                        Room roomQuery = this.fetchRoom(roomName);
+
+                        if (roomQuery != null) {
+                            // calculate availability
+                            int availability = 31 - roomQuery.getDaysBooked();
+
+                            System.out.printf("The Room \"%s\" in Hotel \"%s\" costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), name, roomQuery.getBasePrice(), availability);
+                        } else {
+                            System.out.println("The room \"%s\" in Hotel \"%s\" does not exist.");
+                        }
                     }
                 }
             }
-        }
-        scanner.close(); // remember to close scanner
+        } catch (InputMismatchException e){
+            System.out.println("ERROR. Invalid option, input mismatch. Please try again. ");
+        } 
     }
 
     /* changePrice
@@ -182,12 +197,14 @@ public class Hotel {
      * 
      * @returns:
      *  - none
+     * 
+     * @author: Zhean Ganituen
      */
-    public void changePrice(double newPrice){
+    public void changePrice(double newPrice) {
         // check if a reservation is empty
         // if reseravation is empty (then no reseravation is made yet)
         // and if newPrice is greater than the minimum amount: 100
-        if (!this.reservations.isEmpty() && newPrice >= 100){
+        if (!this.reservations.isEmpty() && newPrice >= 100) {
             // iterate through the rooms and set the price to newPrice
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
