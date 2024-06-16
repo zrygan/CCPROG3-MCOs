@@ -134,7 +134,6 @@ public class Hotel {
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println("Enter 1 to view high-level hotel information or 2 to view low-level hotel information: ");
             String level = scanner.nextLine();
-            scanner.nextLine(); // consume new line
 
             switch (level) {
                 case "1" ->

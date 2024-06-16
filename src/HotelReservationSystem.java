@@ -139,25 +139,25 @@ public class HotelReservationSystem {
         HRS.showMenu();
 
         while (run) {
-            if (scanner.hasNextInt()) {
-                String option = scanner.nextLine();
-                scanner.nextLine(); // Consume newline character
+            String option = scanner.nextLine();
 
-                switch (option) {
-                    case "1" -> HRS.createHotelUI();
-                    case "2" -> HRS.viewHotelUI();
-                    case "3" -> System.out.println("TODO");
-                    case "4" -> System.out.println("TODO");
-                    case "5" -> {
-                        System.out.println("Exiting...");
-                        run = false;
-                    }
-                    default -> System.out.println("Invalid option. Please try again.");
+            switch (option) {
+                case "1" ->
+                    HRS.createHotelUI();
+                case "2" ->
+                    HRS.viewHotelUI();
+                case "3" ->
+                    System.out.println("TODO");
+                case "4" ->
+                    System.out.println("TODO");
+                case "5" -> {
+                    System.out.println("Exiting...");
+                    run = false;
                 }
-            } else {
-                System.out.println("Invalid option. Please enter a number.");
-                scanner.nextLine(); // Consume invalid input
+                default ->
+                    System.out.println("Invalid option. Please try again.");
             }
+            scanner.nextLine();
         }
 
         scanner.close(); // Close scanner when done
