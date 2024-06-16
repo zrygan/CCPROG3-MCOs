@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram id="-B78dE5ehC7MIdu6jiop" name="Page-1">
-        <mxGraphModel dx="1410" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2314" dy="810" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="2" value="Hotel" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-                    <mxGeometry x="160" y="120" width="280" height="372" as="geometry"/>
+                    <mxGeometry x="160" y="120" width="280" height="476" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="- name : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="26" width="280" height="26" as="geometry"/>
@@ -40,95 +40,149 @@
                 <mxCell id="15" value="+ getReservations : Reservation [ ]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="268" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="52" value="+ setReservation(reservation : Reservation) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                <mxCell id="52" value="+ setReservation(reservation : Reservation) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="294" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="17" value="+ getRoomCount : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
+                <mxCell id="17" value="+ getRoomCount() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="320" width="280" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="18" value="+ getEarnings : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
+                <mxCell id="18" value="+ getEarnings() : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
                     <mxGeometry y="346" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="+ newRoom() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="372" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="+ fetchRooms(name : String) : Room" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="398" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="+ viewHotel() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="424" width="280" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="+ viewHotel() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
+                    <mxGeometry y="450" width="280" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="Separate the methods and attributes specifically written on the specifications.&lt;br&gt;&lt;br&gt;And, the methods and attributes we created (helper methods and attributes)." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;labelBackgroundColor=default;labelBorderColor=default;" parent="1" vertex="1">
                     <mxGeometry x="-280" y="120" width="430" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="23" value="Room" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1160" y="120" width="190" height="216" as="geometry"/>
+                <mxCell id="57" value="Room" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="120" width="270" height="580" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="- name : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="23" vertex="1">
-                    <mxGeometry y="26" width="190" height="26" as="geometry"/>
+                <mxCell id="58" value="- name : final String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="26" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="27" value="- price : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="23" vertex="1">
-                    <mxGeometry y="52" width="190" height="26" as="geometry"/>
+                <mxCell id="61" value="- basePrice : Double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="52" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="- price : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="23" vertex="1">
-                    <mxGeometry y="78" width="190" height="26" as="geometry"/>
+                <mxCell id="62" value="- isBooked : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="78" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="25" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;labelBackgroundColor=default;labelBorderColor=default;" parent="23" vertex="1">
-                    <mxGeometry y="104" width="190" height="8" as="geometry"/>
+                <mxCell id="63" value="- daysBooked : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="104" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="26" value="+ Room(name : String) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="23" vertex="1">
-                    <mxGeometry y="112" width="190" height="26" as="geometry"/>
+                <mxCell id="64" value="- hotel : final Hotel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="130" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="42" value="+ getName() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="23">
-                    <mxGeometry y="138" width="190" height="26" as="geometry"/>
+                <mxCell id="65" value="- availability : boolean [ ]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="156" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="29" value="+ getPrice() : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="23" vertex="1">
-                    <mxGeometry y="164" width="190" height="26" as="geometry"/>
+                <mxCell id="59" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="57">
+                    <mxGeometry y="182" width="270" height="8" as="geometry"/>
                 </mxCell>
-                <mxCell id="30" value="+ setPrice(price : double) : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="23" vertex="1">
-                    <mxGeometry y="190" width="190" height="26" as="geometry"/>
+                <mxCell id="60" value="+ Room(name : String, hotel : Hotel) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="190" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="32" value="Reservation" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;labelBackgroundColor=none;labelBorderColor=none;" parent="1" vertex="1">
-                    <mxGeometry x="1160" y="360" width="470" height="424" as="geometry"/>
+                <mxCell id="77" value="+ getName() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="216" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="- name : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="26" width="470" height="26" as="geometry"/>
+                <mxCell id="67" value="+ setBasePrice(double basePrice) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="242" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="36" value="- checkIn : DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="52" width="470" height="26" as="geometry"/>
+                <mxCell id="68" value="+ getBasePrice() : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="268" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="- checkOut : DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="78" width="470" height="26" as="geometry"/>
+                <mxCell id="69" value="+ setIsBooked(isBooked : boolean) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="294" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="- info : Room" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="104" width="470" height="26" as="geometry"/>
+                <mxCell id="78" value="+ getIsBooked() : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="320" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="- price : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="130" width="470" height="26" as="geometry"/>
+                <mxCell id="70" value="+ setDaysBooked(int daysBooked) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="346" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="45" value="- breakdown : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="156" width="470" height="26" as="geometry"/>
+                <mxCell id="79" value="+ setAvailability : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="372" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="34" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="182" width="470" height="8" as="geometry"/>
+                <mxCell id="71" value="+ getDaysBooked() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="398" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="35" value="+ Reservation (name : String, checkIn : DateTime, CheckOut : DateTime, info : Room)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="190" width="470" height="26" as="geometry"/>
+                <mxCell id="72" value="+ getHotel() : Hotel" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="424" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="+ getName : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="216" width="470" height="26" as="geometry"/>
+                <mxCell id="80" value="+ getAvailability() : boolean [ ]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="450" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="+ getCheckIn : DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="242" width="470" height="26" as="geometry"/>
+                <mxCell id="73" value="+ checkIn() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="476" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="+ getCheckOut : DateTime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="268" width="470" height="26" as="geometry"/>
+                <mxCell id="74" value="+ checkOut() : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="502" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" value="+ getInfo : Room" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" parent="32" vertex="1">
-                    <mxGeometry y="294" width="470" height="26" as="geometry"/>
+                <mxCell id="75" value="+ bookLength(checkin : int, checkout : int) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="528" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="46" value="+ getPrice : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="320" width="470" height="26" as="geometry"/>
+                <mxCell id="83" value="+ isAvailable(day : int) : boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="57">
+                    <mxGeometry y="554" width="270" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="47" value="+ setPrice (price : double) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="346" width="470" height="26" as="geometry"/>
+                <mxCell id="84" value="Reservation" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="720" width="590" height="424" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="+ getBreakdown : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="372" width="470" height="26" as="geometry"/>
+                <mxCell id="85" value="- guest : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="26" width="590" height="26" as="geometry"/>
                 </mxCell>
-                <mxCell id="49" value="+ setBreakdown : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=none;labelBorderColor=none;" vertex="1" parent="32">
-                    <mxGeometry y="398" width="470" height="26" as="geometry"/>
+                <mxCell id="88" value="- checkIn : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="52" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="89" value="- checkOut  : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="78" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="- total : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="104" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="91" value="- breakdown : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="130" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="92" value="- room : Room" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="156" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="84">
+                    <mxGeometry y="182" width="590" height="8" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" value="+ Room(guest : String, checkIn : int, checkOut : int, total : double, breakdown : double, room : Room) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="190" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="102" value="+ getGuest() : String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="216" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="95" value="+ getCheckin() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="242" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="96" value="+ getCheckout() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="268" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="97" value="+ getTotal() : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="294" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="98" value="+ getBreakdown() : double" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="320" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="99" value="+ setTotal(total : double) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="346" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="100" value="+ setBreakdown(total : double) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="372" width="590" height="26" as="geometry"/>
+                </mxCell>
+                <mxCell id="103" value="+ isRoomAvailable(room : Room, checkInDay : int, checkOutDay : int) : boolean&#10;, " style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="84">
+                    <mxGeometry y="398" width="590" height="26" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
