@@ -18,6 +18,7 @@ public class Room {
     private int daysBooked;
     private final Hotel hotel;
     private boolean[] availability;
+    private Reservation reservation;
 
     // Constructor
     public Room(String name, Hotel hotel) {
@@ -45,6 +46,10 @@ public class Room {
         this.availability = availability;
     }
 
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
     // Getters
     public String getName() {
         return name;
@@ -68,6 +73,10 @@ public class Room {
 
     public boolean[] getAvailability() {
         return availability;
+    }
+
+    public Reservation reservation() {
+        return reservation;
     }
 
     /* checkIn
