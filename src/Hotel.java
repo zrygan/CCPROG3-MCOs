@@ -14,7 +14,7 @@ import java.util.*;
 public class Hotel {
 
     // Variables
-    private final String name;
+    private String name;
     private int roomCount;
     private List<Room> rooms; // potential maximum of 50 rooms
     private List<Reservation> reservations; // list of reservations
@@ -29,7 +29,10 @@ public class Hotel {
     }
 
     // Setters
-    // Since the name and rooms cannot be changed, don't include it here
+    public void setName(String name){
+        this.name = name;
+    }
+
     public void setReservation(List<Reservation> reservation) {
         this.reservations = reservation;
     }
@@ -129,7 +132,8 @@ public class Hotel {
      * @author: Zhean Ganituen and Jaztin Jimenez
      */
     public void viewHotel(Scanner sc) {
-        System.out.printf("1\t:\tto view high-level hotel information\n2\t:\tto view low-level hotel information");
+        System.out.println("1\t:\tto view high-level hotel information");
+        System.out.println("2\t:\tto view low-level hotel information");
         System.out.print("Choice: "); 
         System.out.println(); // add new line
         int level = sc.nextInt();
@@ -140,7 +144,8 @@ public class Hotel {
                 System.out.printf("Hotel '%s' with %d rooms has earned PHP %.2f.\n", this.getName(), this.getRooms().size(), this.getEarnings());
 
             case 2 -> {
-                System.out.printf("1\t:\tto view available/booked rooms for a selected date\n2\t:\tto view details of a specific room or reservation: ");
+                System.out.println("1\t:\tto view available/booked rooms for a selected date");
+                System.out.println("2\t:\tto view details of a specific room or reservation");
 
                 int option = sc.nextInt();
 
@@ -166,11 +171,13 @@ public class Hotel {
 
                 } else if (2 == option) {
                     System.out.println("Enter room number: ");
-                    String roomName = sc.nextLine(); // changed this to stirng because room names are Strings not int
-
+                    String roomName = sc.nextLine();
+                    roomName = name + "_Room_" + roomName; // reformat the name
+                    
                     // get room
                     Room roomQuery = this.fetchRoom(roomName);
-
+                    
+                    // if room exists
                     if (roomQuery != null) {
                         // calculate availability
                         int days = 31 - roomQuery.getDaysBooked();
@@ -205,5 +212,17 @@ public class Hotel {
                 room.setBasePrice(newPrice);
             }
         }
+    }
+
+    public void manageHotel(Scanner sc){
+        System.out.println("1\t:\t to change the name of the hotel");
+        System.out.println("2\t:\t to add a new room");
+        System.out.println("3\t:\t remove a room");
+        System.out.println("4\t:\t update the base price");
+        System.out.println("5\t:\t remove a reservation");
+        System.out.println("6\t:\t remove a hotel");
+        
+        System.out.print("Choice: ");
+        
     }
 }

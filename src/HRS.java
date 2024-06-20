@@ -86,11 +86,27 @@ public class HRS {
         }
     }
 
+    public void manageHotelUI(Scanner sc){
+        System.out.print("Enter the name of the hotel: ");
+        String name = sc.nextLine();
+        Hotel hotel = fetchHotel(name);
+        if (hotel != null){
+            hotel.manageHotel(sc);
+        } else{
+            System.out.printf("Hotel '%s' is not found.\n", name);
+        }
+        
+    }
+
+    public void simBookingUI(Scanner sc){
+        System.out.println("TODO");
+    }
+
     public void showMenu(){
-        System.out.println("1. Create Hotel");
-        System.out.println("2. View Hotel");
-        System.out.println("3. Manage Hotel");
-        System.out.println("4. Simulate Booking");
-        System.out.println("5. Exit");
+        System.out.println("1\t:\tCreate Hotel");
+        System.out.println("2\t:\t View Hotel");
+        System.out.println("3\t:\t Manage Hotel");
+        System.out.println("4\t:\t Simulate Booking");
+        System.out.println("5\t:\t Exit");
     }
 }
