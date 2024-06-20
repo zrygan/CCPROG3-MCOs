@@ -23,10 +23,9 @@ public class Hotel {
     // Constructor
     public Hotel(String name) {
         this.name = name;
-        this.roomCount = 0; // initialize current numner of rooms as 0
-        this.earnings = 0; // initialize total earnings as 0
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
+        this.earnings = 0.0; // initialize as 0
     }
 
     // Setters
@@ -85,8 +84,7 @@ public class Hotel {
             String roomName = name + "_Room_" + roomCount;
 
             // create a new room with the new room name
-            Room newRoom = new Room(roomName, this); // WHAT WILL BE THE HOTEL PARAMETER HERE?
-            // this
+            Room newRoom = new Room(roomName, this); 
 
             // add the created room in the array of rooms
             rooms.add(newRoom);
@@ -130,62 +128,60 @@ public class Hotel {
      *
      * @author: Zhean Ganituen and Jaztin Jimenez
      */
-    public void viewHotel() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("Enter 1 to view high-level hotel information or 2 to view low-level hotel information: ");
-            String level = scanner.nextLine();
+    public void viewHotel(Scanner sc) {
+        System.out.printf("1\t:\tto view high-level hotel information\n2\t:\tto view low-level hotel information");
+        System.out.print("Choice: "); 
+        System.out.println(); // add new line
+        int level = sc.nextInt();
+        sc.nextLine(); // consume new line
 
-            switch (level) {
-                case "1" ->
-                    System.out.printf("Hotel \"%s\" with %d rooms has earned PHP %.2f.\n", this.getName(), this.getRooms().size(), this.getEarnings());
+        switch (level) {
+            case 1 ->
+                System.out.printf("Hotel '%s' with %d rooms has earned PHP %.2f.\n", this.getName(), this.getRooms().size(), this.getEarnings());
 
-                case "2" -> {
-                    System.out.println("Enter 1 to view available/booked rooms for a selected date or 2 to view details of a specific room or reservation: ");
+            case 2 -> {
+                System.out.printf("1\t:\tto view available/booked rooms for a selected date\n2\t:\tto view details of a specific room or reservation: ");
 
-                    String option = scanner.nextLine();
+                int option = sc.nextInt();
+
+                if (1 == option) {
+                    System.out.print("Enter date (1-31): ");
+
+                    int date = sc.nextInt();
+                    sc.nextLine();
+
+                    List<String> availableRooms = new ArrayList<>();
+                    List<String> bookedRooms = new ArrayList<>();
                     
-
-                    if ("1".equals(option)) {
-                        System.out.print("Enter date (1-31): ");
-
-                        String date = scanner.nextLine();
-                        int dateInt = Integer.parseInt(date);
-
-                        List<String> availableRooms = new ArrayList<>();
-                        List<String> bookedRooms = new ArrayList<>();
-                        
-                        for (Room room : this.getRooms()) {
-                            if (room.isAvailable(dateInt)) {
-                                availableRooms.add(room.getName());
-                            } else {
-                                bookedRooms.add(room.getName());
-                            }
-                        }
-
-                        System.out.println("Available Rooms on day " + date + ": " + availableRooms);
-                        System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
-
-                    } else if ("2".equals(option)) {
-                        System.out.println("Enter room number: ");
-                        String roomName = scanner.nextLine(); // changed this to stirng because room names are Strings not int
-
-                        // get room
-                        Room roomQuery = this.fetchRoom(roomName);
-
-                        if (roomQuery != null) {
-                            // calculate availability
-                            int availability = 31 - roomQuery.getDaysBooked();
-
-                            System.out.printf("The Room \"%s\" in Hotel \"%s\" costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), name, roomQuery.getBasePrice(), availability);
+                    for (Room room : this.getRooms()) {
+                        if (room.isAvailable(date)) {
+                            availableRooms.add(room.getName());
                         } else {
-                            System.out.println("The room \"%s\" in Hotel \"%s\" does not exist.");
+                            bookedRooms.add(room.getName());
                         }
+                    }
+
+                    System.out.println("Available Rooms on day " + date + ": " + availableRooms);
+                    System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
+
+                } else if (2 == option) {
+                    System.out.println("Enter room number: ");
+                    String roomName = sc.nextLine(); // changed this to stirng because room names are Strings not int
+
+                    // get room
+                    Room roomQuery = this.fetchRoom(roomName);
+
+                    if (roomQuery != null) {
+                        // calculate availability
+                        int days = 31 - roomQuery.getDaysBooked();
+
+                        System.out.printf("The Room '%s' in Hotel '%s' costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), this.name, roomQuery.getBasePrice(), days);
+                    } else {
+                        System.out.println("The room '%s' in Hotel '%s' does not exist.");
                     }
                 }
             }
-        } catch (InputMismatchException e){
-            System.out.println("ERROR. Invalid option, input mismatch. Please try again. ");
-        } 
+        }
     }
 
     /* changePrice

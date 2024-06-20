@@ -19,7 +19,7 @@ javac *.java
 
 REM Run the Driver class using `java`
 
-java HotelReservationSystem
+java Driver 
 
 REM Go back to previous directory
 cd..

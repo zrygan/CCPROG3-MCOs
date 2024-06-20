@@ -2,12 +2,13 @@
  * An object that represents the rooms in a hotel.
  * 
  * @params:
- *  - name         : String  : the name of the room, must be different for each room
- *  - basePrice    : int     : the base price of the room, always 1299.00 but can be changed using the manage hotel method
- *  - isBooked     : Boolean : determines if the room is currently booked
- *  - daysBooked   : int     : the number of days the room was booked
- *  - hotel        : Hotel   : the hotel of the room
- *  - availability : Boolean : the availability of the room per day
+ *  - name         : String      : the name of the room, must be different for each room
+ *  - basePrice    : int         : the base price of the room, always 1299.00 but can be changed using the manage hotel method
+ *  - isBooked     : Boolean     : determines if the room is currently booked
+ *  - daysBooked   : int         : the number of days the room was booked
+ *  - hotel        : Hotel       : the hotel of the room
+ *  - availability : Boolean     : the availability of the room per day
+ *  - reservation  : Reservation : the reservation for the hotel
  */
 public class Room {
 
