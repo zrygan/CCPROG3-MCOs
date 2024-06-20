@@ -2,14 +2,14 @@
  * An object that handles the reservation system.
  * 
  * @params:
- *  - hotel : List<Hotel> : the list of hotels in the system
+ *  - hotel : ArrayList<Hotel> : the list of hotels in the system
  */
 
 import java.util.*;
 
 public class HRS {
     // Variables
-    private List<Hotel> hotels;
+    private ArrayList<Hotel> hotels;
 
     // Constructor
     public HRS() {
@@ -17,12 +17,12 @@ public class HRS {
     }
 
     // Setters
-    public void setHotels(List<Hotel> hotels) {
+    public void setHotels(ArrayList<Hotel> hotels) {
         this.hotels = hotels;
     }
 
     // Getters
-    public List<Hotel> getHotels() {
+    public ArrayList<Hotel> getHotels() {
         return this.hotels;
     }
 
@@ -103,7 +103,7 @@ public class HRS {
     }
 
     public void showMenu(){
-        System.out.println("1\t:\tCreate Hotel");
+        System.out.println("1\t:\t Create Hotel");
         System.out.println("2\t:\t View Hotel");
         System.out.println("3\t:\t Manage Hotel");
         System.out.println("4\t:\t Simulate Booking");
