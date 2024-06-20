@@ -16,8 +16,8 @@ public class Hotel {
     // Variables
     private String name;
     private int roomCount;
-    private List<Room> rooms; // potential maximum of 50 rooms
-    private List<Reservation> reservations; // list of reservations
+    private ArrayList<Room> rooms; // potential maximum of 50 rooms
+    private ArrayList<Reservation> reservations; // list of reservations
     private double earnings;
 
     // Constructor
@@ -29,15 +29,15 @@ public class Hotel {
     }
 
     // Setters
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setReservation(List<Reservation> reservation) {
+    public void setReservation(ArrayList<Reservation> reservation) {
         this.reservations = reservation;
     }
 
-    public void setRooms(List<Room> rooms) {
+    public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 
@@ -54,11 +54,11 @@ public class Hotel {
         return roomCount;
     }
 
-    public List<Room> getRooms() {
+    public ArrayList<Room> getRooms() {
         return rooms;
     }
 
-    public List<Reservation> getReservations() {
+    public ArrayList<Reservation> getReservations() {
         return reservations;
     }
 
@@ -80,20 +80,43 @@ public class Hotel {
      * 
      * @author: Zhean Ganituen
      */
-    public void newRoom() {
+    public Room newRoom() {
         // check if a room can still be created in the hotel
         if (roomCount < 50) {
             // make a unique room name
             String roomName = name + "_Room_" + roomCount;
 
             // create a new room with the new room name
-            Room newRoom = new Room(roomName, this); 
+            Room newRoom = new Room(roomName, this);
 
             // add the created room in the array of rooms
             rooms.add(newRoom);
 
             // increment the number of rooms
             roomCount++;
+
+            return newRoom;
+        }
+
+        return null;
+    }
+
+    public void delRoom(int num) {
+        // check if index is within bounds
+        if (num < 0 || num > 50) {
+            System.out.println("Index out of bounds.");
+        } else {
+            String roomName = this.name + "_Room_" + num;
+            Room room = fetchRoom(roomName);
+
+            // check if the rooms exists
+            if (room != null) {
+                Room removedRoom = rooms.remove(num);
+                System.out.printf("Room '%s' has been removed from hotel '%s'.\n", removedRoom.getName(), this.getName());
+                roomCount--;
+            } else {
+                System.out.printf("Room with the name '%s' is not found.", roomName);
+            }
         }
     }
 
@@ -134,7 +157,7 @@ public class Hotel {
     public void viewHotel(Scanner sc) {
         System.out.println("1\t:\tto view high-level hotel information");
         System.out.println("2\t:\tto view low-level hotel information");
-        System.out.print("Choice: "); 
+        System.out.print("Choice: ");
         System.out.println(); // add new line
         int level = sc.nextInt();
         sc.nextLine(); // consume new line
@@ -155,9 +178,9 @@ public class Hotel {
                     int date = sc.nextInt();
                     sc.nextLine();
 
-                    List<String> availableRooms = new ArrayList<>();
-                    List<String> bookedRooms = new ArrayList<>();
-                    
+                    ArrayList<String> availableRooms = new ArrayList<>();
+                    ArrayList<String> bookedRooms = new ArrayList<>();
+
                     for (Room room : this.getRooms()) {
                         if (room.isAvailable(date)) {
                             availableRooms.add(room.getName());
@@ -173,10 +196,10 @@ public class Hotel {
                     System.out.println("Enter room number: ");
                     String roomName = sc.nextLine();
                     roomName = name + "_Room_" + roomName; // reformat the name
-                    
+
                     // get room
                     Room roomQuery = this.fetchRoom(roomName);
-                    
+
                     // if room exists
                     if (roomQuery != null) {
                         // calculate availability
@@ -202,7 +225,7 @@ public class Hotel {
      * 
      * @author: Zhean Ganituen
      */
-    public void changePrice(double newPrice) {
+    public boolean  changePrice(double newPrice) {
         // check if a reservation is empty
         // if reseravation is empty (then no reseravation is made yet)
         // and if newPrice is greater than the minimum amount: 100
@@ -211,18 +234,63 @@ public class Hotel {
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
             }
+            return true;
         }
+
+        return false;
     }
 
-    public void manageHotel(Scanner sc){
+    public void manageHotel(Scanner sc) {
         System.out.println("1\t:\t to change the name of the hotel");
         System.out.println("2\t:\t to add a new room");
         System.out.println("3\t:\t remove a room");
         System.out.println("4\t:\t update the base price");
         System.out.println("5\t:\t remove a reservation");
         System.out.println("6\t:\t remove a hotel");
-        
+
         System.out.print("Choice: ");
-        
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        switch (choice) {
+            case 1 -> { // change name
+                System.out.println("Enter new hotel name: ");
+                
+                String oldName = this.getName();
+
+                String newName = sc.nextLine(); 
+
+                this.setName(newName); // set the name to the new name
+
+                System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, this.getName());
+            }
+            case 2 -> { // add a new room
+                Room newRoom = this.newRoom();
+                if (newRoom != null) {
+                    System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
+                } else {
+                    System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n", this.getName());
+                }
+            }
+            case 3 -> { // remove a room
+                System.out.print("Enter room number to delete: ");
+                int index = sc.nextInt();
+                sc.nextLine();
+
+                this.delRoom(index);
+            }
+            case 4 ->{
+                System.out.print("Enter the new price for the rooms of the hotel: ");
+                double newPrice = sc.nextDouble();
+                sc.nextLine();
+                
+                if (this.changePrice(newPrice)){
+                    System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(), this.getRooms().get(0).getBasePrice());
+                } else{
+                    System.out.printf("The base price of hotel '%s' has not been changed because there's an ongoing reservation.", this.getName());
+                }
+            }
+        }
+
     }
 }

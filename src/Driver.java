@@ -6,16 +6,24 @@ public class Driver{
         boolean run = true;
         Scanner sc = new Scanner(System.in); // initialize scanner
         
-        // // Debugging code: 11.06.2024
-        // hrs.createHotel("max");
-        // Hotel max = hrs.fetchHotel("max");
-        // max.newRoom(); 
-        // max.newRoom(); 
-        // max.newRoom(); // there should be 3 rooms in `max`
+        // Debugging code: 
+        hrs.createHotel("max");
+        Hotel max = hrs.fetchHotel("max");
+        max.newRoom(); 
+        max.newRoom(); 
+        max.newRoom(); // there should be 3 rooms in `max` [room_0 to room_2]
         // max.getRooms().get(0).checkIn();  // check-in in one of the rooms
-        //                                         // so now there should be some earnings in max
+                                                // so now there should be some earnings in max
+                                                // remove this if need to check for changing base price
 
-        // // END      11.06.2024
+        // [11.06.2024] Check View hotel        >>> NO      >> YES 
+        // [20.06.2024] Check I/O               >>> NO      >> YES
+        // [20.06.2024] Check: (a) change name  >>> YES
+        //                     (b) add room     >>> YES
+        //                     (c) delete room  >>> NO      >> YES
+        //                     (d) change price  
+        //                          reserved    >>> NO      >> NO
+        //                          !reserved   >>> NO      >> YES
 
         while(run){
             hrs.showMenu();
