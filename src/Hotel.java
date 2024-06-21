@@ -291,10 +291,28 @@ public class Hotel {
                 }
             }
             case 5 ->{ // remove reservation
-                
+                System.out.print("Enter guest name for reservation removal: ");
+                String guestName = sc.nextLine();
+                System.out.print("Enter check-in date of the reservation to remove (1-31): ");
+                int checkInDate = sc.nextInt();
+                sc.nextLine(); // Consume newline
+        
+                Reservation reservationToRemove = null;
+                for (Reservation reservation : reservations) { // go through all the reservations within the hotel
+                    if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { // checks if the guest name and the check-in date of the reservation is valid
+                        reservationToRemove = reservation;
+                        break;
+                    }
+                }
+                if (reservationToRemove != null) { // removes the reservation if valid
+                    reservations.remove(reservationToRemove);
+                    System.out.println("Reservation removed successfully.");
+                } else { // doesn't cancel the reservation if invalid
+                    System.out.println("Reservation not found.");
+                }
             }
-            case 6 ->{ // remove hotel
-
+            case 6 ->{ // remove hotel  
+                
             }
         }
 
