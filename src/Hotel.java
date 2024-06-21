@@ -225,7 +225,7 @@ public class Hotel {
      * 
      * @author: Zhean Ganituen
      */
-    public boolean  changePrice(double newPrice) {
+    public boolean changePrice(double newPrice) {
         // check if a reservation is empty
         // if reseravation is empty (then no reseravation is made yet)
         // and if newPrice is greater than the minimum amount: 100
@@ -279,7 +279,7 @@ public class Hotel {
 
                 this.delRoom(index);
             }
-            case 4 ->{
+            case 4 ->{ // Update the base price for a room
                 System.out.print("Enter the new price for the rooms of the hotel: ");
                 double newPrice = sc.nextDouble();
                 sc.nextLine();
@@ -289,6 +289,12 @@ public class Hotel {
                 } else{
                     System.out.printf("The base price of hotel '%s' has not been changed because there's an ongoing reservation.", this.getName());
                 }
+            }
+            case 5 ->{ // remove reservation
+                
+            }
+            case 6 ->{ // remove hotel
+
             }
         }
 
