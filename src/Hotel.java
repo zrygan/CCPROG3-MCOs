@@ -312,7 +312,11 @@ public class Hotel {
                 }
             }
             case 6 ->{ // remove hotel  
-                
+                System.out.println("Removing hotel...");
+                this.name = null;
+                this.rooms = null;
+                this.reservations = null;
+                this.earnings = 0.0;
             }
         }
 
