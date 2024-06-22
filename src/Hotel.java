@@ -340,6 +340,7 @@ public class Hotel {
                 this.reservations = null;
                 this.earnings = 0.0;
             }
+            default -> System.out.println("Invalid choice. Please try again.");
         }
 
     }

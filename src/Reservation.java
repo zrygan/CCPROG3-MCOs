@@ -16,17 +16,15 @@ public class Reservation {
     private final String guest;
     private final int checkin;
     private final int checkout;
-    private final double total;
     private final Room room;
     // the breakdown of the reservation will be calculated later as total / (checkin - checkout)
 
     // Constructor
-    public Reservation(String guest, int checkin, int checkout, double total, double breakdown, Room room) {
+    public Reservation(String guest, int checkin, int checkout, Room room) {
         this.room = room;
         this.guest = guest;
         this.checkin = checkin;
         this.checkout = checkout;
-        this.total = total;
         
     }
 
@@ -44,10 +42,6 @@ public class Reservation {
 
     public int getCheckout() {
         return checkout;
-    }
-
-    public double getTotal() {
-        return total;
     }
 
     public Room getRoom() {
@@ -86,7 +80,10 @@ public class Reservation {
      * @return:
      *  - cost per day : double
      */
-    public double breakdown(){
+    /*
+     * public double breakdown(){
         return total / (checkout - checkin);
-    }
+    }*/
 }
+     
+    
