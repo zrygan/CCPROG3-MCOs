@@ -91,11 +91,35 @@ public class HRS {
         String name = sc.nextLine();
         Hotel hotel = fetchHotel(name);
         if (hotel != null){
-            hotel.manageHotel(sc);
-        } else{
+            System.out.println("1\t:\t to change the name of the hotel");
+            System.out.println("2\t:\t to add a new room");
+            System.out.println("3\t:\t remove a room");
+            System.out.println("4\t:\t update the base price");
+            System.out.println("5\t:\t remove a reservation");
+            System.out.println("6\t:\t remove a hotel");
+    
+            System.out.print("Choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                    case 1 -> hotel.changeHotelName(sc);
+                    case 2 -> hotel.addRoom(sc);
+                    case 3 -> hotel.removeRoom(sc);
+                    case 4 -> hotel.updateRoomBasePrice(sc);
+                    case 5 -> hotel.removeReservation(sc);
+                    case 6 -> { 
+                        hotel.prepareForRemoval();
+                        hotels.remove(hotel);
+                        System.out.println("Hotel removed successfully.");
+                        return; // Exit after removal
+                    }
+                    default -> System.out.println("Invalid choice. Please try again.");
+                    }
+        }
+        else {
             System.out.printf("Hotel '%s' is not found.\n", name);
         }
-        
     }
 
     public void simBookingUI(Scanner sc){
