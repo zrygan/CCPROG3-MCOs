@@ -262,86 +262,77 @@ public class Hotel {
         return false;
     }
 
-    public void manageHotel(Scanner sc) {
-        System.out.println("1\t:\t to change the name of the hotel");
-        System.out.println("2\t:\t to add a new room");
-        System.out.println("3\t:\t remove a room");
-        System.out.println("4\t:\t update the base price");
-        System.out.println("5\t:\t remove a reservation");
-        System.out.println("6\t:\t remove a hotel");
 
-        System.out.print("Choice: ");
-        int choice = sc.nextInt();
+    public void changeHotelName(Scanner sc) {
+        System.out.println("Enter new hotel name: ");
+                
+        String oldName = this.getName();
+
+        String newName = sc.nextLine(); 
+
+        this.setName(newName); // set the name to the new name
+
+        System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, this.getName());
+    }
+
+    public void addRoom(Scanner sc) {
+        Room newRoom = this.newRoom();
+        if (newRoom != null) {
+            System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
+        } else {
+            System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n", this.getName());
+        }
+    }
+
+    public void removeRoom(Scanner sc) {
+        System.out.print("Enter room number to delete: ");
+        int index = sc.nextInt();
         sc.nextLine();
 
-        switch (choice) {
-            case 1 -> { // change name
-                System.out.println("Enter new hotel name: ");
-                
-                String oldName = this.getName();
-
-                String newName = sc.nextLine(); 
-
-                this.setName(newName); // set the name to the new name
-
-                System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, this.getName());
-            }
-            case 2 -> { // add a new room
-                Room newRoom = this.newRoom();
-                if (newRoom != null) {
-                    System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
-                } else {
-                    System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n", this.getName());
-                }
-            }
-            case 3 -> { // remove a room
-                System.out.print("Enter room number to delete: ");
-                int index = sc.nextInt();
-                sc.nextLine();
-
-                this.delRoom(index);
-            }
-            case 4 ->{ // Update the base price for a room
-                System.out.print("Enter the new price for the rooms of the hotel: ");
-                double newPrice = sc.nextDouble();
-                sc.nextLine();
-                
-                if (this.changePrice(newPrice)){
-                    System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(), this.getRooms().get(0).getBasePrice());
-                } else{
-                    System.out.printf("The base price of hotel '%s' has not been changed because there's an ongoing reservation.", this.getName());
-                }
-            }
-            case 5 ->{ // remove reservation
-                System.out.print("Enter guest name for reservation removal: ");
-                String guestName = sc.nextLine();
-                System.out.print("Enter check-in date of the reservation to remove (1-31): ");
-                int checkInDate = sc.nextInt();
-                sc.nextLine(); // Consume newline
-        
-                Reservation reservationToRemove = null;
-                for (Reservation reservation : reservations) { // go through all the reservations within the hotel
-                    if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { // checks if the guest name and the check-in date of the reservation is valid
-                        reservationToRemove = reservation;
-                        break;
-                    }
-                }
-                if (reservationToRemove != null) { // removes the reservation if valid
-                    reservations.remove(reservationToRemove);
-                    System.out.println("Reservation removed successfully.");
-                } else { // doesn't cancel the reservation if invalid
-                    System.out.println("Reservation not found.");
-                }
-            }
-            case 6 ->{ // remove hotel  
-                System.out.println("Removing hotel...");
-                this.name = null;
-                this.rooms = null;
-                this.reservations = null;
-                this.earnings = 0.0;
-            }
-            default -> System.out.println("Invalid choice. Please try again.");
-        }
-
+        this.delRoom(index);
     }
+
+    public void updateRoomBasePrice(Scanner sc) {
+        System.out.print("Enter the new price for the rooms of the hotel: ");
+        double newPrice = sc.nextDouble();
+        sc.nextLine();
+        
+        if (this.changePrice(newPrice)){
+            System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(), this.getRooms().get(0).getBasePrice());
+        } else{
+            System.out.printf("The base price of hotel '%s' has not been changed because there's an ongoing reservation.", this.getName());
+        }
+    }
+
+    public void removeReservation(Scanner sc) {
+        System.out.print("Enter guest name for reservation removal: ");
+        String guestName = sc.nextLine();
+        System.out.print("Enter check-in date of the reservation to remove (1-31): ");
+        int checkInDate = sc.nextInt();
+        sc.nextLine(); // Consume newline
+
+        Reservation reservationToRemove = null;
+        for (Reservation reservation : reservations) { // go through all the reservations within the hotel
+            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { // checks if the guest name and the check-in date of the reservation is valid
+                reservationToRemove = reservation;
+                break;
+            }
+        }
+        if (reservationToRemove != null) { // removes the reservation if valid
+            reservations.remove(reservationToRemove);
+            System.out.println("Reservation removed successfully.");
+        } else { // doesn't cancel the reservation if invalid
+            System.out.println("Reservation not found.");
+        }
+    }
+                
+    public void prepareForRemoval() {
+        this.name = null;
+        this.rooms.clear();
+        this.reservations.clear();
+        this.earnings = 0.0;
+        System.out.println("Hotel data cleared.");
+    }   
+
+    
 }
