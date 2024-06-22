@@ -44,10 +44,6 @@ public class Reservation {
         return checkout;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
     public Room getRoom() {
         return room;
     }
@@ -84,7 +80,10 @@ public class Reservation {
      * @return:
      *  - cost per day : double
      */
-    public double breakdown(){
+    /*
+     * public double breakdown(){
         return total / (checkout - checkin);
-    }
+    }*/
 }
+     
+    
