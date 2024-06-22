@@ -99,7 +99,21 @@ public class HRS {
     }
 
     public void simBookingUI(Scanner sc){
-        System.out.println("TODO");
+        System.out.println("Welcome to the Hotel Reservation System, User!");
+        System.out.print("Please enter your name: ");
+        String guestName = sc.nextLine();
+        System.out.print("Enter the name of the hotel: ");
+        String hotelName = sc.nextLine();
+        Hotel hotel = fetchHotel(hotelName);
+        if (hotel != null){
+            System.out.print("Enter the day of your check-in: ");
+            int checkIn = sc.nextInt();
+            System.out.print("Enter the day of your check-out: ");
+            int checkOut = sc.nextInt();
+            hotel.bookRoom(guestName, checkIn, checkOut);
+        } else{
+            System.out.printf("Hotel '%s' is not found.\n", hotelName);
+        }
     }
 
     public void showMenu(){
