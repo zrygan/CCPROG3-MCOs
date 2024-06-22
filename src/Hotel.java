@@ -120,6 +120,28 @@ public class Hotel {
         }
     }
 
+    public void bookRoom(String guestName, int checkIn, int checkOut) {
+        for (Room room : rooms) {
+            if (isRoomAvailable(room, checkIn, checkOut)) {
+                Reservation reservation = new Reservation(guestName, checkIn, checkOut, room);
+                reservations.add(reservation);
+                room.checkIn();
+                System.out.println("Room booked successfully for " + guestName);
+                return;
+            }
+        }
+        System.out.println("No available rooms for the selected dates.");
+    }
+
+    private boolean isRoomAvailable(Room room, int checkIn, int checkOut) {
+        for (Reservation reservation : reservations) {
+            if (reservation.getRoom().equals(room) && !(checkOut <= reservation.getCheckin() || checkIn >= reservation.getCheckout())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /* fetchRoom
      * returns the room given the name of the room of a hotelName
      * 
