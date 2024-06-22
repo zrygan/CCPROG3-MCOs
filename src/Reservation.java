@@ -16,18 +16,16 @@ public class Reservation {
     private final String guest;
     private final int checkin;
     private final int checkout;
-    private final double total;
+    private double total;
     private final Room room;
     // the breakdown of the reservation will be calculated later as total / (checkin - checkout)
 
     // Constructor
-    public Reservation(String guest, int checkin, int checkout, double total, double breakdown, Room room) {
+    public Reservation(String guest, int checkin, int checkout, Room room) {
         this.room = room;
         this.guest = guest;
         this.checkin = checkin;
         this.checkout = checkout;
-        this.total = total;
-        
     }
 
     // Setters
