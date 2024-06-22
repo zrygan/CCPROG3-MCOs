@@ -6,7 +6,7 @@ public class Driver{
         boolean run = true;
         Scanner sc = new Scanner(System.in); // initialize scanner
         
-        // Debugging code: 
+        // Debugging Code [DC1]
         hrs.createHotel("max");
         Hotel max = hrs.fetchHotel("max");
         max.newRoom(); 
@@ -37,10 +37,11 @@ public class Driver{
                 case 2 -> hrs.viewHotelUI(sc);
                 case 3 -> hrs.manageHotelUI(sc);
                 case 4 -> hrs.simBookingUI(sc);
-                case 5 -> {
+                case 0 -> {
                     System.out.println("Exiting the Hotel Reservation System...");
                     run = false;
                 }
+                case 9 -> hrs.showHotels();
             }
             sc.nextLine(); // consume new line
         }

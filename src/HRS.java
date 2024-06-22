@@ -121,6 +121,16 @@ public class HRS {
         System.out.println("2\t:\t View Hotel");
         System.out.println("3\t:\t Manage Hotel");
         System.out.println("4\t:\t Simulate Booking");
-        System.out.println("5\t:\t Exit");
+        System.out.println("0\t:\t Exit");
+
+        System.out.println("9");
+    }
+    
+    public void showHotels(){
+        int i = 1;
+        for (Hotel hotel : hotels){
+            System.out.printf("%d\t'%s' has %d rooms.\n", i, hotel.getName(), hotel.getRoomCount());
+            i++;
+        }
     }
 }
