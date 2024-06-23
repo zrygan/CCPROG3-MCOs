@@ -76,7 +76,7 @@ public class HRS {
             } else {
                 hotels.add(new Hotel(hotelName));
                 Hotel recentHotel = fetchHotel(hotelName);
-                recentHotel.addRoom(sc);
+                recentHotel.initializeHotelAddRoom();
                 System.out.println("Hotel created successfully.");
             }
     }
