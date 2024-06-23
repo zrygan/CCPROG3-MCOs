@@ -124,12 +124,16 @@ public class Hotel {
 
     public void bookRoom(String guestName, int checkIn, int checkOut) {
         String bookName = this.name + "_Room_" + bookCount;
-        Room room = fetchRoom(bookName);
+        Room roomToBook = fetchRoom(bookName);
 
-        if (isRoomAvailable(room, checkIn, checkOut)) {
-            Reservation reservation = new Reservation(guestName, checkIn, checkOut, room);
-            reservations.add(reservation);
-            room.checkIn();
+        if (roomToBook == null) {
+            System.out.println("There are currently no available rooms for the selected dates");
+            return;
+        }
+
+        if (isRoomAvailable(roomToBook, checkIn, checkOut)) {
+            reservations.add(new Reservation(guestName, checkIn, checkOut, roomToBook));
+            roomToBook.checkIn();
             System.out.println("Room booked successfully for " + guestName);
             bookCount++;
             return;

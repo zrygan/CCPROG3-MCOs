@@ -71,8 +71,21 @@ public class HRS {
     public void createHotelUI(Scanner sc) {
         System.out.print("Enter the name of the hotel: ");
         String hotelName = sc.nextLine();
+            if (findHotelByName(hotelName) != null) {
+                System.out.println("Hotel already exists.");
+            } else {
+                hotels.add(new Hotel(hotelName));
+                System.out.println("Hotel created successfully.");
+            }
+    }
 
-        createHotel(hotelName);
+    private Hotel findHotelByName(String name) {
+        for (Hotel hotel : hotels) {
+            if (hotel.getName().equals(name)) {
+                return hotel;
+            }
+        }
+        return null;
     }
 
     public void viewHotelUI(Scanner sc){
