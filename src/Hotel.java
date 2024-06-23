@@ -19,6 +19,7 @@ public class Hotel {
     private ArrayList<Room> rooms; // potential maximum of 50 rooms
     private ArrayList<Reservation> reservations; // list of reservations
     private double earnings;
+    private int bookCount = 0;
 
     // Constructor
     public Hotel(String name) {
@@ -26,6 +27,7 @@ public class Hotel {
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
         this.earnings = 0.0; // initialize as 0
+        
     }
 
     // Setters
@@ -121,22 +123,29 @@ public class Hotel {
     }
 
     public void bookRoom(String guestName, int checkIn, int checkOut) {
-        for (Room room : rooms) {
-            if (isRoomAvailable(room, checkIn, checkOut)) {
-                Reservation reservation = new Reservation(guestName, checkIn, checkOut, room);
-                reservations.add(reservation);
-                room.checkIn();
-                System.out.println("Room booked successfully for " + guestName);
-                return;
-            }
+        String bookName = this.name + "_Room_" + bookCount;
+        Room room = fetchRoom(bookName);
+
+        if (isRoomAvailable(room, checkIn, checkOut)) {
+            Reservation reservation = new Reservation(guestName, checkIn, checkOut, room);
+            reservations.add(reservation);
+            room.checkIn();
+            System.out.println("Room booked successfully for " + guestName);
+            bookCount++;
+            return;
         }
         System.out.println("No available rooms for the selected dates.");
+    
     }
 
     private boolean isRoomAvailable(Room room, int checkIn, int checkOut) {
         for (Reservation reservation : reservations) {
-            if (reservation.getRoom().equals(room) && !(checkOut <= reservation.getCheckin() || checkIn >= reservation.getCheckout())) {
-                return false;
+            if (reservation.getRoom().equals(room)) {
+                if ((checkIn >= reservation.getCheckin() && checkIn < reservation.getCheckout()) ||
+                    (checkOut > reservation.getCheckin() && checkOut <= reservation.getCheckout()) ||
+                    (checkIn < reservation.getCheckin() && checkOut > reservation.getCheckout())) {
+                    return false;
+                }
             }
         }
         return true;
