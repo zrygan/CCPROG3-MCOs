@@ -136,9 +136,16 @@ public class Hotel {
         return null;
     }
 
+    /* delRoom
+     * Deletes a specific room given a room number
+     * 
+     * @params:
+     *  - num : int : the room number
+     * 
+     * @returns:
+     *  - none
+     */
     public void delRoom(int num) {
-        
-        
             // check if index is within bounds
             if (num < 0 || num > 50) {
                 System.out.println("Index out of bounds.");
@@ -158,6 +165,21 @@ public class Hotel {
         
     }
 
+    /* bookRoom
+     * Books a room and makes a reservation, if possible
+     
+     * 
+     * @param: 
+     *  - guestName : String : the guests name 
+     *  - checkIn   : int    : date of checking in
+     *  - checkOut  : int    : date of checking out
+     * 
+     * @return
+     *  - true  : boolean : if room booking is successful
+     *  - false : boolean : if room booking is not successful
+     * 
+     * @Author: Zhean Ganituen, Jaztin Jimenez
+     */
     public boolean bookRoom(String guestName, int checkIn, int checkOut) {
         // iterate through all the rooms in hotel
         for (Room room : this.rooms) {
@@ -297,6 +319,17 @@ public class Hotel {
         return false;
     }
 
+    /* changeRoomName
+     * Changes the room name.
+     * 
+     * @param:
+     *  - sc : Scanner : Scanner object for user input
+     * 
+     * @returns:
+     *  - none
+     * 
+     * @Author: Jaztin Jimenez
+     */
     public void changeHotelName(Scanner sc) {
         System.out.println("Enter new hotel name: ");
 
@@ -309,6 +342,17 @@ public class Hotel {
         System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, this.getName());
     }
 
+    /* addRoom
+     * Adds a specific number of rooms to a hotel.
+     * 
+     * @param:
+     *  - sc : Scanner : Scanenr object
+     * 
+     * @returns:
+     *  - none
+     * 
+     * @Author: Jaztin Jimenez
+     */
     public void addRoom(Scanner sc) {
         System.out.printf("Enter number of rooms to create: ");
         int num = sc.nextInt();
@@ -327,12 +371,26 @@ public class Hotel {
         }
     }
 
+    /* initializeHotelAddRoom
+     * Makes a new hotel and adds a single room
+     */
     public void initializeHotelAddRoom() {
         Room newRoom = this.newRoom();
         System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
     }
 
-    public void removeRoom(Scanner sc) {
+    /* delRoomUI
+     * User I/O for deleting room. Uses `delRoom`
+     * 
+     * @param:
+     *  - sc : Scanner : Scanner object
+     * 
+     * @returns: 
+     *  - None
+     * 
+     * @authors: Zhean Ganituen
+     */
+    public void delRoomUI(Scanner sc) {
         if (roomCount > 1) {
             System.out.print("Enter room number to delete: ");
             int index = sc.nextInt();
@@ -343,7 +401,18 @@ public class Hotel {
         }
     }
 
-    public void updateRoomBasePrice(Scanner sc) {
+    /* changePriceUI
+     * User I/O for changing the base prices of all rooms. Uses `changePrice`
+     * 
+     * @param:
+     *  - sc : Scanner : Scanner object
+     * 
+     * @returns:
+     *  - none
+     * 
+     * @Authors: Zhean Ganituen, Jaztin Jimenez
+     */
+    public void changePriceUI(Scanner sc) {
         System.out.print("Enter the new price for the rooms of the hotel: ");
         double newPrice = sc.nextDouble();
         sc.nextLine();
@@ -355,7 +424,18 @@ public class Hotel {
         }
     }
 
-    public void removeReservation(Scanner sc) {
+    /* removeReservationUI
+     * Removes the reservation from a hotel room.
+     * 
+     * @param:
+     *  - sc : Scanner : Scanner object.
+     * 
+     * @returns:
+     *  - none
+     * 
+     * @author: Zhean Ganituen, Jaztin Jimenez
+     */
+    public void removeReservationUI(Scanner sc) {
         System.out.print("Enter guest name for reservation removal: ");
         String guestName = sc.nextLine();
         System.out.print("Enter check-in date of the reservation to remove (1-31): ");
@@ -377,6 +457,17 @@ public class Hotel {
         }
     }
 
+    /* prepareForRemoval
+     * Prepares a hotel for removal by resetting all its variables
+     * 
+     * @params: 
+     *  - none
+     * 
+     * @returns:
+     *  - none 
+     * 
+     * @author: Jaztin Jimenez
+     */
     public void prepareForRemoval() {
         this.name = null;
         this.rooms.clear();

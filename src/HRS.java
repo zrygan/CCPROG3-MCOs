@@ -111,9 +111,9 @@ public class HRS {
             switch (choice) {
                     case 1 -> hotel.changeHotelName(sc);
                     case 2 -> hotel.addRoom(sc);
-                    case 3 -> hotel.removeRoom(sc);
-                    case 4 -> hotel.updateRoomBasePrice(sc);
-                    case 5 -> hotel.removeReservation(sc);
+                    case 3 -> hotel.delRoomUI(sc);
+                    case 4 -> hotel.changePriceUI(sc);
+                    case 5 -> hotel.removeReservationUI(sc);
                     case 6 -> { 
                         hotel.prepareForRemoval();
                         hotels.remove(hotel);
