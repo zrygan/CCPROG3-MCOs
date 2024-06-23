@@ -149,7 +149,7 @@ public class Room {
      */
     public boolean isAvailable(int checkIn, int checkOut) {
         for (int i = checkIn; i <= checkOut; i++) {
-            if (!this.availability[i-1]) {
+            if (!this.availability[i - 1]) {
                 return false;
             }
         }

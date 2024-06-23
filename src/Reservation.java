@@ -29,7 +29,6 @@ public class Reservation {
 
     // Setters
     // no setters since all are FINAL
-
     // Getters
     public String getGuest() {
         return guest;
@@ -79,10 +78,7 @@ public class Reservation {
      * @return:
      *  - cost per day : double
      */
-    /*
-     * public double breakdown(){
+    public double breakdown() {
         return total / (checkout - checkin);
-    }*/
+    }
 }
-     
-    
