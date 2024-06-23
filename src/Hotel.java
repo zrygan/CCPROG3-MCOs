@@ -19,7 +19,6 @@ public class Hotel {
     private ArrayList<Room> rooms; // potential maximum of 50 rooms
     private ArrayList<Reservation> reservations; // list of reservations
     private double earnings;
-    private int bookCount = 0;
 
     // Constructor
     public Hotel(String name) {
@@ -27,7 +26,7 @@ public class Hotel {
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
         this.earnings = 0.0; // initialize as 0
-        
+
     }
 
     // Setters
@@ -122,37 +121,22 @@ public class Hotel {
         }
     }
 
-    public void bookRoom(String guestName, int checkIn, int checkOut) {
-        String bookName = this.name + "_Room_" + bookCount;
-        Room roomToBook = fetchRoom(bookName);
-
-        if (roomToBook == null) {
-            System.out.println("There are currently no available rooms for the selected dates");
-            return;
-        }
-
-        if (isRoomAvailable(roomToBook, checkIn, checkOut)) {
-            reservations.add(new Reservation(guestName, checkIn, checkOut, roomToBook));
-            roomToBook.checkIn();
-            System.out.println("Room booked successfully for " + guestName);
-            bookCount++;
-            return;
-        }
-        System.out.println("No available rooms for the selected dates.");
-    
-    }
-
-    private boolean isRoomAvailable(Room room, int checkIn, int checkOut) {
-        for (Reservation reservation : reservations) {
-            if (reservation.getRoom().equals(room)) {
-                if ((checkIn >= reservation.getCheckin() && checkIn < reservation.getCheckout()) ||
-                    (checkOut > reservation.getCheckin() && checkOut <= reservation.getCheckout()) ||
-                    (checkIn < reservation.getCheckin() && checkOut > reservation.getCheckout())) {
-                    return false;
-                }
+    public boolean bookRoom(String guestName, int checkIn, int checkOut) {
+        // iterate through all the rooms in hotel
+        for (Room room : this.rooms) {
+            // look for a room that is available for the entire duration of the reservation
+            if (room.isAvailable(checkIn, checkOut)) {
+                // add reseravation
+                this.getRooms();
+                this.reservations.add(new Reservation(guestName, checkIn, checkOut, room));
+                System.out.printf("Room booked successfully for %s.", guestName);
+                room.checkIn(); // check in the room
+                return true;
             }
         }
-        return true;
+
+        System.out.println("There are currently no available rooms for the selected dates");
+        return false;
     }
 
     /* fetchRoom
@@ -275,13 +259,12 @@ public class Hotel {
         return false;
     }
 
-
     public void changeHotelName(Scanner sc) {
         System.out.println("Enter new hotel name: ");
-                
+
         String oldName = this.getName();
 
-        String newName = sc.nextLine(); 
+        String newName = sc.nextLine();
 
         this.setName(newName); // set the name to the new name
 
@@ -309,10 +292,10 @@ public class Hotel {
         System.out.print("Enter the new price for the rooms of the hotel: ");
         double newPrice = sc.nextDouble();
         sc.nextLine();
-        
-        if (this.changePrice(newPrice)){
+
+        if (this.changePrice(newPrice)) {
             System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(), this.getRooms().get(0).getBasePrice());
-        } else{
+        } else {
             System.out.printf("The base price of hotel '%s' has not been changed because there's an ongoing reservation.", this.getName());
         }
     }
@@ -338,14 +321,13 @@ public class Hotel {
             System.out.println("Reservation not found.");
         }
     }
-                
+
     public void prepareForRemoval() {
         this.name = null;
         this.rooms.clear();
         this.reservations.clear();
         this.earnings = 0.0;
         System.out.println("Hotel data cleared.");
-    }   
+    }
 
-    
 }

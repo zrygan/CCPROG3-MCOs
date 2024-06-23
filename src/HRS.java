@@ -129,15 +129,21 @@ public class HRS {
     public void simBookingUI(Scanner sc){
         System.out.println("Welcome to the Hotel Reservation System, User!");
         System.out.print("Please enter your name: ");
-        String guestName = sc.nextLine();
+
+        String guestName = sc.nextLine(); // look out for this baddie
+
         System.out.print("Enter the name of the hotel: ");
         String hotelName = sc.nextLine();
+
         Hotel hotel = fetchHotel(hotelName);
+
         if (hotel != null){
             System.out.print("Enter the day of your check-in: ");
-            int checkIn = sc.nextInt();
+            int checkIn = sc.nextInt(); // if this auto-submits then add sc.nextLine(); after this
+
             System.out.print("Enter the day of your check-out: ");
             int checkOut = sc.nextInt();
+
             hotel.bookRoom(guestName, checkIn, checkOut);
         } else{
             System.out.printf("Hotel '%s' is not found.\n", hotelName);
@@ -156,6 +162,7 @@ public class HRS {
     
     public void showHotels(){
         int i = 1;
+
         for (Hotel hotel : hotels){
             System.out.printf("%d\t'%s' has %d rooms.\n", i, hotel.getName(), hotel.getRoomCount());
             i++;

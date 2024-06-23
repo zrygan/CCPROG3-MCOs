@@ -32,7 +32,7 @@ public class Room {
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
-        Arrays.fill(this.availability,Boolean.FALSE);
+        Arrays.fill(this.availability, Boolean.FALSE);
     }
 
     public void setBasePrice(double basePrice) {
@@ -143,8 +143,17 @@ public class Room {
      * 
      * @author: Jaztin Jimenez
      */
+    public boolean isAvailable(int checkIn, int checkOut) {
+        for (int i = checkIn; i <= checkOut; i++) {
+            if (!this.availability[i]) {
+                return false;
+            }
+        }
+
+        return true; // assume true
+    }
+
     public boolean isAvailable(int day) {
         return !availability[day - 1];
     }
-
 }
