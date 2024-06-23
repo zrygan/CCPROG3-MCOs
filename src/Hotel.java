@@ -83,7 +83,40 @@ public class Hotel {
      */
     public Room newRoom() {
         // check if a room can still be created in the hotel
-        if (roomCount < 50) {
+        if (roomCount + 1 < 50) {
+            // make a unique room name
+            String roomName = name + "_Room_" + roomCount;
+
+            // create a new room with the new room name
+            Room newRoom = new Room(roomName, this);
+
+            // add the created room in the array of rooms
+            rooms.add(newRoom);
+
+            // increment the number of rooms
+            roomCount++;
+
+            return newRoom;
+        }
+
+        return null;
+    }
+
+    /* newRoom
+     * creates a new room in the hotel, if possible
+     * 
+     * @params:
+     *  - none
+     * 
+     * @returns:
+     *  - true  : boolen  : if a new room was created
+     *  - false : boolean : if not 
+     * 
+     * @author: Zhean Ganituen
+     */
+    public Room newRoom(int count) {
+        // check if a room can still be created in the hotel
+        if (roomCount + count < 50) {
             // make a unique room name
             String roomName = name + "_Room_" + roomCount;
 
