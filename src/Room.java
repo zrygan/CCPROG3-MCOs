@@ -130,7 +130,7 @@ public class Room {
      */
     public void bookLength(int checkin, int checkout) {
         for (int i = checkin; i <= checkout; i++) {
-            this.availability[i] = true;
+            this.availability[i - 1] = true;
         }
 
         this.daysBooked += checkout - checkin; // increment days booked with the total book length
@@ -149,7 +149,7 @@ public class Room {
      */
     public boolean isAvailable(int checkIn, int checkOut) {
         for (int i = checkIn; i <= checkOut; i++) {
-            if (!this.availability[i]) {
+            if (!this.availability[i-1]) {
                 return false;
             }
         }
@@ -158,6 +158,6 @@ public class Room {
     }
 
     public boolean isAvailable(int day) {
-        return !availability[day - 1];
+        return !this.availability[day - 1];
     }
 }
