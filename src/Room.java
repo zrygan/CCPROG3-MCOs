@@ -10,6 +10,9 @@
  *  - availability : Boolean     : the availability of the room per day
  *  - reservation  : Reservation : the reservation for the hotel
  */
+
+import java.util.Arrays;
+
 public class Room {
 
     // Variables
@@ -29,6 +32,7 @@ public class Room {
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
+        Arrays.fill(this.availability,Boolean.FALSE);
     }
 
     public void setBasePrice(double basePrice) {
