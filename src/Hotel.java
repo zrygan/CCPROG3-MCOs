@@ -55,6 +55,7 @@ public class Hotel {
         return roomCount;
     }
 
+    //@FIXME: REMOVE ALL THE ARRAYLIST GETTERS AND CHANGE THE getRooms() to just getRoomsSize()
     public ArrayList<Room> getRooms() {
         return rooms;
     }
@@ -136,22 +137,25 @@ public class Hotel {
     }
 
     public void delRoom(int num) {
-        // check if index is within bounds
-        if (num < 0 || num > 50) {
-            System.out.println("Index out of bounds.");
-        } else {
-            String roomName = this.name + "_Room_" + num;
-            Room room = fetchRoom(roomName);
-
-            // check if the rooms exists
-            if (room != null) {
-                Room removedRoom = rooms.remove(num);
-                System.out.printf("Room '%s' has been removed from hotel '%s'.\n", removedRoom.getName(), this.getName());
-                roomCount--;
+        
+        
+            // check if index is within bounds
+            if (num < 0 || num > 50) {
+                System.out.println("Index out of bounds.");
             } else {
-                System.out.printf("Room with the name '%s' is not found.", roomName);
+                String roomName = this.name + "_Room_" + num;
+                Room room = fetchRoom(roomName);
+
+                // check if the rooms exists
+                if (room != null) {
+                    Room removedRoom = rooms.remove(num);
+                    System.out.printf("Room '%s' has been removed from hotel '%s'.\n", removedRoom.getName(), this.getName());
+                    roomCount--;
+                } else {
+                    System.out.printf("Room with the name '%s' is not found.", roomName);
+                }
             }
-        }
+        
     }
 
     public boolean bookRoom(String guestName, int checkIn, int checkOut) {
@@ -160,7 +164,6 @@ public class Hotel {
             // look for a room that is available for the entire duration of the reservation
             if (!room.isAvailable(checkIn, checkOut)) {
                 // add reseravation
-                this.getRooms();
                 this.reservations.add(new Reservation(guestName, checkIn, checkOut, room));
                 System.out.printf("Room booked successfully for %s.\n", guestName);
                 room.checkIn(); // check in the room
@@ -234,7 +237,7 @@ public class Hotel {
                     ArrayList<String> availableRooms = new ArrayList<>();
                     ArrayList<String> bookedRooms = new ArrayList<>();
 
-                    for (Room room : this.getRooms()) {
+                    for (Room room : this.rooms) {
                         if (room.isAvailable(date)) {
                             availableRooms.add(room.getName());
                         } else {
@@ -246,9 +249,10 @@ public class Hotel {
                     System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
 
                 } else if (2 == option) {
-                    System.out.println("Enter room number: ");
-                    String roomName = sc.nextLine();
-                    roomName = name + "_Room_" + roomName; // reformat the name
+                    System.out.print("Enter room number: ");
+                    int roomNum = sc.nextInt();
+                    sc.nextLine();
+                    String roomName = name + "_Room_" + roomNum; // reformat the name
 
                     // get room
                     Room roomQuery = this.fetchRoom(roomName);
@@ -260,7 +264,7 @@ public class Hotel {
 
                         System.out.printf("The Room '%s' in Hotel '%s' costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), this.name, roomQuery.getBasePrice(), days);
                     } else {
-                        System.out.println("The room '%s' in Hotel '%s' does not exist.");
+                        System.out.printf("The room '%s' in Hotel '%s' does not exist.", roomName, this.getName());
                     }
                 }
             }
@@ -315,11 +319,14 @@ public class Hotel {
     }
 
     public void removeRoom(Scanner sc) {
-        System.out.print("Enter room number to delete: ");
-        int index = sc.nextInt();
-        sc.nextLine();
-
-        this.delRoom(index);
+        if (roomCount > 1) {
+            System.out.print("Enter room number to delete: ");
+            int index = sc.nextInt();
+             sc.nextLine();
+             this.delRoom(index);
+        } else {
+            System.out.printf("Delete cancelled. There is only one room left.\n");
+        }
     }
 
     public void updateRoomBasePrice(Scanner sc) {
