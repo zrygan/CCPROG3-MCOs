@@ -310,12 +310,26 @@ public class Hotel {
     }
 
     public void addRoom(Scanner sc) {
-        Room newRoom = this.newRoom();
-        if (newRoom != null) {
-            System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
-        } else {
-            System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n", this.getName());
+        System.out.printf("Enter number of rooms to create: ");
+        int num = sc.nextInt();
+
+        for (int i = 0; i < num; i++) {
+
+            Room newRoom = this.newRoom();
+
+            if (newRoom != null) {
+
+                System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
+
+            } else {
+                System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n", this.getName());
+            }
         }
+    }
+
+    public void initializeHotelAddRoom() {
+        Room newRoom = this.newRoom();
+        System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
     }
 
     public void removeRoom(Scanner sc) {
