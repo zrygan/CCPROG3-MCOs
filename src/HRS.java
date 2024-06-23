@@ -81,14 +81,18 @@ public class HRS {
      *  - Zhean Ganituen
      */
     public void createHotelUI(Scanner sc) {
-        System.out.print("Enter the name of the hotel: ");
+        System.out.printf("You selected to \033[34mcreate\033[37m a hotel!\n");
+        
+        System.out.printf("\nEnter the name of the hotel: ");
         String hotelName = sc.nextLine();
+
         if (fetchHotel(hotelName) != null) {
-            System.out.println("Hotel already exists.");
+            System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", hotelName);
         } else {
             createHotel(hotelName);
-            System.out.println("Hotel created successfully.");
-        }
+            System.out.printf("\n\033[34mHotel with then name '%s' created successfully.\033[37m\n", hotelName);
+        }            
+            
     }
 
     /* viewHotelUI
@@ -103,13 +107,16 @@ public class HRS {
      * @author: Zhean Ganituen
      */
     public void viewHotelUI(Scanner sc) {
-        System.out.print("Enter the name of the hotel: ");
+        System.out.printf("You selected to \033[34mview\033[37m a hotel!\n");
+        
+        System.out.printf("\nEnter the name of the hotel: ");
         String hotelName = sc.nextLine();
+
         Hotel hotel = fetchHotel(hotelName);
         if (hotel != null) {
             hotel.viewHotel(sc);
         } else {
-            System.out.printf("Hotel '%s' is not found.\n", hotelName);
+            System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' is not found in the database.\033[37m\n", hotelName);
         }
     }
 
@@ -212,13 +219,14 @@ public class HRS {
      * @author: Zhean Ganituen
      */
     public void showMenu() {
-        System.out.println("1\t:\t Create Hotel");
-        System.out.println("2\t:\t View Hotel");
-        System.out.println("3\t:\t Manage Hotel");
-        System.out.println("4\t:\t Simulate Booking");
-        System.out.println("0\t:\t Exit");
-
-        System.out.println("9");
+        System.out.printf("\n===================================\n");
+        System.out.printf("\033[33m1\033[37m\t:\t Create Hotel\n");
+        System.out.printf("\033[33m2\033[37m\t:\t View Hotel\n");
+        System.out.printf("\033[33m3\033[37m\t:\t Manage Hotel\n");
+        System.out.printf("\033[33m4\033[37m\t:\t Simulate Booking\n");
+        System.out.printf("\033[31m0\033[37m\t:\t Exit\n");
+        System.out.printf("\033[33m9\033[37m\n");
+        System.out.printf("===================================\n");
     }
 
     /* showHotels

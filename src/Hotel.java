@@ -234,31 +234,46 @@ public class Hotel {
      * @author: Zhean Ganituen and Jaztin Jimenez
      */
     public void viewHotel(Scanner sc) {
-        System.out.println("1\t:\tto view high-level hotel information");
-        System.out.println("2\t:\tto view low-level hotel information");
-        System.out.print("Choice: ");
-        System.out.println(); // add new line
+        System.out.printf("\n==================== OPTIONS ====================\n");
+        System.out.printf("\33[33m1\33[37m\t:\tview high-level hotel information\n");
+        System.out.printf("\33[33m2\33[37m\t:\tview low-level hotel information\n");
+        System.out.printf("\33[31m0\33[37m\t:\texit\n");
+        System.out.printf("=================================================");
+
+        System.out.printf("\nChoose an option: ");
+
         int level = sc.nextInt();
         sc.nextLine(); // consume new line
 
         switch (level) {
-            case 1 ->
-                System.out.printf("Hotel '%s' with %d rooms has earned PHP %.2f.\n", this.getName(), this.getRooms().size(), this.getEarnings());
-
+            case 0 ->
+                System.out.println("\nReturning to main menu.");
+            case 1 ->{
+                System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n", this.getName());
+                System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", this.getName(), this.getRooms().size(), this.getEarnings());
+            }
             case 2 -> {
-                System.out.println("1\t:\tto view available/booked rooms for a selected date");
-                System.out.println("2\t:\tto view details of a specific room or reservation");
+                System.out.printf("You selected to \033[34mview low-level information\033[37m on hotel '%s'.\n", this.getName());
+                System.out.printf("\n\n=========================== OPTIONS ===========================\n");
+                System.out.printf("\33[33m1\33[37m\t:\tview available/booked rooms for a selected date\n");
+                System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room or reservation\n");
+                System.out.printf("===============================================================");
+
+                System.out.printf("\nChoose an option: ");
 
                 int option = sc.nextInt();
 
                 if (1 == option) {
-                    System.out.print("Enter date (1-31): ");
+                    System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n", this.getName());
+                    
+                    System.out.print("\nEnter date (1-31): ");
 
                     int date = sc.nextInt();
                     sc.nextLine();
 
                     ArrayList<String> availableRooms = new ArrayList<>();
                     ArrayList<String> bookedRooms = new ArrayList<>();
+                    
 
                     for (Room room : this.rooms) {
                         if (room.isAvailable(date)) {
@@ -268,13 +283,33 @@ public class Hotel {
                         }
                     }
 
-                    System.out.println("Available Rooms on day " + date + ": " + availableRooms);
-                    System.out.println("Booked Rooms on day " + date + ": " + bookedRooms);
+                    // print available rooms with proper formatting and handling
+                    if (availableRooms.isEmpty()){
+                        System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n", this.getName(), date);
+                    } else{
+                        System.out.printf("Available rooms of hotel '%s' on day %d:\n", this.getName(), date);
+                        for (String room : availableRooms){
+                            System.out.printf("\t\033[33m%s\033[37m\n", room);
+                        }
+                    }
+
+                    // print booked rooms with proper formatting and handling
+                    if (bookedRooms.isEmpty()){
+                        System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n", this.getName(), date);
+                    } else{
+                        System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", this.getName(), date);
+                        for (String room : bookedRooms){
+                            System.out.printf("\t\033[33m%s\033[37m\n", room);
+                        }
+                    }
 
                 } else if (2 == option) {
-                    System.out.print("Enter room number: ");
+                    System.out.printf("You selected to \033[34mview a room reservation\033[37m for hotel '%s'.\n", this.getName());
+                    
+                    System.out.printf("\nEnter room number: ");
                     int roomNum = sc.nextInt();
                     sc.nextLine();
+
                     String roomName = name + "_Room_" + roomNum; // reformat the name
 
                     // get room
@@ -285,9 +320,9 @@ public class Hotel {
                         // calculate availability
                         int days = 31 - roomQuery.getDaysBooked();
 
-                        System.out.printf("The Room '%s' in Hotel '%s' costs %.2f per night and is available for %d days of the month.\n", roomQuery.getName(), this.name, roomQuery.getBasePrice(), days);
+                        System.out.printf("\n\033[34mThe Room '%s' in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n", roomQuery.getName(), this.name, roomQuery.getBasePrice(), days);
                     } else {
-                        System.out.printf("The room '%s' in Hotel '%s' does not exist.", roomName, this.getName());
+                        System.out.printf("\n\033[31mError. Sorry! But the room name '%s' in Hotel '%s' does not exist.\033[37m\n", roomName, this.getName());
                     }
                 }
             }
