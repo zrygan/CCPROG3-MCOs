@@ -15,7 +15,7 @@ public class Reservation {
     private final String guest;
     private final int checkin;
     private final int checkout;
-    private double total;
+    private final double total;
     private final Room room;
     // the breakdown of the reservation will be calculated later as total / (checkin - checkout)
 
@@ -25,10 +25,12 @@ public class Reservation {
         this.guest = guest;
         this.checkin = checkin;
         this.checkout = checkout;
+        this.total = room.getBasePrice() * (checkout - checkin + 1); // calculate total
     }
 
     // Setters
     // no setters since all are FINAL
+
     // Getters
     public String getGuest() {
         return guest;
@@ -79,6 +81,6 @@ public class Reservation {
      *  - cost per day : double
      */
     public double breakdown() {
-        return total / (checkout - checkin);
+        return total / (checkout - checkin + 1);
     }
 }

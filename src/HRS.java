@@ -37,14 +37,13 @@ public class HRS {
      * @returns: 
      *  - none
      * 
-     * @fixme:
-     *  - add a way to check if the name is unique or not
      * 
      * @author: Zhean Ganituen
      */
     public void createHotel(String name) {
         Hotel hotel = new Hotel(name);
         hotels.add(hotel);
+        hotel.newRoom();
     }
 
     /* fetchHotel
@@ -87,9 +86,7 @@ public class HRS {
         if (fetchHotel(hotelName) != null) {
             System.out.println("Hotel already exists.");
         } else {
-            hotels.add(new Hotel(hotelName));
-            Hotel recentHotel = fetchHotel(hotelName);
-            recentHotel.initializeHotelAddRoom();
+            createHotel(hotelName);
             System.out.println("Hotel created successfully.");
         }
     }

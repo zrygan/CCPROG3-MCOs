@@ -4,7 +4,6 @@
  * @params:
  *  - name         : String      : the name of the room, must be different for each room
  *  - basePrice    : int         : the base price of the room, always 1299.00 but can be changed using the manage hotel method
- *  - isBooked     : Boolean     : determines if the room is currently booked
  *  - daysBooked   : int         : the number of days the room was booked
  *  - hotel        : Hotel       : the hotel of the room
  *  - availability : Boolean     : the availability of the room per day
@@ -18,7 +17,6 @@ public class Room {
     // Variables
     private final String name;
     private double basePrice;
-    private boolean isBooked;
     private int daysBooked;
     private final Hotel hotel;
     private boolean[] availability;
@@ -28,7 +26,6 @@ public class Room {
     public Room(String name, Hotel hotel) {
         this.name = name;
         this.basePrice = 1299.0;
-        this.isBooked = false; // init the isBooked as false
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
@@ -37,10 +34,6 @@ public class Room {
 
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
-    }
-
-    public void setIsBooked(boolean isBooked) {
-        this.isBooked = isBooked;
     }
 
     public void setDaysBooked(int daysBooked) {
@@ -64,10 +57,6 @@ public class Room {
         return basePrice;
     }
 
-    public boolean getIsBooked() {
-        return isBooked;
-    }
-
     public int getDaysBooked() {
         return daysBooked;
     }
@@ -82,40 +71,6 @@ public class Room {
 
     public Reservation reservation() {
         return reservation;
-    }
-
-    /* checkIn
-     * function that sets the booking checker of the room to true
-     * 
-     * @params:
-     *  - none
-     * 
-     * @FIXME: WTF IS THIS FOR?
-     * 
-     * @author: Zhean Ganituen
-     */
-    public void checkIn() {
-        this.isBooked = true;
-
-        // increment daysBooked
-        this.daysBooked++;
-
-        // update earnings as the current earnings + basePrice of the room
-        this.hotel.setEarnings(hotel.getEarnings() + basePrice);
-    }
-
-    /* checkOut
-     * function that sets the booking checker of the room to false
-     * 
-     * @params:
-     *  - none
-     * 
-     * @FIXME: WTF IS THIS FOR?
-     * 
-     * @author: Zhean Ganiuen
-     */
-    public void checkOut() {
-        this.isBooked = false;
     }
 
     /* bookLength
@@ -133,7 +88,7 @@ public class Room {
             this.availability[i - 1] = true;
         }
 
-        this.daysBooked += checkout - checkin; // increment days booked with the total book length
+        this.daysBooked += checkout - checkin + 1; // increment days booked with the total book length
     }
 
     /* isAvailable

@@ -186,9 +186,10 @@ public class Hotel {
             // look for a room that is available for the entire duration of the reservation
             if (!room.isAvailable(checkIn, checkOut)) {
                 // add reseravation
-                this.reservations.add(new Reservation(guestName, checkIn, checkOut, room));
+                Reservation newReservation = new Reservation(guestName, checkIn, checkOut, room);
+                this.reservations.add(newReservation);
                 System.out.printf("Room booked successfully for %s.\n", guestName);
-                room.checkIn(); // check in the room
+                setEarnings(room.getBasePrice() * (checkOut - checkIn)); 
                 room.bookLength(checkIn, checkOut);
                 return true;
             }
@@ -369,14 +370,6 @@ public class Hotel {
                 System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n", this.getName());
             }
         }
-    }
-
-    /* initializeHotelAddRoom
-     * Makes a new hotel and adds a single room
-     */
-    public void initializeHotelAddRoom() {
-        Room newRoom = this.newRoom();
-        System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
     }
 
     /* delRoomUI
