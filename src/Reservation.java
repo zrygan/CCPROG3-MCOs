@@ -6,7 +6,6 @@
  *  - checkin   : final int    : the check-in date (DD)
  *  - checkout  : final int    : the check-out date (DD)
  *  - total     : double       : the total cost of the booking
- *  - breakdown : double       : the breakdown of the cost, price per day
  *  - room      : final Room   : the room to be reserved
  */
 

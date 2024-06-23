@@ -137,13 +137,13 @@ public class Room {
     }
 
     /* isAvailable
-     * a checker that determines if the room is a available for some day 
+     * a checker that determines if the room is a available for a range
      * 
      * @params:
      *  - checkin  : int : day the customer checks in
      *  - checkout : int : day the customer checks out
      * 
-     * @fixme: since we have this already, do we need getters and setters for availability?
+     * @FIXME: since we have this already, do we need getters and setters for availability?
      * 
      * @author: Jaztin Jimenez
      */
@@ -157,6 +157,15 @@ public class Room {
         return true; // assume true
     }
 
+    /* isAvailable
+     * a checker that determines if the room is a available for some day 
+     * 
+     * @params:
+     *  - day : int : a specific day
+     * 
+     * 
+     * @author: Jaztin Jimenez
+     */
     public boolean isAvailable(int day) {
         return !this.availability[day - 1];
     }
