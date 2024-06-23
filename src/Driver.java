@@ -9,8 +9,8 @@ public class Driver{
         // Debugging Code [DC1]
         hrs.createHotel("max");
         Hotel max = hrs.fetchHotel("max");
-        max.newRoom(); 
-        max.newRoom(); 
+        // max.newRoom(); 
+        // max.newRoom(); 
         max.newRoom(); // there should be 3 rooms in `max` [room_0 to room_2]
         // max.getRooms().get(0).checkIn();  // check-in in one of the rooms
                                                 // so now there should be some earnings in max

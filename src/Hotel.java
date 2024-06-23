@@ -125,12 +125,13 @@ public class Hotel {
         // iterate through all the rooms in hotel
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
-            if (room.isAvailable(checkIn, checkOut)) {
+            if (!room.isAvailable(checkIn, checkOut)) {
                 // add reseravation
                 this.getRooms();
                 this.reservations.add(new Reservation(guestName, checkIn, checkOut, room));
-                System.out.printf("Room booked successfully for %s.", guestName);
+                System.out.printf("Room booked successfully for %s.\n", guestName);
                 room.checkIn(); // check in the room
+                room.bookLength(checkIn, checkOut);
                 return true;
             }
         }

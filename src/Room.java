@@ -90,6 +90,8 @@ public class Room {
      * @params:
      *  - none
      * 
+     * @FIXME: WTF IS THIS FOR?
+     * 
      * @author: Zhean Ganituen
      */
     public void checkIn() {
@@ -107,6 +109,8 @@ public class Room {
      * 
      * @params:
      *  - none
+     * 
+     * @FIXME: WTF IS THIS FOR?
      * 
      * @author: Zhean Ganiuen
      */
