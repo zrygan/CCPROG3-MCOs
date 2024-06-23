@@ -75,6 +75,8 @@ public class HRS {
                 System.out.println("Hotel already exists.");
             } else {
                 hotels.add(new Hotel(hotelName));
+                Hotel recentHotel = fetchHotel(hotelName);
+                recentHotel.addRoom(sc);
                 System.out.println("Hotel created successfully.");
             }
     }
