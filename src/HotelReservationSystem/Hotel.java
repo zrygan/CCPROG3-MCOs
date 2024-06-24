@@ -211,8 +211,17 @@ public class Hotel {
         System.out.printf("=================================================");
 
         System.out.printf("\nChoose an option: ");
+        
+        int level = -1;
 
-        int level = sc.nextInt();
+        try {
+            level = sc.nextInt();
+            sc.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR");
+            sc.nextLine();
+        }
+
         sc.nextLine(); // consume new line
 
         switch (level) {
@@ -233,16 +242,33 @@ public class Hotel {
                 System.out.printf("===============================================================");
 
                 System.out.printf("\nChoose an option: ");
-
-                int option = sc.nextInt();
+                
+                int option = -1;
+                
+                try {
+                    option = sc.nextInt();
+                    sc.nextLine();
+                } catch (InputMismatchException e) {
+                    System.out.println("ERROR");
+                    sc.nextLine();
+                }
 
                 if (1 == option) {
                     System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
                             this.getName());
 
                     System.out.print("\nEnter date (1-31): ");
+                    
+                    int date = -1;
 
-                    int date = sc.nextInt();
+                    try {
+                        date = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("ERROR");
+                        sc.nextLine();
+                    }
+
                     sc.nextLine();
 
                     ArrayList<String> availableRooms = new ArrayList<>();
@@ -283,7 +309,16 @@ public class Hotel {
                             this.getName());
 
                     System.out.printf("\nEnter room number: ");
-                    int roomNum = sc.nextInt();
+                    
+                    int roomNum = -1;
+
+                    try {
+                        roomNum = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("ERROR");
+                        sc.nextLine();
+                    }
                     sc.nextLine();
 
                     String roomName = name + "_Room_" + roomNum; // reformat the name
@@ -343,7 +378,17 @@ public class Hotel {
      */
     public void addRoom(Scanner sc) {
         System.out.printf("Enter number of rooms to create: ");
-        int num = sc.nextInt();
+        
+        int num = -1;
+
+        try {
+            num = sc.nextInt();
+            sc.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR");
+            sc.nextLine();
+        }
+
         sc.nextLine();
 
         System.out.println(); // empty new line
@@ -374,7 +419,17 @@ public class Hotel {
         if (this.getRoomCount() > 1) {
             System.out.println(this.getRoomCount());
             System.out.printf("\nEnter room number to delete: ");
-            int index = sc.nextInt();
+            
+            int index = -1;
+
+            try {
+                index = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("ERROR");
+                sc.nextLine();
+            }
+
             sc.nextLine();
 
             if (index < 0 || index > 51) {
@@ -436,7 +491,17 @@ public class Hotel {
         System.out.print("Enter guest name for reservation removal: ");
         String guestName = sc.nextLine();
         System.out.print("Enter check-in date of the reservation to remove (1-31): ");
-        int checkInDate = sc.nextInt();
+        
+        int checkInDate = -1;
+        
+        try {
+            checkInDate = sc.nextInt();
+            sc.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.println("ERROR");
+            sc.nextLine();
+        }
+
         sc.nextLine(); // Consume newline
 
         Reservation reservationToRemove = null;

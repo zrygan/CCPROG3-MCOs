@@ -1,5 +1,6 @@
 package HotelReservationSystem;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -9,10 +10,10 @@ public class Driver {
 
     /**
      * Main method for the Hotel Reservation System
-     * 
+     *
      * @param args arguments of the main method
      */
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         HRS hrs = new HRS();
         boolean run = true;
         Scanner sc = new Scanner(System.in); // initialize scanner
@@ -26,7 +27,6 @@ public class Driver {
         // max.getRooms().get(0).checkIn(); // check-in in one of the rooms
         // so now there should be some earnings in max
         // remove this if need to check for changing base price
-
         // [11.06.2024] Check View hotel >>> NO >> YES
         // [20.06.2024] Check I/O >>> NO >> YES
         // [20.06.2024] Check: (a) change name >>> YES
@@ -36,20 +36,29 @@ public class Driver {
         // reserved >>> NO >> NO
         // !reserved >>> NO >> YES
         System.out.println("Welcome to the Hotel Reservation System or (HRS).");
-        
-        // add more instructions here if needed
 
+        // add more instructions here if needed
         System.out.printf("\n\033[36mINSTRUCTIONS:\033[37m\n");
         System.out.printf("\t1: Enter the number of your choice when prompted with options.\n");
         System.out.printf("\t2: The hotel name is \033[31mCASE-SENSITIVE\033[37m.\n");
 
         // Thread.sleep(5000); // 5 second delay
-
         while (run) {
             hrs.showMenu();
 
             System.out.print("Choose an option: ");
-            int option = sc.nextInt();
+            
+            int option = -1;
+            
+            try {
+                option = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException  e) {
+                System.out.println("ERROR");
+                sc.nextLine();
+                continue;
+            }
+
             sc.nextLine(); // consume new line
 
             switch (option) {

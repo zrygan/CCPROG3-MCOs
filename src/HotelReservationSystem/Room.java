@@ -33,8 +33,9 @@ public class Room {
     /**
      * Setter for the base price
      *
-     * @param basePrice the base price of the room, always 1299.00 but can be changed using the manage hotel method
-     * 
+     * @param basePrice the base price of the room, always 1299.00 but can be
+     * changed using the manage hotel method
+     *
      */
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;

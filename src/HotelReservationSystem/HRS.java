@@ -39,7 +39,7 @@ public class HRS {
      * Creates a new hotel with a given name
      *
      * @param name the name of the new hotel
-     * @param sc the scanner object
+     * @param sc   the scanner object
      *
      * @author Zhean Ganituen
      */
@@ -54,7 +54,7 @@ public class HRS {
      *
      * @param name name of the hotel
      * @return {room} the hotel with the room name in the hotel, {null} the
-     * hotel was not found
+     *         hotel was not found
      *
      * @author Zhean Ganituen
      */
@@ -153,8 +153,17 @@ public class HRS {
             System.out.printf("===============================================");
 
             System.out.printf("\nChoose an option: ");
+            
+            int choice = -1;
 
-            int choice = sc.nextInt();
+            try {
+                choice = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException  e) {
+                System.out.println("ERROR");
+                sc.nextLine();
+            }
+
             sc.nextLine();
 
             switch (choice) {
@@ -178,7 +187,16 @@ public class HRS {
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
 
                     System.out.printf("\nEnter number of rooms to create: ");
-                    int num = sc.nextInt();
+                    
+                    int num = -1;
+
+                    try {
+                        num = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException  e) {
+                        System.out.println("ERROR");
+                        sc.nextLine();
+                    }
                     sc.nextLine();
 
                     if (num > 0 && hotel.getRoomCount() + num < 51) {
@@ -203,8 +221,8 @@ public class HRS {
                                 hotel.getName());
                     } else {
                         System.out.printf(
-                            "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\nThere are %d rooms in hotel '%s', maximum rooms that can be added is %d.\033[37m\n",
-                            num, name, hotel.getRoomCount(), name, 50 - hotel.getRoomCount());
+                                "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\nThere are %d rooms in hotel '%s', maximum rooms that can be added is %d.\033[37m\n",
+                                num, name, hotel.getRoomCount(), name, 50 - hotel.getRoomCount());
                     }
                 }
                 case 3 -> {
@@ -256,11 +274,30 @@ public class HRS {
         if (hotel != null) {
 
             System.out.print("Enter the day of your check-in: ");
-            int checkIn = sc.nextInt(); // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
+            
+            int checkIn = -1; // initialize as -1
+
+            try {
+                checkIn = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException  e) {
+                System.out.println("ERROR");
+                sc.nextLine();
+            } // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
+            
             sc.nextLine();
 
             System.out.print("Enter the day of your check-out: ");
-            int checkOut = sc.nextInt();
+            
+            int checkOut = -1; // initialize as -1
+
+            try {
+                checkOut = sc.nextInt();
+                sc.nextLine();
+            } catch (InputMismatchException  e) {
+                System.out.println("ERROR");
+                sc.nextLine();
+            }
             sc.nextLine();
 
             // checks if the booking dates are in bound
