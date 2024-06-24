@@ -8,8 +8,8 @@ import java.util.Arrays;
 public class Room {
 
     // Variables
-    private final String name;
-    private double basePrice;
+    private String name;
+    private double basePrice = 1299.0;
     private int daysBooked;
     private final Hotel hotel;
     private boolean[] availability;
@@ -39,6 +39,16 @@ public class Room {
      */
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
+    }
+
+    /**
+     * Setter for the room name
+     *
+     * @param basePrice the name of the room
+     *
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

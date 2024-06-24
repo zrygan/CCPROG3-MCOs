@@ -177,11 +177,16 @@ public class HRS {
 
                     if (fetchHotel(newName) != null) {
                         System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", newName);
+                        
                     } else {
                         hotel.setName(newName); // set the name to the new name
-                        System.out.printf("\n\33[33mHotel '%s' has been successfully renamed to '%s'.\33[37m\n", oldName,
-                                hotel.getName());
+                        System.out.printf("\n\33[33mHotel '%s' has been successfully renamed to '%s'.\33[37m\n", oldName, hotel.getName());
+                        Hotel changeName = fetchHotel(newName);
+
+                        changeName.changeRoomName(newName);
                     }
+
+                    
                     
                 }
                 case 2 -> {
