@@ -83,8 +83,39 @@ public class HRS {
      */
     public void createHotel(String name, Scanner sc) {
         Hotel hotel = new Hotel(name);
-        hotels.add(hotel);
-        hotel.newRoom(); // add a single room
+        
+        System.out.printf("\nEnter number of rooms to create: ");
+
+        int num = getInput(sc);
+
+        if (num > 0 && hotel.getRoomCount() + num < 51) {
+            hotels.add(hotel);
+            for (int i = 0; i < num; i++) {
+
+                Room newRoom = hotel.newRoom();
+
+                if (newRoom != null) {
+
+                    System.out.printf(
+                            "\n\033[33mA new room '%s' has been successfully added in hotel '%s'.\033[37m\n",
+                            newRoom.getName(), hotel.getName());
+
+                } else {
+                    System.out.printf(
+                            "\n\033[31mError. A new room cannot be created since there are 50 rooms in hotel '%s' already.\033[37m\n",
+                            hotel.getName());
+                }
+            }
+        } else if (num <= 0) {
+            System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n",
+                    hotel.getName());
+        } else {
+            System.out.printf(
+                    "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\n",
+                    num, name);
+        }
+        
+        
     }
 
     /**
@@ -139,7 +170,13 @@ public class HRS {
             System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", hotelName);
         } else {
             createHotel(hotelName, sc);
-            System.out.printf("\n\033[34mHotel with then name '%s' created successfully.\033[37m\n", hotelName);
+            if (fetchHotel(hotelName) != null) {
+                System.out.printf("\n\033[34mHotel with the name '%s' created successfully.\033[37m\n", hotelName);
+            }
+            else {
+                System.out.printf("\n\033[31mError. Sorry! Hotel with the name '%s' created unsuccessfully.\033[37m\n", hotelName);
+            }
+            
         }
 
     }
@@ -505,8 +542,10 @@ public class HRS {
                         if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31)
                                 && (checkIn >= 1 && checkIn <= 30)) {
                             hotel.bookRoom(guestName, checkIn, checkOut);
+                            run = false;
                         } else {
                             System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");
+                            run = false;
                         }
                     } else {
                         System.out.printf("\n\033[31mError. Hotel '%s' is not found.\033[37m\n", hotelName);
