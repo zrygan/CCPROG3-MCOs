@@ -111,6 +111,11 @@ public class Hotel {
         return earnings;
     }
 
+    /**
+     * Getter for the Arraylist of Room objects in the Hotel
+     * 
+     * @return the ArrayList of Room objects
+     */
     public ArrayList<Room> getRooms(){
         return rooms;
     }
@@ -261,7 +266,9 @@ public class Hotel {
 
     /**
      * User I/O for deleting room. Uses `delRoom`
-     *
+     * 
+     * @param index the room number to delete
+     * 
      * @author Zhean Ganituen
      */
     public void delRoom(int index) {
@@ -289,8 +296,11 @@ public class Hotel {
     /**
      * Removes the reservation from a hotel room.
      *
-     * @param sc Scanner object
-     *
+     * @param guestName the name of the guest
+     * @param checkInDate the date of the guest's check in
+     * 
+     * @return {true} if the reservation was removed, {false} otherwise
+     * 
      * @author Zhean Ganituen, Jaztin Jimenez
      */
     public boolean removeReservation(String guestName, int checkInDate) {

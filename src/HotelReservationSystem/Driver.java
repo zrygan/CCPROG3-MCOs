@@ -7,6 +7,13 @@ import java.util.Scanner;
  * HotelReservationSystem.Driver class for the Hotel Reservation System
  */
 public class Driver {
+    
+    /**
+     * Constructor for the Driver Class (blank)
+     */
+    public Driver(){
+        // just added this to make javadoc stop crying with how there's no comment constructor for the Driver file
+    }
 
     /**
      * Main method for the Hotel Reservation System
