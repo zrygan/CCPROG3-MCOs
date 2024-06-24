@@ -218,7 +218,7 @@ public class Hotel {
             level = sc.nextInt();
             sc.nextLine();
         } catch (InputMismatchException e) {
-            System.out.println("ERROR");
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
             sc.nextLine();
         }
 
@@ -249,7 +249,7 @@ public class Hotel {
                     option = sc.nextInt();
                     sc.nextLine();
                 } catch (InputMismatchException e) {
-                    System.out.println("ERROR");
+                    System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                     sc.nextLine();
                 }
 
@@ -265,7 +265,7 @@ public class Hotel {
                         date = sc.nextInt();
                         sc.nextLine();
                     } catch (InputMismatchException e) {
-                        System.out.println("ERROR");
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
 
@@ -316,7 +316,7 @@ public class Hotel {
                         roomNum = sc.nextInt();
                         sc.nextLine();
                     } catch (InputMismatchException e) {
-                        System.out.println("ERROR");
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
                     sc.nextLine();
@@ -385,7 +385,7 @@ public class Hotel {
             num = sc.nextInt();
             sc.nextLine();
         } catch (InputMismatchException e) {
-            System.out.println("ERROR");
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
             sc.nextLine();
         }
 
@@ -426,7 +426,7 @@ public class Hotel {
                 index = sc.nextInt();
                 sc.nextLine();
             } catch (InputMismatchException e) {
-                System.out.println("ERROR");
+                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             }
 
@@ -498,7 +498,7 @@ public class Hotel {
             checkInDate = sc.nextInt();
             sc.nextLine();
         } catch (InputMismatchException e) {
-            System.out.println("ERROR");
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
             sc.nextLine();
         }
 

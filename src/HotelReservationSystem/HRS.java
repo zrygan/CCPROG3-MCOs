@@ -160,7 +160,7 @@ public class HRS {
                 choice = sc.nextInt();
                 sc.nextLine();
             } catch (InputMismatchException  e) {
-                System.out.println("ERROR");
+                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             }
 
@@ -194,7 +194,7 @@ public class HRS {
                         num = sc.nextInt();
                         sc.nextLine();
                     } catch (InputMismatchException  e) {
-                        System.out.println("ERROR");
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
                     sc.nextLine();
@@ -281,7 +281,7 @@ public class HRS {
                 checkIn = sc.nextInt();
                 sc.nextLine();
             } catch (InputMismatchException  e) {
-                System.out.println("ERROR");
+                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             } // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
             
@@ -295,7 +295,7 @@ public class HRS {
                 checkOut = sc.nextInt();
                 sc.nextLine();
             } catch (InputMismatchException  e) {
-                System.out.println("ERROR");
+                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             }
             sc.nextLine();

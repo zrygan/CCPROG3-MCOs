@@ -54,7 +54,7 @@ public class Driver {
                 option = sc.nextInt();
                 sc.nextLine();
             } catch (InputMismatchException  e) {
-                System.out.println("ERROR");
+                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
                 continue;
             }
