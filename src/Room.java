@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 
 /**
@@ -15,7 +16,7 @@ public class Room {
 
     /**
      * Constructor for the Room object
-     * 
+     *
      * @param name the name of the room, must be different for each room
      * @param hotel the hotel of the room
      */
@@ -30,8 +31,9 @@ public class Room {
 
     /**
      * Setter for the base price
-     * 
-     * @param basePrice the base price of the room, always 1299.00 but can be changed using the manage hotel method
+     *
+     * @param basePrice the base price of the room, always 1299.00 but can be
+     * changed using the manage hotel method
      */
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
@@ -39,7 +41,7 @@ public class Room {
 
     /**
      * Setter for the days booked
-     * 
+     *
      * @param daysBooked the number of days the room was booked
      */
     public void setDaysBooked(int daysBooked) {
@@ -48,7 +50,7 @@ public class Room {
 
     /**
      * Setter for the availability of the Room
-     * 
+     *
      * @param availability the availability of the room per day
      */
     public void setAvailability(boolean[] availability) {
@@ -57,7 +59,7 @@ public class Room {
 
     /**
      * Setter for the reservation of the hotel
-     * 
+     *
      * @param reservation the reservation for the hotel
      */
     public void setReservation(Reservation reservation) {
@@ -66,37 +68,57 @@ public class Room {
 
     /**
      * Getter for the name of the room
-     * 
+     *
      * @return the name of the room
      */
     public String getName() {
-        return  name;
+        return name;
     }
 
     /**
      * Getter for the base price of the room
-     * 
+     *
      * @return the base price of the room
      */
     public double getBasePrice() {
-        return  basePrice;
+        return basePrice;
     }
 
     /**
      * Getter for the days booked in the room
-     * 
+     *
      * @return the amount of days booked in the room
      */
     public int getDaysBooked() {
-        return  daysBooked;
+        return daysBooked;
     }
 
     /**
-     * determines the days the room is booked and make it's availability for those days true and increment the number of days the room is booked by the total book book length
-     * 
+     * Getter for the reservation assigned to the room
+     *
+     * @return the reservation of the room
+     */
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    /**
+     * Getter for the hotel of the room
+     *
+     * @return the hotel of the room
+     */
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    /**
+     * determines the days the room is booked and make it's availability for
+     * those days true and increment the number of days the room is booked by
+     * the total book book length
+     *
      * @param checkin day the customer checks in
      * @param checkout day the customer checks out
-     * 
+     *
      * @author Jaztin Jimenez
      */
     public void bookLength(int checkin, int checkout) {
@@ -108,11 +130,12 @@ public class Room {
     }
 
     /**
-     * removes the availability of the room and decrements the number of days the room is booked
-     * 
+     * removes the availability of the room and decrements the number of days
+     * the room is booked
+     *
      * @param checkin day the customer checks in
      * @param checkout day the customer checks out
-     * 
+     *
      * @author Jaztin Jimenez
      */
     public void removeAvailability(int checkin, int checkout) {
@@ -125,35 +148,35 @@ public class Room {
 
     /**
      * a checker that determines if the room is a available for a range
-     * 
+     *
      * @param checkin day the customer checks in
      * @param checkout day the customer checks out
-     * 
+     *
      * @return true if the room is available
      * @return false if otherwise
-     * 
+     *
      * @author Jaztin Jimenez
      */
     public boolean isAvailable(int checkIn, int checkOut) {
         for (int i = checkIn; i <= checkOut; i++) {
             if (!this.availability[i - 1]) {
-                return  false;
+                return false;
             }
         }
 
-        return  true; // assume true
+        return true; // assume true
     }
 
     /**
      * a checker that determines if the room is a available for some day
-     * 
+     *
      * @param day a specific day
-     * 
+     *
      * @return the availability of the day
-     * 
+     *
      * @author Jaztin Jimenez
      */
     public boolean isAvailable(int day) {
-        return  !this.availability[day - 1];
+        return !this.availability[day - 1];
     }
 }

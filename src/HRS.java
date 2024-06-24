@@ -16,6 +16,24 @@ public class HRS {
     }
 
     /**
+     * Sets the hotels in the ArrayList of Hotel
+     * 
+     * @param name The name of the Hotel
+     */
+    public void setHotels(ArrayList<Hotel> hotels) {
+        this.hotels = hotels;
+    }
+
+    /**
+     * Getter for the ArrayList of hotels in the HRS
+     * 
+     * @return the ArrayList of hotels
+     */
+    public ArrayList<Hotel> getHotels() {
+        return hotels;
+    }
+
+    /**
      * Creates a new hotel with a given name
      * 
      * @param name the name of the new hotel

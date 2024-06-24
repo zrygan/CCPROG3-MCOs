@@ -63,6 +63,15 @@ public class Reservation {
     }
 
     /**
+     * Getter for the total cost of the reservation
+     * 
+     * @return the total cost
+     */
+    public double  getTotal() {
+        return  total;
+    }
+
+    /**
      * Checks if the room is available for the day
      * 
      * @param room the room to check the avaulability
