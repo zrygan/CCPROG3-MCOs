@@ -71,7 +71,7 @@ public class Reservation {
         return true;
     }
 
-    /* total
+    /* breakdown
      * gets the total costs of booking the reservation
      * 
      * @params:
