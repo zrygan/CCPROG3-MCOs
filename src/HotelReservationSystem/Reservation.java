@@ -1,8 +1,7 @@
 package HotelReservationSystem;
 
 /**
- * This class represents an object Reservation of a room
- * for the system
+ * This class represents an object Reservation of a room for the system
  */
 public class Reservation {
 

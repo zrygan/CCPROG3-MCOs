@@ -39,7 +39,7 @@ public class HRS {
      * Creates a new hotel with a given name
      *
      * @param name the name of the new hotel
-     * @param sc   the scanner object
+     * @param sc the scanner object
      *
      * @author Zhean Ganituen
      */
@@ -54,7 +54,7 @@ public class HRS {
      *
      * @param name name of the hotel
      * @return {room} the hotel with the room name in the hotel, {null} the
-     *         hotel was not found
+     * hotel was not found
      *
      * @author Zhean Ganituen
      */
@@ -241,7 +241,7 @@ public class HRS {
                     System.out.printf("\nEnter the new price for the rooms of the hotel: ");
                     double newPrice = sc.nextDouble();
                     sc.nextLine();
-            
+
                     if (hotel.changePrice(newPrice)) {
                         System.out.printf("\033[33m\nThe rooms of hotel '%s' have been changed to %.2f.\033[37m\n", hotel.getName(),
                                 hotel.getBasePrice());
@@ -306,9 +306,9 @@ public class HRS {
                     run = false;
                 default -> {
                     System.out.printf("You selected to \033[34mbook a room in hotel '%s'\033[37m.\n", hotelName);
-                    
+
                     Hotel hotel = fetchHotel(hotelName);
-                    
+
                     if (hotel != null) {
                         System.out.printf("\nEnter the day of your check-in: ");
 
@@ -321,14 +321,13 @@ public class HRS {
                             System.out.printf(
                                     "\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                             sc.nextLine();
-                        } 
-                        
+                        }
+
                         // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
-                        
                         System.out.print("\nEnter the day of your check-out: ");
-                        
+
                         int checkOut = -1; // initialize as -1
-                        
+
                         try {
                             checkOut = sc.nextInt();
                             sc.nextLine();
@@ -336,7 +335,7 @@ public class HRS {
                             System.out.printf(
                                     "\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                             sc.nextLine();
-                        } 
+                        }
 
                         // checks if the booking dates are in bound
                         if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31)

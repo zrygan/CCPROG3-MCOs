@@ -13,7 +13,7 @@ public class Driver {
      *
      * @param args arguments of the main method
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         HRS hrs = new HRS();
         boolean run = true;
         // Debugging Code [DC1]
@@ -35,29 +35,29 @@ public class Driver {
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
         {
             System.out.println("Welcome to the Hotel Reservation System or (HRS).");
-            
+
             // add more instructions here if needed
             System.out.printf("\n\033[36mINSTRUCTIONS:\033[37m\n");
             System.out.printf("\t1: Enter the number of your choice when prompted with options.\n");
             System.out.printf("\t2: The hotel name is \033[31mCASE-SENSITIVE\033[37m.\n");
-            
+
             // Thread.sleep(5000); // 5 second delay
             while (run) {
                 hrs.showMenu();
-                
+
                 System.out.print("Choose an option: ");
-                
+
                 int option;
-                
+
                 try {
                     option = sc.nextInt();
                     sc.nextLine();
-                } catch (InputMismatchException  e) {
+                } catch (InputMismatchException e) {
                     System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                     sc.nextLine();
                     continue;
                 }
-                
+
                 switch (option) {
                     case 1 ->
                         hrs.createHotelUI(sc);
@@ -72,7 +72,7 @@ public class Driver {
                         run = false;
                     }
                 }
-                
+
                 System.out.print("\nEnter any key to continue...");
                 sc.nextLine(); // consume new line
                 System.out.printf("\033c"); // cls

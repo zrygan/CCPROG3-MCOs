@@ -32,7 +32,7 @@ public class Hotel {
 
     /**
      * Getter for the base price of the Hotel
-     * 
+     *
      * @return base price of the Hotel
      */
     public double getBasePrice() {
@@ -41,7 +41,7 @@ public class Hotel {
 
     /**
      * Sets the base price of the Hotel
-     * 
+     *
      * @param basePrice
      */
     public void setBasePrice(double basePrice) {
@@ -168,11 +168,11 @@ public class Hotel {
      * Books a room and makes a reservation, if possible
      *
      * @param guestName the guests name
-     * @param checkIn   date of checking in
-     * @param checkOut  date of checking out
+     * @param checkIn date of checking in
+     * @param checkOut date of checking out
      *
      * @return {true} if room booking is successful, {false} if room booking is
-     *         not successful
+     * not successful
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
@@ -208,7 +208,7 @@ public class Hotel {
      *
      * @param name name of the room
      * @return {room} the room with the room name in the hotel, {null} the room
-     *         was not found
+     * was not found
      *
      * @author Zhean Ganituen
      */
@@ -372,7 +372,7 @@ public class Hotel {
      *
      * @param newPrice the new price, constraint: newPrice >= 100
      * @return {true} if the base price is successfully changed, {false} if
-     *         otherwise
+     * otherwise
      *
      * @author Zhean Ganituen
      */
