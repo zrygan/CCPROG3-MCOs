@@ -37,85 +37,42 @@ public class HRS {
 
     /**
      * Method that simplifies input handling for integer inputs
+     *
      * @param sc Scanner object
      * @return the scanned input of type int
      */
-    public int getInput(Scanner sc){
-        try{
-            int var =  sc.nextInt();
+    public int getInput(Scanner sc) {
+        try {
+            int var = sc.nextInt();
             sc.nextLine();
 
             return var;
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
             sc.nextLine();
 
             return -1;
         }
     }
-    
+
     /**
      * Method that simplifies input handling for double inputs
+     *
      * @param sc Scanner object
      * @return the scanned input of type double
      */
-    public double getInputDBL(Scanner sc){
-        try{
-            double var =  sc.nextDouble();
+    public double getInputDBL(Scanner sc) {
+        try {
+            double var = sc.nextDouble();
             sc.nextLine();
 
             return var;
-        } catch (InputMismatchException e){
-            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+        } catch (InputMismatchException e) {
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `double`.\033[37m\n");
             sc.nextLine();
 
             return -1;
         }
-    }
-
-    /**
-     * Creates a new hotel with a given name
-     *
-     * @param name the name of the new hotel
-     * @param sc the scanner object
-     *
-     * @author Zhean Ganituen
-     */
-    public void createHotel(String name, Scanner sc) {
-        Hotel hotel = new Hotel(name);
-        
-        System.out.printf("\nEnter number of rooms to create: ");
-
-        int num = getInput(sc);
-
-        if (num > 0 && hotel.getRoomCount() + num < 51) {
-            hotels.add(hotel);
-            for (int i = 0; i < num; i++) {
-
-                Room newRoom = hotel.newRoom();
-
-                if (newRoom != null) {
-
-                    System.out.printf(
-                            "\n\033[33mA new room '%s' has been successfully added in hotel '%s'.\033[37m\n",
-                            newRoom.getName(), hotel.getName());
-
-                } else {
-                    System.out.printf(
-                            "\n\033[31mError. A new room cannot be created since there are 50 rooms in hotel '%s' already.\033[37m\n",
-                            hotel.getName());
-                }
-            }
-        } else if (num <= 0) {
-            System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n",
-                    hotel.getName());
-        } else {
-            System.out.printf(
-                    "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\n",
-                    num, name);
-        }
-        
-        
     }
 
     /**
@@ -169,14 +126,44 @@ public class HRS {
         if (fetchHotel(hotelName) != null) {
             System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", hotelName);
         } else {
-            createHotel(hotelName, sc);
+            Hotel hotel = new Hotel(hotelName);
+
+            System.out.printf("\nEnter number of rooms to create: ");
+
+            int num = getInput(sc);
+
+            if (num > 0 && hotel.getRoomCount() + num < 51) {
+                hotels.add(hotel);
+                for (int i = 0; i < num; i++) {
+
+                    Room newRoom = hotel.newRoom();
+
+                    if (newRoom != null) {
+
+                        System.out.printf(
+                                "\n\033[33mA new room '%s' has been successfully added in hotel '%s'.\033[37m\n",
+                                newRoom.getName(), hotel.getName());
+
+                    } else {
+                        System.out.printf(
+                                "\n\033[31mError. A new room cannot be created since there are 50 rooms in hotel '%s' already.\033[37m\n",
+                                hotel.getName());
+                    }
+                }
+            } else if (num <= 0) {
+                System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n",
+                        hotel.getName());
+            } else {
+                System.out.printf(
+                        "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\n",
+                        num, hotel.getName());
+            }
             if (fetchHotel(hotelName) != null) {
                 System.out.printf("\n\033[34mHotel with the name '%s' created successfully.\033[37m\n", hotelName);
-            }
-            else {
+            } else {
                 System.out.printf("\n\033[31mError. Sorry! Hotel with the name '%s' created unsuccessfully.\033[37m\n", hotelName);
             }
-            
+
         }
 
     }
@@ -197,103 +184,103 @@ public class HRS {
         Hotel hotel = fetchHotel(hotelName);
         if (hotel != null) {
             System.out.printf("\n==================== OPTIONS ====================\n");
-        System.out.printf("\33[33m1\33[37m\t:\tview high-level hotel information\n");
-        System.out.printf("\33[33m2\33[37m\t:\tview low-level hotel information\n");
-        System.out.printf("\33[31m0\33[37m\t:\texit\n");
-        System.out.printf("=================================================");
+            System.out.printf("\33[33m1\33[37m\t:\tview high-level hotel information\n");
+            System.out.printf("\33[33m2\33[37m\t:\tview low-level hotel information\n");
+            System.out.printf("\33[31m0\33[37m\t:\texit\n");
+            System.out.printf("=================================================");
 
-        System.out.printf("\nChoose an option: ");
+            System.out.printf("\nChoose an option: ");
 
-        int level = getInput(sc);
+            int level = getInput(sc);
 
-        switch (level) {
-            case 0 ->
-                System.out.println("\nReturning to main menu.");
-            case 1 -> {
-                // high level information
+            switch (level) {
+                case 0 ->
+                    System.out.println("\nReturning to main menu.");
+                case 1 -> {
+                    // high level information
 
-                System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n",
-                        hotel.getName());
-                System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", hotel.getName(),
-                        hotel.getRooms().size(), hotel.getEarnings());
-            }
-            case 2 -> {
-                // low level information
-
-                System.out.printf("You selected to \033[34mview low-level information\033[37m on hotel '%s'.\n",
-                        hotel.getName());
-                System.out.printf("\n=========================== OPTIONS ===========================\n");
-                System.out.printf("\33[33m1\33[37m\t:\tview available/booked rooms for a selected date\n");
-                System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room or reservation\n");
-                System.out.printf("===============================================================");
-
-                System.out.printf("\nChoose an option: ");
-
-                int option = getInput(sc);
-
-                if (option == 1) {
-                    // view booked rooms
-
-                    System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
+                    System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n",
                             hotel.getName());
+                    System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", hotel.getName(),
+                            hotel.getRooms().size(), hotel.getEarnings());
+                }
+                case 2 -> {
+                    // low level information
 
-                    System.out.print("\nEnter date (1-31): ");
-
-                    int date = getInput(sc);                    
-
-                    // print available rooms with proper formatting and handling
-                    if (hotel.fetchAvailableRoomNames(1, date).isEmpty()) {
-                        System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
-                                hotel.getName(), date);
-                    } else {
-                        System.out.printf("Available rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
-                        for (String room : hotel.fetchAvailableRoomNames(1, date)) {
-                            System.out.printf("\t\033[33m%s\033[37m\n", room);
-                        }
-                    }
-
-                    // print booked rooms with proper formatting and handling
-                    if (hotel.fetchAvailableRoomNames(0, date).isEmpty()) {
-                        System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
-                                hotel.getName(), date);
-                    } else {
-                        System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
-                        for (String room : hotel.fetchAvailableRoomNames(0, date)) {
-                            System.out.printf("\t\033[33m%s\033[37m\n", room);
-                        }
-                    }
-
-                } else if (option == 2) {
-                    // view room reservation
-
-                    System.out.printf("You selected to \033[34mview a room reservation\033[37m for hotel '%s'.\n",
+                    System.out.printf("You selected to \033[34mview low-level information\033[37m on hotel '%s'.\n",
                             hotel.getName());
+                    System.out.printf("\n=========================== OPTIONS ===========================\n");
+                    System.out.printf("\33[33m1\33[37m\t:\tview available/booked rooms for a selected date\n");
+                    System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room or reservation\n");
+                    System.out.printf("===============================================================");
 
-                    System.out.printf("\nEnter room number: ");
+                    System.out.printf("\nChoose an option: ");
 
-                    int roomNum = getInput(sc);
+                    int option = getInput(sc);
 
-                    String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
+                    if (option == 1) {
+                        // view booked rooms
 
-                    // get room
-                    Room roomQuery = hotel.fetchRoom(roomName);
+                        System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
+                                hotel.getName());
 
-                    // if room exists
-                    if (roomQuery != null) {
-                        // calculate availability
-                        int days = 31 - roomQuery.getDaysBooked();
+                        System.out.print("\nEnter date (1-31): ");
 
-                        System.out.printf(
-                                "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
-                                roomNum, hotel.getName(), roomQuery.getBasePrice(), days);
-                    } else {
-                        System.out.printf(
-                                "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
-                                roomNum, hotel.getName());
+                        int date = getInput(sc);
+
+                        // print available rooms with proper formatting and handling
+                        if (hotel.fetchAvailableRoomNames(1, date).isEmpty()) {
+                            System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
+                                    hotel.getName(), date);
+                        } else {
+                            System.out.printf("Available rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
+                            for (String room : hotel.fetchAvailableRoomNames(1, date)) {
+                                System.out.printf("\t\033[33m%s\033[37m\n", room);
+                            }
+                        }
+
+                        // print booked rooms with proper formatting and handling
+                        if (hotel.fetchAvailableRoomNames(0, date).isEmpty()) {
+                            System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
+                                    hotel.getName(), date);
+                        } else {
+                            System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
+                            for (String room : hotel.fetchAvailableRoomNames(0, date)) {
+                                System.out.printf("\t\033[33m%s\033[37m\n", room);
+                            }
+                        }
+
+                    } else if (option == 2) {
+                        // view room reservation
+
+                        System.out.printf("You selected to \033[34mview a room reservation\033[37m for hotel '%s'.\n",
+                                hotel.getName());
+
+                        System.out.printf("\nEnter room number: ");
+
+                        int roomNum = getInput(sc);
+
+                        String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
+
+                        // get room
+                        Room roomQuery = hotel.fetchRoom(roomName);
+
+                        // if room exists
+                        if (roomQuery != null) {
+                            // calculate availability
+                            int days = 31 - roomQuery.getDaysBooked();
+
+                            System.out.printf(
+                                    "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
+                                    roomNum, hotel.getName(), roomQuery.getBasePrice(), days);
+                        } else {
+                            System.out.printf(
+                                    "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
+                                    roomNum, hotel.getName());
+                        }
                     }
                 }
             }
-        }
         } else {
             System.out.printf(
                     "\n\033[31mError. Sorry! But that hotel name '%s' is not found in the database.\033[37m\n",
