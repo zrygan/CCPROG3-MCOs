@@ -202,6 +202,7 @@ public class HRS {
 
             System.out.print("Enter the day of your check-out: ");
             int checkOut = sc.nextInt();
+            sc.nextLine();
 
             // checks if the booking dates are in bound
             if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31) && (checkIn >= 1 && checkIn <= 30)) {
