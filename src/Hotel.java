@@ -11,6 +11,9 @@
 
 import java.util.*;
 
+/**
+ * This class represents a Hotel object in the system
+ */
 public class Hotel {
 
     // Variables
@@ -20,7 +23,11 @@ public class Hotel {
     private ArrayList<Reservation> reservations; // list of reservations
     private double earnings;
 
-    // Constructor
+    /**
+     * Constructor for the Hotel object
+     * 
+     * @param name Name of the Hotel
+     */
     public Hotel(String name) {
         this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
         this.name = name;
@@ -30,49 +37,76 @@ public class Hotel {
 
     }
 
-    // Setters
+    /**
+     * Sets the name of the Hotel
+     * 
+     * @param name The name of the Hotel
+     */
     public void setName(String name) {
         this.name = name;
     }
-
+    
+    /**
+     * Sets the reservation of the Hotel
+     * 
+     * @param reservation The reservation in the Hotel
+     */
     public void setReservation(ArrayList<Reservation> reservation) {
         this.reservations = reservation;
     }
 
+    /**
+     * Sets the rooms in the Hotel
+     * 
+     * @param rooms The rooms in the Hotel
+     */
     public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 
+    /**
+     * Sets the earnings of the Hotel
+     * 
+     * @param earnings The earnings of the Hotel
+     */
     public void setEarnings(double earnings) {
         this.earnings += earnings;
     }
 
-    // Getters
+    /**
+     * Getter for the name of the Hotel
+     * 
+     * @return The name of the Hotel
+     */
     public String getName() {
         return  name;
     }
 
+    /**
+     * Getter for the number of rooms in the Hotel
+     * 
+     * @return The number of rooms in the Hotel
+     */
     public int getRoomCount() {
         return  roomCount;
     }
 
+    /**
+     * Getter for the earnings of the Hotel
+     * 
+     * @return The earnings of the Hotel
+     */
     public double getEarnings() {
         return  earnings;
     }
 
-    // Methods
-
-    /**newRoom
+    /**
      * creates a new room in the hotel, if possible
      * 
-     * @param :
-     * - none
+     * @return True, if a new room is created
+     * @return False, if otherwise
      * 
-     * @return :
-     * - true : boolen : if a new room was created
-     * - false : boolean : if not
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public Room newRoom() {
         // check if a room can still be created in the hotel

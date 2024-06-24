@@ -1,8 +1,16 @@
 
 import java.util.Scanner;
 
+/**
+ * Driver class for the Hotel Reservation System
+ */
 public class Driver {
 
+    /**
+     * Main method for the Hotel Reservation System
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         HRS hrs = new HRS();
         boolean run = true;
