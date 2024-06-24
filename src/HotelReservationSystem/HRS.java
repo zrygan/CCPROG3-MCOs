@@ -18,6 +18,24 @@ public class HRS {
     }
 
     /**
+     * Sets the hotels in the ArrayList of Hotel
+     *
+     * @param hotels the array of hotels in the HotelReservationSystem.HRS
+     */
+    public void setHotels(ArrayList<Hotel> hotels) {
+        this.hotels = hotels;
+    }
+
+    /**
+     * Getter for the ArrayList of hotels in the HotelReservationSystem.HRS
+     *
+     * @return the ArrayList of hotels
+     */
+    public ArrayList<Hotel> getHotels() {
+        return hotels;
+    }
+
+    /**
      * Method that simplifies input handling for integer inputs
      * @param sc Scanner object
      * @return the scanned input of type int
@@ -53,24 +71,6 @@ public class HRS {
 
             return -1;
         }
-    }
-
-    /**
-     * Sets the hotels in the ArrayList of Hotel
-     *
-     * @param hotels the array of hotels in the HotelReservationSystem.HRS
-     */
-    public void setHotels(ArrayList<Hotel> hotels) {
-        this.hotels = hotels;
-    }
-
-    /**
-     * Getter for the ArrayList of hotels in the HotelReservationSystem.HRS
-     *
-     * @return the ArrayList of hotels
-     */
-    public ArrayList<Hotel> getHotels() {
-        return hotels;
     }
 
     /**
@@ -160,7 +160,7 @@ public class HRS {
      *
      * @author Zhean Ganituen
      */
-    public void createHotelUI(Scanner sc) {
+    public void createHotel(Scanner sc) {
         System.out.printf("You selected to \033[34mcreate\033[37m a hotel!\n");
 
         System.out.printf("\nEnter the name of the hotel: ");
@@ -188,7 +188,7 @@ public class HRS {
      *
      * @author Zhean Ganituen
      */
-    public void viewHotelUI(Scanner sc) {
+    public void viewHotel(Scanner sc) {
         System.out.printf("You selected to \033[34mview\033[37m a hotel!\n");
 
         System.out.printf("\nEnter the name of the hotel: ");
@@ -308,7 +308,7 @@ public class HRS {
      *
      * @author Zhean Ganituen
      */
-    public void manageHotelUI(Scanner sc) {
+    public void manageHotel(Scanner sc) {
         System.out.printf("You selected to \033[34mmanage\033[37m a hotel!\n");
 
         System.out.print("\nEnter the name of the hotel: ");
@@ -504,7 +504,7 @@ public class HRS {
      * @author Zhean Ganituen
      * @author Jaztin Jimenez
      */
-    public void simBookingUI(Scanner sc) {
+    public void simBooking(Scanner sc) {
         System.out.printf("You selected to \033[34msimulate booking a room\033[37m.\n");
         System.out.printf("\nWelcome to the Hotel Reservation System, User!\n");
         System.out.printf("\nPlease enter your name: ");
