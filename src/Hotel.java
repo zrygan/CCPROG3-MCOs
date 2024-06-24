@@ -92,11 +92,7 @@ public class Hotel {
     /**
      * creates a new room in the hotel, if possible
      * 
-<<<<<<< HEAD
-     * @return {@code true} if a new room is created, {@code false} if otherwise
-=======
-     * @return True, if a new room is created. False, if otherwise.
->>>>>>> 8cde02b518721b5c2a9343c9a76cd45ae443e803
+     * @return {true} if a new room is created, {false} if otherwise
      * 
      * @author Zhean Ganituen
      */
@@ -154,11 +150,7 @@ public class Hotel {
      * @param checkIn date of checking in
      * @param checkOut date of checking out
      * 
-<<<<<<< HEAD
      * @return {true} if room booking is successful, {false}  if room booking is not successful
-=======
-     * @return true : boolean : if room booking is successful. false : boolean : if room booking is not successful
->>>>>>> 8cde02b518721b5c2a9343c9a76cd45ae443e803
      * 
      * @author Zhean Ganituen, Jaztin Jimenez
      */
@@ -185,11 +177,7 @@ public class Hotel {
      * return the room given the name of the room of a hotelName
      * 
      * @param name name of the room
-<<<<<<< HEAD
      * @return {room} the room with the room name in the hotel, {null} the room was not found
-=======
-     * @return room : the room with the room name in the hotel. null : the room was not found
->>>>>>> 8cde02b518721b5c2a9343c9a76cd45ae443e803
      * 
      * @author Zhean Ganituen
      */
@@ -322,11 +310,7 @@ public class Hotel {
      * changes the price of all rooms in the hotel, if and only if there are no reseravations
      * 
      * @param newPrice the new price, constraint: newPrice >= 100
-<<<<<<< HEAD
      * @return {true} if the basae price is successfully changed, {false} if otherwise
-=======
-     * @return true if the basae price is successfully changed, false if otherwise
->>>>>>> 8cde02b518721b5c2a9343c9a76cd45ae443e803
      * 
      * @author Zhean Ganituen
      */
@@ -418,11 +402,7 @@ public class Hotel {
     /**
      * Removes the reservation from a hotel room.
      * 
-<<<<<<< HEAD
      * @param sc Scanner object
-=======
-     * @param sc the scanner object
->>>>>>> 8cde02b518721b5c2a9343c9a76cd45ae443e803
      * 
      * @author Zhean Ganituen, Jazatin Jimenez
      */

@@ -152,11 +152,7 @@ public class Room {
      * @param checkIn day the customer checks in
      * @param checkOut day the customer checks out
      *
-<<<<<<< HEAD
      * @return {true} if the room is available, {false} if otherwise
-=======
-     * @return true if the room is available, false if otherwise
->>>>>>> 8cde02b518721b5c2a9343c9a76cd45ae443e803
      *
      * @author Jaztin Jimenez
      */
