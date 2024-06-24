@@ -177,11 +177,14 @@ public class HRS {
 
                     String newName = sc.nextLine();
 
-                    // FIXME: check if this "newName" is unique
-                    hotel.setName(newName); // set the name to the new name
-
-                    System.out.printf("\n\33[33mHotel '%s' has been successfully renamed to '%s'.\33[37m\n", oldName,
-                            hotel.getName());
+                    if (fetchHotel(newName) != null) {
+                        System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", newName);
+                    } else {
+                        hotel.setName(newName); // set the name to the new name
+                        System.out.printf("\n\33[33mHotel '%s' has been successfully renamed to '%s'.\33[37m\n", oldName,
+                                hotel.getName());
+                    }
+                    
                 }
                 case 2 -> {
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
