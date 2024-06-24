@@ -128,24 +128,20 @@ public class Hotel {
      * @author Zhean Ganituen
      */
     public Room newRoom() {
-        // check if a room can still be created in the hotel
-        if (roomCount < 51) {
-            // make a unique room name
-            String roomName = name + "_Room_" + roomCount;
+        // make a unique room name
+        String roomName = name + "_Room_" + roomCount;
 
-            // create a new room with the new room name
-            Room newRoom = new Room(roomName, this, this.basePrice);
+        // create a new room with the new room name
+        Room newRoom = new Room(roomName, this, this.basePrice);
 
-            // add the created room in the array of rooms
-            rooms.add(newRoom);
+        // add the created room in the array of rooms
+        rooms.add(newRoom);
 
-            // increment the number of rooms
-            roomCount++;
+        // increment the number of rooms
+        
+        roomCount++;
 
-            return newRoom;
-        }
-
-        return null;
+        return newRoom;
     }
 
     /**
@@ -164,7 +160,7 @@ public class Hotel {
         // iterate through all the rooms in hotel
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
-            if (!room.isAvailable(checkIn, checkOut)) {
+            if (room.isAvailable(checkIn, checkOut)) {
                 // add reservation
                 Reservation newReservation = new Reservation(guestName, checkIn, checkOut, room);
                 this.reservations.add(newReservation);
