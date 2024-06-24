@@ -113,10 +113,10 @@ public class Hotel {
 
     /**
      * Getter for the Arraylist of Room objects in the Hotel
-     * 
+     *
      * @return the ArrayList of Room objects
      */
-    public ArrayList<Room> getRooms(){
+    public ArrayList<Room> getRooms() {
         return rooms;
     }
 
@@ -128,20 +128,18 @@ public class Hotel {
      * @author Zhean Ganituen
      */
     public Room newRoom() {
-        // make a unique room name
-        String roomName = name + "_Room_" + roomCount;
+        for (int roomNumber = 1; roomNumber < 51; roomNumber++){
+            String roomName = name + "_Room_" + roomNumber;
+            // the first room that doesnt exist yet make it
+            if(fetchRoom(roomName) == null){
+                Room newRoom = new Room(roomName, this, this.basePrice);
+                rooms.add(newRoom);
+                roomCount++;
+                return newRoom;
+            }
+        }
 
-        // create a new room with the new room name
-        Room newRoom = new Room(roomName, this, this.basePrice);
-
-        // add the created room in the array of rooms
-        rooms.add(newRoom);
-
-        // increment the number of rooms
-        
-        roomCount++;
-
-        return newRoom;
+        return null;
     }
 
     /**
@@ -204,28 +202,30 @@ public class Hotel {
 
     /**
      * return an array of the names of the available or booked for a day
-     * 
-     * @param type {1} method gets the available rooms, {otherwise} method gets the booked rooms
+     *
+     * @param type {1} method gets the available rooms, {otherwise} method gets
+     * the booked rooms
      * @param date the date
-     * @return {avails} the names of the rooms that are available on the date, {booked} the names of the rooms that are booked on the date
+     * @return {avails} the names of the rooms that are available on the date,
+     * {booked} the names of the rooms that are booked on the date
      */
-    public ArrayList<String> fetchAvailableRoomNames(int type, int date){
+    public ArrayList<String> fetchAvailableRoomNames(int type, int date) {
         ArrayList<String> avails = new ArrayList<>();
         ArrayList<String> booked = new ArrayList<>();
-        
-        for (Room room : this.rooms){
-            if (room.isAvailable(date)){
+
+        for (Room room : this.rooms) {
+            if (room.isAvailable(date)) {
                 avails.add(room.getName());
-            } else{
+            } else {
                 booked.add(room.getName());
             }
         }
-        
+
         // if type is 1 then return available rooms
         // otherwise return the booked rooms
-        if (type == 1){
+        if (type == 1) {
             return avails;
-        } else{
+        } else {
             return booked;
         }
     }
@@ -262,16 +262,18 @@ public class Hotel {
 
     /**
      * User I/O for deleting room. Uses `delRoom`
-     * 
+     *
      * @param index the room number to delete
-     * 
+     *
      * @author Zhean Ganituen
      */
     public void delRoom(int index) {
-        this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
-        // starts at 0
+        if (index >= 1 && index <= rooms.size()) {
+            this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
+            // starts at 0
 
-        roomCount--;
+            roomCount--;
+        }
     }
 
     /**
@@ -294,9 +296,9 @@ public class Hotel {
      *
      * @param guestName the name of the guest
      * @param checkInDate the date of the guest's check in
-     * 
+     *
      * @return {true} if the reservation was removed, {false} otherwise
-     * 
+     *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
     public boolean removeReservation(String guestName, int checkInDate) {

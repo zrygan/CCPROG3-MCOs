@@ -399,7 +399,6 @@ public class HRS {
 
                     // hotel.delRoomUI(sc);
                     if (hotel.getRoomCount() > 1) {
-                        System.out.println(hotel.getRoomCount());
                         System.out.printf("\nEnter room number to delete: ");
 
                         int index = getInput(sc);
@@ -420,6 +419,9 @@ public class HRS {
                                 System.out.printf(
                                         "\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
                                         index, hotel.getName());
+
+                                // when we delete a room we need to move the names of the rooms back by one
+                                // so say we removed index = 10, we rename all rooms index = 10 + n with the decrement of its room number
                             } else {
                                 System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", index);
                             }
