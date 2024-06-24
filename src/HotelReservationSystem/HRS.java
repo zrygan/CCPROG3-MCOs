@@ -46,7 +46,7 @@ public class HRS {
     public void createHotel(String name, Scanner sc) {
         Hotel hotel = new Hotel(name);
         hotels.add(hotel);
-        hotel.addRoom(sc);
+        hotel.newRoom(); // add a single room
     }
 
     /**
@@ -121,7 +121,135 @@ public class HRS {
 
         Hotel hotel = fetchHotel(hotelName);
         if (hotel != null) {
-            hotel.viewHotel(sc);
+            System.out.printf("\n==================== OPTIONS ====================\n");
+        System.out.printf("\33[33m1\33[37m\t:\tview high-level hotel information\n");
+        System.out.printf("\33[33m2\33[37m\t:\tview low-level hotel information\n");
+        System.out.printf("\33[31m0\33[37m\t:\texit\n");
+        System.out.printf("=================================================");
+
+        System.out.printf("\nChoose an option: ");
+
+        int level = -1;
+
+        try {
+            level = sc.nextInt();
+            sc.nextLine();
+        } catch (InputMismatchException e) {
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+            sc.nextLine();
+        }
+
+        switch (level) {
+            case 0 ->
+                System.out.println("\nReturning to main menu.");
+            case 1 -> {
+                // high level information
+
+                System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n",
+                        hotel.getName());
+                System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", hotel.getName(),
+                        hotel.getRooms().size(), hotel.getEarnings());
+            }
+            case 2 -> {
+                // low level information
+
+                System.out.printf("You selected to \033[34mview low-level information\033[37m on hotel '%s'.\n",
+                        hotel.getName());
+                System.out.printf("\n=========================== OPTIONS ===========================\n");
+                System.out.printf("\33[33m1\33[37m\t:\tview available/booked rooms for a selected date\n");
+                System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room or reservation\n");
+                System.out.printf("===============================================================");
+
+                System.out.printf("\nChoose an option: ");
+
+                int option = -1;
+
+                try {
+                    option = sc.nextInt();
+                    sc.nextLine();
+                } catch (InputMismatchException e) {
+                    System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                    sc.nextLine();
+                }
+
+                if (option == 1) {
+                    // view booked rooms
+
+                    System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
+                            hotel.getName());
+
+                    System.out.print("\nEnter date (1-31): ");
+
+                    int date = -1;
+
+                    try {
+                        date = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                        sc.nextLine();
+                    }
+
+                    // print available rooms with proper formatting and handling
+                    if (hotel.fetchAvailableRoomNames(1, date).isEmpty()) {
+                        System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
+                                hotel.getName(), date);
+                    } else {
+                        System.out.printf("Available rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
+                        for (String room : hotel.fetchAvailableRoomNames(1, date)) {
+                            System.out.printf("\t\033[33m%s\033[37m\n", room);
+                        }
+                    }
+
+                    // print booked rooms with proper formatting and handling
+                    if (hotel.fetchAvailableRoomNames(0, date).isEmpty()) {
+                        System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
+                                hotel.getName(), date);
+                    } else {
+                        System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
+                        for (String room : hotel.fetchAvailableRoomNames(0, date)) {
+                            System.out.printf("\t\033[33m%s\033[37m\n", room);
+                        }
+                    }
+
+                } else if (option == 2) {
+                    // view room reservation
+
+                    System.out.printf("You selected to \033[34mview a room reservation\033[37m for hotel '%s'.\n",
+                            hotel.getName());
+
+                    System.out.printf("\nEnter room number: ");
+
+                    int roomNum = -1;
+
+                    try {
+                        roomNum = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                        sc.nextLine();
+                    }
+                    String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
+
+                    // get room
+                    Room roomQuery = hotel.fetchRoom(roomName);
+
+                    // if room exists
+                    if (roomQuery != null) {
+                        // calculate availability
+                        int days = 31 - roomQuery.getDaysBooked();
+
+                        System.out.printf(
+                                "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
+                                roomNum, hotel.getName(), roomQuery.getBasePrice(), days);
+                    } else {
+                        System.out.printf(
+                                "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
+                                roomNum, hotel.getName());
+                    }
+                }
+            }
+        }
         } else {
             System.out.printf(
                     "\n\033[31mError. Sorry! But that hotel name '%s' is not found in the database.\033[37m\n",
@@ -262,7 +390,7 @@ public class HRS {
                         } else {
                             // format the name
                             String roomName = hotel.getName() + "_Room_" + index;
-                            
+
                             // get the room
                             Room room = hotel.fetchRoom(roomName);
 
@@ -314,11 +442,11 @@ public class HRS {
 
                 case 5 -> {
                     System.out.printf("You selected to \033[34mremove a reseravation\033[37m in hotel '%s'.\n", name);
-                    
+
                     // get the name
                     System.out.print("Enter guest name for reservation removal: ");
                     String guestName = sc.nextLine();
-                    
+
                     // get the check-in date
                     System.out.print("Enter check-in date of the reservation to remove (1-31): ");
                     int checkInDate = -1;
@@ -330,11 +458,11 @@ public class HRS {
                         System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
-                    
-                    if (hotel.removeReservation(guestName, checkInDate)){
+
+                    if (hotel.removeReservation(guestName, checkInDate)) {
                         // if hotel reservation is removed or true
                         System.out.println("Reservation removed successfully.");
-                    } else { 
+                    } else {
                         // doesn't cancel the reservation if invalid
                         // if the remove reservation does not remove anything
                         System.out.println("Reservation not found.");
@@ -343,15 +471,15 @@ public class HRS {
                 case 6 -> {
                     System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
                     System.out.printf("\n\033[33mPreparing hotel '%s' for removal..\033[37m\n", hotel.getName());
-                    
+
                     hotel.prepareForRemoval();
-                    
+
                     System.out.printf("\n\033[33mHotel data cleared..\033[37m\n");
-                    
+
                     hotels.remove(hotel);
-                    
+
                     System.out.println("Hotel removed successfully.");
-                    
+
                     return; // Exit after removal
                 }
                 default ->

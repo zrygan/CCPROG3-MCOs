@@ -111,6 +111,10 @@ public class Hotel {
         return earnings;
     }
 
+    public ArrayList<Room> getRooms(){
+        return rooms;
+    }
+
     /**
      * creates a new room in the hotel, if possible
      *
@@ -198,146 +202,30 @@ public class Hotel {
     }
 
     /**
-     * views the hotel information, checks either high-level information or
-     * low-level information from the hotel.
-     *
-     * @param sc The scanner object
-     *
-     * @author Zhean Ganituen
-     * @author Jaztin Jimenez
+     * return an array of the names of the available or booked for a day
+     * 
+     * @param type {1} method gets the available rooms, {otherwise} method gets the booked rooms
+     * @param date the date
+     * @return {avails} the names of the rooms that are available on the date, {booked} the names of the rooms that are booked on the date
      */
-    public void viewHotel(Scanner sc) {
-        System.out.printf("\n==================== OPTIONS ====================\n");
-        System.out.printf("\33[33m1\33[37m\t:\tview high-level hotel information\n");
-        System.out.printf("\33[33m2\33[37m\t:\tview low-level hotel information\n");
-        System.out.printf("\33[31m0\33[37m\t:\texit\n");
-        System.out.printf("=================================================");
-
-        System.out.printf("\nChoose an option: ");
-
-        int level = -1;
-
-        try {
-            level = sc.nextInt();
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-            sc.nextLine();
+    public ArrayList<String> fetchAvailableRoomNames(int type, int date){
+        ArrayList<String> avails = new ArrayList<>();
+        ArrayList<String> booked = new ArrayList<>();
+        
+        for (Room room : this.rooms){
+            if (room.isAvailable(date)){
+                avails.add(room.getName());
+            } else{
+                booked.add(room.getName());
+            }
         }
-
-        switch (level) {
-            case 0 ->
-                System.out.println("\nReturning to main menu.");
-            case 1 -> {
-                System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n",
-                        this.getName());
-                System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", this.getName(),
-                        this.rooms.size(), this.getEarnings());
-            }
-            case 2 -> {
-                System.out.printf("You selected to \033[34mview low-level information\033[37m on hotel '%s'.\n",
-                        this.getName());
-                System.out.printf("\n=========================== OPTIONS ===========================\n");
-                System.out.printf("\33[33m1\33[37m\t:\tview available/booked rooms for a selected date\n");
-                System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room or reservation\n");
-                System.out.printf("===============================================================");
-
-                System.out.printf("\nChoose an option: ");
-
-                int option = -1;
-
-                try {
-                    option = sc.nextInt();
-                    sc.nextLine();
-                } catch (InputMismatchException e) {
-                    System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                    sc.nextLine();
-                }
-
-                if (1 == option) {
-                    System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
-                            this.getName());
-
-                    System.out.print("\nEnter date (1-31): ");
-
-                    int date = -1;
-
-                    try {
-                        date = sc.nextInt();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
-
-                    ArrayList<String> availableRooms = new ArrayList<>();
-                    ArrayList<String> bookedRooms = new ArrayList<>();
-
-                    for (Room room : this.rooms) {
-                        if (room.isAvailable(date)) {
-                            availableRooms.add(room.getName());
-                        } else {
-                            bookedRooms.add(room.getName());
-                        }
-                    }
-
-                    // print available rooms with proper formatting and handling
-                    if (availableRooms.isEmpty()) {
-                        System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
-                                this.getName(), date);
-                    } else {
-                        System.out.printf("Available rooms of hotel '%s' on day %d:\n", this.getName(), date);
-                        for (String room : availableRooms) {
-                            System.out.printf("\t\033[33m%s\033[37m\n", room);
-                        }
-                    }
-
-                    // print booked rooms with proper formatting and handling
-                    if (bookedRooms.isEmpty()) {
-                        System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
-                                this.getName(), date);
-                    } else {
-                        System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", this.getName(), date);
-                        for (String room : bookedRooms) {
-                            System.out.printf("\t\033[33m%s\033[37m\n", room);
-                        }
-                    }
-
-                } else if (2 == option) {
-                    System.out.printf("You selected to \033[34mview a room reservation\033[37m for hotel '%s'.\n",
-                            this.getName());
-
-                    System.out.printf("\nEnter room number: ");
-
-                    int roomNum = -1;
-
-                    try {
-                        roomNum = sc.nextInt();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
-                    String roomName = name + "_Room_" + roomNum; // reformat the name
-
-                    // get room
-                    Room roomQuery = this.fetchRoom(roomName);
-
-                    // if room exists
-                    if (roomQuery != null) {
-                        // calculate availability
-                        int days = 31 - roomQuery.getDaysBooked();
-
-                        System.out.printf(
-                                "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
-                                roomNum, this.name, roomQuery.getBasePrice(), days);
-                    } else {
-                        System.out.printf(
-                                "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
-                                roomNum, this.getName());
-                    }
-                }
-            }
+        
+        // if type is 1 then return available rooms
+        // otherwise return the booked rooms
+        if (type == 1){
+            return avails;
+        } else{
+            return booked;
         }
     }
 
@@ -372,44 +260,6 @@ public class Hotel {
     }
 
     /**
-     * Adds a specific number of rooms to a hotel.
-     *
-     * @param sc the scanner object
-     *
-     * @author Jaztin Jimenez
-     */
-    public void addRoom(Scanner sc) {
-        System.out.printf("Enter number of rooms to create: ");
-
-        int num = -1;
-
-        try {
-            num = sc.nextInt();
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-            sc.nextLine();
-        }
-
-        System.out.println(); // empty new line
-
-        for (int i = 0; i < num; i++) {
-
-            Room newRoom = this.newRoom();
-
-            if (newRoom != null) {
-
-                System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
-
-            } else {
-                System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n",
-                        this.getName());
-                break;
-            }
-        }
-    }
-
-    /**
      * User I/O for deleting room. Uses `delRoom`
      *
      * @author Zhean Ganituen
@@ -417,35 +267,8 @@ public class Hotel {
     public void delRoom(int index) {
         this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
         // starts at 0
-        
+
         roomCount--;
-    }
-
-    /**
-     * User I/O for changing the base prices of all rooms. Uses `changePrice`
-     *
-     * @param sc the scanner object
-     *
-     * @author Zhean Ganituen
-     * @author Jaztin Jimenez
-     */
-    public void changePriceUI(Scanner sc) {
-        System.out.printf("\nEnter the new price for the rooms of the hotel: ");
-        double newPrice = sc.nextDouble();
-        sc.nextLine();
-
-        if (this.changePrice(newPrice)) {
-            System.out.printf("\033[33m\nThe rooms of hotel '%s' have been changed to %.2f.\033[37m\n", this.getName(),
-                    this.rooms.get(0).getBasePrice());
-        } else if (newPrice <= 100) {
-            System.out.printf(
-                    "\n\033[31mError. The base price of hotel '%s' has not been changed because the new price is too low. It must be greater than or equal to 100.\033[37m\n",
-                    this.getName());
-        } else {
-            System.out.printf(
-                    "\n\033[31mError. The base price of hotel '%s' has not been changed because there's an ongoing reservation.\033[37m\n",
-                    this.getName());
-        }
     }
 
     /**
@@ -473,9 +296,9 @@ public class Hotel {
     public boolean removeReservation(String guestName, int checkInDate) {
         Reservation reservationToRemove = null; // assume not found
         // go through all the reservations within the hotel
-        for (Reservation reservation : reservations) { 
+        for (Reservation reservation : reservations) {
             // checks if the guest name and the check-in date of the reservation is valid
-            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { 
+            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) {
                 reservationToRemove = reservation;
                 break;
             }
@@ -489,7 +312,7 @@ public class Hotel {
                     * (reservationToRemove.getCheckout() - reservationToRemove.getCheckin())));
             this.reservations.remove(reservationToRemove);
             return true;
-        } 
+        }
 
         return false;
     }
