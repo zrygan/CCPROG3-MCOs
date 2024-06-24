@@ -471,11 +471,26 @@ public class Hotel {
     }
 
     /**
+     * Changes the name of the rooms in the hotel
+     *
+     * @param name name of the hotel
+     *
+     * @author Jaztin Jimenez
+     */
+    public void changeRoomName(String name) {
+        for (Room room : this.rooms) {
+            int index = 1;
+            room.setName(name + "_Room_" + index);
+            index++;
+        }
+    }
+
+    /**
      * Removes the reservation from a hotel room.
      *
      * @param sc Scanner object
      *
-     * @author Zhean Ganituen, Jazatin Jimenez
+     * @author Zhean Ganituen, Jaztin Jimenez
      */
     public void removeReservationUI(Scanner sc) {
         System.out.print("Enter guest name for reservation removal: ");
