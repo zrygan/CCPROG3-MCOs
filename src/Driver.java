@@ -9,7 +9,7 @@ public class Driver {
     /**
      * Main method for the Hotel Reservation System
      * 
-     * @param args
+     * @param args arguments of the main method
      */
     public static void main(String[] args) {
         HRS hrs = new HRS();

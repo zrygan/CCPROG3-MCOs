@@ -92,8 +92,7 @@ public class Hotel {
     /**
      * creates a new room in the hotel, if possible
      * 
-     * @return True, if a new room is created
-     * @return False, if otherwise
+     * @return {@code true} if a new room is created, {@code false} if otherwise
      * 
      * @author Zhean Ganituen
      */
@@ -151,11 +150,9 @@ public class Hotel {
      * @param checkIn date of checking in
      * @param checkOut date of checking out
      * 
-     * @return true : boolean : if room booking is successful
-     * @return false : boolean : if room booking is not successful
+     * @return {true} if room booking is successful, {false}  if room booking is not successful
      * 
-     * @author Zhean Ganituen
-     * @author Jaztin Jimenez
+     * @author Zhean Ganituen, Jaztin Jimenez
      */
     public boolean bookRoom(String guestName, int checkIn, int checkOut) {
         // iterate through all the rooms in hotel
@@ -180,8 +177,7 @@ public class Hotel {
      * return the room given the name of the room of a hotelName
      * 
      * @param name name of the room
-     * @return room : the room with the room name in the hotel
-     * @return null : the room was not found
+     * @return {room} the room with the room name in the hotel, {null} the room was not found
      * 
      * @author Zhean Ganituen
      */
@@ -314,8 +310,7 @@ public class Hotel {
      * changes the price of all rooms in the hotel, if and only if there are no reseravations
      * 
      * @param newPrice the new price, constraint: newPrice >= 100
-     * @return true if the basae price is successfully changed
-     * @return false if otherwise
+     * @return {true} if the basae price is successfully changed, {false} if otherwise
      * 
      * @author Zhean Ganituen
      */
@@ -407,10 +402,9 @@ public class Hotel {
     /**
      * Removes the reservation from a hotel room.
      * 
-     * @param sc
+     * @param sc Scanner object
      * 
-     * @author Zhean Ganituen
-     * @author Jazatin Jimenez
+     * @author Zhean Ganituen, Jazatin Jimenez
      */
     public void removeReservationUI(Scanner sc) {
         System.out.print("Enter guest name for reservation removal: ");

@@ -149,11 +149,10 @@ public class Room {
     /**
      * a checker that determines if the room is a available for a range
      *
-     * @param checkin day the customer checks in
-     * @param checkout day the customer checks out
+     * @param checkIn day the customer checks in
+     * @param checkOut day the customer checks out
      *
-     * @return true if the room is available
-     * @return false if otherwise
+     * @return {true} if the room is available, {false} if otherwise
      *
      * @author Jaztin Jimenez
      */

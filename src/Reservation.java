@@ -75,10 +75,10 @@ public class Reservation {
      * Checks if the room is available for the day
      * 
      * @param room the room to check the avaulability
-     * @param checkInDay the day of check in, 1 < checkInDay > 31 (can't check in on day 31)
-     * @param checkOutDay the day of check out, 1 < checkOutDay > 31 (can't check out on day 1)
-     * @return false : Boolean : if room is not available
-     * @return true : Boolean : if room is available
+     * @param checkInDay the day of check in, can't check in on day 31
+     * @param checkOutDay the day of check out, can't check out on day 1
+     * 
+     * @return {false} if room is not available, {true} if room is available
      * 
      * @author Jaztin Jimenez
      */
