@@ -40,10 +40,10 @@ public class HRS {
      * 
      * @author: Zhean Ganituen
      */
-    public void createHotel(String name) {
+    public void createHotel(String name, Scanner sc) {
         Hotel hotel = new Hotel(name);
         hotels.add(hotel);
-        hotel.newRoom();
+        hotel.addRoom(sc);
     }
 
     /* fetchHotel
@@ -89,7 +89,7 @@ public class HRS {
         if (fetchHotel(hotelName) != null) {
             System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", hotelName);
         } else {
-            createHotel(hotelName);
+            createHotel(hotelName, sc);
             System.out.printf("\n\033[34mHotel with then name '%s' created successfully.\033[37m\n", hotelName);
         }            
             

@@ -9,7 +9,7 @@ public class Driver {
         Scanner sc = new Scanner(System.in); // initialize scanner
 
         // Debugging Code [DC1]
-        hrs.createHotel("max");
+        hrs.createHotel("max", sc);
         Hotel max = hrs.fetchHotel("max");
         // max.newRoom(); 
         // max.newRoom(); 

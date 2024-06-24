@@ -84,7 +84,7 @@ public class Hotel {
      */
     public Room newRoom() {
         // check if a room can still be created in the hotel
-        if (roomCount + 1 < 50) {
+        if (roomCount < 50) {
             // make a unique room name
             String roomName = name + "_Room_" + roomCount;
 
@@ -392,6 +392,7 @@ public class Hotel {
     public void addRoom(Scanner sc) {
         System.out.printf("Enter number of rooms to create: ");
         int num = sc.nextInt();
+        sc.nextLine();
 
         for (int i = 0; i < num; i++) {
 
