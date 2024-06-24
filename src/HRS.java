@@ -195,13 +195,23 @@ public class HRS {
         Hotel hotel = fetchHotel(hotelName);
 
         if (hotel != null) {
+
             System.out.print("Enter the day of your check-in: ");
-            int checkIn = sc.nextInt(); // if this auto-submits then add sc.nextLine(); after this
+            int checkIn = sc.nextInt(); // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
             sc.nextLine();
+
             System.out.print("Enter the day of your check-out: ");
             int checkOut = sc.nextInt();
+
+            // checks if the booking dates are in bound
+            if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31) && (checkIn >= 1 && checkIn <= 30)) {
+                hotel.bookRoom(guestName, checkIn, checkOut);
+            }
+            else {
+                System.out.printf("Invalid dates for booking.\n");
+            }
+
             
-            hotel.bookRoom(guestName, checkIn, checkOut);
         } else {
             System.out.printf("Hotel '%s' is not found.\n", hotelName);
         }
