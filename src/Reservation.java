@@ -17,8 +17,7 @@ public class Reservation {
     private final int checkout;
     private final double total;
     private final Room room;
-    // the breakdown of the reservation will be calculated later as total / (checkin
-    // - checkout)
+    // the breakdown of the reservation will be calculated later as total / (checkin - checkout)
 
     // Constructor
     public Reservation(String guest, int checkin, int checkout, Room room) {
@@ -32,7 +31,7 @@ public class Reservation {
     // Setters
     // no setters since all are FINAL
 
-    // Getters
+    // Getters 
     public String getGuest() {
         return guest;
     }
@@ -49,22 +48,19 @@ public class Reservation {
         return room;
     }
 
-    /*
-     * isRoomAvailable
+    /* isRoomAvailable
      * to check if the room is available for the day
      * 
      * @params:
-     * - room : Room : the room to check the avaulability
-     * - checkInDay : int : the day of check in, 1 < checkInDay > 31 (can't check in
-     * on day 31)
-     * - checkOutDay : int : the day of check out, 1 < checkOutDay > 31 (can't check
-     * out on day 1)
+     *  - room        : Room : the room to check the avaulability
+     *  - checkInDay  : int  : the day of check in, 1 < checkInDay > 31 (can't check in on day 31)
+     *  - checkOutDay : int  : the day of check out, 1 < checkOutDay > 31 (can't check out on day 1)
      * 
      * @returns:
-     * - false : Boolean : if room is not available
-     * - true : Boolean : if room is available
+     *  - false : Boolean : if room is not available
+     *  - true  : Boolean : if room is available
      * 
-     * @author: Jaztin Jimenez
+     * @author: Jaztin Jimenez 
      */
     public boolean isRoomAvailable(Room room, int checkInDay, int checkOutDay) {
         for (int i = checkInDay; i < checkOutDay; i++) {
@@ -75,18 +71,16 @@ public class Reservation {
         return true;
     }
 
-    /*
-     * breakdown
+    /* breakdown
      * gets the total costs of booking the reservation
      * 
      * @params:
-     * - none
+     *  - none
      * 
      * @return:
-     * - cost per day : double
+     *  - cost per day : double
      */
     public double breakdown() {
-        return total / (
-            - checkin);
+        return total / (checkout - checkin);
     }
 }
