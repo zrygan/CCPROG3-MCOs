@@ -160,7 +160,15 @@ public class HRS {
                 case 0 -> System.out.println("\nReturning to main menu.");
                 case 1 -> {
                     System.out.printf("You selected to \033[34mchange the name of hotel '%s'\033[37m.\n", name);
-                    hotel.changeHotelName(sc);
+                    System.out.println("Enter new hotel name: ");
+
+                    String oldName = hotel.getName();
+
+                    String newName = sc.nextLine();
+
+                    hotel.setName(newName); // set the name to the new name
+
+                    System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, hotel.getName());
                 }
                 case 2 -> {
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);

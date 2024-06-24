@@ -368,30 +368,6 @@ public class Hotel {
     }
 
     /*
-     * changeRoomName
-     * Changes the room name.
-     * 
-     * @param:
-     * - sc : Scanner : Scanner object for user input
-     * 
-     * @returns:
-     * - none
-     * 
-     * @Author: Jaztin Jimenez
-     */
-    public void changeHotelName(Scanner sc) {
-        System.out.println("Enter new hotel name: ");
-
-        String oldName = this.getName();
-
-        String newName = sc.nextLine();
-
-        this.setName(newName); // set the name to the new name
-
-        System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, this.getName());
-    }
-
-    /*
      * addRoom
      * Adds a specific number of rooms to a hotel.
      * 
