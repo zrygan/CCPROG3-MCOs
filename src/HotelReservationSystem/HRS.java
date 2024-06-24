@@ -75,11 +75,13 @@ public class HRS {
      */
     public void showHotels() {
         int i = 1;
-
+        System.out.printf("\n================ SHOW HOTELS ================\n");
         for (Hotel hotel : hotels) {
-            System.out.printf("%d\t'%s' has %d rooms.\n", i, hotel.getName(), hotel.getRoomCount());
+            System.out.printf("%d\t\033[94m'%s'\033[37m\thas \033[94m%d\033[37m rooms.\n", i, hotel.getName(),
+                    hotel.getRoomCount());
             i++;
         }
+        System.out.println("=============================================");
     }
 
     /**
@@ -153,13 +155,13 @@ public class HRS {
             System.out.printf("===============================================");
 
             System.out.printf("\nChoose an option: ");
-            
+
             int choice = -1;
 
             try {
                 choice = sc.nextInt();
                 sc.nextLine();
-            } catch (InputMismatchException  e) {
+            } catch (InputMismatchException e) {
                 System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             }
@@ -176,30 +178,30 @@ public class HRS {
                     String newName = sc.nextLine();
 
                     if (fetchHotel(newName) != null) {
-                        System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n", newName);
-                        
+                        System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' already exists.\033[37m\n",
+                                newName);
+
                     } else {
                         hotel.setName(newName); // set the name to the new name
-                        System.out.printf("\n\33[33mHotel '%s' has been successfully renamed to '%s'.\33[37m\n", oldName, hotel.getName());
+                        System.out.printf("\n\33[33mHotel '%s' has been successfully renamed to '%s'.\33[37m\n",
+                                oldName, hotel.getName());
                         Hotel changeName = fetchHotel(newName);
 
                         changeName.changeRoomName(newName);
                     }
 
-                    
-                    
                 }
                 case 2 -> {
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
 
                     System.out.printf("\nEnter number of rooms to create: ");
-                    
+
                     int num = -1;
 
                     try {
                         num = sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException  e) {
+                    } catch (InputMismatchException e) {
                         System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
@@ -282,51 +284,72 @@ public class HRS {
      * @author Jaztin Jimenez
      */
     public void simBookingUI(Scanner sc) {
-        System.out.println("Welcome to the Hotel Reservation System, User!");
-        System.out.print("Please enter your name: ");
+        System.out.printf("You selected to \033[34msimulate booking a room\033[37m.\n");
+        System.out.printf("\nWelcome to the Hotel Reservation System, User!\n");
+        System.out.printf("\nPlease enter your name: ");
 
         String guestName = sc.nextLine(); // look out for this baddie
 
-        System.out.print("Enter the name of the hotel: ");
-        String hotelName = sc.nextLine();
+        System.out.printf("\n\033[96mHint:\tenter '? help' to get the list of hotels.\033[37m\n");
+        System.out.printf("\033[96m\tenter '? exit' to leave the simulation.\033[37m\n");
 
-        Hotel hotel = fetchHotel(hotelName);
+        boolean run = true;
 
-        if (hotel != null) {
+        while (run) {
+            System.out.printf("\nDear %s, please enter the name of the hotel: ", guestName);
+            String hotelName = sc.nextLine();
 
-            System.out.print("Enter the day of your check-in: ");
-            
-            int checkIn = -1; // initialize as -1
+            switch (hotelName) {
+                case "? help" ->
+                    this.showHotels();
+                case "? exit" ->
+                    run = false;
+                default -> {
+                    System.out.printf("You selected to \033[34mbook a room in hotel '%s'\033[37m.\n", hotelName);
+                    
+                    Hotel hotel = fetchHotel(hotelName);
+                    
+                    if (hotel != null) {
+                        System.out.printf("\nEnter the day of your check-in: ");
 
-            try {
-                checkIn = sc.nextInt();
-                sc.nextLine();
-            } catch (InputMismatchException  e) {
-                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                sc.nextLine();
-            } // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
-            
-            System.out.print("Enter the day of your check-out: ");
-            
-            int checkOut = -1; // initialize as -1
+                        int checkIn = -1; // initialize as -1
 
-            try {
-                checkOut = sc.nextInt();
-                sc.nextLine();
-            } catch (InputMismatchException  e) {
-                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                sc.nextLine();
+                        try {
+                            checkIn = sc.nextInt();
+                            sc.nextLine();
+                        } catch (InputMismatchException e) {
+                            System.out.printf(
+                                    "\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                            sc.nextLine();
+                        } 
+                        
+                        // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
+                        
+                        System.out.print("\nEnter the day of your check-out: ");
+                        
+                        int checkOut = -1; // initialize as -1
+                        
+                        try {
+                            checkOut = sc.nextInt();
+                            sc.nextLine();
+                        } catch (InputMismatchException e) {
+                            System.out.printf(
+                                    "\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                            sc.nextLine();
+                        } 
+
+                        // checks if the booking dates are in bound
+                        if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31)
+                                && (checkIn >= 1 && checkIn <= 30)) {
+                            hotel.bookRoom(guestName, checkIn, checkOut);
+                        } else {
+                            System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");
+                        }
+                    } else {
+                        System.out.printf("\n\033[31mError. Hotel '%s' is not found.\033[37m\n", hotelName);
+                    }
+                }
             }
-
-            // checks if the booking dates are in bound
-            if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31) && (checkIn >= 1 && checkIn <= 30)) {
-                hotel.bookRoom(guestName, checkIn, checkOut);
-            } else {
-                System.out.printf("Invalid dates for booking.\n");
-            }
-
-        } else {
-            System.out.printf("Hotel '%s' is not found.\n", hotelName);
         }
     }
 
@@ -342,7 +365,6 @@ public class HRS {
         System.out.printf("\033[33m3\033[37m\t:\t Manage Hotel\n");
         System.out.printf("\033[33m4\033[37m\t:\t Simulate Booking\n");
         System.out.printf("\033[31m0\033[37m\t:\t Exit\n");
-        System.out.printf("\033[33m9\033[37m\n");
         System.out.printf("===================================\n");
     }
 }

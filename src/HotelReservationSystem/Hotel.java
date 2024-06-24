@@ -184,7 +184,15 @@ public class Hotel {
                 // add reservation
                 Reservation newReservation = new Reservation(guestName, checkIn, checkOut, room);
                 this.reservations.add(newReservation);
-                System.out.printf("Room booked successfully for %s.\n", guestName);
+                System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
+                System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
+                System.out.printf("\n\033[33mname\033[37m:\t%s", guestName);
+                System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", this.name);
+                System.out.printf("\n\033[33mroom\033[37m:\t%s", room.getName());
+                System.out.printf("\n\033[33min  \033[37m:\t%d", checkIn);
+                System.out.printf("\n\033[33mout \033[37m:\t%d", checkOut);
+                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkOut - checkIn));
+                System.out.printf("\n\033[33m===================\033[37m\n");
                 setEarnings(room.getBasePrice() * (checkOut - checkIn));
                 room.bookLength(checkIn, checkOut);
                 return true;
