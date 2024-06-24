@@ -9,11 +9,11 @@ cls
 
 REM Make javadoc directory
 
-if not exist "javadoc" mkdir "javadoc"
+if not exist "docs" mkdir "docs"
 
 REM Make the javadocs
 REM REMEMBER. To add all the java files in `src` here
 
-javadoc -d javadoc -sourcepath src src/HotelReservationSystem/*.java
+javadoc -d docs -sourcepath src src/HotelReservationSystem/*.java
 
 REM END OF FILE
