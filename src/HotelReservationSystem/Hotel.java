@@ -42,7 +42,7 @@ public class Hotel {
     /**
      * Sets the base price of the Hotel
      *
-     * @param basePrice
+     * @param basePrice base price of the hotel
      */
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;

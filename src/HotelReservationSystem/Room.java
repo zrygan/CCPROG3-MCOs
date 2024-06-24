@@ -20,6 +20,7 @@ public class Room {
      *
      * @param name the name of the room, must be different for each room
      * @param hotel the hotel of the room
+     * @param basePrice the base price of the hotel the room is part of
      */
     public Room(String name, Hotel hotel, double basePrice) {
         this.name = name;
@@ -44,7 +45,7 @@ public class Room {
     /**
      * Setter for the room name
      *
-     * @param basePrice the name of the room
+     * @param name the name of the room
      *
      */
     public void setName(String name) {
