@@ -18,6 +18,44 @@ public class HRS {
     }
 
     /**
+     * Method that simplifies input handling for integer inputs
+     * @param sc Scanner object
+     * @return the scanned input of type int
+     */
+    public int getInput(Scanner sc){
+        try{
+            int var =  sc.nextInt();
+            sc.nextLine();
+
+            return var;
+        } catch (InputMismatchException e){
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+            sc.nextLine();
+
+            return -1;
+        }
+    }
+    
+    /**
+     * Method that simplifies input handling for double inputs
+     * @param sc Scanner object
+     * @return the scanned input of type double
+     */
+    public double getInputDBL(Scanner sc){
+        try{
+            double var =  sc.nextDouble();
+            sc.nextLine();
+
+            return var;
+        } catch (InputMismatchException e){
+            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+            sc.nextLine();
+
+            return -1;
+        }
+    }
+
+    /**
      * Sets the hotels in the ArrayList of Hotel
      *
      * @param hotels the array of hotels in the HotelReservationSystem.HRS
@@ -129,15 +167,7 @@ public class HRS {
 
         System.out.printf("\nChoose an option: ");
 
-        int level = -1;
-
-        try {
-            level = sc.nextInt();
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-            sc.nextLine();
-        }
+        int level = getInput(sc);
 
         switch (level) {
             case 0 ->
@@ -162,15 +192,7 @@ public class HRS {
 
                 System.out.printf("\nChoose an option: ");
 
-                int option = -1;
-
-                try {
-                    option = sc.nextInt();
-                    sc.nextLine();
-                } catch (InputMismatchException e) {
-                    System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                    sc.nextLine();
-                }
+                int option = getInput(sc);
 
                 if (option == 1) {
                     // view booked rooms
@@ -180,15 +202,7 @@ public class HRS {
 
                     System.out.print("\nEnter date (1-31): ");
 
-                    int date = -1;
-
-                    try {
-                        date = sc.nextInt();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
+                    int date = getInput(sc);                    
 
                     // print available rooms with proper formatting and handling
                     if (hotel.fetchAvailableRoomNames(1, date).isEmpty()) {
@@ -220,15 +234,8 @@ public class HRS {
 
                     System.out.printf("\nEnter room number: ");
 
-                    int roomNum = -1;
+                    int roomNum = getInput(sc);
 
-                    try {
-                        roomNum = sc.nextInt();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
                     String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
 
                     // get room
@@ -284,15 +291,7 @@ public class HRS {
 
             System.out.printf("\nChoose an option: ");
 
-            int choice = -1;
-
-            try {
-                choice = sc.nextInt();
-                sc.nextLine();
-            } catch (InputMismatchException e) {
-                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                sc.nextLine();
-            }
+            int choice = getInput(sc);
 
             switch (choice) {
                 case 0 -> // exit to main menu
@@ -328,15 +327,7 @@ public class HRS {
 
                     System.out.printf("\nEnter number of rooms to create: ");
 
-                    int num = -1;
-
-                    try {
-                        num = sc.nextInt();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
+                    int num = getInput(sc);
 
                     if (num > 0 && hotel.getRoomCount() + num < 51) {
                         for (int i = 0; i < num; i++) {
@@ -374,15 +365,7 @@ public class HRS {
                         System.out.println(hotel.getRoomCount());
                         System.out.printf("\nEnter room number to delete: ");
 
-                        int index = -1;
-
-                        try {
-                            index = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                            sc.nextLine();
-                        }
+                        int index = getInput(sc);
 
                         // check if index is within bounds
                         if (index < 0 || index > 51) {
@@ -416,15 +399,7 @@ public class HRS {
                     System.out.printf("You selected to \033[34mchange the price\033[37m of hotel '%s'.\n", name);
                     System.out.printf("\nEnter the new price for the rooms of the hotel: ");
 
-                    double newPrice = -1.0;
-
-                    try {
-                        newPrice = sc.nextDouble();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
+                    double newPrice = getInputDBL(sc);
 
                     if (hotel.changePrice(newPrice)) {
                         System.out.printf("\033[33m\nThe rooms of hotel '%s' have been changed to %.2f.\033[37m\n", hotel.getName(),
@@ -449,15 +424,7 @@ public class HRS {
 
                     // get the check-in date
                     System.out.print("Enter check-in date of the reservation to remove (1-31): ");
-                    int checkInDate = -1;
-
-                    try {
-                        checkInDate = sc.nextInt();
-                        sc.nextLine();
-                    } catch (InputMismatchException e) {
-                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                        sc.nextLine();
-                    }
+                    int checkInDate = getInput(sc);
 
                     if (hotel.removeReservation(guestName, checkInDate)) {
                         // if hotel reservation is removed or true
@@ -527,30 +494,12 @@ public class HRS {
                     if (hotel != null) {
                         System.out.printf("\nEnter the day of your check-in: ");
 
-                        int checkIn = -1; // initialize as -1
-
-                        try {
-                            checkIn = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.printf(
-                                    "\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                            sc.nextLine();
-                        }
+                        int checkIn = getInput(sc);
 
                         // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
                         System.out.print("\nEnter the day of your check-out: ");
 
-                        int checkOut = -1; // initialize as -1
-
-                        try {
-                            checkOut = sc.nextInt();
-                            sc.nextLine();
-                        } catch (InputMismatchException e) {
-                            System.out.printf(
-                                    "\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                            sc.nextLine();
-                        }
+                        int checkOut = getInput(sc);
 
                         // checks if the booking dates are in bound
                         if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31)
