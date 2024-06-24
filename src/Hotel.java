@@ -22,6 +22,7 @@ public class Hotel {
 
     // Constructor
     public Hotel(String name) {
+        this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
         this.name = name;
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
@@ -75,7 +76,7 @@ public class Hotel {
      */
     public Room newRoom() {
         // check if a room can still be created in the hotel
-        if (roomCount < 50) {
+        if (roomCount < 51) {
             // make a unique room name
             String roomName = name + "_Room_" + roomCount;
 
@@ -108,7 +109,7 @@ public class Hotel {
      */
     public Room newRoom(int count) {
         // check if a room can still be created in the hotel
-        if (roomCount + count < 50) {
+        if (roomCount + count < 51) {
             // make a unique room name
             String roomName = name + "_Room_" + roomCount;
 
@@ -138,7 +139,7 @@ public class Hotel {
      */
     public void delRoom(int num) {
             // check if index is within bounds
-            if (num < 0 || num > 50) {
+            if (num < 1 || num > 51) {
                 System.out.println("Index out of bounds.");
             } else {
                 String roomName = this.name + "_Room_" + num;

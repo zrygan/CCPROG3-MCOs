@@ -107,8 +107,6 @@ public class Room {
      *  - checkin  : int : day the customer checks in
      *  - checkout : int : day the customer checks out
      * 
-     * @FIXME: since we have this already, do we need getters and setters for availability?
-     * 
      * @author: Jaztin Jimenez
      */
     public boolean isAvailable(int checkIn, int checkOut) {
