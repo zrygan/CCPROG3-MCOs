@@ -48,10 +48,10 @@ const UNICODE_LETTER = 0;
 const UNICODE_DIGIT = 1;
 const UNICODE_OTHER = 2;
 function checkUnnamed(name, separator) {
-    return name === "<Unnamed>" || !name ? "" : name + separator;
+    return  name === "<Unnamed>" || !name ? "" : name + separator;
 }
 function escapeHtml(str) {
-    return str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return  str.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 function getHighlightedText(str, boundaries, from, to) {
     var start = from;
@@ -69,15 +69,15 @@ function getHighlightedText(str, boundaries, from, to) {
         start = Math.min(to, b1);
     }
     text += escapeHtml(str.slice(start, to));
-    return text;
+    return  text;
 }
 function getURLPrefix(item, category) {
     var urlPrefix = "";
     var slash = "/";
     if (category === "modules") {
-        return item.l + slash;
+        return  item.l + slash;
     } else if (category === "packages" && item.m) {
-        return item.m + slash;
+        return  item.m + slash;
     } else if (category === "types" || category === "members") {
         if (item.m) {
             urlPrefix = item.m + slash;
@@ -89,11 +89,11 @@ function getURLPrefix(item, category) {
             });
         }
     }
-    return urlPrefix;
+    return  urlPrefix;
 }
 function getURL(item, category) {
     if (item.url) {
-        return item.url;
+        return  item.url;
     }
     var url = getURLPrefix(item, category);
     if (category === "modules") {
@@ -121,11 +121,11 @@ function getURL(item, category) {
         url += item.u;
     }
     item.url = url;
-    return url;
+    return  url;
 }
 function createMatcher(term, camelCase) {
     if (camelCase && !isUpperCase(term)) {
-        return null;  // no need for camel-case matcher for lower case query
+        return  null;  // no need for camel-case matcher for lower case query
     }
     var pattern = "";
     var upperCase = [];
@@ -158,11 +158,11 @@ function createMatcher(term, camelCase) {
     });
     var re = new RegExp(pattern, "gui");
     re.upperCase = upperCase;
-    return re;
+    return  re;
 }
 // Unicode regular expressions do not allow certain characters to be escaped
 function escapeUnicodeRegex(pattern) {
-    return pattern.replace(/[\[\]{}()*+?.\\^$|\s]/g, '\\$&');
+    return  pattern.replace(/[\[\]{}()*+?.\\^$|\s]/g, '\\$&');
 }
 function findMatch(matcher, input, startOfName, endOfName) {
     var from = startOfName;
@@ -171,7 +171,7 @@ function findMatch(matcher, input, startOfName, endOfName) {
     // Expand search area until we get a valid result or reach the beginning of the string
     while (!match || match.index + match[0].length < startOfName || endOfName < match.index) {
         if (from === 0) {
-            return NO_MATCH;
+            return  NO_MATCH;
         }
         from = input.lastIndexOf(".", from - 2) + 1;
         matcher.lastIndex = from;
@@ -192,7 +192,7 @@ function findMatch(matcher, input, startOfName, endOfName) {
         var nextChar = input[start + 1] || "";
         if (start !== 0) {
             if (charType === UNICODE_DIGIT && getCharType(prevChar) === UNICODE_DIGIT) {
-                return NO_MATCH;
+                return  NO_MATCH;
             } else if (charType === UNICODE_LETTER && getCharType(prevChar) === UNICODE_LETTER) {
                 var isUpper = isUpperCase(input[start]);
                 if (isUpper && (isLowerCase(prevChar) || isLowerCase(nextChar))) {
@@ -200,7 +200,7 @@ function findMatch(matcher, input, startOfName, endOfName) {
                 } else if (isMatcherUpper && start === prevEnd) {
                     score -= isUpper ? 0.1 : 1.0;
                 } else {
-                    return NO_MATCH;
+                    return  NO_MATCH;
                 }
             }
         }
@@ -218,37 +218,37 @@ function findMatch(matcher, input, startOfName, endOfName) {
     score -= rateNoise(input.slice(0, Math.max(startOfName, match.index)));
 
     if (score <= 0) {
-        return NO_MATCH;
+        return  NO_MATCH;
     }
-    return {
+    return  {
         input: input,
         score: score,
         boundaries: boundaries
     };
 }
 function isLetter(s) {
-    return /\p{L}/u.test(s);
+    return  /\p{L}/u.test(s);
 }
 function isUpperCase(s) {
-    return /\p{Lu}/u.test(s);
+    return  /\p{Lu}/u.test(s);
 }
 function isLowerCase(s) {
-    return /\p{Ll}/u.test(s);
+    return  /\p{Ll}/u.test(s);
 }
 function isDigit(s) {
-    return /\p{Nd}/u.test(s);
+    return  /\p{Nd}/u.test(s);
 }
 function getCharType(s) {
     if (isLetter(s)) {
-        return UNICODE_LETTER;
+        return  UNICODE_LETTER;
     } else if (isDigit(s)) {
-        return UNICODE_DIGIT;
+        return  UNICODE_DIGIT;
     } else {
-        return UNICODE_OTHER;
+        return  UNICODE_OTHER;
     }
 }
 function rateNoise(str) {
-    return (str.match(/([.(])/g) || []).length / 5
+    return  (str.match(/([.(])/g) || []).length / 5
          + (str.match(/(\p{Lu}+)/gu) || []).length / 10
          +  str.length / 20;
 }
@@ -256,7 +256,7 @@ function doSearch(request, response) {
     var term = request.term.trim();
     var maxResults = request.maxResults || MAX_RESULTS;
     if (term.length === 0) {
-        return this.close();
+        return  this.close();
     }
     var matcher = {
         plainMatcher: createMatcher(term, false),
@@ -267,24 +267,24 @@ function doSearch(request, response) {
     function getPrefix(item, category) {
         switch (category) {
             case "packages":
-                return checkUnnamed(item.m, "/");
+                return  checkUnnamed(item.m, "/");
             case "types":
-                return checkUnnamed(item.p, ".");
+                return  checkUnnamed(item.p, ".");
             case "members":
-                return checkUnnamed(item.p, ".") + item.c + ".";
+                return  checkUnnamed(item.p, ".") + item.c + ".";
             default:
-                return "";
+                return  "";
         }
     }
     function useQualifiedName(category) {
         switch (category) {
             case "packages":
-                return /[\s/]/.test(term);
+                return  /[\s/]/.test(term);
             case "types":
             case "members":
-                return /[\s.]/.test(term);
+                return  /[\s.]/.test(term);
             default:
-                return false;
+                return  false;
         }
     }
     function searchIndex(indexArray, category) {
@@ -293,7 +293,7 @@ function doSearch(request, response) {
             if (!indexLoaded) {
                 matches.push({ l: messages.loading, category: category });
             }
-            return matches;
+            return  matches;
         }
         $.each(indexArray, function (i, item) {
             var prefix = getPrefix(item, category);
@@ -315,15 +315,15 @@ function doSearch(request, response) {
                 if (!useQualified) {
                     m.input = qualifiedName;
                     m.boundaries = m.boundaries.map(function(b) {
-                        return b + prefix.length;
+                        return  b + prefix.length;
                     });
                 }
                 matches.push(m);
             }
-            return true;
+            return  true;
         });
-        return matches.sort(function(e1, e2) {
-            return e2.score - e1.score;
+        return  matches.sort(function(e1, e2) {
+            return  e2.score - e1.score;
         }).slice(0, maxResults);
     }
 
@@ -403,7 +403,7 @@ $.widget("custom.catcomplete", $.ui.autocomplete, {
         } else {
             div.html(label);
         }
-        return li;
+        return  li;
     }
 });
 $(function() {
@@ -462,7 +462,7 @@ $(function() {
         },
         autoFocus: true,
         focus: function(event, ui) {
-            return false;
+            return  false;
         },
         position: {
             collision: "flip"

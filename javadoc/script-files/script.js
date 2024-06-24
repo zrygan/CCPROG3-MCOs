@@ -55,9 +55,9 @@ function createElem(doc, tag, path) {
 
 // Helper for  making content containing release names comparable lexicographically
 function makeComparable(s) {
-    return s.toLowerCase().replace(/(\d+)/g,
+    return  s.toLowerCase().replace(/(\d+)/g,
         function(n, m) {
-            return ("000" + m).slice(-4);
+            return  ("000" + m).slice(-4);
         });
 }
 
@@ -91,10 +91,10 @@ function sortTable(header, columnIndex, columns) {
         var ka = makeComparable(a[columnIndex].textContent);
         var kb = makeComparable(b[columnIndex].textContent);
         if (ka < kb)
-            return descending ? 1 : -1;
+            return  descending ? 1 : -1;
         if (ka > kb)
-            return descending ? -1 : 1;
-        return 0;
+            return  descending ? -1 : 1;
+        return  0;
     };
     var sorted = rows.sort(comparator);
     var visible = 0;
@@ -193,7 +193,7 @@ function switchTab(e) {
 var updateSearchResults = function() {};
 
 function indexFilesLoaded() {
-    return moduleSearchIndex
+    return  moduleSearchIndex
         && packageSearchIndex
         && typeSearchIndex
         && memberSearchIndex

@@ -1,7 +1,7 @@
-/* HotelReservationSystem (HRS) Class
+/**HotelReservationSystem (HRS) Class
  * An object that handles the reservation system.
  * 
- * @params:
+ * @param :
  *  - hotel : ArrayList<Hotel> : the list of hotels in the system
  */
 
@@ -23,14 +23,13 @@ public class HRS {
     }
 
     // Methods
-    /*
-     * createHotel
+    /**createHotel
      * creates a new hotel with a given name
      * 
-     * @params:
+     * @param :
      * - name : String : the name of the new hotel
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * 
@@ -42,14 +41,13 @@ public class HRS {
         hotel.addRoom(sc);
     }
 
-    /*
-     * fetchHotel
-     * returnss the hotel given the name of the hotel
+    /**fetchHotel
+     * returns the hotel given the name of the hotel
      * 
-     * @params:
+     * @param :
      * - name : String : name of the hotel
      * 
-     * @returns:
+     * @return :
      * - room : Hotel : the hotel with the room name in the hotel
      * - null : null : the hotel was not found
      * 
@@ -58,21 +56,40 @@ public class HRS {
     public Hotel fetchHotel(String name) {
         for (Hotel hotel : hotels) {
             if (hotel.getName().equals(name)) {
-                return hotel;
+                return  hotel;
             }
         }
 
-        return null;
+        return  null;
     }
 
-    /*
-     * createHotelUI
+    /**showHotels
+     * Lists the hotels with their number of rooms
+     * 
+     * @param :
+     * - none
+     * 
+     * @return :
+     * - none
+     * 
+     * @author: Zhean Ganituen
+     */
+    public void showHotels() {
+        int i = 1;
+
+        for (Hotel hotel : hotels) {
+            System.out.printf("%d\t'%s' has %d rooms.\n", i, hotel.getName(), hotel.getRoomCount());
+            i++;
+        }
+    }
+
+    /**createHotelUI
      * User I/O for creating a hotel
      * 
-     * @params:
+     * @param :
      * - sc : Scanner : Scanner object
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author:
@@ -93,14 +110,13 @@ public class HRS {
 
     }
 
-    /*
-     * viewHotelUI
+    /**viewHotelUI
      * User I/O for viewing the details of a hotel
      * 
-     * @params:
+     * @param :
      * - sc : Scanner : Scanner object
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author: Zhean Ganituen
@@ -125,10 +141,10 @@ public class HRS {
      * manageHotelUI
      * User I/O for managing a hotel
      * 
-     * @params:
+     * @param :
      * - sc : Scanner : Scanner object
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author: Zhean Ganituen
@@ -210,7 +226,7 @@ public class HRS {
                     hotel.prepareForRemoval();
                     hotels.remove(hotel);
                     System.out.println("Hotel removed successfully.");
-                    return; // Exit after removal
+                    return ; // Exit after removal
                 }
                 default ->
                     System.out.println("Invalid choice. Please try again.");
@@ -224,13 +240,13 @@ public class HRS {
      * simBookingUI
      * User I/O for booking simulation
      * 
-     * @params:
+     * @param :
      * - sc : Scanner : Scanner object
      * 
-     * @returns:
+     * @return :
      * - none
      * 
-     * @authors: Zhean Ganituen, Jaztin Jimenez
+     * @author: Zhean Ganituen, Jaztin Jimenez
      */
     public void simBookingUI(Scanner sc) {
         System.out.println("Welcome to the Hotel Reservation System, User!");
@@ -269,10 +285,10 @@ public class HRS {
      * showMenu
      * Shows the main menu of the program
      * 
-     * @params:
+     * @param :
      * - none
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author: Zhean Ganituen
@@ -286,26 +302,5 @@ public class HRS {
         System.out.printf("\033[31m0\033[37m\t:\t Exit\n");
         System.out.printf("\033[33m9\033[37m\n");
         System.out.printf("===================================\n");
-    }
-
-    /*
-     * showHotels
-     * Lists the hotels with their number of rooms
-     * 
-     * @params:
-     * - none
-     * 
-     * @returns:
-     * - none
-     * 
-     * @author: Zhean Ganituen
-     */
-    public void showHotels() {
-        int i = 1;
-
-        for (Hotel hotel : hotels) {
-            System.out.printf("%d\t'%s' has %d rooms.\n", i, hotel.getName(), hotel.getRoomCount());
-            i++;
-        }
     }
 }

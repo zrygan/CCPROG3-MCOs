@@ -1,7 +1,7 @@
-/* Reservation Class
+/**Reservation Class
  * An object for the reservation of a room
  *
- * @params:
+ * @param :
  *  - guest     : final String : the guest name
  *  - checkin   : final int    : the check-in date (DD)
  *  - checkout  : final int    : the check-out date (DD)
@@ -34,33 +34,32 @@ public class Reservation {
 
     // Getters
     public String getGuest() {
-        return guest;
+        return  guest;
     }
 
     public int getCheckin() {
-        return checkin;
+        return  checkin;
     }
 
     public int getCheckout() {
-        return checkout;
+        return  checkout;
     }
 
     public Room getRoom() {
-        return room;
+        return  room;
     }
 
-    /*
-     * isRoomAvailable
+    /**isRoomAvailable
      * to check if the room is available for the day
      * 
-     * @params:
+     * @param :
      * - room : Room : the room to check the avaulability
      * - checkInDay : int : the day of check in, 1 < checkInDay > 31 (can't check in
      * on day 31)
      * - checkOutDay : int : the day of check out, 1 < checkOutDay > 31 (can't check
      * out on day 1)
      * 
-     * @returns:
+     * @return :
      * - false : Boolean : if room is not available
      * - true : Boolean : if room is available
      * 
@@ -69,24 +68,25 @@ public class Reservation {
     public boolean isRoomAvailable(Room room, int checkInDay, int checkOutDay) {
         for (int i = checkInDay; i < checkOutDay; i++) {
             if (!room.isAvailable(i)) {
-                return false;
+                return  false;
             }
         }
-        return true;
+        return  true;
     }
 
-    /*
-     * breakdown
+    /**breakdown
      * gets the total costs of booking the reservation
      * 
-     * @params:
+     * @param :
      * - none
      * 
-     * @return:
+     * @return :
      * - cost per day : double
+     * 
+     * @author: Jaztin Jimenez
      */
     public double breakdown() {
-        return total / (
+        return  total / (
             - checkin);
     }
 }

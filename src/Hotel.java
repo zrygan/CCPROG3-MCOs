@@ -1,7 +1,7 @@
-/* Hotel Class
+/**Hotel Class
  * An object for the hotels in the system 
  * 
- * @params:
+ * @param :
  *  - name         : String        : the name of the hotel
  *  - roomTotal    : int           : the current number of rooms in the hotel
  *  - roomCount    : int           : the actual total number of rooms in the hotel
@@ -49,27 +49,26 @@ public class Hotel {
 
     // Getters
     public String getName() {
-        return name;
+        return  name;
     }
 
     public int getRoomCount() {
-        return roomCount;
+        return  roomCount;
     }
 
     public double getEarnings() {
-        return earnings;
+        return  earnings;
     }
 
     // Methods
 
-    /*
-     * newRoom
+    /**newRoom
      * creates a new room in the hotel, if possible
      * 
-     * @params:
+     * @param :
      * - none
      * 
-     * @returns:
+     * @return :
      * - true : boolen : if a new room was created
      * - false : boolean : if not
      * 
@@ -90,20 +89,19 @@ public class Hotel {
             // increment the number of rooms
             roomCount++;
 
-            return newRoom;
+            return  newRoom;
         }
 
-        return null;
+        return  null;
     }
 
-    /*
-     * newRoom
+    /**newRoom
      * creates a new room in the hotel, if possible
      * 
-     * @params:
+     * @param :
      * - none
      * 
-     * @returns:
+     * @return :
      * - true : boolen : if a new room was created
      * - false : boolean : if not
      * 
@@ -124,20 +122,19 @@ public class Hotel {
             // increment the number of rooms
             roomCount++;
 
-            return newRoom;
+            return  newRoom;
         }
 
-        return null;
+        return  null;
     }
 
-    /*
-     * delRoom
+    /**delRoom
      * Deletes a specific room given a room number
      * 
-     * @params:
+     * @param :
      * - num : int : the room number
      * 
-     * @returns:
+     * @return :
      * - none
      */
     public void delRoom(int num) {
@@ -161,21 +158,20 @@ public class Hotel {
 
     }
 
-    /*
-     * bookRoom
+    /**bookRoom
      * Books a room and makes a reservation, if possible
      * 
      * 
-     * @param:
+     * @param :
      * - guestName : String : the guests name
      * - checkIn : int : date of checking in
      * - checkOut : int : date of checking out
      * 
-     * @return
+     * @return 
      * - true : boolean : if room booking is successful
      * - false : boolean : if room booking is not successful
      * 
-     * @Author: Zhean Ganituen, Jaztin Jimenez
+     * @author: Zhean Ganituen, Jaztin Jimenez
      */
     public boolean bookRoom(String guestName, int checkIn, int checkOut) {
         // iterate through all the rooms in hotel
@@ -188,22 +184,21 @@ public class Hotel {
                 System.out.printf("Room booked successfully for %s.\n", guestName);
                 setEarnings(room.getBasePrice() * (checkOut - checkIn));
                 room.bookLength(checkIn, checkOut);
-                return true;
+                return  true;
             }
         }
 
         System.out.println("There are currently no available rooms for the selected dates");
-        return false;
+        return  false;
     }
 
-    /*
-     * fetchRoom
-     * returns the room given the name of the room of a hotelName
+    /**fetchRoom
+     * return  the room given the name of the room of a hotelName
      * 
-     * @params:
+     * @param :
      * - name : String : name of the room
      * 
-     * @returns:
+     * @return :
      * - room : Room : the room with the room name in the hotel
      * - null : null : the room was not found
      * 
@@ -212,23 +207,22 @@ public class Hotel {
     public Room fetchRoom(String name) {
         for (Room room : rooms) {
             if (room.getName().equals(name)) {
-                return room;
+                return  room;
             }
         }
 
-        return null; // room not found
+        return  null; // room not found
     }
 
-    /*
-     * viewHotel
+    /**viewHotel
      * views the hotel information, checks either high-level information or
      * low-level information from
      * the hotel.
      * 
-     * @params:
+     * @param :
      * - none
      *
-     * @returns:
+     * @return :
      * - none
      *
      * @author: Zhean Ganituen and Jaztin Jimenez
@@ -339,15 +333,14 @@ public class Hotel {
         }
     }
 
-    /*
-     * changePrice
+    /**changePrice
      * changes the price of all rooms in the hotel, if and only if there are no
      * reseravations
      * 
-     * @params:
+     * @param :
      * - newPrice : double : the new price, constraint: newPrice >= 100
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author: Zhean Ganituen
@@ -361,23 +354,22 @@ public class Hotel {
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
             }
-            return true;
+            return  true;
         }
 
-        return false;
+        return  false;
     }
 
-    /*
-     * addRoom
+    /**addRoom
      * Adds a specific number of rooms to a hotel.
      * 
-     * @param:
+     * @param :
      * - sc : Scanner : Scanenr object
      * 
-     * @returns:
+     * @return :
      * - none
      * 
-     * @Author: Jaztin Jimenez
+     * @author: Jaztin Jimenez
      */
     public void addRoom(Scanner sc) {
         System.out.printf("Enter number of rooms to create: ");
@@ -401,17 +393,16 @@ public class Hotel {
         }
     }
 
-    /*
-     * delRoomUI
+    /**delRoomUI
      * User I/O for deleting room. Uses `delRoom`
      * 
-     * @param:
+     * @param :
      * - sc : Scanner : Scanner object
      * 
-     * @returns:
+     * @return :
      * - None
      * 
-     * @authors: Zhean Ganituen
+     * @author: Zhean Ganituen
      */
     public void delRoomUI(Scanner sc) {
         if (roomCount > 1) {
@@ -424,17 +415,16 @@ public class Hotel {
         }
     }
 
-    /*
-     * changePriceUI
+    /**changePriceUI
      * User I/O for changing the base prices of all rooms. Uses `changePrice`
      * 
-     * @param:
+     * @param :
      * - sc : Scanner : Scanner object
      * 
-     * @returns:
+     * @return :
      * - none
      * 
-     * @Authors: Zhean Ganituen, Jaztin Jimenez
+     * @author: Zhean Ganituen, Jaztin Jimenez
      */
     public void changePriceUI(Scanner sc) {
         System.out.print("Enter the new price for the rooms of the hotel: ");
@@ -451,14 +441,13 @@ public class Hotel {
         }
     }
 
-    /*
-     * removeReservationUI
+    /**removeReservationUI
      * Removes the reservation from a hotel room.
      * 
-     * @param:
+     * @param :
      * - sc : Scanner : Scanner object.
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author: Zhean Ganituen, Jaztin Jimenez
@@ -473,11 +462,11 @@ public class Hotel {
         Reservation reservationToRemove = null;
         for (Reservation reservation : reservations) { // go through all the reservations within the hotel
             if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { // checks if the
-                                                                                                       // guest name and
-                                                                                                       // the check-in
-                                                                                                       // date of the
-                                                                                                       // reservation is
-                                                                                                       // valid
+                // guest name and
+                // the check-in
+                // date of the
+                // reservation is
+                // valid
                 reservationToRemove = reservation;
                 break;
             }
@@ -485,14 +474,14 @@ public class Hotel {
         if (reservationToRemove != null) { // removes the reservation if valid
             Room removeRoom = reservationToRemove.getRoom();
             removeRoom.removeAvailability(reservationToRemove.getCheckin(), reservationToRemove.getCheckout()); // makes
-                                                                                                                // the
-                                                                                                                // dates
-                                                                                                                // within
-                                                                                                                // the
-                                                                                                                // reservation
-                                                                                                                // available
-                                                                                                                // for
-                                                                                                                // booking
+            // the
+            // dates
+            // within
+            // the
+            // reservation
+            // available
+            // for
+            // booking
             setEarnings(-(removeRoom.getBasePrice()
                     * (reservationToRemove.getCheckout() - reservationToRemove.getCheckin())));
             this.reservations.remove(reservationToRemove);
@@ -503,14 +492,13 @@ public class Hotel {
         }
     }
 
-    /*
-     * prepareForRemoval
+    /**prepareForRemoval
      * Prepares a hotel for removal by resetting all its variables
      * 
-     * @params:
+     * @param :
      * - none
      * 
-     * @returns:
+     * @return :
      * - none
      * 
      * @author: Jaztin Jimenez
@@ -522,5 +510,4 @@ public class Hotel {
         this.earnings = 0.0;
         System.out.println("Hotel data cleared.");
     }
-
 }
