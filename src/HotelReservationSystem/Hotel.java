@@ -184,7 +184,15 @@ public class Hotel {
                 // add reservation
                 Reservation newReservation = new Reservation(guestName, checkIn, checkOut, room);
                 this.reservations.add(newReservation);
-                System.out.printf("Room booked successfully for %s.\n", guestName);
+                System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
+                System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
+                System.out.printf("\n\033[33mname\033[37m:\t%s", guestName);
+                System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", this.name);
+                System.out.printf("\n\033[33mroom\033[37m:\t%s", room.getName());
+                System.out.printf("\n\033[33min  \033[37m:\t%d", checkIn);
+                System.out.printf("\n\033[33mout \033[37m:\t%d", checkOut);
+                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkOut - checkIn));
+                System.out.printf("\n\033[33m===================\033[37m\n");
                 setEarnings(room.getBasePrice() * (checkOut - checkIn));
                 room.bookLength(checkIn, checkOut);
                 return true;
@@ -193,21 +201,6 @@ public class Hotel {
 
         System.out.println("There are currently no available rooms for the selected dates");
         return false;
-    }
-
-    /**
-     * Lists the rooms in the hotel
-     *
-     * @author Zhean Ganituen
-     */
-    public void showRooms() {
-        int i = 1;
-        System.out.printf("\n================ SHOW ROOMS ================\n");
-        for (Room room : this.rooms) {
-            System.out.printf("%d\t\033[94m'%s'\033[37m\n", i, room.getName());
-            i++;
-        }
-        System.out.printf("============================================\n");
     }
 
     /**

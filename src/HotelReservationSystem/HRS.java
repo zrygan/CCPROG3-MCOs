@@ -268,13 +268,13 @@ public class HRS {
      */
     public void simBookingUI(Scanner sc) {
         System.out.printf("You selected to \033[34msimulate booking a room\033[37m.\n");
-        System.out.println("Welcome to the Hotel Reservation System, User!");
+        System.out.printf("\nWelcome to the Hotel Reservation System, User!\n");
         System.out.printf("\nPlease enter your name: ");
 
         String guestName = sc.nextLine(); // look out for this baddie
 
-        System.out.printf("\n\033[96mmHint:\tenter '? help' to get the list of hotels.\033[37m\n");
-        System.out.printf("\033[96mm\tenter '? exit' to leave the simulation.\033[37m\n");
+        System.out.printf("\n\033[96mHint:\tenter '? help' to get the list of hotels.\033[37m\n");
+        System.out.printf("\033[96m\tenter '? exit' to leave the simulation.\033[37m\n");
 
         boolean run = true;
 
@@ -288,11 +288,12 @@ public class HRS {
                 case "? exit" ->
                     run = false;
                 default -> {
+                    System.out.printf("You selected to \033[34mbook a room in hotel '%s'\033[37m.\n", hotelName);
+                    
                     Hotel hotel = fetchHotel(hotelName);
+                    
                     if (hotel != null) {
-                        hotel.showRooms();
-
-                        System.out.print("Enter the day of your check-in: ");
+                        System.out.printf("\nEnter the day of your check-in: ");
 
                         int checkIn = -1; // initialize as -1
 
@@ -307,7 +308,7 @@ public class HRS {
                         
                         // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
                         
-                        System.out.print("Enter the day of your check-out: ");
+                        System.out.print("\nEnter the day of your check-out: ");
                         
                         int checkOut = -1; // initialize as -1
                         
@@ -325,10 +326,10 @@ public class HRS {
                                 && (checkIn >= 1 && checkIn <= 30)) {
                             hotel.bookRoom(guestName, checkIn, checkOut);
                         } else {
-                            System.out.printf("Invalid dates for booking.\n");
+                            System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");
                         }
                     } else {
-                        System.out.printf("Hotel '%s' is not found.\n", hotelName);
+                        System.out.printf("\n\033[31mError. Hotel '%s' is not found.\033[37m\n", hotelName);
                     }
                 }
             }
@@ -347,7 +348,6 @@ public class HRS {
         System.out.printf("\033[33m3\033[37m\t:\t Manage Hotel\n");
         System.out.printf("\033[33m4\033[37m\t:\t Simulate Booking\n");
         System.out.printf("\033[31m0\033[37m\t:\t Exit\n");
-        System.out.printf("\033[33m9\033[37m\n");
         System.out.printf("===================================\n");
     }
 }
