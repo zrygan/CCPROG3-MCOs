@@ -13,6 +13,7 @@ public class Hotel {
     private ArrayList<Room> rooms; // potential maximum of 50 rooms
     private ArrayList<Reservation> reservations; // list of reservations
     private double earnings;
+    private double basePrice;
 
     /**
      * Constructor for the Hotel object
@@ -25,7 +26,26 @@ public class Hotel {
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
         this.earnings = 0.0; // initialize as 0
+        this.basePrice = 1299.0;
 
+    }
+
+    /**
+     * Getter for the base price of the Hotel
+     * 
+     * @return base price of the Hotel
+     */
+    public double getBasePrice() {
+        return basePrice;
+    }
+
+    /**
+     * Sets the base price of the Hotel
+     * 
+     * @param basePrice
+     */
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
     }
 
     /**
@@ -105,7 +125,7 @@ public class Hotel {
             String roomName = name + "_Room_" + roomCount;
 
             // create a new room with the new room name
-            Room newRoom = new Room(roomName, this);
+            Room newRoom = new Room(roomName, this, this.basePrice);
 
             // add the created room in the array of rooms
             rooms.add(newRoom);
@@ -356,6 +376,7 @@ public class Hotel {
             // iterate through the rooms and set the price to newPrice
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
+                this.setBasePrice(newPrice);
             }
             return true;
         }
@@ -556,4 +577,5 @@ public class Hotel {
         this.earnings = 0.0;
         System.out.println("Hotel data cleared.");
     }
+
 }
