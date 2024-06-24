@@ -12,14 +12,14 @@ public class Driver {
      * 
      * @param args arguments of the main method
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         HRS hrs = new HRS();
         boolean run = true;
         Scanner sc = new Scanner(System.in); // initialize scanner
 
         // Debugging Code [DC1]
         // hrs.createHotel("max");
-        // HotelReservationSystem.Hotel max = hrs.fetchHotel("max");
+        // Hotel max = hrs.fetchHotel("max");
         // max.newRoom();
         // max.newRoom();
         // max.newRoom(); // there should be 3 rooms in `max` [room_0 to room_2]
@@ -36,7 +36,15 @@ public class Driver {
         // reserved >>> NO >> NO
         // !reserved >>> NO >> YES
         System.out.println("Welcome to the Hotel Reservation System or (HRS).");
-        System.out.printf("Please select the number with what you want to do!\n");
+        
+        // add more instructions here if needed
+
+        System.out.printf("\n\033[36mINSTRUCTIONS:\033[37m\n");
+        System.out.printf("\t1: Enter the number of your choice when prompted with options.\n");
+        System.out.printf("\t2: The hotel name is \033[31mCASE-SENSITIVE\033[37m.\n");
+
+        // Thread.sleep(5000); // 5 second delay
+
         while (run) {
             hrs.showMenu();
 

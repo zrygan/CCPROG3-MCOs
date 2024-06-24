@@ -3,7 +3,7 @@ package HotelReservationSystem;
 import java.util.*;
 
 /**
- * This class represents a HotelReservationSystem.Hotel object in the system
+ * This class represents a Hotel object in the system
  */
 public class Hotel {
 
@@ -15,9 +15,9 @@ public class Hotel {
     private double earnings;
 
     /**
-     * Constructor for the HotelReservationSystem.Hotel object
+     * Constructor for the Hotel object
      * 
-     * @param name Name of the HotelReservationSystem.Hotel
+     * @param name Name of the Hotel
      */
     public Hotel(String name) {
         this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
@@ -29,66 +29,66 @@ public class Hotel {
     }
 
     /**
-     * Sets the name of the HotelReservationSystem.Hotel
+     * Sets the name of the Hotel
      * 
-     * @param name The name of the HotelReservationSystem.Hotel
+     * @param name The name of the Hotel
      */
     public void setName(String name) {
         this.name = name;
     }
-    
+
     /**
-     * Sets the reservation of the HotelReservationSystem.Hotel
+     * Sets the reservation of the Hotel
      * 
-     * @param reservation The reservation in the HotelReservationSystem.Hotel
+     * @param reservation The reservation in the Hotel
      */
     public void setReservation(ArrayList<Reservation> reservation) {
         this.reservations = reservation;
     }
 
     /**
-     * Sets the rooms in the HotelReservationSystem.Hotel
+     * Sets the rooms in the Hotel
      * 
-     * @param rooms The rooms in the HotelReservationSystem.Hotel
+     * @param rooms The rooms in the Hotel
      */
     public void setRooms(ArrayList<Room> rooms) {
         this.rooms = rooms;
     }
 
     /**
-     * Sets the earnings of the HotelReservationSystem.Hotel
+     * Sets the earnings of the Hotel
      * 
-     * @param earnings The earnings of the HotelReservationSystem.Hotel
+     * @param earnings The earnings of the Hotel
      */
     public void setEarnings(double earnings) {
         this.earnings += earnings;
     }
 
     /**
-     * Getter for the name of the HotelReservationSystem.Hotel
+     * Getter for the name of the Hotel
      * 
-     * @return The name of the HotelReservationSystem.Hotel
+     * @return The name of the Hotel
      */
     public String getName() {
-        return  name;
+        return name;
     }
 
     /**
-     * Getter for the number of rooms in the HotelReservationSystem.Hotel
+     * Getter for the number of rooms in the Hotel
      * 
-     * @return The number of rooms in the HotelReservationSystem.Hotel
+     * @return The number of rooms in the Hotel
      */
     public int getRoomCount() {
-        return  roomCount;
+        return roomCount - 1; // -1 because we start at 1 not 0
     }
 
     /**
-     * Getter for the earnings of the HotelReservationSystem.Hotel
+     * Getter for the earnings of the Hotel
      * 
-     * @return The earnings of the HotelReservationSystem.Hotel
+     * @return The earnings of the Hotel
      */
     public double getEarnings() {
-        return  earnings;
+        return earnings;
     }
 
     /**
@@ -113,10 +113,10 @@ public class Hotel {
             // increment the number of rooms
             roomCount++;
 
-            return  newRoom;
+            return newRoom;
         }
 
-        return  null;
+        return null;
     }
 
     /**
@@ -127,32 +127,31 @@ public class Hotel {
     public void delRoom(int num) {
         // check if index is within bounds
         if (num < 1 || num > 51) {
-            System.out.println("Index out of bounds.");
+            System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
         } else {
             String roomName = this.name + "_Room_" + num;
             Room room = fetchRoom(roomName);
 
             // check if the rooms exists
             if (room != null) {
-                Room removedRoom = rooms.remove(num);
-                System.out.printf("HotelReservationSystem.Room '%s' has been removed from hotel '%s'.\n", removedRoom.getName(),
-                        this.getName());
+                this.rooms.remove(num);
+                System.out.printf("Room number %d in hotel '%s' has been successfully deleted.", num, this.getName());
                 roomCount--;
             } else {
-                System.out.printf("HotelReservationSystem.Room with the name '%s' is not found.", roomName);
-            }
+                System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", num);
         }
-
+        }
     }
 
     /**
      * Books a room and makes a reservation, if possible
      * 
      * @param guestName the guests name
-     * @param checkIn date of checking in
-     * @param checkOut date of checking out
+     * @param checkIn   date of checking in
+     * @param checkOut  date of checking out
      * 
-     * @return {true} if room booking is successful, {false}  if room booking is not successful
+     * @return {true} if room booking is successful, {false} if room booking is not
+     *         successful
      * 
      * @author Zhean Ganituen, Jaztin Jimenez
      */
@@ -164,38 +163,39 @@ public class Hotel {
                 // add reservation
                 Reservation newReservation = new Reservation(guestName, checkIn, checkOut, room);
                 this.reservations.add(newReservation);
-                System.out.printf("HotelReservationSystem.Room booked successfully for %s.\n", guestName);
+                System.out.printf("Room booked successfully for %s.\n", guestName);
                 setEarnings(room.getBasePrice() * (checkOut - checkIn));
                 room.bookLength(checkIn, checkOut);
-                return  true;
+                return true;
             }
         }
 
         System.out.println("There are currently no available rooms for the selected dates");
-        return  false;
+        return false;
     }
 
     /**
      * return the room given the name of the room of a hotelName
      * 
      * @param name name of the room
-     * @return {room} the room with the room name in the hotel, {null} the room was not found
+     * @return {room} the room with the room name in the hotel, {null} the room was
+     *         not found
      * 
      * @author Zhean Ganituen
      */
     public Room fetchRoom(String name) {
         for (Room room : rooms) {
             if (room.getName().equals(name)) {
-                return  room;
+                return room;
             }
         }
 
-        return  null; // room not found
+        return null; // room not found
     }
 
-
     /**
-     * views the hotel information, checks either high-level information or low-level information from the hotel.
+     * views the hotel information, checks either high-level information or
+     * low-level information from the hotel.
      * 
      * @param sc The scanner object
      * 
@@ -296,11 +296,11 @@ public class Hotel {
                         int days = 31 - roomQuery.getDaysBooked();
 
                         System.out.printf(
-                                "\n\033[34mThe HotelReservationSystem.Room '%s' in HotelReservationSystem.Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
+                                "\n\033[34mThe Room '%s' in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
                                 roomQuery.getName(), this.name, roomQuery.getBasePrice(), days);
                     } else {
                         System.out.printf(
-                                "\n\033[31mError. Sorry! But the room name '%s' in HotelReservationSystem.Hotel '%s' does not exist.\033[37m\n",
+                                "\n\033[31mError. Sorry! But the room name '%s' in Hotel '%s' does not exist.\033[37m\n",
                                 roomName, this.getName());
                     }
                 }
@@ -309,10 +309,12 @@ public class Hotel {
     }
 
     /**
-     * changes the price of all rooms in the hotel, if and only if there are no reservations
+     * changes the price of all rooms in the hotel, if and only if there are no
+     * reservations
      * 
      * @param newPrice the new price, constraint: newPrice >= 100
-     * @return {true} if the base price is successfully changed, {false} if otherwise
+     * @return {true} if the base price is successfully changed, {false} if
+     *         otherwise
      * 
      * @author Zhean Ganituen
      */
@@ -325,10 +327,10 @@ public class Hotel {
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
             }
-            return  true;
+            return true;
         }
 
-        return  false;
+        return false;
     }
 
     /**
@@ -369,12 +371,12 @@ public class Hotel {
      */
     public void delRoomUI(Scanner sc) {
         if (roomCount > 1) {
-            System.out.print("Enter room number to delete: ");
+            System.out.printf("\nEnter room number to delete: ");
             int index = sc.nextInt();
             sc.nextLine();
             this.delRoom(index);
         } else {
-            System.out.printf("Delete cancelled. There is only one room left.\n");
+            System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
         }
     }
 
@@ -458,6 +460,6 @@ public class Hotel {
         this.rooms.clear();
         this.reservations.clear();
         this.earnings = 0.0;
-        System.out.println("HotelReservationSystem.Hotel data cleared.");
+        System.out.println("Hotel data cleared.");
     }
 }
