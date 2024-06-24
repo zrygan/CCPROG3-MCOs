@@ -148,11 +148,11 @@ public class Hotel {
      * Books a room and makes a reservation, if possible
      *
      * @param guestName the guests name
-     * @param checkIn date of checking in
-     * @param checkOut date of checking out
+     * @param checkIn   date of checking in
+     * @param checkOut  date of checking out
      *
      * @return {true} if room booking is successful, {false} if room booking is
-     * not successful
+     *         not successful
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
@@ -180,7 +180,7 @@ public class Hotel {
      *
      * @param name name of the room
      * @return {room} the room with the room name in the hotel, {null} the room
-     * was not found
+     *         was not found
      *
      * @author Zhean Ganituen
      */
@@ -211,7 +211,7 @@ public class Hotel {
         System.out.printf("=================================================");
 
         System.out.printf("\nChoose an option: ");
-        
+
         int level = -1;
 
         try {
@@ -240,9 +240,9 @@ public class Hotel {
                 System.out.printf("===============================================================");
 
                 System.out.printf("\nChoose an option: ");
-                
+
                 int option = -1;
-                
+
                 try {
                     option = sc.nextInt();
                     sc.nextLine();
@@ -256,7 +256,7 @@ public class Hotel {
                             this.getName());
 
                     System.out.print("\nEnter date (1-31): ");
-                    
+
                     int date = -1;
 
                     try {
@@ -305,7 +305,7 @@ public class Hotel {
                             this.getName());
 
                     System.out.printf("\nEnter room number: ");
-                    
+
                     int roomNum = -1;
 
                     try {
@@ -326,12 +326,12 @@ public class Hotel {
                         int days = 31 - roomQuery.getDaysBooked();
 
                         System.out.printf(
-                                "\n\033[34mThe Room '%s' in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
-                                roomQuery.getName(), this.name, roomQuery.getBasePrice(), days);
+                                "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
+                                roomNum, this.name, roomQuery.getBasePrice(), days);
                     } else {
                         System.out.printf(
-                                "\n\033[31mError. Sorry! But the room name '%s' in Hotel '%s' does not exist.\033[37m\n",
-                                roomName, this.getName());
+                                "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
+                                roomNum, this.getName());
                     }
                 }
             }
@@ -344,7 +344,7 @@ public class Hotel {
      *
      * @param newPrice the new price, constraint: newPrice >= 100
      * @return {true} if the base price is successfully changed, {false} if
-     * otherwise
+     *         otherwise
      *
      * @author Zhean Ganituen
      */
@@ -372,7 +372,7 @@ public class Hotel {
      */
     public void addRoom(Scanner sc) {
         System.out.printf("Enter number of rooms to create: ");
-        
+
         int num = -1;
 
         try {
@@ -411,7 +411,7 @@ public class Hotel {
         if (this.getRoomCount() > 1) {
             System.out.println(this.getRoomCount());
             System.out.printf("\nEnter room number to delete: ");
-            
+
             int index = -1;
 
             try {
@@ -456,16 +456,20 @@ public class Hotel {
      * @author Jaztin Jimenez
      */
     public void changePriceUI(Scanner sc) {
-        System.out.print("Enter the new price for the rooms of the hotel: ");
+        System.out.printf("\nEnter the new price for the rooms of the hotel: ");
         double newPrice = sc.nextDouble();
         sc.nextLine();
 
         if (this.changePrice(newPrice)) {
-            System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(),
+            System.out.printf("\033[33m\nThe rooms of hotel '%s' have been changed to %.2f.\033[37m\n", this.getName(),
                     this.rooms.get(0).getBasePrice());
+        } else if (newPrice <= 100) {
+            System.out.printf(
+                    "\n\033[31mError. The base price of hotel '%s' has not been changed because the new price is too low. It must be greater than or equal to 100.\033[37m\n",
+                    this.getName());
         } else {
             System.out.printf(
-                    "The base price of hotel '%s' has not been changed because there's an ongoing reservation.",
+                    "\n\033[31mError. The base price of hotel '%s' has not been changed because there's an ongoing reservation.\033[37m\n",
                     this.getName());
         }
     }
@@ -496,9 +500,9 @@ public class Hotel {
         System.out.print("Enter guest name for reservation removal: ");
         String guestName = sc.nextLine();
         System.out.print("Enter check-in date of the reservation to remove (1-31): ");
-        
+
         int checkInDate = -1;
-        
+
         try {
             checkInDate = sc.nextInt();
             sc.nextLine();
@@ -533,10 +537,10 @@ public class Hotel {
             setEarnings(-(removeRoom.getBasePrice()
                     * (reservationToRemove.getCheckout() - reservationToRemove.getCheckin())));
             this.reservations.remove(reservationToRemove);
-            System.out.println("HotelReservationSystem.Reservation removed successfully.");
+            System.out.println("Reservation removed successfully.");
 
         } else { // doesn't cancel the reservation if invalid
-            System.out.println("HotelReservationSystem.Reservation not found.");
+            System.out.println("Reservation not found.");
         }
     }
 

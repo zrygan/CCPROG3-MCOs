@@ -11,7 +11,7 @@ public class HRS {
     private ArrayList<Hotel> hotels;
 
     /**
-     * Constructor for the Hotel HotelReservationSystem.Reservation System
+     * Constructor for the Hotel Reservation System
      */
     public HRS() {
         this.hotels = new ArrayList<>();
@@ -266,7 +266,7 @@ public class HRS {
      * @author Jaztin Jimenez
      */
     public void simBookingUI(Scanner sc) {
-        System.out.println("Welcome to the Hotel HotelReservationSystem.Reservation System, User!");
+        System.out.println("Welcome to the Hotel Reservation System, User!");
         System.out.print("Please enter your name: ");
 
         String guestName = sc.nextLine(); // look out for this baddie
