@@ -23,14 +23,15 @@ public class HRS {
     }
 
     // Methods
-    /* createHotel
+    /*
+     * createHotel
      * creates a new hotel with a given name
      * 
      * @params:
-     *  - name : String : the name of the new hotel
+     * - name : String : the name of the new hotel
      * 
-     * @returns: 
-     *  - none
+     * @returns:
+     * - none
      * 
      * 
      * @author: Zhean Ganituen
@@ -41,15 +42,16 @@ public class HRS {
         hotel.addRoom(sc);
     }
 
-    /* fetchHotel
+    /*
+     * fetchHotel
      * returnss the hotel given the name of the hotel
      * 
      * @params:
-     *  - name : String : name of the hotel
+     * - name : String : name of the hotel
      * 
      * @returns:
-     *  - room : Hotel : the hotel with the room name in the hotel
-     *  - null : null  : the hotel was not found
+     * - room : Hotel : the hotel with the room name in the hotel
+     * - null : null : the hotel was not found
      * 
      * @author: Zhean Ganituen
      */
@@ -63,21 +65,22 @@ public class HRS {
         return null;
     }
 
-    /* createHotelUI
+    /*
+     * createHotelUI
      * User I/O for creating a hotel
      * 
      * @params:
-     *  - sc : Scanner : Scanner object
+     * - sc : Scanner : Scanner object
      * 
      * @returns:
-     *  - none
+     * - none
      * 
      * @author:
-     *  - Zhean Ganituen
+     * - Zhean Ganituen
      */
     public void createHotelUI(Scanner sc) {
         System.out.printf("You selected to \033[34mcreate\033[37m a hotel!\n");
-        
+
         System.out.printf("\nEnter the name of the hotel: ");
         String hotelName = sc.nextLine();
 
@@ -86,24 +89,25 @@ public class HRS {
         } else {
             createHotel(hotelName, sc);
             System.out.printf("\n\033[34mHotel with then name '%s' created successfully.\033[37m\n", hotelName);
-        }            
-            
+        }
+
     }
 
-    /* viewHotelUI
+    /*
+     * viewHotelUI
      * User I/O for viewing the details of a hotel
      * 
-     * @params: 
-     *  - sc : Scanner : Scanner object
+     * @params:
+     * - sc : Scanner : Scanner object
      * 
      * @returns:
-     *  - none
+     * - none
      * 
      * @author: Zhean Ganituen
      */
     public void viewHotelUI(Scanner sc) {
         System.out.printf("You selected to \033[34mview\033[37m a hotel!\n");
-        
+
         System.out.printf("\nEnter the name of the hotel: ");
         String hotelName = sc.nextLine();
 
@@ -111,49 +115,71 @@ public class HRS {
         if (hotel != null) {
             hotel.viewHotel(sc);
         } else {
-            System.out.printf("\n\033[31mError. Sorry! But that hotel name '%s' is not found in the database.\033[37m\n", hotelName);
+            System.out.printf(
+                    "\n\033[31mError. Sorry! But that hotel name '%s' is not found in the database.\033[37m\n",
+                    hotelName);
         }
     }
 
-    /* manageHotelUI
+    /*
+     * manageHotelUI
      * User I/O for managing a hotel
      * 
      * @params:
-     *  - sc : Scanner : Scanner object
+     * - sc : Scanner : Scanner object
      * 
      * @returns:
-     *  - none
+     * - none
      * 
      * @author: Zhean Ganituen
      */
     public void manageHotelUI(Scanner sc) {
-        System.out.print("Enter the name of the hotel: ");
+        System.out.printf("You selected to \033[34mmanage\033[37m a hotel!\n");
+
+        System.out.print("\nEnter the name of the hotel: ");
         String name = sc.nextLine();
         Hotel hotel = fetchHotel(name);
-        if (hotel != null) {
-            System.out.println("1\t:\t to change the name of the hotel");
-            System.out.println("2\t:\t to add a new room");
-            System.out.println("3\t:\t remove a room");
-            System.out.println("4\t:\t update the base price");
-            System.out.println("5\t:\t remove a reservation");
-            System.out.println("6\t:\t remove a hotel");
 
-            System.out.print("Choice: ");
+        if (hotel != null) {
+            System.out.printf("\n==================== OPTIONS ====================\n");
+            System.out.println("\33[33m1\33[37m\t:\t change the name of the hotel");
+            System.out.println("\33[33m2\33[37m\t:\t add a new room");
+            System.out.println("\33[33m3\33[37m\t:\t remove a room");
+            System.out.println("\33[33m4\33[37m\t:\t update the base price");
+            System.out.println("\33[33m5\33[37m\t:\t remove a reservation");
+            System.out.println("\33[31m6\33[37m\t:\t remove a hotel");
+            System.out.println("\33[33m0\33[37m\t:\t exit");
+            System.out.printf("=================================================");
+
+            System.out.printf("\nChoose an option: ");
+
             int choice = sc.nextInt();
             sc.nextLine();
 
             switch (choice) {
-                case 1 ->
+                case 0 -> System.out.println("\nReturning to main menu.");
+                case 1 -> {
+                    System.out.printf("You selected to \033[34mchange the name of hotel '%s'\033[37m.\n", name);
                     hotel.changeHotelName(sc);
-                case 2 ->
+                }
+                case 2 -> {
+                    System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
                     hotel.addRoom(sc);
-                case 3 ->
+                }
+                case 3 -> {
+                    System.out.printf("You selected to \033[34mdelete a room\033[37m in hotel '%s'.\n", name);
                     hotel.delRoomUI(sc);
-                case 4 ->
+                }
+                case 4 -> {
+                    System.out.printf("You selected to \033[34mchange the price\033[37m of hotel '%s'.\n", name);
                     hotel.changePriceUI(sc);
-                case 5 ->
+                }
+                case 5 -> {
+                    System.out.printf("You selected to \033[34mremove a reseravation\033[37m in hotel '%s'.\n", name);
                     hotel.removeReservationUI(sc);
+                }
                 case 6 -> {
+                    System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
                     hotel.prepareForRemoval();
                     hotels.remove(hotel);
                     System.out.println("Hotel removed successfully.");
@@ -167,14 +193,15 @@ public class HRS {
         }
     }
 
-    /* simBookingUI
+    /*
+     * simBookingUI
      * User I/O for booking simulation
      * 
      * @params:
-     *  - sc : Scanner : Scanner object
+     * - sc : Scanner : Scanner object
      * 
      * @returns:
-     *  - none
+     * - none
      * 
      * @authors: Zhean Ganituen, Jaztin Jimenez
      */
@@ -202,25 +229,24 @@ public class HRS {
             // checks if the booking dates are in bound
             if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31) && (checkIn >= 1 && checkIn <= 30)) {
                 hotel.bookRoom(guestName, checkIn, checkOut);
-            }
-            else {
+            } else {
                 System.out.printf("Invalid dates for booking.\n");
             }
 
-            
         } else {
             System.out.printf("Hotel '%s' is not found.\n", hotelName);
         }
     }
 
-    /* showMenu
+    /*
+     * showMenu
      * Shows the main menu of the program
      * 
      * @params:
-     *  - none
+     * - none
      * 
      * @returns:
-     *  - none
+     * - none
      * 
      * @author: Zhean Ganituen
      */
@@ -235,14 +261,15 @@ public class HRS {
         System.out.printf("===================================\n");
     }
 
-    /* showHotels
+    /*
+     * showHotels
      * Lists the hotels with their number of rooms
      * 
      * @params:
-     *  - none
+     * - none
      * 
      * @returns:
-     *  - none
+     * - none
      * 
      * @author: Zhean Ganituen
      */

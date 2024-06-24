@@ -73,13 +73,16 @@ public class Room {
         return reservation;
     }
 
-    /* bookLength
-     * determines the days the room is booked and make it's availability for those days false
-     * and increment the number of days the room is booked by the total book book length
+    /*
+     * bookLength
+     * determines the days the room is booked and make it's availability for those
+     * days false
+     * and increment the number of days the room is booked by the total book book
+     * length
      * 
      * @params:
-     *  - checkin  : int : day the customer checks in
-     *  - checkout : int : day the customer checks out
+     * - checkin : int : day the customer checks in
+     * - checkout : int : day the customer checks out
      * 
      * @author: Jaztin Jimenez
      */
@@ -91,7 +94,7 @@ public class Room {
         this.daysBooked += checkout - checkin + 1; // increment days booked with the total book length
     }
 
-
+    // FIXME: CODE DOCS
     public void removeAvailability(int checkin, int checkout) {
         for (int i = checkin; i <= checkout - 1; i++) {
             this.availability[i - 1] = false;
@@ -100,12 +103,13 @@ public class Room {
         this.daysBooked -= checkout - checkin + 1; // increment days booked with the total book length
     }
 
-    /* isAvailable
+    /*
+     * isAvailable
      * a checker that determines if the room is a available for a range
      * 
      * @params:
-     *  - checkin  : int : day the customer checks in
-     *  - checkout : int : day the customer checks out
+     * - checkin : int : day the customer checks in
+     * - checkout : int : day the customer checks out
      * 
      * @author: Jaztin Jimenez
      */
@@ -119,11 +123,12 @@ public class Room {
         return true; // assume true
     }
 
-    /* isAvailable
-     * a checker that determines if the room is a available for some day 
+    /*
+     * isAvailable
+     * a checker that determines if the room is a available for some day
      * 
      * @params:
-     *  - day : int : a specific day
+     * - day : int : a specific day
      * 
      * 
      * @author: Jaztin Jimenez
