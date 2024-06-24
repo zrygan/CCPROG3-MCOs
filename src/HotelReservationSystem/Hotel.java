@@ -140,31 +140,6 @@ public class Hotel {
     }
 
     /**
-     * Deletes a specific room given a room number
-     *
-     * @param num the room number
-     */
-    public void delRoom(int num) {
-        // check if index is within bounds
-        if (num < 0 || num > 51) {
-            System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
-        } else {
-            String roomName = this.name + "_Room_" + num;
-            Room room = fetchRoom(roomName);
-
-            // check if the rooms exists
-            if (room != null) {
-                this.rooms.remove(num);
-                System.out.printf("\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
-                        num, this.getName());
-                roomCount--;
-            } else {
-                System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", num);
-            }
-        }
-    }
-
-    /**
      * Books a room and makes a reservation, if possible
      *
      * @param guestName the guests name
@@ -382,9 +357,13 @@ public class Hotel {
         // and if newPrice is greater than the minimum amount: 100
         if (this.reservations.isEmpty() && newPrice >= 100) {
             // iterate through the rooms and set the price to newPrice
+
+            this.setBasePrice(newPrice); // change base price of the hotel itself
+
+            // then iterare through the rooms to change their base price
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
-                this.setBasePrice(newPrice);
+
             }
             return true;
         }
@@ -433,48 +412,13 @@ public class Hotel {
     /**
      * User I/O for deleting room. Uses `delRoom`
      *
-     * @param sc the scanner object
-     *
      * @author Zhean Ganituen
      */
-    public void delRoomUI(Scanner sc) {
-        if (this.getRoomCount() > 1) {
-            System.out.println(this.getRoomCount());
-            System.out.printf("\nEnter room number to delete: ");
-
-            int index = -1;
-
-            try {
-                index = sc.nextInt();
-                sc.nextLine();
-            } catch (InputMismatchException e) {
-                System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-                sc.nextLine();
-            }
-
-            if (index < 0 || index > 51) {
-                System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
-            } else {
-                String roomName = this.name + "_Room_" + index;
-                Room room = fetchRoom(roomName);
-
-                // check if the rooms exists
-                if (room != null) {
-                    this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
-                    // starts at 0
-                    System.out.printf(
-                            "\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
-                            index, this.getName());
-                    roomCount--;
-                } else {
-                    System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", index);
-                }
-            }
-        } else {
-            System.out.printf(
-                    "\n\033[31mError. Cannot delete room. There is only 1 room left in hotel '%s'.\033[37m\n",
-                    this.getName());
-        }
+    public void delRoom(int index) {
+        this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
+        // starts at 0
+        
+        roomCount--;
     }
 
     /**
@@ -526,52 +470,28 @@ public class Hotel {
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
-    public void removeReservationUI(Scanner sc) {
-        System.out.print("Enter guest name for reservation removal: ");
-        String guestName = sc.nextLine();
-        System.out.print("Enter check-in date of the reservation to remove (1-31): ");
-
-        int checkInDate = -1;
-
-        try {
-            checkInDate = sc.nextInt();
-            sc.nextLine();
-        } catch (InputMismatchException e) {
-            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
-            sc.nextLine();
-        }
-
-        Reservation reservationToRemove = null;
-        for (Reservation reservation : reservations) { // go through all the reservations within the hotel
-            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { // checks if the
-                // guest name and
-                // the check-in
-                // date of the
-                // reservation is
-                // valid
+    public boolean removeReservation(String guestName, int checkInDate) {
+        Reservation reservationToRemove = null; // assume not found
+        // go through all the reservations within the hotel
+        for (Reservation reservation : reservations) { 
+            // checks if the guest name and the check-in date of the reservation is valid
+            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) { 
                 reservationToRemove = reservation;
                 break;
             }
         }
+
         if (reservationToRemove != null) { // removes the reservation if valid
             Room removeRoom = reservationToRemove.getRoom();
             removeRoom.removeAvailability(reservationToRemove.getCheckin(), reservationToRemove.getCheckout()); // makes
-            // the
-            // dates
-            // within
-            // the
-            // reservation
-            // available
-            // for
-            // booking
+            // the dates within the reservation available for booking
             setEarnings(-(removeRoom.getBasePrice()
                     * (reservationToRemove.getCheckout() - reservationToRemove.getCheckin())));
             this.reservations.remove(reservationToRemove);
-            System.out.println("Reservation removed successfully.");
+            return true;
+        } 
 
-        } else { // doesn't cancel the reservation if invalid
-            System.out.println("Reservation not found.");
-        }
+        return false;
     }
 
     /**
@@ -580,12 +500,10 @@ public class Hotel {
      * @author Jaztin Jimenez
      */
     public void prepareForRemoval() {
-        System.out.printf("\n\033[33mPreparing hotel '%s' for removal..\033[37m\n", this.getName());
         this.name = null;
         this.rooms.clear();
         this.reservations.clear();
         this.earnings = 0.0;
-        System.out.printf("\n\033[33mHotel data cleared..\033[37m\n");
     }
 
 }

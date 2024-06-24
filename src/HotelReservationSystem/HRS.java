@@ -167,9 +167,11 @@ public class HRS {
             }
 
             switch (choice) {
-                case 0 ->
+                case 0 -> // exit to main menu
                     System.out.println("\nReturning to main menu.");
                 case 1 -> {
+                    // change name 
+
                     System.out.printf("You selected to \033[34mchange the name of hotel '%s'\033[37m.\n", name);
                     System.out.printf("\nEnter new hotel name: ");
 
@@ -192,6 +194,8 @@ public class HRS {
 
                 }
                 case 2 -> {
+                    // add room 
+
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
 
                     System.out.printf("\nEnter number of rooms to create: ");
@@ -233,14 +237,66 @@ public class HRS {
                     }
                 }
                 case 3 -> {
+                    // delete a room
+
                     System.out.printf("You selected to \033[34mdelete a room\033[37m in hotel '%s'.\n", name);
-                    hotel.delRoomUI(sc);
+
+                    // hotel.delRoomUI(sc);
+                    if (hotel.getRoomCount() > 1) {
+                        System.out.println(hotel.getRoomCount());
+                        System.out.printf("\nEnter room number to delete: ");
+
+                        int index = -1;
+
+                        try {
+                            index = sc.nextInt();
+                            sc.nextLine();
+                        } catch (InputMismatchException e) {
+                            System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                            sc.nextLine();
+                        }
+
+                        // check if index is within bounds
+                        if (index < 0 || index > 51) {
+                            System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
+                        } else {
+                            // format the name
+                            String roomName = hotel.getName() + "_Room_" + index;
+                            
+                            // get the room
+                            Room room = hotel.fetchRoom(roomName);
+
+                            // check if the rooms exists
+                            if (room != null) {
+                                hotel.delRoom(index); // run delRoomUI
+                                System.out.printf(
+                                        "\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
+                                        index, hotel.getName());
+                            } else {
+                                System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", index);
+                            }
+                        }
+                    } else {
+                        System.out.printf(
+                                "\n\033[31mError. Cannot delete room. There is only 1 room left in hotel '%s'.\033[37m\n",
+                                hotel.getName());
+                    }
                 }
                 case 4 -> {
+                    // change price
+
                     System.out.printf("You selected to \033[34mchange the price\033[37m of hotel '%s'.\n", name);
                     System.out.printf("\nEnter the new price for the rooms of the hotel: ");
-                    double newPrice = sc.nextDouble();
-                    sc.nextLine();
+
+                    double newPrice = -1.0;
+
+                    try {
+                        newPrice = sc.nextDouble();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                        sc.nextLine();
+                    }
 
                     if (hotel.changePrice(newPrice)) {
                         System.out.printf("\033[33m\nThe rooms of hotel '%s' have been changed to %.2f.\033[37m\n", hotel.getName(),
@@ -258,13 +314,44 @@ public class HRS {
 
                 case 5 -> {
                     System.out.printf("You selected to \033[34mremove a reseravation\033[37m in hotel '%s'.\n", name);
-                    hotel.removeReservationUI(sc);
+                    
+                    // get the name
+                    System.out.print("Enter guest name for reservation removal: ");
+                    String guestName = sc.nextLine();
+                    
+                    // get the check-in date
+                    System.out.print("Enter check-in date of the reservation to remove (1-31): ");
+                    int checkInDate = -1;
+
+                    try {
+                        checkInDate = sc.nextInt();
+                        sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
+                        sc.nextLine();
+                    }
+                    
+                    if (hotel.removeReservation(guestName, checkInDate)){
+                        // if hotel reservation is removed or true
+                        System.out.println("Reservation removed successfully.");
+                    } else { 
+                        // doesn't cancel the reservation if invalid
+                        // if the remove reservation does not remove anything
+                        System.out.println("Reservation not found.");
+                    }
                 }
                 case 6 -> {
                     System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
+                    System.out.printf("\n\033[33mPreparing hotel '%s' for removal..\033[37m\n", hotel.getName());
+                    
                     hotel.prepareForRemoval();
+                    
+                    System.out.printf("\n\033[33mHotel data cleared..\033[37m\n");
+                    
                     hotels.remove(hotel);
+                    
                     System.out.println("Hotel removed successfully.");
+                    
                     return; // Exit after removal
                 }
                 default ->
