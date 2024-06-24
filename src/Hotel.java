@@ -43,7 +43,7 @@ public class Hotel {
     }
 
     public void setEarnings(double earnings) {
-        this.earnings = earnings;
+        this.earnings += earnings;
     }
 
     // Getters
@@ -478,8 +478,12 @@ public class Hotel {
             }
         }
         if (reservationToRemove != null) { // removes the reservation if valid
-            reservations.remove(reservationToRemove);
+            Room removeRoom = reservationToRemove.getRoom();
+            removeRoom.removeAvailability(reservationToRemove.getCheckin(), reservationToRemove.getCheckout()); // makes the dates within the reservation available for booking
+            setEarnings(-(removeRoom.getBasePrice() * (reservationToRemove.getCheckout() - reservationToRemove.getCheckin())));
+            this.reservations.remove(reservationToRemove);
             System.out.println("Reservation removed successfully.");
+
         } else { // doesn't cancel the reservation if invalid
             System.out.println("Reservation not found.");
         }
