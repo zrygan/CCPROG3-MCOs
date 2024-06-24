@@ -229,23 +229,23 @@ public class HRS {
                         int date = getInput(sc);
 
                         // print available rooms with proper formatting and handling
-                        if (hotel.fetchAvailableRoomNames(1, date).isEmpty()) {
+                        if (hotel.fetchAvails(1, date).isEmpty()) {
                             System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
                                     hotel.getName(), date);
                         } else {
                             System.out.printf("Available rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
-                            for (String room : hotel.fetchAvailableRoomNames(1, date)) {
+                            for (String room : hotel.fetchAvails(1, date)) {
                                 System.out.printf("\t\033[33m%s\033[37m\n", room);
                             }
                         }
 
                         // print booked rooms with proper formatting and handling
-                        if (hotel.fetchAvailableRoomNames(0, date).isEmpty()) {
+                        if (hotel.fetchAvails(0, date).isEmpty()) {
                             System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
                                     hotel.getName(), date);
                         } else {
                             System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
-                            for (String room : hotel.fetchAvailableRoomNames(0, date)) {
+                            for (String room : hotel.fetchAvails(0, date)) {
                                 System.out.printf("\t\033[33m%s\033[37m\n", room);
                             }
                         }

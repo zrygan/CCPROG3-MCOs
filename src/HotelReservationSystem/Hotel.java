@@ -209,7 +209,7 @@ public class Hotel {
      * @return {avails} the names of the rooms that are available on the date,
      * {booked} the names of the rooms that are booked on the date
      */
-    public ArrayList<String> fetchAvailableRoomNames(int type, int date) {
+    public ArrayList<String> fetchAvails(int type, int date) {
         ArrayList<String> avails = new ArrayList<>();
         ArrayList<String> booked = new ArrayList<>();
 
@@ -220,7 +220,6 @@ public class Hotel {
                 booked.add(room.getName());
             }
         }
-
         // if type is 1 then return available rooms
         // otherwise return the booked rooms
         if (type == 1) {
@@ -271,7 +270,6 @@ public class Hotel {
         if (index >= 1 && index <= rooms.size()) {
             this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
             // starts at 0
-
             roomCount--;
         }
     }
