@@ -368,6 +368,40 @@ public class Hotel {
     }
 
     /*
+     * addRoom
+     * Adds a specific number of rooms to a hotel.
+     * 
+     * @param:
+     * - sc : Scanner : Scanenr object
+     * 
+     * @returns:
+     * - none
+     * 
+     * @Author: Jaztin Jimenez
+     */
+    public void addRoom(Scanner sc) {
+        System.out.printf("Enter number of rooms to create: ");
+        int num = sc.nextInt();
+        sc.nextLine();
+
+        System.out.println(); // empty new line
+
+        for (int i = 0; i < num; i++) {
+
+            Room newRoom = this.newRoom();
+
+            if (newRoom != null) {
+
+                System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), this.getName());
+
+            } else {
+                System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n",
+                        this.getName());
+            }
+        }
+    }
+
+    /*
      * delRoomUI
      * User I/O for deleting room. Uses `delRoom`
      * 
