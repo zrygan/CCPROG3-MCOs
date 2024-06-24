@@ -32,8 +32,8 @@ public class Room {
     /**
      * Setter for the base price
      *
-     * @param basePrice the base price of the room, always 1299.00 but can be
-     * changed using the manage hotel method
+     * @param basePrice the base price of the room, always 1299.00 but can be changed using the manage hotel method
+     * 
      */
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
@@ -149,11 +149,10 @@ public class Room {
     /**
      * a checker that determines if the room is a available for a range
      *
-     * @param checkin day the customer checks in
-     * @param checkout day the customer checks out
+     * @param checkIn day the customer checks in
+     * @param checkOut day the customer checks out
      *
-     * @return true if the room is available
-     * @return false if otherwise
+     * @return true if the room is available, false if otherwise
      *
      * @author Jaztin Jimenez
      */

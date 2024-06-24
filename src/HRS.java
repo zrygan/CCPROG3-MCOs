@@ -18,7 +18,7 @@ public class HRS {
     /**
      * Sets the hotels in the ArrayList of Hotel
      * 
-     * @param name The name of the Hotel
+     * @param hotels the ArrayList of hotels
      */
     public void setHotels(ArrayList<Hotel> hotels) {
         this.hotels = hotels;
@@ -51,8 +51,7 @@ public class HRS {
      * returns the hotel given the name of the hotel
      * 
      * @param name name of the hotel
-     * @return room : Hotel : the hotel with the room name in the hotel
-     * @return null : null : the hotel was not found
+     * @return room : Hotel : the hotel with the room name in the hotel. null : null : the hotel was not found 
      * 
      * @author Zhean Ganituen
      */
