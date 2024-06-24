@@ -177,7 +177,7 @@ public class Hotel {
             }
         }
 
-        System.out.println("There are currently no available rooms for the selected dates");
+        System.out.printf("\n\033[31mError. There are currently no available rooms in hotel '%s' for the selected dates.\033[37m\n", this.getName());
         return false;
     }
 
