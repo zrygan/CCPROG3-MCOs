@@ -197,10 +197,10 @@ public class HRS {
         if (hotel != null) {
             System.out.print("Enter the day of your check-in: ");
             int checkIn = sc.nextInt(); // if this auto-submits then add sc.nextLine(); after this
-
+            sc.nextLine();
             System.out.print("Enter the day of your check-out: ");
             int checkOut = sc.nextInt();
-
+            
             hotel.bookRoom(guestName, checkIn, checkOut);
         } else {
             System.out.printf("Hotel '%s' is not found.\n", hotelName);
