@@ -1,14 +1,6 @@
-/**Reservation Class
- * An object for the reservation of a room
- *
- * @param :
- *  - guest     : final String : the guest name
- *  - checkin   : final int    : the check-in date (DD)
- *  - checkout  : final int    : the check-out date (DD)
- *  - total     : double       : the total cost of the booking
- *  - room      : final Room   : the room to be reserved
+/**
+ * This class represents an object Reservation of a room for the system
  */
-
 public class Reservation {
 
     // Variables
@@ -17,10 +9,15 @@ public class Reservation {
     private final int checkout;
     private final double total;
     private final Room room;
-    // the breakdown of the reservation will be calculated later as total / (checkin
-    // - checkout)
 
-    // Constructor
+    /**
+     * Constructor for the Reservation class
+     * 
+     * @param guest the guest name
+     * @param checkin the day of check in
+     * @param checkout the day of check out
+     * @param room the room of the reservation
+     */
     public Reservation(String guest, int checkin, int checkout, Room room) {
         this.room = room;
         this.guest = guest;
@@ -29,41 +26,52 @@ public class Reservation {
         this.total = room.getBasePrice() * (checkout - checkin); // calculate total
     }
 
-    // Setters
-    // no setters since all are FINAL
-
-    // Getters
+   /**
+    * Getter for the guest name
+    * 
+    * @return the guest name of the reservation
+    */
     public String getGuest() {
         return  guest;
     }
 
+    /**
+     * Getter for the check in day
+     * 
+     * @return the check in day of the reservation
+     */
     public int getCheckin() {
         return  checkin;
     }
 
+    /**
+     * Getter for the check out day
+     * 
+     * @return the check out day of the reservation
+     */
     public int getCheckout() {
         return  checkout;
     }
 
+    /**
+     * Getter for the room of the reservation
+     * 
+     * @return the room of the reservation
+     */
     public Room getRoom() {
         return  room;
     }
 
-    /**isRoomAvailable
-     * to check if the room is available for the day
+    /**
+     * Checks if the room is available for the day
      * 
-     * @param :
-     * - room : Room : the room to check the avaulability
-     * - checkInDay : int : the day of check in, 1 < checkInDay > 31 (can't check in
-     * on day 31)
-     * - checkOutDay : int : the day of check out, 1 < checkOutDay > 31 (can't check
-     * out on day 1)
+     * @param room the room to check the avaulability
+     * @param checkInDay the day of check in, 1 < checkInDay > 31 (can't check in on day 31)
+     * @param checkOutDay the day of check out, 1 < checkOutDay > 31 (can't check out on day 1)
+     * @return false : Boolean : if room is not available
+     * @return true : Boolean : if room is available
      * 
-     * @return :
-     * - false : Boolean : if room is not available
-     * - true : Boolean : if room is available
-     * 
-     * @author: Jaztin Jimenez
+     * @author Jaztin Jimenez
      */
     public boolean isRoomAvailable(Room room, int checkInDay, int checkOutDay) {
         for (int i = checkInDay; i < checkOutDay; i++) {
@@ -72,21 +80,5 @@ public class Reservation {
             }
         }
         return  true;
-    }
-
-    /**breakdown
-     * gets the total costs of booking the reservation
-     * 
-     * @param :
-     * - none
-     * 
-     * @return :
-     * - cost per day : double
-     * 
-     * @author: Jaztin Jimenez
-     */
-    public double breakdown() {
-        return  total / (
-            - checkin);
     }
 }

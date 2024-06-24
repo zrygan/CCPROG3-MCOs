@@ -1,14 +1,3 @@
-/**Hotel Class
- * An object for the hotels in the system 
- * 
- * @param :
- *  - name         : String        : the name of the hotel
- *  - roomTotal    : int           : the current number of rooms in the hotel
- *  - roomCount    : int           : the actual total number of rooms in the hotel
- *  - rooms[]      : Room          : the rooms in the hotel, an array of Room objects, maximum of 50
- *  - earnings     : double        : the total earnings of the hotel through room bookings
- */
-
 import java.util.*;
 
 /**
@@ -129,47 +118,10 @@ public class Hotel {
         return  null;
     }
 
-    /**newRoom
-     * creates a new room in the hotel, if possible
-     * 
-     * @param :
-     * - none
-     * 
-     * @return :
-     * - true : boolen : if a new room was created
-     * - false : boolean : if not
-     * 
-     * @author: Zhean Ganituen
-     */
-    public Room newRoom(int count) {
-        // check if a room can still be created in the hotel
-        if (roomCount + count < 51) {
-            // make a unique room name
-            String roomName = name + "_Room_" + roomCount;
-
-            // create a new room with the new room name
-            Room newRoom = new Room(roomName, this);
-
-            // add the created room in the array of rooms
-            rooms.add(newRoom);
-
-            // increment the number of rooms
-            roomCount++;
-
-            return  newRoom;
-        }
-
-        return  null;
-    }
-
-    /**delRoom
+    /**
      * Deletes a specific room given a room number
      * 
-     * @param :
-     * - num : int : the room number
-     * 
-     * @return :
-     * - none
+     * @param num the room number
      */
     public void delRoom(int num) {
         // check if index is within bounds
@@ -192,20 +144,18 @@ public class Hotel {
 
     }
 
-    /**bookRoom
+    /**
      * Books a room and makes a reservation, if possible
      * 
+     * @param guestName the guests name
+     * @param checkIn date of checking in
+     * @param checkOut date of checking out
      * 
-     * @param :
-     * - guestName : String : the guests name
-     * - checkIn : int : date of checking in
-     * - checkOut : int : date of checking out
+     * @return true : boolean : if room booking is successful
+     * @return false : boolean : if room booking is not successful
      * 
-     * @return 
-     * - true : boolean : if room booking is successful
-     * - false : boolean : if room booking is not successful
-     * 
-     * @author: Zhean Ganituen, Jaztin Jimenez
+     * @author Zhean Ganituen
+     * @author Jaztin Jimenez
      */
     public boolean bookRoom(String guestName, int checkIn, int checkOut) {
         // iterate through all the rooms in hotel
@@ -226,17 +176,14 @@ public class Hotel {
         return  false;
     }
 
-    /**fetchRoom
-     * return  the room given the name of the room of a hotelName
+    /**
+     * return the room given the name of the room of a hotelName
      * 
-     * @param :
-     * - name : String : name of the room
+     * @param name name of the room
+     * @return room : the room with the room name in the hotel
+     * @return null : the room was not found
      * 
-     * @return :
-     * - room : Room : the room with the room name in the hotel
-     * - null : null : the room was not found
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public Room fetchRoom(String name) {
         for (Room room : rooms) {
@@ -248,18 +195,14 @@ public class Hotel {
         return  null; // room not found
     }
 
-    /**viewHotel
-     * views the hotel information, checks either high-level information or
-     * low-level information from
-     * the hotel.
+
+    /**
+     * views the hotel information, checks either high-level information or low-level information from the hotel.
      * 
-     * @param :
-     * - none
-     *
-     * @return :
-     * - none
-     *
-     * @author: Zhean Ganituen and Jaztin Jimenez
+     * @param sc The scanner object
+     * 
+     * @author Zhean Ganituen
+     * @author Jaztin Jimenez
      */
     public void viewHotel(Scanner sc) {
         System.out.printf("\n==================== OPTIONS ====================\n");
@@ -367,17 +310,14 @@ public class Hotel {
         }
     }
 
-    /**changePrice
-     * changes the price of all rooms in the hotel, if and only if there are no
-     * reseravations
+    /**
+     * changes the price of all rooms in the hotel, if and only if there are no reseravations
      * 
-     * @param :
-     * - newPrice : double : the new price, constraint: newPrice >= 100
+     * @param newPrice the new price, constraint: newPrice >= 100
+     * @return true if the basae price is successfully changed
+     * @return false if otherwise
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public boolean changePrice(double newPrice) {
         // check if a reservation is empty
@@ -394,16 +334,12 @@ public class Hotel {
         return  false;
     }
 
-    /**addRoom
+    /**
      * Adds a specific number of rooms to a hotel.
      * 
-     * @param :
-     * - sc : Scanner : Scanenr object
+     * @param sc the scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Jaztin Jimenez
+     * @author Jaztin Jimenez
      */
     public void addRoom(Scanner sc) {
         System.out.printf("Enter number of rooms to create: ");
@@ -427,16 +363,12 @@ public class Hotel {
         }
     }
 
-    /**delRoomUI
+    /**
      * User I/O for deleting room. Uses `delRoom`
      * 
-     * @param :
-     * - sc : Scanner : Scanner object
+     * @param sc the scanner object
      * 
-     * @return :
-     * - None
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void delRoomUI(Scanner sc) {
         if (roomCount > 1) {
@@ -449,16 +381,13 @@ public class Hotel {
         }
     }
 
-    /**changePriceUI
+    /**
      * User I/O for changing the base prices of all rooms. Uses `changePrice`
      * 
-     * @param :
-     * - sc : Scanner : Scanner object
+     * @param sc the scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen, Jaztin Jimenez
+     * @author Zhean Ganituen
+     * @author Jaztin Jimenez
      */
     public void changePriceUI(Scanner sc) {
         System.out.print("Enter the new price for the rooms of the hotel: ");
@@ -475,16 +404,13 @@ public class Hotel {
         }
     }
 
-    /**removeReservationUI
+    /**
      * Removes the reservation from a hotel room.
      * 
-     * @param :
-     * - sc : Scanner : Scanner object.
+     * @param sc
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen, Jaztin Jimenez
+     * @author Zhean Ganituen
+     * @author Jazatin Jimenez
      */
     public void removeReservationUI(Scanner sc) {
         System.out.print("Enter guest name for reservation removal: ");
@@ -526,16 +452,10 @@ public class Hotel {
         }
     }
 
-    /**prepareForRemoval
+    /**
      * Prepares a hotel for removal by resetting all its variables
      * 
-     * @param :
-     * - none
-     * 
-     * @return :
-     * - none
-     * 
-     * @author: Jaztin Jimenez
+     * @author Jaztin Jimenez
      */
     public void prepareForRemoval() {
         this.name = null;
