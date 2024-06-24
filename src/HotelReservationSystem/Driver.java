@@ -22,25 +22,10 @@ public class Driver {
      */
     public static void main(String[] args) {
         HRS hrs = new HRS();
-        boolean run = true;
-        // Debugging Code [DC1]
-        // Hotel max = hrs.fetchHotel("max");
-        // max.newRoom();
-        // max.newRoom();
-        // max.newRoom(); // there should be 3 rooms in `max` [room_0 to room_2]
-        // max.getRooms().get(0).checkIn(); // check-in in one of the rooms
-        // so now there should be some earnings in max
-        // remove this if need to check for changing base price
-        // [11.06.2024] Check View hotel >>> NO >> YES
-        // [20.06.2024] Check I/O >>> NO >> YES
-        // [20.06.2024] Check: (a) change name >>> YES
-        // (b) add room >>> YES
-        // (c) delete room >>> NO >> YES
-        // (d) change price
-        // reserved >>> NO >> NO
-        // !reserved >>> NO >> YES
+        
+        boolean run = true; 
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
-        {
+        {   
             System.out.println("Welcome to the Hotel Reservation System or (HRS).");
 
             // add more instructions here if needed
@@ -67,13 +52,13 @@ public class Driver {
 
                 switch (option) {
                     case 1 ->
-                        hrs.createHotelUI(sc);
+                        hrs.createHotel(sc);
                     case 2 ->
-                        hrs.viewHotelUI(sc);
+                        hrs.viewHotel(sc);
                     case 3 ->
-                        hrs.manageHotelUI(sc);
+                        hrs.manageHotel(sc);
                     case 4 ->
-                        hrs.simBookingUI(sc);
+                        hrs.simBooking(sc);
                     case 0 -> {
                         System.out.println("Exiting the Hotel Reservation System...");
                         run = false;
