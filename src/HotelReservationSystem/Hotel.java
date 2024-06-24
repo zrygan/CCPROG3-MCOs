@@ -123,15 +123,15 @@ public class Hotel {
     /**
      * creates a new room in the hotel, if possible
      *
-     * @return {true} if a new room is created, {false} if otherwise
+     * @return {Room} if a new room is created, {null} if otherwise
      *
      * @author Zhean Ganituen
      */
     public Room newRoom() {
-        for (int roomNumber = 1; roomNumber < 51; roomNumber++){
+        for (int roomNumber = 1; roomNumber < 51; roomNumber++) {
             String roomName = name + "_Room_" + roomNumber;
             // the first room that doesnt exist yet make it
-            if(fetchRoom(roomName) == null){
+            if (fetchRoom(roomName) == null) {
                 Room newRoom = new Room(roomName, this, this.basePrice);
                 rooms.add(newRoom);
                 roomCount++;
