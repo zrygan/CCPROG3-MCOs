@@ -344,7 +344,7 @@ public class Hotel {
         // check if a reservation is empty
         // if reseravation is empty (then no reseravation is made yet)
         // and if newPrice is greater than the minimum amount: 100
-        if (!this.reservations.isEmpty() && newPrice >= 100) {
+        if (this.reservations.isEmpty() && newPrice >= 100) {
             // iterate through the rooms and set the price to newPrice
             for (Room room : this.rooms) {
                 room.setBasePrice(newPrice);
