@@ -22,11 +22,6 @@ public class HRS {
         this.hotels = hotels;
     }
 
-    // Getters
-    public ArrayList<Hotel> getHotels() {
-        return this.hotels;
-    }
-
     // Methods
     /* createHotel
      * creates a new hotel with a given name

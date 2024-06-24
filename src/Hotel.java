@@ -55,15 +55,6 @@ public class Hotel {
         return roomCount;
     }
 
-    //@FIXME: REMOVE ALL THE ARRAYLIST GETTERS AND CHANGE THE getRooms() to just getRoomsSize()
-    public ArrayList<Room> getRooms() {
-        return rooms;
-    }
-
-    public ArrayList<Reservation> getReservations() {
-        return reservations;
-    }
-
     public double getEarnings() {
         return earnings;
     }
@@ -250,7 +241,7 @@ public class Hotel {
                 System.out.println("\nReturning to main menu.");
             case 1 ->{
                 System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n", this.getName());
-                System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", this.getName(), this.getRooms().size(), this.getEarnings());
+                System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", this.getName(), this.rooms.size(), this.getEarnings());
             }
             case 2 -> {
                 System.out.printf("You selected to \033[34mview low-level information\033[37m on hotel '%s'.\n", this.getName());
@@ -447,7 +438,7 @@ public class Hotel {
         sc.nextLine();
 
         if (this.changePrice(newPrice)) {
-            System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(), this.getRooms().get(0).getBasePrice());
+            System.out.printf("The rooms of hotel '%s' have been changed to %.2f.\n", this.getName(), this.rooms.get(0).getBasePrice());
         } else {
             System.out.printf("The base price of hotel '%s' has not been changed because there's an ongoing reservation.", this.getName());
         }
