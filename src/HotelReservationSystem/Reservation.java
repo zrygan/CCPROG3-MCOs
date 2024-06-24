@@ -1,7 +1,7 @@
 package HotelReservationSystem;
 
 /**
- * This class represents an object HotelReservationSystem.Reservation of a room
+ * This class represents an object Reservation of a room
  * for the system
  */
 public class Reservation {
@@ -14,7 +14,7 @@ public class Reservation {
     private final Room room;
 
     /**
-     * Constructor for the HotelReservationSystem.Reservation class
+     * Constructor for the Reservation class
      *
      * @param guest the guest name
      * @param checkin the day of check in
