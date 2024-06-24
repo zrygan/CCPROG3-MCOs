@@ -93,16 +93,16 @@ $(window).on("load", function() {
             Object.keys(r).reduce(function(prev, curr) {
                 if (r[curr].length > 0 && r[curr][0].score > prev) {
                     activeTab = curr;
-                    return  r[curr][0].score;
+                    return r[curr][0].score;
                 }
-                return  prev;
+                return prev;
             }, 0);
         }
         if (feelingLucky && activeTab) {
             notify.html(messages.redirecting)
             var firstItem = r[activeTab][0];
             window.location = getURL(firstItem.indexItem, firstItem.category);
-            return ;
+            return;
         }
         if (result.length > 20) {
             if (searchTerm[searchTerm.length - 1] === ".") {
@@ -114,7 +114,7 @@ $(window).on("load", function() {
             }
         }
         var categoryCount = Object.keys(r).reduce(function(prev, curr) {
-            return  prev + (r[curr].length > 0 ? 1 : 0);
+            return prev + (r[curr].length > 0 ? 1 : 0);
         }, 0);
         visibleTabs = [];
         var tabContainer = $("<div class='table-tabs'></div>").appendTo(resultContainer);
@@ -186,7 +186,7 @@ $(window).on("load", function() {
             var rowColor = index % 2 ? "odd-row-color" : "even-row-color";
             renderItem(item, table, rowColor);
         });
-        return  table;
+        return table;
     }
     function renderItem(item, table, rowColor) {
         var label = getHighlightedText(item.input, item.boundaries, item.prefix.length, item.input.length);
@@ -248,7 +248,7 @@ $(window).on("load", function() {
                 var idx = visibleTabs.indexOf(activeTab);
                 idx += e.key === "ArrowLeft" ? visibleTabs.length - 1 : 1;
                 selectTab(visibleTabs[idx % visibleTabs.length]);
-                return  false;
+                return false;
             }
         }
     });
@@ -264,15 +264,15 @@ $(window).on("load", function() {
     input.prop("disabled", false);
     reset.prop("disabled", false);
 
-    var urlparam = new URLSearchparam(window.location.search);
-    if (urlparam.has("q")) {
-        input.val(urlparam.get("q"))
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has("q")) {
+        input.val(urlParams.get("q"))
     }
-    if (urlparam.has("c")) {
-        activeTab = urlparam.get("c");
+    if (urlParams.has("c")) {
+        activeTab = urlParams.get("c");
         fixedTab = true;
     }
-    if (urlparam.get("r")) {
+    if (urlParams.get("r")) {
         feelingLucky = true;
     }
     if (input.val()) {
