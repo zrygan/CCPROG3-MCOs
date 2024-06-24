@@ -172,7 +172,26 @@ public class HRS {
                 }
                 case 2 -> {
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
-                    hotel.addRoom(sc);
+                    
+                    System.out.printf("Enter number of rooms to create: ");
+                    int num = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.println(); // empty new line
+
+                    for (int i = 0; i < num; i++) {
+
+                        Room newRoom = hotel.newRoom();
+
+                        if (newRoom != null) {
+
+                            System.out.printf("A new room '%s' has been added in hotel '%s'.\n", newRoom.getName(), hotel.getName());
+
+                        } else {
+                            System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n",
+                                    hotel.getName());
+                        }
+                    }
                 }
                 case 3 -> {
                     System.out.printf("You selected to \033[34mdelete a room\033[37m in hotel '%s'.\n", name);
