@@ -1,5 +1,5 @@
 REM By: Zhean Ganituen (zry).
-REM Batch file to run all commands needed for the Driver file.
+REM Batch file to run all commands needed for the HotelReservationSystem.Driver file.
 
 @echo off
 
@@ -9,19 +9,20 @@ cls
 
 echo ===== COMPILE AND RUN JAVA FILES =====
 
-REM Go to src directory
+REM Compile `Driver.java` using `javac`
+
+javac src/HotelReservationSystem/*.java
+
+REM Go to `src` directory
 
 cd src
 
-REM Compile `Driver.java` using `javac`
+REM Run the HotelReservationSystem.Driver class using `java`
 
-javac *.java
-
-REM Run the Driver class using `java`
-
-java Driver 
+java HotelReservationSystem.Driver
 
 REM Go back to previous directory
+
 cd..
 
 REM END OF FILE

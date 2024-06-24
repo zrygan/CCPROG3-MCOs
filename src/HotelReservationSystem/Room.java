@@ -1,3 +1,4 @@
+package HotelReservationSystem;
 
 import java.util.Arrays;
 
@@ -15,7 +16,7 @@ public class Room {
     private Reservation reservation;
 
     /**
-     * Constructor for the Room object
+     * Constructor for the HotelReservationSystem.Room object
      *
      * @param name the name of the room, must be different for each room
      * @param hotel the hotel of the room
@@ -49,7 +50,7 @@ public class Room {
     }
 
     /**
-     * Setter for the availability of the Room
+     * Setter for the availability of the HotelReservationSystem.Room
      *
      * @param availability the availability of the room per day
      */

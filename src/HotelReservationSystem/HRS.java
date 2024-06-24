@@ -1,3 +1,5 @@
+package HotelReservationSystem;
+
 import java.util.*;
 
 /**
@@ -9,23 +11,23 @@ public class HRS {
     private ArrayList<Hotel> hotels;
 
     /**
-     * Constructor for the Hotel Reservation System
+     * Constructor for the HotelReservationSystem.Hotel HotelReservationSystem.Reservation System
      */
     public HRS() {
         this.hotels = new ArrayList<>();
     }
 
     /**
-     * Sets the hotels in the ArrayList of Hotel
+     * Sets the hotels in the ArrayList of HotelReservationSystem.Hotel
      * 
-     * @param hotels the array of hotels in the HRS
+     * @param hotels the array of hotels in the HotelReservationSystem.HRS
      */
     public void setHotels(ArrayList<Hotel> hotels) {
         this.hotels = hotels;
     }
 
     /**
-     * Getter for the ArrayList of hotels in the HRS
+     * Getter for the ArrayList of hotels in the HotelReservationSystem.HRS
      * 
      * @return the ArrayList of hotels
      */
@@ -166,7 +168,7 @@ public class HRS {
 
                     hotel.setName(newName); // set the name to the new name
 
-                    System.out.printf("Hotel '%s' has been renamed to '%s'.\n", oldName, hotel.getName());
+                    System.out.printf("HotelReservationSystem.Hotel '%s' has been renamed to '%s'.\n", oldName, hotel.getName());
                 }
                 case 2 -> {
                     System.out.printf("You selected to \033[34madd a room\033[37m in hotel '%s'.\n", name);
@@ -207,14 +209,14 @@ public class HRS {
                     System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
                     hotel.prepareForRemoval();
                     hotels.remove(hotel);
-                    System.out.println("Hotel removed successfully.");
+                    System.out.println("HotelReservationSystem.Hotel removed successfully.");
                     return ; // Exit after removal
                 }
                 default ->
                     System.out.println("Invalid choice. Please try again.");
             }
         } else {
-            System.out.printf("Hotel '%s' is not found.\n", name);
+            System.out.printf("HotelReservationSystem.Hotel '%s' is not found.\n", name);
         }
     }
 
@@ -227,7 +229,7 @@ public class HRS {
      * @author Jaztin Jimenez
      */
     public void simBookingUI(Scanner sc) {
-        System.out.println("Welcome to the Hotel Reservation System, User!");
+        System.out.println("Welcome to the HotelReservationSystem.Hotel HotelReservationSystem.Reservation System, User!");
         System.out.print("Please enter your name: ");
 
         String guestName = sc.nextLine(); // look out for this baddie
@@ -255,7 +257,7 @@ public class HRS {
             }
 
         } else {
-            System.out.printf("Hotel '%s' is not found.\n", hotelName);
+            System.out.printf("HotelReservationSystem.Hotel '%s' is not found.\n", hotelName);
         }
     }
 

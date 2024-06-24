@@ -1,8 +1,9 @@
+package HotelReservationSystem;
 
 import java.util.Scanner;
 
 /**
- * Driver class for the Hotel Reservation System
+ * HotelReservationSystem.Driver class for the Hotel Reservation System
  */
 public class Driver {
 
@@ -18,7 +19,7 @@ public class Driver {
 
         // Debugging Code [DC1]
         // hrs.createHotel("max");
-        // Hotel max = hrs.fetchHotel("max");
+        // HotelReservationSystem.Hotel max = hrs.fetchHotel("max");
         // max.newRoom();
         // max.newRoom();
         // max.newRoom(); // there should be 3 rooms in `max` [room_0 to room_2]

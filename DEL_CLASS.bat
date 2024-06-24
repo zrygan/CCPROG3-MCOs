@@ -7,9 +7,9 @@ REM Clear screen
 
 cls
 
-REM Go to src directory
+REM Go to package directory
 
-cd src
+cd src/HotelReservationSystem
 
 REM Delete all `.class` files
 
@@ -21,6 +21,7 @@ echo All `.class` files have been deleted.
 
 REM Go back to home directory
 
+cd..
 cd..
 
 REM END OF FILE
