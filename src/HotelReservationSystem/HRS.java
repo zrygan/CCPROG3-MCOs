@@ -246,8 +246,7 @@ public class HRS {
                     System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
                     hotel.prepareForRemoval();
                     hotels.remove(hotel);
-                    System.out.println("Hotel removed successfully.");
-                    return; // Exit after removal
+                    System.out.printf("\n\033[33mHotel has been removed..\033[37m\n");
                 }
                 default ->
                     System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");

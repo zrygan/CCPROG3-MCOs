@@ -571,11 +571,12 @@ public class Hotel {
      * @author Jaztin Jimenez
      */
     public void prepareForRemoval() {
+        System.out.printf("\n\033[33mPreparing hotel '%s' for removal..\033[37m\n", this.getName());
         this.name = null;
         this.rooms.clear();
         this.reservations.clear();
         this.earnings = 0.0;
-        System.out.println("Hotel data cleared.");
+        System.out.printf("\n\033[33mHotel data cleared..\033[37m\n");
     }
 
 }
