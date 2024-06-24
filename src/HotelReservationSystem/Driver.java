@@ -59,8 +59,6 @@ public class Driver {
                 continue;
             }
 
-            sc.nextLine(); // consume new line
-
             switch (option) {
                 case 1 ->
                     hrs.createHotelUI(sc);

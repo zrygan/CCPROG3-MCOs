@@ -164,8 +164,6 @@ public class HRS {
                 sc.nextLine();
             }
 
-            sc.nextLine();
-
             switch (choice) {
                 case 0 ->
                     System.out.println("\nReturning to main menu.");
@@ -197,7 +195,6 @@ public class HRS {
                         System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
-                    sc.nextLine();
 
                     if (num > 0 && hotel.getRoomCount() + num < 51) {
                         for (int i = 0; i < num; i++) {
@@ -285,8 +282,6 @@ public class HRS {
                 sc.nextLine();
             } // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
             
-            sc.nextLine();
-
             System.out.print("Enter the day of your check-out: ");
             
             int checkOut = -1; // initialize as -1
@@ -298,7 +293,6 @@ public class HRS {
                 System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             }
-            sc.nextLine();
 
             // checks if the booking dates are in bound
             if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31) && (checkIn >= 1 && checkIn <= 30)) {

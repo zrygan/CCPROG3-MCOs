@@ -222,8 +222,6 @@ public class Hotel {
             sc.nextLine();
         }
 
-        sc.nextLine(); // consume new line
-
         switch (level) {
             case 0 ->
                 System.out.println("\nReturning to main menu.");
@@ -268,8 +266,6 @@ public class Hotel {
                         System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
-
-                    sc.nextLine();
 
                     ArrayList<String> availableRooms = new ArrayList<>();
                     ArrayList<String> bookedRooms = new ArrayList<>();
@@ -319,8 +315,6 @@ public class Hotel {
                         System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                         sc.nextLine();
                     }
-                    sc.nextLine();
-
                     String roomName = name + "_Room_" + roomNum; // reformat the name
 
                     // get room
@@ -389,8 +383,6 @@ public class Hotel {
             sc.nextLine();
         }
 
-        sc.nextLine();
-
         System.out.println(); // empty new line
 
         for (int i = 0; i < num; i++) {
@@ -429,8 +421,6 @@ public class Hotel {
                 System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
                 sc.nextLine();
             }
-
-            sc.nextLine();
 
             if (index < 0 || index > 51) {
                 System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
@@ -501,8 +491,6 @@ public class Hotel {
             System.out.printf("\n\033[31mError. Invalid input. Expected input with type `int`.\033[37m\n");
             sc.nextLine();
         }
-
-        sc.nextLine(); // Consume newline
 
         Reservation reservationToRemove = null;
         for (Reservation reservation : reservations) { // go through all the reservations within the hotel
