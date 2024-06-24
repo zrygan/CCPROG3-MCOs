@@ -176,6 +176,21 @@ public class Hotel {
     }
 
     /**
+     * Lists the rooms in the hotel
+     *
+     * @author Zhean Ganituen
+     */
+    public void showRooms() {
+        int i = 1;
+        System.out.printf("\n================ SHOW ROOMS ================\n");
+        for (Room room : this.rooms) {
+            System.out.printf("%d\t\033[94m'%s'\033[37m\n", i, room.getName());
+            i++;
+        }
+        System.out.printf("============================================\n");
+    }
+
+    /**
      * return the room given the name of the room of a hotelName
      *
      * @param name name of the room

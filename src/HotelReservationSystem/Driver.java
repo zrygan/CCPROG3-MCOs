@@ -19,8 +19,7 @@ public class Driver {
         Scanner sc = new Scanner(System.in); // initialize scanner
 
         // Debugging Code [DC1]
-        // hrs.createHotel("max");
-        // Hotel max = hrs.fetchHotel("max");
+        Hotel max = hrs.fetchHotel("max");
         // max.newRoom();
         // max.newRoom();
         // max.newRoom(); // there should be 3 rooms in `max` [room_0 to room_2]
@@ -72,8 +71,6 @@ public class Driver {
                     System.out.println("Exiting the Hotel Reservation System...");
                     run = false;
                 }
-                case 9 ->
-                    hrs.showHotels();
             }
 
             System.out.print("\nEnter any key to continue...");
