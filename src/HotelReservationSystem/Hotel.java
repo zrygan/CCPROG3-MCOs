@@ -16,7 +16,7 @@ public class Hotel {
 
     /**
      * Constructor for the Hotel object
-     * 
+     *
      * @param name Name of the Hotel
      */
     public Hotel(String name) {
@@ -30,7 +30,7 @@ public class Hotel {
 
     /**
      * Sets the name of the Hotel
-     * 
+     *
      * @param name The name of the Hotel
      */
     public void setName(String name) {
@@ -39,7 +39,7 @@ public class Hotel {
 
     /**
      * Sets the reservation of the Hotel
-     * 
+     *
      * @param reservation The reservation in the Hotel
      */
     public void setReservation(ArrayList<Reservation> reservation) {
@@ -48,7 +48,7 @@ public class Hotel {
 
     /**
      * Sets the rooms in the Hotel
-     * 
+     *
      * @param rooms The rooms in the Hotel
      */
     public void setRooms(ArrayList<Room> rooms) {
@@ -57,7 +57,7 @@ public class Hotel {
 
     /**
      * Sets the earnings of the Hotel
-     * 
+     *
      * @param earnings The earnings of the Hotel
      */
     public void setEarnings(double earnings) {
@@ -66,7 +66,7 @@ public class Hotel {
 
     /**
      * Getter for the name of the Hotel
-     * 
+     *
      * @return The name of the Hotel
      */
     public String getName() {
@@ -75,7 +75,7 @@ public class Hotel {
 
     /**
      * Getter for the number of rooms in the Hotel
-     * 
+     *
      * @return The number of rooms in the Hotel
      */
     public int getRoomCount() {
@@ -84,7 +84,7 @@ public class Hotel {
 
     /**
      * Getter for the earnings of the Hotel
-     * 
+     *
      * @return The earnings of the Hotel
      */
     public double getEarnings() {
@@ -93,9 +93,9 @@ public class Hotel {
 
     /**
      * creates a new room in the hotel, if possible
-     * 
+     *
      * @return {true} if a new room is created, {false} if otherwise
-     * 
+     *
      * @author Zhean Ganituen
      */
     public Room newRoom() {
@@ -121,12 +121,12 @@ public class Hotel {
 
     /**
      * Deletes a specific room given a room number
-     * 
+     *
      * @param num the room number
      */
     public void delRoom(int num) {
         // check if index is within bounds
-        if (num < 1 || num > 51) {
+        if (num < 0 || num > 51) {
             System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
         } else {
             String roomName = this.name + "_Room_" + num;
@@ -135,24 +135,25 @@ public class Hotel {
             // check if the rooms exists
             if (room != null) {
                 this.rooms.remove(num);
-                System.out.printf("Room number %d in hotel '%s' has been successfully deleted.", num, this.getName());
+                System.out.printf("\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
+                        num, this.getName());
                 roomCount--;
             } else {
                 System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", num);
-        }
+            }
         }
     }
 
     /**
      * Books a room and makes a reservation, if possible
-     * 
+     *
      * @param guestName the guests name
-     * @param checkIn   date of checking in
-     * @param checkOut  date of checking out
-     * 
-     * @return {true} if room booking is successful, {false} if room booking is not
-     *         successful
-     * 
+     * @param checkIn date of checking in
+     * @param checkOut date of checking out
+     *
+     * @return {true} if room booking is successful, {false} if room booking is
+     * not successful
+     *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
     public boolean bookRoom(String guestName, int checkIn, int checkOut) {
@@ -176,11 +177,11 @@ public class Hotel {
 
     /**
      * return the room given the name of the room of a hotelName
-     * 
+     *
      * @param name name of the room
-     * @return {room} the room with the room name in the hotel, {null} the room was
-     *         not found
-     * 
+     * @return {room} the room with the room name in the hotel, {null} the room
+     * was not found
+     *
      * @author Zhean Ganituen
      */
     public Room fetchRoom(String name) {
@@ -196,9 +197,9 @@ public class Hotel {
     /**
      * views the hotel information, checks either high-level information or
      * low-level information from the hotel.
-     * 
+     *
      * @param sc The scanner object
-     * 
+     *
      * @author Zhean Ganituen
      * @author Jaztin Jimenez
      */
@@ -311,11 +312,11 @@ public class Hotel {
     /**
      * changes the price of all rooms in the hotel, if and only if there are no
      * reservations
-     * 
+     *
      * @param newPrice the new price, constraint: newPrice >= 100
      * @return {true} if the base price is successfully changed, {false} if
-     *         otherwise
-     * 
+     * otherwise
+     *
      * @author Zhean Ganituen
      */
     public boolean changePrice(double newPrice) {
@@ -335,9 +336,9 @@ public class Hotel {
 
     /**
      * Adds a specific number of rooms to a hotel.
-     * 
+     *
      * @param sc the scanner object
-     * 
+     *
      * @author Jaztin Jimenez
      */
     public void addRoom(Scanner sc) {
@@ -364,27 +365,48 @@ public class Hotel {
 
     /**
      * User I/O for deleting room. Uses `delRoom`
-     * 
+     *
      * @param sc the scanner object
-     * 
+     *
      * @author Zhean Ganituen
      */
     public void delRoomUI(Scanner sc) {
-        if (roomCount > 1) {
+        if (this.getRoomCount() > 1) {
+            System.out.println(this.getRoomCount());
             System.out.printf("\nEnter room number to delete: ");
             int index = sc.nextInt();
             sc.nextLine();
-            this.delRoom(index);
+
+            if (index < 0 || index > 51) {
+                System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
+            } else {
+                String roomName = this.name + "_Room_" + index;
+                Room room = fetchRoom(roomName);
+
+                // check if the rooms exists
+                if (room != null) {
+                    this.rooms.remove(index - 1); // minus 1 this because we start naming at 1 but indexing still
+                    // starts at 0
+                    System.out.printf(
+                            "\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
+                            index, this.getName());
+                    roomCount--;
+                } else {
+                    System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", index);
+                }
+            }
         } else {
-            System.out.printf("\n\033[31mError. Entered number out of range. From 1 to 50 only.\033[37m\n");
+            System.out.printf(
+                    "\n\033[31mError. Cannot delete room. There is only 1 room left in hotel '%s'.\033[37m\n",
+                    this.getName());
         }
     }
 
     /**
      * User I/O for changing the base prices of all rooms. Uses `changePrice`
-     * 
+     *
      * @param sc the scanner object
-     * 
+     *
      * @author Zhean Ganituen
      * @author Jaztin Jimenez
      */
@@ -405,9 +427,9 @@ public class Hotel {
 
     /**
      * Removes the reservation from a hotel room.
-     * 
+     *
      * @param sc Scanner object
-     * 
+     *
      * @author Zhean Ganituen, Jazatin Jimenez
      */
     public void removeReservationUI(Scanner sc) {
@@ -452,7 +474,7 @@ public class Hotel {
 
     /**
      * Prepares a hotel for removal by resetting all its variables
-     * 
+     *
      * @author Jaztin Jimenez
      */
     public void prepareForRemoval() {
