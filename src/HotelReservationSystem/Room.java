@@ -9,7 +9,7 @@ public class Room {
 
     // Variables
     private String name;
-    private double basePrice = 1299.0;
+    private double basePrice;
     private int daysBooked;
     private final Hotel hotel;
     private boolean[] availability;
@@ -21,9 +21,9 @@ public class Room {
      * @param name the name of the room, must be different for each room
      * @param hotel the hotel of the room
      */
-    public Room(String name, Hotel hotel) {
+    public Room(String name, Hotel hotel, double basePrice) {
         this.name = name;
-        this.basePrice = 1299.0;
+        this.basePrice = basePrice;
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
