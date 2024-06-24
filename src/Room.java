@@ -84,16 +84,16 @@ public class Room {
      * @author: Jaztin Jimenez
      */
     public void bookLength(int checkin, int checkout) {
-        for (int i = checkin; i <= checkout; i++) {
+        for (int i = checkin; i <= checkout - 1; i++) {
             this.availability[i - 1] = true;
         }
 
         this.daysBooked += checkout - checkin + 1; // increment days booked with the total book length
     }
 
-    
+
     public void removeAvailability(int checkin, int checkout) {
-        for (int i = checkin; i <= checkout; i++) {
+        for (int i = checkin; i <= checkout - 1; i++) {
             this.availability[i - 1] = false;
         }
 
