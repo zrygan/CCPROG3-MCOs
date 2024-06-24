@@ -1,39 +1,27 @@
-/**HotelReservationSystem (HRS) Class
- * An object that handles the reservation system.
- * 
- * @param :
- *  - hotel : ArrayList<Hotel> : the list of hotels in the system
- */
-
 import java.util.*;
 
+/**
+ * An object that handles the reservation system.
+ */
 public class HRS {
 
     // Variables
     private ArrayList<Hotel> hotels;
 
-    // Constructor
+    /**
+     * Constructor for the Hotel Reservation System
+     */
     public HRS() {
         this.hotels = new ArrayList<>();
     }
 
-    // Setters
-    public void setHotels(ArrayList<Hotel> hotels) {
-        this.hotels = hotels;
-    }
-
-    // Methods
-    /**createHotel
-     * creates a new hotel with a given name
+    /**
+     * Creates a new hotel with a given name
      * 
-     * @param :
-     * - name : String : the name of the new hotel
+     * @param name the name of the new hotel
+     * @param sc the scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void createHotel(String name, Scanner sc) {
         Hotel hotel = new Hotel(name);
@@ -41,17 +29,14 @@ public class HRS {
         hotel.addRoom(sc);
     }
 
-    /**fetchHotel
+    /**
      * returns the hotel given the name of the hotel
      * 
-     * @param :
-     * - name : String : name of the hotel
+     * @param name name of the hotel
+     * @return room : Hotel : the hotel with the room name in the hotel
+     * @return null : null : the hotel was not found
      * 
-     * @return :
-     * - room : Hotel : the hotel with the room name in the hotel
-     * - null : null : the hotel was not found
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public Hotel fetchHotel(String name) {
         for (Hotel hotel : hotels) {
@@ -63,16 +48,10 @@ public class HRS {
         return  null;
     }
 
-    /**showHotels
+    /**
      * Lists the hotels with their number of rooms
      * 
-     * @param :
-     * - none
-     * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void showHotels() {
         int i = 1;
@@ -83,17 +62,12 @@ public class HRS {
         }
     }
 
-    /**createHotelUI
+    /**
      * User I/O for creating a hotel
      * 
-     * @param :
-     * - sc : Scanner : Scanner object
+     * @param sc the scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * @author:
-     * - Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void createHotelUI(Scanner sc) {
         System.out.printf("You selected to \033[34mcreate\033[37m a hotel!\n");
@@ -110,16 +84,12 @@ public class HRS {
 
     }
 
-    /**viewHotelUI
+    /**
      * User I/O for viewing the details of a hotel
      * 
-     * @param :
-     * - sc : Scanner : Scanner object
+     * @param sc Scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void viewHotelUI(Scanner sc) {
         System.out.printf("You selected to \033[34mview\033[37m a hotel!\n");
@@ -137,17 +107,12 @@ public class HRS {
         }
     }
 
-    /*
-     * manageHotelUI
+    /**
      * User I/O for managing a hotel
      * 
-     * @param :
-     * - sc : Scanner : Scanner object
+     * @param sc Scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void manageHotelUI(Scanner sc) {
         System.out.printf("You selected to \033[34mmanage\033[37m a hotel!\n");
@@ -236,17 +201,13 @@ public class HRS {
         }
     }
 
-    /*
-     * simBookingUI
+    /**
      * User I/O for booking simulation
      * 
-     * @param :
-     * - sc : Scanner : Scanner object
+     * @param sc Scanner object
      * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen, Jaztin Jimenez
+     * @author Zhean Ganituen
+     * @author Jaztin Jimenez
      */
     public void simBookingUI(Scanner sc) {
         System.out.println("Welcome to the Hotel Reservation System, User!");
@@ -281,17 +242,10 @@ public class HRS {
         }
     }
 
-    /*
-     * showMenu
+    /**
      * Shows the main menu of the program
      * 
-     * @param :
-     * - none
-     * 
-     * @return :
-     * - none
-     * 
-     * @author: Zhean Ganituen
+     * @author Zhean Ganituen
      */
     public void showMenu() {
         System.out.printf("\n===================================\n");

@@ -1,17 +1,8 @@
-/**Room Class
- * An object that represents the rooms in a hotel.
- * 
- * @param :
- *  - name         : String      : the name of the room, must be different for each room
- *  - basePrice    : int         : the base price of the room, always 1299.00 but can be changed using the manage hotel method
- *  - daysBooked   : int         : the number of days the room was booked
- *  - hotel        : Hotel       : the hotel of the room
- *  - availability : Boolean     : the availability of the room per day
- *  - reservation  : Reservation : the reservation for the hotel
- */
-
 import java.util.Arrays;
 
+/**
+ * A class that represents an object that represents the rooms in a hotel.
+ */
 public class Room {
 
     // Variables
@@ -22,7 +13,12 @@ public class Room {
     private boolean[] availability;
     private Reservation reservation;
 
-    // Constructor
+    /**
+     * Constructor for the Room object
+     * 
+     * @param name the name of the room, must be different for each room
+     * @param hotel the hotel of the room
+     */
     public Room(String name, Hotel hotel) {
         this.name = name;
         this.basePrice = 1299.0;
@@ -32,58 +28,76 @@ public class Room {
         Arrays.fill(this.availability, Boolean.FALSE);
     }
 
+    /**
+     * Setter for the base price
+     * 
+     * @param basePrice the base price of the room, always 1299.00 but can be changed using the manage hotel method
+     */
     public void setBasePrice(double basePrice) {
         this.basePrice = basePrice;
     }
 
+    /**
+     * Setter for the days booked
+     * 
+     * @param daysBooked the number of days the room was booked
+     */
     public void setDaysBooked(int daysBooked) {
         this.daysBooked = daysBooked;
     }
 
+    /**
+     * Setter for the availability of the Room
+     * 
+     * @param availability the availability of the room per day
+     */
     public void setAvailability(boolean[] availability) {
         this.availability = availability;
     }
 
+    /**
+     * Setter for the reservation of the hotel
+     * 
+     * @param reservation the reservation for the hotel
+     */
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
     }
 
-    // Getters
+    /**
+     * Getter for the name of the room
+     * 
+     * @return the name of the room
+     */
     public String getName() {
         return  name;
     }
 
+    /**
+     * Getter for the base price of the room
+     * 
+     * @return the base price of the room
+     */
     public double getBasePrice() {
         return  basePrice;
     }
 
+    /**
+     * Getter for the days booked in the room
+     * 
+     * @return the amount of days booked in the room
+     */
     public int getDaysBooked() {
         return  daysBooked;
     }
 
-    public Hotel getHotel() {
-        return  hotel;
-    }
-
-    public boolean[] getAvailability() {
-        return  availability;
-    }
-
-    public Reservation reservation() {
-        return  reservation;
-    }
-
-    /**bookLength
-     * determines the days the room is booked and make it's availability for those
-     * days false
-     * and increment the number of days the room is booked by the total book book
-     * length
+    /**
+     * determines the days the room is booked and make it's availability for those days true and increment the number of days the room is booked by the total book book length
      * 
-     * @param :
-     * - checkin : int : day the customer checks in
-     * - checkout : int : day the customer checks out
+     * @param checkin day the customer checks in
+     * @param checkout day the customer checks out
      * 
-     * @author: Jaztin Jimenez
+     * @author Jaztin Jimenez
      */
     public void bookLength(int checkin, int checkout) {
         for (int i = checkin; i <= checkout - 1; i++) {
@@ -93,7 +107,14 @@ public class Room {
         this.daysBooked += checkout - checkin + 1; // increment days booked with the total book length
     }
 
-    // FIXME: CODE DOCS
+    /**
+     * removes the availability of the room and decrements the number of days the room is booked
+     * 
+     * @param checkin day the customer checks in
+     * @param checkout day the customer checks out
+     * 
+     * @author Jaztin Jimenez
+     */
     public void removeAvailability(int checkin, int checkout) {
         for (int i = checkin; i <= checkout - 1; i++) {
             this.availability[i - 1] = false;
@@ -102,14 +123,16 @@ public class Room {
         this.daysBooked -= checkout - checkin + 1; // increment days booked with the total book length
     }
 
-    /**isAvailable
+    /**
      * a checker that determines if the room is a available for a range
      * 
-     * @param :
-     * - checkin : int : day the customer checks in
-     * - checkout : int : day the customer checks out
+     * @param checkin day the customer checks in
+     * @param checkout day the customer checks out
      * 
-     * @author: Jaztin Jimenez
+     * @return true if the room is available
+     * @return false if otherwise
+     * 
+     * @author Jaztin Jimenez
      */
     public boolean isAvailable(int checkIn, int checkOut) {
         for (int i = checkIn; i <= checkOut; i++) {
@@ -121,14 +144,14 @@ public class Room {
         return  true; // assume true
     }
 
-    /**isAvailable
+    /**
      * a checker that determines if the room is a available for some day
      * 
-     * @param :
-     * - day : int : a specific day
+     * @param day a specific day
      * 
+     * @return the availability of the day
      * 
-     * @author: Jaztin Jimenez
+     * @author Jaztin Jimenez
      */
     public boolean isAvailable(int day) {
         return  !this.availability[day - 1];
