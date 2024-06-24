@@ -417,6 +417,7 @@ public class Hotel {
             } else {
                 System.out.printf("A new room cannot be created since there are 50 rooms in hotel '%s' already.\n",
                         this.getName());
+                break;
             }
         }
     }
