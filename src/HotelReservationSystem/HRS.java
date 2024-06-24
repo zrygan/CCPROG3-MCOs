@@ -238,8 +238,24 @@ public class HRS {
                 }
                 case 4 -> {
                     System.out.printf("You selected to \033[34mchange the price\033[37m of hotel '%s'.\n", name);
-                    hotel.changePriceUI(sc);
+                    System.out.printf("\nEnter the new price for the rooms of the hotel: ");
+                    double newPrice = sc.nextDouble();
+                    sc.nextLine();
+            
+                    if (hotel.changePrice(newPrice)) {
+                        System.out.printf("\033[33m\nThe rooms of hotel '%s' have been changed to %.2f.\033[37m\n", hotel.getName(),
+                                hotel.getBasePrice());
+                    } else if (newPrice <= 100) {
+                        System.out.printf(
+                                "\n\033[31mError. The base price of hotel '%s' has not been changed because the new price is too low. It must be greater than or equal to 100.\033[37m\n",
+                                hotel.getName());
+                    } else {
+                        System.out.printf(
+                                "\n\033[31mError. The base price of hotel '%s' has not been changed because there's an ongoing reservation.\033[37m\n",
+                                hotel.getName());
+                    }
                 }
+
                 case 5 -> {
                     System.out.printf("You selected to \033[34mremove a reseravation\033[37m in hotel '%s'.\n", name);
                     hotel.removeReservationUI(sc);
@@ -248,7 +264,8 @@ public class HRS {
                     System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
                     hotel.prepareForRemoval();
                     hotels.remove(hotel);
-                    System.out.printf("\n\033[33mHotel has been removed..\033[37m\n");
+                    System.out.println("Hotel removed successfully.");
+                    return; // Exit after removal
                 }
                 default ->
                     System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
