@@ -283,10 +283,10 @@ public class Hotel {
      * @author Jaztin Jimenez
      */
     public void changeRoomName(String name) {
+        roomCount = 1;
         for (Room room : this.rooms) {
-            int index = 1;
-            room.setName(name + "_Room_" + index);
-            index++;
+            room.setName(name + "_Room_" + roomCount);
+            roomCount++;
         }
     }
 
