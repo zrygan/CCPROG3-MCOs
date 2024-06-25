@@ -128,7 +128,7 @@ public class Hotel {
      * @return The number of rooms in the Hotel
      */
     public int getRoomCount() {
-        return roomCount; // -1 because we start at 1 not 0
+        return roomCount - 1; // -1 because we start at 1 not 0
     }
 
     /**
