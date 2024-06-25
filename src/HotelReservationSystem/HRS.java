@@ -152,8 +152,7 @@ public class HRS {
                     }
                 }
             } else if (num <= 0) {
-                System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n",
-                        hotel.getName());
+                System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n");
             } else {
                 System.out.printf(
                         "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\n",
@@ -279,7 +278,7 @@ public class HRS {
                         String guestName = sc.nextLine(); // get the guest name of the reservation
 
                         for (Reservation reservation : hotel.getReservations()){
-                            // check the guest name of the reseravation
+                            // check the guest name of the reservation
                             if(reservation.getGuest().equals(guestName)){
                                 System.out.printf("\n\033[34mReservation %d under guest %s\033[37m\n", hotel.getReservationCount(), reservation.getGuest());
                                 System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
@@ -387,8 +386,7 @@ public class HRS {
                             }
                         }
                     } else if (num <= 0) {
-                        System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n",
-                                hotel.getName());
+                        System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n");
                     } else {
                         System.out.printf(
                                 "\n\033[31mError. Entered number %d will cause the number of rooms in hotel '%s' to overflow.\nThere are %d rooms in hotel '%s', maximum rooms that can be added is %d.\033[37m\n",
@@ -498,8 +496,6 @@ public class HRS {
                     hotels.remove(hotel);
 
                     System.out.printf("\n\033[33mHotel removed successfully.\033[37m\n");
-
-                    return; // Exit after removal
                 }
                 default ->
                     System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
