@@ -468,11 +468,11 @@ public class HRS {
                     System.out.printf("You selected to \033[34mremove a reseravation\033[37m in hotel '%s'.\n", name);
 
                     // get the name
-                    System.out.print("Enter guest name for reservation removal: ");
+                    System.out.printf("\nEnter guest name for reservation removal: ");
                     String guestName = sc.nextLine();
 
                     // get the check-in date
-                    System.out.print("Enter check-in date of the reservation to remove (1-31): ");
+                    System.out.printf("\nEnter check-in date of the reservation to remove (1-31): ");
                     int checkinDate = getInput(sc);
 
                     if (checkinDate < 0 || checkinDate > 31){
@@ -497,7 +497,7 @@ public class HRS {
 
                     hotels.remove(hotel);
 
-                    System.out.println("Hotel removed successfully.");
+                    System.out.printf("\n\033[33mHotel removed successfully.\033[37m\n");
 
                     return; // Exit after removal
                 }
