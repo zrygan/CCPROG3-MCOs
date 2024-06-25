@@ -23,7 +23,7 @@ public class Hotel {
      */
     public Hotel(String name) {
         this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
-        this.reservationCount = 1;
+        this.reservationCount = 0;
         this.name = name;
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
@@ -128,7 +128,7 @@ public class Hotel {
      * @return The number of rooms in the Hotel
      */
     public int getRoomCount() {
-        return roomCount - 1; // -1 because we start at 1 not 0
+        return roomCount; // -1 because we start at 1 not 0
     }
 
     /**
@@ -146,7 +146,7 @@ public class Hotel {
      * @return The number of reservations in the Hotel
      */
     public int getReservationCount() {
-        return reservationCount - 1; // -1 because we start at 1 not 0
+        return reservationCount;
     }
 
     /**

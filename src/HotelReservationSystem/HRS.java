@@ -557,6 +557,7 @@ public class HRS {
                         if (checkout > checkin && (checkout >= 2 && checkout <= 31)
                                 && (checkin >= 1 && checkin <= 30)) {
                             hotel.bookRoom(guestName, checkin, checkout);
+                            
                             hotel.setReservationCount(hotel.getReservationCount() + 1); // increment reservation count
                             run = false;
                         } else {
