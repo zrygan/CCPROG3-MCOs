@@ -301,6 +301,12 @@ public class Hotel {
      */
     public boolean removeReservation(String guestName, int checkInDate) {
         Reservation reservationToRemove = null; // assume not found
+        
+        // check if checkInDate is out of bounds
+        if(checkInDate < 0 || checkInDate > 31){
+            return false;
+        }
+        
         // go through all the reservations within the hotel
         for (Reservation reservation : reservations) {
             // checks if the guest name and the check-in date of the reservation is valid
