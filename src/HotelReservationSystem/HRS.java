@@ -17,14 +17,6 @@ public class HRS {
         this.hotels = new ArrayList<>();
     }
 
-    /**
-     * Sets the hotels in the ArrayList of Hotel
-     *
-     * @param hotels the array of hotels in the HotelReservationSystem.HRS
-     */
-    public void setHotels(ArrayList<Hotel> hotels) {
-        this.hotels = hotels;
-    }
 
     /**
      * Getter for the ArrayList of hotels in the HotelReservationSystem.HRS
@@ -33,6 +25,15 @@ public class HRS {
      */
     public ArrayList<Hotel> getHotels() {
         return hotels;
+    }
+
+    /**
+     * Sets the hotels in the ArrayList of Hotel
+     *
+     * @param hotels the array of hotels in the HotelReservationSystem.HRS
+     */
+    public void setHotels(ArrayList<Hotel> hotels) {
+        this.hotels = hotels;
     }
 
     /**
