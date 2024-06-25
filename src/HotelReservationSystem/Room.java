@@ -30,16 +30,14 @@ public class Room {
         this.availability = new boolean[31];
         Arrays.fill(this.availability, Boolean.FALSE);
     }
-
+    
     /**
-     * Setter for the base price
+     * Getter for the name of the room
      *
-     * @param basePrice the base price of the room, always 1299.00 but can be
-     * changed using the manage hotel method
-     *
+     * @return the name of the room
      */
-    public void setBasePrice(double basePrice) {
-        this.basePrice = basePrice;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -53,48 +51,23 @@ public class Room {
     }
 
     /**
-     * Setter for the days booked
-     *
-     * @param daysBooked the number of days the room was booked
-     */
-    public void setDaysBooked(int daysBooked) {
-        this.daysBooked = daysBooked;
-    }
-
-    /**
-     * Setter for the availability of the Room
-     *
-     * @param availability the availability of the room per day
-     */
-    public void setAvailability(boolean[] availability) {
-        this.availability = availability;
-    }
-
-    /**
-     * Setter for the reservation of the hotel
-     *
-     * @param reservation the reservation for the hotel
-     */
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
-
-    /**
-     * Getter for the name of the room
-     *
-     * @return the name of the room
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
      * Getter for the base price of the room
      *
      * @return the base price of the room
      */
     public double getBasePrice() {
         return basePrice;
+    }
+
+    /**
+     * Setter for the base price
+     *
+     * @param basePrice the base price of the room, always 1299.00 but can be
+     * changed using the manage hotel method
+     *
+     */
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
     }
 
     /**
@@ -107,12 +80,12 @@ public class Room {
     }
 
     /**
-     * Getter for the reservation assigned to the room
+     * Setter for the days booked
      *
-     * @return the reservation of the room
+     * @param daysBooked the number of days the room was booked
      */
-    public Reservation getReservation() {
-        return reservation;
+    public void setDaysBooked(int daysBooked) {
+        this.daysBooked = daysBooked;
     }
 
     /**
@@ -122,6 +95,37 @@ public class Room {
      */
     public Hotel getHotel() {
         return hotel;
+    }
+
+    /**
+     * Setter for the availability of the Room
+     *
+     * @param availability the availability of the room per day
+     */
+    public void setAvailability(boolean[] availability) {
+        this.availability = availability;
+    }
+
+    public boolean[] getAvailability(){
+        return availability;
+    }
+
+    /**
+     * Getter for the reservation assigned to the room
+     *
+     * @return the reservation of the room
+     */
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    /**
+     * Setter for the reservation of the hotel
+     *
+     * @param reservation the reservation for the hotel
+     */
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
 
     /**

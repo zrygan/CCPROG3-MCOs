@@ -49,6 +49,15 @@ public class Hotel {
     }
 
     /**
+     * Getter for the name of the Hotel
+     *
+     * @return The name of the Hotel
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Sets the name of the Hotel
      *
      * @param name The name of the Hotel
@@ -58,12 +67,30 @@ public class Hotel {
     }
 
     /**
+     * Getter for the ArrayList of reservation objects in the Hotel
+     * 
+     * @return the ArrayList of Reservation objects 
+     */
+    public ArrayList<Reservation> getReservations(){
+        return reservations;
+    }
+
+    /**
      * Sets the reservation of the Hotel
      *
      * @param reservation The reservation in the Hotel
      */
-    public void setReservation(ArrayList<Reservation> reservation) {
+    public void setReservations(ArrayList<Reservation> reservation) {
         this.reservations = reservation;
+    }
+
+    /**
+     * Getter for the Arraylist of Room objects in the Hotel
+     *
+     * @return the ArrayList of Room objects
+     */
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 
     /**
@@ -76,21 +103,21 @@ public class Hotel {
     }
 
     /**
+     * Getter for the earnings of the Hotel
+     *
+     * @return The earnings of the Hotel
+     */
+    public double getEarnings() {
+        return earnings;
+    }
+
+    /**
      * Sets the earnings of the Hotel
      *
      * @param earnings The earnings of the Hotel
      */
     public void setEarnings(double earnings) {
         this.earnings += earnings;
-    }
-
-    /**
-     * Getter for the name of the Hotel
-     *
-     * @return The name of the Hotel
-     */
-    public String getName() {
-        return name;
     }
 
     /**
@@ -103,21 +130,12 @@ public class Hotel {
     }
 
     /**
-     * Getter for the earnings of the Hotel
-     *
-     * @return The earnings of the Hotel
+     * Setter for the number of rooms in the Hotel
+     * 
+     * @param roomCount The number of rooms in the hotel
      */
-    public double getEarnings() {
-        return earnings;
-    }
-
-    /**
-     * Getter for the Arraylist of Room objects in the Hotel
-     *
-     * @return the ArrayList of Room objects
-     */
-    public ArrayList<Room> getRooms() {
-        return rooms;
+    public void setRoomCount(int roomCount){
+        this.roomCount = roomCount;
     }
 
     /**
@@ -154,13 +172,13 @@ public class Hotel {
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
-    public boolean bookRoom(String guestName, int checkIn, int checkout) {
+    public boolean bookRoom(String guestName, int checkin, int checkout) {
         // iterate through all the rooms in hotel
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
-            if (room.isAvailable(checkIn, checkout)) {
+            if (room.isAvailable(checkin, checkout)) {
                 // add reservation
-                Reservation newReservation = new Reservation(guestName, checkIn, checkout, room);
+                Reservation newReservation = new Reservation(guestName, checkin, checkout, room);
                 System.out.println(newReservation);
                 this.reservations.add(newReservation);
                 System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
@@ -168,13 +186,13 @@ public class Hotel {
                 System.out.printf("\n\033[33mname\033[37m:\t%s", guestName);
                 System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", this.name);
                 System.out.printf("\n\033[33mroom\033[37m:\t%s", room.getName());
-                System.out.printf("\n\033[33min  \033[37m:\t%d", checkIn);
+                System.out.printf("\n\033[33min  \033[37m:\t%d", checkin);
                 System.out.printf("\n\033[33mout \033[37m:\t%d", checkout);
-                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkout - checkIn));
+                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkout - checkin));
                 System.out.printf("\n\033[33m===================\033[37m\n");
-                setEarnings(room.getBasePrice() * (checkout - checkIn));
+                setEarnings(room.getBasePrice() * (checkout - checkin));
                 room.setReservation(newReservation);
-                room.addBookRoom(checkIn, checkout);
+                room.addBookRoom(checkin, checkout);
                 return true;
             }
         }
@@ -301,18 +319,18 @@ public class Hotel {
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
-    public boolean removeReservation(String guestName, int checkInDate) {
+    public boolean removeReservation(String guestName, int checkinDate) {
         Reservation reservationToRemove = null; // assume not found
         
-        // check if checkInDate is out of bounds
-        if(checkInDate < 0 || checkInDate > 31){
+        // check if checkinDate is out of bounds
+        if(checkinDate < 0 || checkinDate > 31){
             return false;
         }
         
         // go through all the reservations within the hotel
         for (Reservation reservation : reservations) {
             // checks if the guest name and the check-in date of the reservation is valid
-            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkInDate) {
+            if (reservation.getGuest().equals(guestName) && reservation.getCheckin() == checkinDate) {
                 reservationToRemove = reservation;
                 break;
             }
