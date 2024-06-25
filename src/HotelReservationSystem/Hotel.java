@@ -152,7 +152,7 @@ public class Hotel {
     /**
      * Setter for the number of reservations in the Hotel
      * 
-     * @param roomCount The number of reservations in the hotel
+     * @param reservationCount The number of reservations in the hotel
      */
     public void setReservationCount(int reservationCount){
         this.reservationCount = reservationCount;
@@ -184,7 +184,7 @@ public class Hotel {
      * Books a room and makes a reservation, if possible
      *
      * @param guestName the guests name
-     * @param checkIn date of checking in
+     * @param checkin date of checking in
      * @param checkout date of checking out
      *
      * @return {true} if room booking is successful, {false} if room booking is
@@ -334,7 +334,7 @@ public class Hotel {
      * Removes the reservation from a hotel room.
      *
      * @param guestName the name of the guest
-     * @param checkInDate the date of the guest's check in
+     * @param checkinDate the date of the guest's check in
      *
      * @return {true} if the reservation was removed, {false} otherwise
      *

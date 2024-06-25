@@ -19,6 +19,7 @@ public class Reservation {
      * @param checkin the day of check in
      * @param checkout the day of check out
      * @param room the room of the reservation
+     * @param reservationNumber the number of the reservation
      */
     public Reservation(String guest, int checkin, int checkout, Room room, int reservationNumber) {
         this.room = room;
