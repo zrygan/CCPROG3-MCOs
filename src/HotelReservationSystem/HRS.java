@@ -212,23 +212,22 @@ public class HRS {
                             hotel.getName());
                     System.out.printf("\n=========================== OPTIONS ===========================\n");
                     System.out.printf("\33[33m1\33[37m\t:\tview available/booked rooms for a selected date\n");
-                    System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room or reservation\n");
+                    System.out.printf("\33[33m2\33[37m\t:\tview details of a specific room\n");
+                    System.out.printf("\33[33m3\33[37m\t:\tview details of a specific reservation\n");
                     System.out.printf("===============================================================");
 
                     System.out.printf("\nChoose an option: ");
 
                     int option = getInput(sc);
 
-                    if (option == 1) {
+                switch (option) {
+                    case 1 -> {
                         // view booked rooms
 
                         System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
                                 hotel.getName());
-
                         System.out.print("\nEnter date (1-31): ");
-
                         int date = getInput(sc);
-
                         // print available rooms with proper formatting and handling
                         if (hotel.fetchAvails(1, date).isEmpty()) {
                             System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
@@ -239,7 +238,6 @@ public class HRS {
                                 System.out.printf("\t\033[33m%s\033[37m\n", room);
                             }
                         }
-
                         // print booked rooms with proper formatting and handling
                         if (hotel.fetchAvails(0, date).isEmpty()) {
                             System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
@@ -250,22 +248,17 @@ public class HRS {
                                 System.out.printf("\t\033[33m%s\033[37m\n", room);
                             }
                         }
-
-                    } else if (option == 2) {
+                    }
+                    case 2 -> {
                         // view room reservation
 
-                        System.out.printf("You selected to \033[34mview a room reservation\033[37m for hotel '%s'.\n",
+                        System.out.printf("You selected to \033[34mview a room\033[37m for hotel '%s'.\n",
                                 hotel.getName());
-
                         System.out.printf("\nEnter room number: ");
-
                         int roomNum = getInput(sc);
-
                         String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
-
                         // get room
                         Room roomQuery = hotel.fetchRoom(roomName);
-
                         // if room exists
                         if (roomQuery != null) {
                             // calculate availability
@@ -280,6 +273,30 @@ public class HRS {
                                     roomNum, hotel.getName());
                         }
                     }
+                    case 3 -> {
+                        System.out.printf("You selected to \033[34mview a reservation\033[37m for hotel '%s'.\n", hotel.getName());
+                        System.out.printf("\nEnter guest name: ");
+                        String guestName = sc.nextLine(); // get the guest name of the reservation
+                        int i = 1;
+
+                        for (Reservation reservation : hotel.getReservations()){
+                            // check the guest name of the reseravation
+                            if(reservation.getGuest().equals(guestName)){
+                                System.out.printf("\n\033[34mReservation %d under guest %s\033[37m\n", i, reservation.getGuest());
+                                System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
+                                System.out.printf("\n\033[33mname\033[37m:\t%s", reservation.getGuest());
+                                System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", hotel.getName());
+                                System.out.printf("\n\033[33mroom\033[37m:\t%s", reservation.getRoom().getName());
+                                System.out.printf("\n\033[33min  \033[37m:\t%d", reservation.getCheckin());
+                                System.out.printf("\n\033[33mout \033[37m:\t%d", reservation.getCheckout());
+                                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", reservation.getRoom().getBasePrice() * (reservation.getCheckout() - reservation.getCheckin()));
+                                System.out.printf("\n\033[33m===================\033[37m\n");
+                                i++;
+                            }
+                        }
+                    }
+                    default -> System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
+                }
                 }
             }
         } else {
