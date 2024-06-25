@@ -4,14 +4,14 @@ Zhean Ganituen and Jaztin Jimenez
 
 ## Member Contribution
 
-    - Java Program
-        - Jaztin Jimenez and Zhean Ganituen
-    - UML
-        - Jaztin Jimenez and Zhean Ganituen
-    - Test script
-        - Zhean Ganituen
-    - Javadoc
-        - Jaztin Jimenez and Zhean Ganituen
+- Java Program
+    - Jaztin Jimenez and Zhean Ganituen
+- UML
+    - Jaztin Jimenez and Zhean Ganituen
+- Test script
+    - Zhean Ganituen
+- Javadoc
+    - Jaztin Jimenez and Zhean Ganituen
 
 ## Creating a new room
 
