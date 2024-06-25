@@ -23,7 +23,7 @@ public class Hotel {
      */
     public Hotel(String name) {
         this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
-        this.reservationCount = 0;
+        this.reservationCount = 1;
         this.name = name;
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
@@ -198,7 +198,8 @@ public class Hotel {
             // look for a room that is available for the entire duration of the reservation
             if (room.isAvailable(checkin, checkout)) {
                 // add reservation
-                Reservation newReservation = new Reservation(guestName, checkin, checkout, room);
+                int reservationNumber = this.getReservationCount() + 1;
+                Reservation newReservation = new Reservation(guestName, checkin, checkout, room, reservationNumber);
                 this.reservations.add(newReservation);
                 System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
                 System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
@@ -214,6 +215,7 @@ public class Hotel {
                 room.addBookRoom(checkin, checkout);
                 return true;
             }
+            this.setReservationCount(this.getReservationCount() + 1);
         }
 
         System.out.printf("\n\033[31mError. There are currently no available rooms in hotel '%s' for the selected dates.\033[37m\n", this.getName());

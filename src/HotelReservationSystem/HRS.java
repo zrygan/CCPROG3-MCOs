@@ -558,7 +558,6 @@ public class HRS {
                                 && (checkin >= 1 && checkin <= 30)) {
                             hotel.bookRoom(guestName, checkin, checkout);
                             
-                            hotel.setReservationCount(hotel.getReservationCount() + 1); // increment reservation count
                             run = false;
                         } else {
                             System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");
