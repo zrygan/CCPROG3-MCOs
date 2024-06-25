@@ -134,7 +134,7 @@ public class Room {
      *
      * @author Jaztin Jimenez
      */
-    public void bookLength(int checkin, int checkout) {
+    public void addBookRoom(int checkin, int checkout) {
         for (int i = checkin; i <= checkout - 1; i++) {
             this.availability[i - 1] = true;
         }
@@ -151,7 +151,7 @@ public class Room {
      *
      * @author Jaztin Jimenez
      */
-    public void removeAvailability(int checkin, int checkout) {
+    public void remBookRoom(int checkin, int checkout) {
         for (int i = checkin; i <= checkout - 1; i++) {
             this.availability[i - 1] = false;
         }
@@ -162,15 +162,15 @@ public class Room {
     /**
      * a checker that determines if the room is a available for a range
      *
-     * @param checkIn day the customer checks in
-     * @param checkOut day the customer checks out
+     * @param checkin day the customer checks in
+     * @param checkout day the customer checks out
      *
      * @return {true} if the room is available, {false} if otherwise
      *
      * @author Jaztin Jimenez
      */
-    public boolean isAvailable(int checkIn, int checkOut) {
-        for (int i = checkIn; i <= checkOut; i++) {
+    public boolean isAvailable(int checkin, int checkout) {
+        for (int i = checkin; i <= checkout; i++) {
             if (this.availability[i - 1]) {
                 return false;
             }

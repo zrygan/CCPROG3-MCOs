@@ -72,24 +72,4 @@ public class Reservation {
     public double getTotal() {
         return total;
     }
-
-    /**
-     * Checks if the room is available for the day
-     *
-     * @param room the room to check the avaulability
-     * @param checkInDay the day of check in, can't check in on day 31
-     * @param checkOutDay the day of check out, can't check out on day 1
-     *
-     * @return {false} if room is not available, {true} if room is available
-     *
-     * @author Jaztin Jimenez
-     */
-    public boolean isRoomAvailable(Room room, int checkInDay, int checkOutDay) {
-        for (int i = checkInDay; i < checkOutDay; i++) {
-            if (!room.isAvailable(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

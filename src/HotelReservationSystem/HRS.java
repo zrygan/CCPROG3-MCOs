@@ -450,18 +450,18 @@ public class HRS {
 
                     // get the check-in date
                     System.out.print("Enter check-in date of the reservation to remove (1-31): ");
-                    int checkInDate = getInput(sc);
+                    int checkinDate = getInput(sc);
 
-                    if (checkInDate < 0 || checkInDate > 31){
-                        System.out.printf("\n\033[31mError. Check-in date %d not within this month.\033[37m\n", checkInDate);
+                    if (checkinDate < 0 || checkinDate > 31){
+                        System.out.printf("\n\033[31mError. Check-in date %d not within this month.\033[37m\n", checkinDate);
                     }
-                    else if (hotel.removeReservation(guestName, checkInDate)) {
+                    else if (hotel.removeReservation(guestName, checkinDate)) {
                         // if hotel reservation is removed or true
                         System.out.printf("\n\033[33mReservation removed successfully.\033[37m\n");
                     } else {
                         // doesn't cancel the reservation if invalid
                         // if the remove reservation does not remove anything
-                        System.out.printf("\n\033[31mError. Reservation with guest '%s' and check-in date %d not found.\033[37m\n", guestName, checkInDate);
+                        System.out.printf("\n\033[31mError. Reservation with guest '%s' and check-in date %d not found.\033[37m\n", guestName, checkinDate);
                     }
                 }
                 case 6 -> {
@@ -523,17 +523,17 @@ public class HRS {
                     if (hotel != null) {
                         System.out.printf("\nEnter the day of your check-in: ");
 
-                        int checkIn = getInput(sc);
+                        int checkin = getInput(sc);
 
                         // if this auto-submits then add sc.nextLine(); after this (u jinxed it)
                         System.out.print("\nEnter the day of your check-out: ");
 
-                        int checkOut = getInput(sc);
+                        int checkout = getInput(sc);
 
                         // checks if the booking dates are in bound
-                        if (checkOut > checkIn && (checkOut >= 2 && checkOut <= 31)
-                                && (checkIn >= 1 && checkIn <= 30)) {
-                            hotel.bookRoom(guestName, checkIn, checkOut);
+                        if (checkout > checkin && (checkout >= 2 && checkout <= 31)
+                                && (checkin >= 1 && checkin <= 30)) {
+                            hotel.bookRoom(guestName, checkin, checkout);
                             run = false;
                         } else {
                             System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");

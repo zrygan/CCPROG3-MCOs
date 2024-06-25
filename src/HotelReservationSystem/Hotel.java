@@ -147,20 +147,21 @@ public class Hotel {
      *
      * @param guestName the guests name
      * @param checkIn date of checking in
-     * @param checkOut date of checking out
+     * @param checkout date of checking out
      *
      * @return {true} if room booking is successful, {false} if room booking is
      * not successful
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
-    public boolean bookRoom(String guestName, int checkIn, int checkOut) {
+    public boolean bookRoom(String guestName, int checkIn, int checkout) {
         // iterate through all the rooms in hotel
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
-            if (room.isAvailable(checkIn, checkOut)) {
+            if (room.isAvailable(checkIn, checkout)) {
                 // add reservation
-                Reservation newReservation = new Reservation(guestName, checkIn, checkOut, room);
+                Reservation newReservation = new Reservation(guestName, checkIn, checkout, room);
+                System.out.println(newReservation);
                 this.reservations.add(newReservation);
                 System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
                 System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
@@ -168,11 +169,11 @@ public class Hotel {
                 System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", this.name);
                 System.out.printf("\n\033[33mroom\033[37m:\t%s", room.getName());
                 System.out.printf("\n\033[33min  \033[37m:\t%d", checkIn);
-                System.out.printf("\n\033[33mout \033[37m:\t%d", checkOut);
-                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkOut - checkIn));
+                System.out.printf("\n\033[33mout \033[37m:\t%d", checkout);
+                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkout - checkIn));
                 System.out.printf("\n\033[33m===================\033[37m\n");
-                setEarnings(room.getBasePrice() * (checkOut - checkIn));
-                room.bookLength(checkIn, checkOut);
+                setEarnings(room.getBasePrice() * (checkout - checkIn));
+                room.addBookRoom(checkIn, checkout);
                 return true;
             }
         }
@@ -318,7 +319,7 @@ public class Hotel {
 
         if (reservationToRemove != null) { // removes the reservation if valid
             Room removeRoom = reservationToRemove.getRoom();
-            removeRoom.removeAvailability(reservationToRemove.getCheckin(), reservationToRemove.getCheckout()); // makes
+            removeRoom.remBookRoom(reservationToRemove.getCheckin(), reservationToRemove.getCheckout()); // makes
             // the dates within the reservation available for booking
             setEarnings(-(removeRoom.getBasePrice()
                     * (reservationToRemove.getCheckout() - reservationToRemove.getCheckin())));
