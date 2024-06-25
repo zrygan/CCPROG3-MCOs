@@ -452,13 +452,16 @@ public class HRS {
                     System.out.print("Enter check-in date of the reservation to remove (1-31): ");
                     int checkInDate = getInput(sc);
 
-                    if (hotel.removeReservation(guestName, checkInDate)) {
+                    if (checkInDate < 0 || checkInDate > 31){
+                        System.out.printf("\n\033[31mError. Check-in date %d not within this month.\033[37m\n", checkInDate);
+                    }
+                    else if (hotel.removeReservation(guestName, checkInDate)) {
                         // if hotel reservation is removed or true
-                        System.out.println("Reservation removed successfully.");
+                        System.out.printf("\n\033[33mReservation removed successfully.\033[37m\n");
                     } else {
                         // doesn't cancel the reservation if invalid
                         // if the remove reservation does not remove anything
-                        System.out.println("Reservation not found.");
+                        System.out.printf("\n\033[31mError. Reservation with guest '%s' and check-in date %d not found.\033[37m\n", guestName, checkInDate);
                     }
                 }
                 case 6 -> {
