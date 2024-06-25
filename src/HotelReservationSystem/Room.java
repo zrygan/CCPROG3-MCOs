@@ -106,6 +106,11 @@ public class Room {
         this.availability = availability;
     }
 
+    /**
+     * Getter for availability which is an array of booleans.
+     *  
+     * @return the availability of the room per day
+     */
     public boolean[] getAvailability(){
         return availability;
     }
