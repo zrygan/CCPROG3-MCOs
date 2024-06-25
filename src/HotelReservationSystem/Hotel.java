@@ -179,7 +179,6 @@ public class Hotel {
             if (room.isAvailable(checkin, checkout)) {
                 // add reservation
                 Reservation newReservation = new Reservation(guestName, checkin, checkout, room);
-                System.out.println(newReservation);
                 this.reservations.add(newReservation);
                 System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
                 System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
