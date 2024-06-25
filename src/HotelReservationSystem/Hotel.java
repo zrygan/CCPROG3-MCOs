@@ -10,6 +10,7 @@ public class Hotel {
     // Variables
     private String name;
     private int roomCount;
+    private int reservationCount;
     private ArrayList<Room> rooms; // potential maximum of 50 rooms
     private ArrayList<Reservation> reservations; // list of reservations
     private double earnings;
@@ -22,6 +23,7 @@ public class Hotel {
      */
     public Hotel(String name) {
         this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
+        this.reservationCount = 1;
         this.name = name;
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
@@ -136,6 +138,24 @@ public class Hotel {
      */
     public void setRoomCount(int roomCount){
         this.roomCount = roomCount;
+    }
+
+     /**
+     * Getter for the number of reservations in the Hotel
+     *
+     * @return The number of reservations in the Hotel
+     */
+    public int getReservationCount() {
+        return reservationCount - 1; // -1 because we start at 1 not 0
+    }
+
+    /**
+     * Setter for the number of reservations in the Hotel
+     * 
+     * @param roomCount The number of reservations in the hotel
+     */
+    public void setReservationCount(int reservationCount){
+        this.reservationCount = reservationCount;
     }
 
     /**

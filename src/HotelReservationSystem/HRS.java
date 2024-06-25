@@ -277,12 +277,11 @@ public class HRS {
                         System.out.printf("You selected to \033[34mview a reservation\033[37m for hotel '%s'.\n", hotel.getName());
                         System.out.printf("\nEnter guest name: ");
                         String guestName = sc.nextLine(); // get the guest name of the reservation
-                        int i = 1;
 
                         for (Reservation reservation : hotel.getReservations()){
                             // check the guest name of the reseravation
                             if(reservation.getGuest().equals(guestName)){
-                                System.out.printf("\n\033[34mReservation %d under guest %s\033[37m\n", i, reservation.getGuest());
+                                System.out.printf("\n\033[34mReservation %d under guest %s\033[37m\n", hotel.getReservationCount(), reservation.getGuest());
                                 System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
                                 System.out.printf("\n\033[33mname\033[37m:\t%s", reservation.getGuest());
                                 System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", hotel.getName());
@@ -291,7 +290,6 @@ public class HRS {
                                 System.out.printf("\n\033[33mout \033[37m:\t%d", reservation.getCheckout());
                                 System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", reservation.getRoom().getBasePrice() * (reservation.getCheckout() - reservation.getCheckin()));
                                 System.out.printf("\n\033[33m===================\033[37m\n");
-                                i++;
                             }
                         }
                     }
@@ -559,6 +557,7 @@ public class HRS {
                         if (checkout > checkin && (checkout >= 2 && checkout <= 31)
                                 && (checkin >= 1 && checkin <= 30)) {
                             hotel.bookRoom(guestName, checkin, checkout);
+                            hotel.setReservationCount(hotel.getReservationCount() + 1); // increment reservation count
                             run = false;
                         } else {
                             System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");
