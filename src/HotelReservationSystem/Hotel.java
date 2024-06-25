@@ -173,6 +173,7 @@ public class Hotel {
                 System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkout - checkIn));
                 System.out.printf("\n\033[33m===================\033[37m\n");
                 setEarnings(room.getBasePrice() * (checkout - checkIn));
+                room.setReservation(newReservation);
                 room.addBookRoom(checkIn, checkout);
                 return true;
             }

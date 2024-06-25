@@ -403,7 +403,7 @@ public class HRS {
                             // check if the rooms exists
                             if (room != null) {
 
-                                if (room.getReservation() != null) { // checks if there are reservation
+                                if (room.getReservation() == null) { // checks if there are reservation
                                     hotel.delRoom(index); // run delRoomUI
                                     System.out.printf(
                                             "\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
