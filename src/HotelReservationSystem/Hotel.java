@@ -49,6 +49,15 @@ public class Hotel {
     }
 
     /**
+     * Getter for the name of the Hotel
+     *
+     * @return The name of the Hotel
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
      * Sets the name of the Hotel
      *
      * @param name The name of the Hotel
@@ -58,12 +67,30 @@ public class Hotel {
     }
 
     /**
+     * Getter for the ArrayList of reservation objects in the Hotel
+     * 
+     * @return the ArrayList of Reservation objects 
+     */
+    public ArrayList<Reservation> getReservations(){
+        return reservations;
+    }
+
+    /**
      * Sets the reservation of the Hotel
      *
      * @param reservation The reservation in the Hotel
      */
-    public void setReservation(ArrayList<Reservation> reservation) {
+    public void setReservations(ArrayList<Reservation> reservation) {
         this.reservations = reservation;
+    }
+
+    /**
+     * Getter for the Arraylist of Room objects in the Hotel
+     *
+     * @return the ArrayList of Room objects
+     */
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 
     /**
@@ -76,21 +103,21 @@ public class Hotel {
     }
 
     /**
+     * Getter for the earnings of the Hotel
+     *
+     * @return The earnings of the Hotel
+     */
+    public double getEarnings() {
+        return earnings;
+    }
+
+    /**
      * Sets the earnings of the Hotel
      *
      * @param earnings The earnings of the Hotel
      */
     public void setEarnings(double earnings) {
         this.earnings += earnings;
-    }
-
-    /**
-     * Getter for the name of the Hotel
-     *
-     * @return The name of the Hotel
-     */
-    public String getName() {
-        return name;
     }
 
     /**
@@ -103,21 +130,12 @@ public class Hotel {
     }
 
     /**
-     * Getter for the earnings of the Hotel
-     *
-     * @return The earnings of the Hotel
+     * Setter for the number of rooms in the Hotel
+     * 
+     * @param roomCount The number of rooms in the hotel
      */
-    public double getEarnings() {
-        return earnings;
-    }
-
-    /**
-     * Getter for the Arraylist of Room objects in the Hotel
-     *
-     * @return the ArrayList of Room objects
-     */
-    public ArrayList<Room> getRooms() {
-        return rooms;
+    public void setRoomCount(int roomCount){
+        this.roomCount = roomCount;
     }
 
     /**
