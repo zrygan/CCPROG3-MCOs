@@ -17,7 +17,6 @@ public class HRS {
         this.hotels = new ArrayList<>();
     }
 
-
     /**
      * Getter for the ArrayList of hotels in the HotelReservationSystem.HRS
      *
@@ -201,8 +200,12 @@ public class HRS {
 
                     System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n",
                             hotel.getName());
-                    System.out.printf("\n\033[33mHotel '%s' with %d rooms has earned PHP %.2f.\033[37m\n", hotel.getName(),
-                            hotel.getRooms().size(), hotel.getEarnings());
+                    System.out.printf("\n\033[33mHotel '%s':", hotel.getName());
+                    System.out.printf("\n\thas %d rooms", hotel.getRoomCount());
+                    System.out.printf("\n\thas earned %.2f", hotel.getEarnings());
+                    System.out.printf("\n\thas %d reservations", hotel.getReservationCount());
+                    System.out.printf("\n\tRoom base price range from %.2f to %.2f", hotel.getBasePrice(), hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
+                    System.out.printf("\n\thas average date price modifier %.2f\033[37m\n", hotel.getAverageDPC()); // FIXME: when you implement types of rooms update this
                 }
                 case 2 -> {
                     // low level information
@@ -219,81 +222,86 @@ public class HRS {
 
                     int option = getInput(sc);
 
-                switch (option) {
-                    case 1 -> {
-                        // view booked rooms
+                    switch (option) {
+                        case 1 -> {
+                            // view booked rooms
 
-                        System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
-                                hotel.getName());
-                        System.out.print("\nEnter date (1-31): ");
-                        int date = getInput(sc);
-                        // print available rooms with proper formatting and handling
-                        if (hotel.fetchAvails(1, date).isEmpty()) {
-                            System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
-                                    hotel.getName(), date);
-                        } else {
-                            System.out.printf("Available rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
-                            for (String room : hotel.fetchAvails(1, date)) {
-                                System.out.printf("\t\033[33m%s\033[37m\n", room);
+                            System.out.printf("You selected to \033[34mview booked rooms for a date\033[37m for hotel '%s'.\n",
+                                    hotel.getName());
+                            System.out.print("\nEnter date (1-31): ");
+                            int date = getInput(sc);
+                            // print available rooms with proper formatting and handling
+                            if (hotel.fetchAvails(1, date).isEmpty()) {
+                                System.out.printf("Available rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
+                                        hotel.getName(), date);
+                            } else {
+                                System.out.printf("Available rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
+                                for (String room : hotel.fetchAvails(1, date)) {
+                                    System.out.printf("\t\033[33m%s\033[37m\n", room);
+                                }
+                            }
+                            // print booked rooms with proper formatting and handling
+                            if (hotel.fetchAvails(0, date).isEmpty()) {
+                                System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
+                                        hotel.getName(), date);
+                            } else {
+                                System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
+                                for (String room : hotel.fetchAvails(0, date)) {
+                                    System.out.printf("\t\033[33m%s\033[37m\n", room);
+                                }
                             }
                         }
-                        // print booked rooms with proper formatting and handling
-                        if (hotel.fetchAvails(0, date).isEmpty()) {
-                            System.out.printf("\nBooked rooms of hotel '%s' on day %d: \033[31mNONE\033[37m.\n",
-                                    hotel.getName(), date);
-                        } else {
-                            System.out.printf("\nBooked rooms of hotel '%s' on day %d:\n", hotel.getName(), date);
-                            for (String room : hotel.fetchAvails(0, date)) {
-                                System.out.printf("\t\033[33m%s\033[37m\n", room);
+                        case 2 -> {
+                            // view room reservation
+
+                            System.out.printf("You selected to \033[34mview a room\033[37m for hotel '%s'.\n",
+                                    hotel.getName());
+                            System.out.printf("\nEnter room number: ");
+                            int roomNum = getInput(sc);
+                            String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
+                            // get room
+                            Room roomQuery = hotel.fetchRoom(roomName);
+                            // if room exists
+                            if (roomQuery != null) {
+                                // calculate availability
+                                int days = 31 - roomQuery.getDaysBooked();
+
+                                System.out.printf(
+                                        "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
+                                        roomNum, hotel.getName(), roomQuery.getBasePrice(), days);
+                            } else {
+                                System.out.printf(
+                                        "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
+                                        roomNum, hotel.getName());
                             }
                         }
-                    }
-                    case 2 -> {
-                        // view room reservation
-
-                        System.out.printf("You selected to \033[34mview a room\033[37m for hotel '%s'.\n",
-                                hotel.getName());
-                        System.out.printf("\nEnter room number: ");
-                        int roomNum = getInput(sc);
-                        String roomName = hotel.getName() + "_Room_" + roomNum; // reformat the name
-                        // get room
-                        Room roomQuery = hotel.fetchRoom(roomName);
-                        // if room exists
-                        if (roomQuery != null) {
-                            // calculate availability
-                            int days = 31 - roomQuery.getDaysBooked();
-
-                            System.out.printf(
-                                    "\n\033[34mThe Room %d in Hotel '%s' costs %.2f per night and is available for %d days of the month.\033[37m\n",
-                                    roomNum, hotel.getName(), roomQuery.getBasePrice(), days);
-                        } else {
-                            System.out.printf(
-                                    "\n\033[31mError. Sorry! But the room %d in Hotel '%s' does not exist.\033[37m\n",
-                                    roomNum, hotel.getName());
-                        }
-                    }
-                    case 3 -> {
-                        System.out.printf("You selected to \033[34mview a reservation\033[37m for hotel '%s'.\n", hotel.getName());
-                        System.out.printf("\nEnter guest name: ");
-                        String guestName = sc.nextLine(); // get the guest name of the reservation
-
-                        for (Reservation reservation : hotel.getReservations()){
-                            // check the guest name of the reservation
-                            if(reservation.getGuest().equals(guestName)){
-                                System.out.printf("\n\033[34mReservation %d under guest %s\033[37m\n", hotel.getReservationCount(), reservation.getGuest());
-                                System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
-                                System.out.printf("\n\033[33mname\033[37m:\t%s", reservation.getGuest());
-                                System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", hotel.getName());
-                                System.out.printf("\n\033[33mroom\033[37m:\t%s", reservation.getRoom().getName());
-                                System.out.printf("\n\033[33min  \033[37m:\t%d", reservation.getCheckin());
-                                System.out.printf("\n\033[33mout \033[37m:\t%d", reservation.getCheckout());
-                                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", reservation.getRoom().getBasePrice() * (reservation.getCheckout() - reservation.getCheckin()));
-                                System.out.printf("\n\033[33m===================\033[37m\n");
+                        case 3 -> {
+                            System.out.printf("You selected to \033[34mview a reservation\033[37m for hotel '%s'.\n", hotel.getName());
+                            System.out.printf("\nEnter guest name: ");
+                            String guestName = sc.nextLine(); // get the guest name of the reservation
+                            boolean isReservation = false;
+                            for (Reservation reservation : hotel.getReservations()) {
+                                // check the guest name of the reservation
+                                if (reservation.getGuest().equals(guestName)) {
+                                    System.out.printf("\n\033[34mReservation %d under guest %s\033[37m\n", reservation.getReservationNumber(), reservation.getGuest());
+                                    System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
+                                    System.out.printf("\n\033[33mname\033[37m:\t%s", reservation.getGuest());
+                                    System.out.printf("\n\033[33mhtl \033[37m:\thotel %s", hotel.getName());
+                                    System.out.printf("\n\033[33mroom\033[37m:\t%s", reservation.getRoom().getName());
+                                    System.out.printf("\n\033[33min  \033[37m:\t%d", reservation.getCheckin());
+                                    System.out.printf("\n\033[33mout \033[37m:\t%d", reservation.getCheckout());
+                                    System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", reservation.getTotal());
+                                    System.out.printf("\n\033[33m===================\033[37m\n");
+                                    isReservation = true;
+                                }
+                            }
+                            if (!isReservation) {
+                                System.out.printf("\n\033[31mNo reservations made under the name '%s'.\033[37m\n", guestName);
                             }
                         }
+                        default ->
+                            System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
                     }
-                    default -> System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
-                }
                 }
             }
         } else {
@@ -324,7 +332,8 @@ public class HRS {
             System.out.printf("\33[33m3\33[37m\t:\t remove a room\n");
             System.out.printf("\33[33m4\33[37m\t:\t update the base price\n");
             System.out.printf("\33[33m5\33[37m\t:\t remove a reservation\n");
-            System.out.printf("\33[33m6\33[37m\t:\t remove hotel '%s'\n", name);
+            System.out.printf("\33[33m6\33[37m\t:\t change price modifiers for a room in '%s'\n", name);
+            System.out.printf("\33[33m7\33[37m\t:\t remove hotel '%s'\n", name);
             System.out.printf("\33[31m0\33[37m\t:\t exit\n");
             System.out.printf("===============================================");
 
@@ -422,14 +431,13 @@ public class HRS {
                                     System.out.printf(
                                             "\n\033[33mRoom number %d in hotel '%s' has been successfully deleted.\033[37m\n",
                                             index, hotel.getName());
-    
+
                                     // when we delete a room we need to move the names of the rooms back by one
                                     // so say we removed index = 10, we rename all rooms index = 10 + n with the decrement of its room number
-                                }
-                                else {
+                                } else {
                                     System.out.printf("\n\033[31mError. Room number %d has an active reservation.\033[37m\n", index);
                                 }
-                               
+
                             } else {
                                 System.out.printf("\n\033[31mError. Room number %d not found.\033[37m\n", index);
                             }
@@ -473,10 +481,9 @@ public class HRS {
                     System.out.printf("\nEnter check-in date of the reservation to remove (1-31): ");
                     int checkinDate = getInput(sc);
 
-                    if (checkinDate < 0 || checkinDate > 31){
+                    if (checkinDate < 0 || checkinDate > 31) {
                         System.out.printf("\n\033[31mError. Check-in date %d not within this month.\033[37m\n", checkinDate);
-                    }
-                    else if (hotel.removeReservation(guestName, checkinDate)) {
+                    } else if (hotel.removeReservation(guestName, checkinDate)) {
                         // if hotel reservation is removed or true
                         System.out.printf("\n\033[33mReservation removed successfully.\033[37m\n");
                     } else {
@@ -486,6 +493,126 @@ public class HRS {
                     }
                 }
                 case 6 -> {
+                    System.out.printf("You selected to \033[34mchange price modifiers of a room in '%s'\033[37m.\n", name);
+
+                    System.out.printf("\n===================== OPTIONS =====================\n");
+                    System.out.printf("\33[33m1\33[37m\t:\t change price modifier for one room\n");
+                    System.out.printf("\33[33m2\33[37m\t:\t change price modifier for all room\n");
+                    System.out.printf("\33[31m0\33[37m\t:\t exit\n");
+                    System.out.printf("===================================================");
+                    System.out.printf("\nChoose an option: ");
+                    int option_61 = getInput(sc);
+
+                    switch (option_61) {
+                        case 0 -> System.out.println("\nReturning to main menu.");
+                        case 1, 2 -> {
+                            System.out.printf("\n===================== OPTIONS =====================\n");
+                            System.out.printf("\33[33m1\33[37m\t:\t change date price modifier per day\n");
+                            System.out.printf("\33[33m2\33[37m\t:\t select a preset\n");
+                            System.out.printf("===================================================");
+                            System.out.printf("\nChoose an option: ");
+                            int option_62 = getInput(sc);
+                            if (option_62 == 1) {
+                                // change DPM per day
+                                System.out.printf("\nEnter the day: ");
+                                int day = getInput(sc);
+
+                                System.out.printf("\nEnter the new date price modifer for day %d: ", day);
+                                double newDPM = getInputDBL(sc);
+
+                                // check if newDPM is valis (i.e, >0)
+                                if (newDPM > 0) {
+
+                                    // check if for one day or all rooms
+                                    if (option_61 == 1) {
+                                        // for one room only
+                                        System.out.printf("\nEnter new room number to change price modifiers: ");
+                                        int roomNumber = getInput(sc);
+                                        Room room = hotel.fetchRoom(hotel.getName() + "_Room_" + roomNumber);
+                                        room.changeDPM(day - 1, newDPM);
+                                    } else {
+                                        // for all rooms
+                                        hotel.changeDPMs(day - 1, newDPM);
+                                    }
+                                    System.out.printf("\n\033[33mDate Price Modifier changes successfully for hotel '%s'.\033[37m\n", hotel.getName());
+                                } else {
+                                    System.out.printf("\n\033[31mError. Negative number or zero. Try again.\033[37m\n");
+                                }
+                            } else {
+                                // change DPM based on a preset
+                                System.out.printf("\n============================== OPTIONS ===============================\n");
+                                System.out.printf("\33[33m1\33[37m\t:\t double price for weekends and 75%% off for weekdays\n");
+                                System.out.printf("\33[33m2\33[37m\t:\t triple price for weekends and same price for weekdays\n");
+                                System.out.printf("=======================================================================");
+
+                                System.out.printf("\nChoose an option: ");
+                                int preset = getInput(sc);
+
+                                // if option_61 is 1 (or one room only)
+
+                                System.out.printf("\nEnter new room number to change price modifiers: ");
+                                int roomNumber = getInput(sc);
+                                Room Room_61 = hotel.fetchRoom(hotel.getName() + "_Room_" + roomNumber);
+                                
+                                switch (preset) {
+                                    case 1 -> {
+                                        // 2x for weekend
+                                        // 75% for weelday
+                                        for (int i = 1; i < 32; i++) {
+                                            if (i  % 7 == 0 || i == 6 || i == 13 || i == 20 || i == 27) {
+                                                // if it's a weekend
+                                                if (option_61 == 1) {
+                                                    // if for one room only
+                                                    Room_61.changeDPM(i - 1, Room_61.getDPM()[i - 1] * 2);
+                                                } else {
+                                                    // for all rooms
+                                                    for (Room room : hotel.getRooms()) {
+                                                        room.changeDPM(i - 1, room.getDPM()[i - 1] * 2);
+                                                    }
+                                                }
+                                            } else {
+                                                // if its a weekday
+                                                if (option_61 == 1) {
+                                                    // if for one room only
+                                                    Room_61.changeDPM(i - 1, Room_61.getDPM()[i - 1] * 0.75);
+                                                } else {
+                                                    // for all rooms
+                                                    for (Room room : hotel.getRooms()) {
+                                                        room.changeDPM(i - 1, room.getDPM()[i - 1] * 0.75);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        System.out.printf("\n\033[33mDate Price Modifier changes successfully for hotel '%s'.\033[37m\n", hotel.getName());
+                                    }
+                                    case 2 -> {
+                                        // 3x for weekend
+                                        for (int i = 1; i < 32; i++) {
+                                            if (i % 7 == 0 || i == 6 || i == 13 || i == 20 || i == 27) {
+                                                // if it's a weekend
+                                                if (option_61 == 1) {
+                                                    // if for one room only
+                                                    Room_61.changeDPM(i - 1, Room_61.getDPM()[i - 1] * 3);
+                                                } else {
+                                                    // for all rooms
+                                                    for (Room room : hotel.getRooms()) {
+                                                        room.changeDPM(i - 1, room.getDPM()[i - 1] * 3);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        System.out.printf("\n\033[33mDate Price Modifier changes successfully for hotel '%s'.\033[37m\n", hotel.getName());
+                                    }
+                                    default ->
+                                        System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
+                                }
+                            }
+                        }
+                        default ->
+                            System.out.printf("\n\033[31mError. Invalid choice. Try again.\033[37m\n");
+                    }
+                }
+                case 7 -> {
                     System.out.printf("You selected to \033[34mdelete the hotel '%s'\033[37m.\n", name);
                     System.out.printf("\n\033[33mPreparing hotel '%s' for removal..\033[37m\n", hotel.getName());
 
@@ -553,7 +680,7 @@ public class HRS {
                         if (checkout > checkin && (checkout >= 2 && checkout <= 31)
                                 && (checkin >= 1 && checkin <= 30)) {
                             hotel.bookRoom(guestName, checkin, checkout);
-                            
+
                             run = false;
                         } else {
                             System.out.printf("\n\033[31mError. Invalid dates for booking.\033[37m\n");

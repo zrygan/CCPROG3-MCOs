@@ -14,6 +14,7 @@ public class Room {
     private final Hotel hotel;
     private boolean[] availability;
     private Reservation reservation;
+    private double[] DPM;
 
     /**
      * Constructor for the Room object
@@ -28,7 +29,10 @@ public class Room {
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
-        Arrays.fill(this.availability, Boolean.FALSE);
+        this.DPM = new double[31];
+
+        Arrays.fill(this.availability, Boolean.FALSE);  // fill availability with false
+        Arrays.fill(this.DPM, (double) 1.0);            // fill DPM with 1.0 (default price)
     }
     
     /**
@@ -127,10 +131,27 @@ public class Room {
     /**
      * Setter for the reservation of the hotel
      *
-     * @param reservation the reservation for the hotel
+     * @param reservation the reservation for the room
      */
     public void setReservation(Reservation reservation) {
         this.reservation = reservation;
+    }
+
+    /**
+     * Getter for the reservation of the room
+     * @return
+     */
+    public double[] getDPM(){
+        return DPM;
+    }
+
+    /**
+     * Setter for the DPM of the hotel.
+     * 
+     * @param DPM
+     */
+    public void setDPM(double[] DPM){
+        this.DPM = DPM;
     }
 
     /**
@@ -199,5 +220,25 @@ public class Room {
      */
     public boolean isAvailable(int day) {
         return !this.availability[day - 1];
+    }
+
+    /**
+     * changes the Date Price Modifer of a specific day of the room
+     * 
+     * @param day the day of the Date Price Modifer
+     * 
+     * @param newDPM the new Date Price Modifer
+     */
+    public void changeDPM(int day, double newDPM){
+        this.DPM[day] = newDPM;
+    }
+
+    public double calcPrice(int checkin, int checkout){
+        double total = 0;
+        for(int i = checkin; i < checkout; i++){
+            total += this.getBasePrice() * this.getDPM()[i - 1];
+        }
+
+        return total;
     }
 }

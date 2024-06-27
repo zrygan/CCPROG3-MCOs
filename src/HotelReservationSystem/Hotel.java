@@ -23,7 +23,7 @@ public class Hotel {
      */
     public Hotel(String name) {
         this.roomCount = 1; // initialize at 1 because we want to start at room_1 not room_0
-        this.reservationCount = 1;
+        this.reservationCount = 0;
         this.name = name;
         this.rooms = new ArrayList<>();
         this.reservations = new ArrayList<>();
@@ -199,8 +199,13 @@ public class Hotel {
             if (room.isAvailable(checkin, checkout)) {
                 // add reservation
                 int reservationNumber = this.getReservationCount() + 1;
-                Reservation newReservation = new Reservation(guestName, checkin, checkout, room, reservationNumber);
+                double total = room.calcPrice(checkin, checkout);
+
+                Reservation newReservation = new Reservation(guestName, checkin, checkout, room, reservationNumber, total);
+
                 this.reservations.add(newReservation);
+
+                // Print Receipt
                 System.out.printf("\n\033[33mRoom booked successfully for %s.\033[37m\n", guestName);
                 System.out.printf("\n\033[33m===== RECEIPT =====\033[37m");
                 System.out.printf("\n\033[33mname\033[37m:\t%s", guestName);
@@ -208,14 +213,16 @@ public class Hotel {
                 System.out.printf("\n\033[33mroom\033[37m:\t%s", room.getName());
                 System.out.printf("\n\033[33min  \033[37m:\t%d", checkin);
                 System.out.printf("\n\033[33mout \033[37m:\t%d", checkout);
-                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", room.getBasePrice() * (checkout - checkin));
+                System.out.printf("\n\033[33mcost\033[37m:\tPHP %.2f", total);
                 System.out.printf("\n\033[33m===================\033[37m\n");
-                setEarnings(room.getBasePrice() * (checkout - checkin));
+
+                setEarnings(total);
+
                 room.setReservation(newReservation);
                 room.addBookRoom(checkin, checkout);
+                this.setReservationCount(reservationNumber);
                 return true;
             }
-            this.setReservationCount(this.getReservationCount() + 1);
         }
 
         System.out.printf("\n\033[31mError. There are currently no available rooms in hotel '%s' for the selected dates.\033[37m\n", this.getName());
@@ -382,4 +389,24 @@ public class Hotel {
         this.earnings = 0.0;
     }
 
+    /**
+     * Gets the average DPC of all the rooms in the hotel
+     * 
+     * @return the average DPC
+     */
+    public double getAverageDPC(){
+        double total = 0;
+        for (Room room : rooms){
+            for (int i = 0; i < 31; i++) {
+                total += room.getDPM()[i]; // get the DPM of the room at the ith day
+            }
+        }
+        return total / 31 / this.getRoomCount();
+    }
+
+    public void changeDPMs(int day, double newDPM){
+        for (Room room : this.getRooms()){
+            room.changeDPM(day, newDPM);
+        }
+    }
 }

@@ -21,12 +21,12 @@ public class Reservation {
      * @param room the room of the reservation
      * @param reservationNumber the number of the reservation
      */
-    public Reservation(String guest, int checkin, int checkout, Room room, int reservationNumber) {
+    public Reservation(String guest, int checkin, int checkout, Room room, int reservationNumber, double total) {
         this.room = room;
         this.guest = guest;
         this.checkin = checkin;
         this.checkout = checkout;
-        this.total = room.getBasePrice() * (checkout - checkin); // calculate total
+        this.total = total;
         this.reservationNumber = reservationNumber;
     }
 
@@ -78,9 +78,9 @@ public class Reservation {
     /**
      * Getter for the total cost of the reservation
      *
-     * @return the total cost
+     * @return the reservation number
      */
-    public double getReservationCount() {
+    public int getReservationNumber() {
         return reservationNumber;
     }
 }

@@ -1,5 +1,7 @@
 package HotelReservationSystem;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import javax.swing.*;
 
 /**
@@ -28,7 +30,6 @@ public class Driver {
 
         boolean run = true; 
 
-        /*
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
         {   
             System.out.println("Welcome to the Hotel Reservation System or (HRS).");
@@ -79,8 +80,8 @@ public class Driver {
             System.out.printf("\tJaztin Jacob Jimenez\n\n");
             System.out.println("Date Finished: June 26, 2024");
         }
-        */
-
-        frame.setVisible(true);
+        
+        // FIXME: remove comment here when GUI implementation is going to s
+        // frame.setVisible(true);
     }
 }
