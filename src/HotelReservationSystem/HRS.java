@@ -207,7 +207,7 @@ public class HRS {
                     System.out.printf("\n\thas earned %.2f", hotel.getEarnings());
                     System.out.printf("\n\thas %d reservations", hotel.getReservationCount());
                     System.out.printf("\n\tRoom base price range from %.2f to %.2f", hotel.getBasePrice(), hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
-                    System.out.printf("\n\thas average date price modifier %.2f\033[37m\n", hotel.getAverageDPC()); // FIXME: when you implement types of rooms update this
+                    System.out.printf("\n\thas average date price modifier %.2f\033[37m\n", hotel.getAverageDPC());
                 }
                 case 2 -> {
                     // low level information
@@ -697,10 +697,14 @@ public class HRS {
 
                         int roomType = getInput(sc);
 
+                        System.out.printf("\nEnter a discount code: ");
+
+                        String code = verifyDiscount(sc.nextLine());
+
                         // checks if the booking dates are in bound
                         if (checkout > checkin && (checkout >= 2 && checkout <= 31)
                                 && (checkin >= 1 && checkin <= 30)) {
-                            hotel.bookRoom(guestName, checkin, checkout, roomType);
+                            hotel.bookRoom(guestName, checkin, checkout, roomType, code);
 
                             run = false;
                         } else {
@@ -728,5 +732,17 @@ public class HRS {
         System.out.printf("\033[33m4\033[37m\t:\t Simulate Booking\n");
         System.out.printf("\033[31m0\033[37m\t:\t Exit\n");
         System.out.printf("===================================\n");
+    }
+
+    /**
+     * Verifies the discount code entered by the user
+     * @param code the discount code entered by the user
+     * @return the discount code entered by the user, {null} otherwise
+     */
+    public String verifyDiscount(String code){
+        if (code.equals("I_WORK_HERE") || code.equals("STAY4_GET1") || code.equals("PAYDAY")){
+            return code;
+        }
+        return null;
     }
 }

@@ -189,20 +189,40 @@ public class Hotel {
      * @param checkin date of checking in
      * @param checkout date of checking out
      * @param type the type of room the user wants to book
+     * @param code discount code
      *
      * @return {true} if room booking is successful, {false} if room booking is
      * not successful
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
-    public boolean bookRoom(String guestName, int checkin, int checkout, int type) {
+    public boolean bookRoom(String guestName, int checkin, int checkout, int type, String code) {
         // iterate through all the rooms in hotel
+
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
             if (room.isAvailable(checkin, checkout) && room.getType() == type) {
+                double total = room.calcPrice(checkin, checkout);
+
+                // check for any applicable discount codes
+                if (code != null){
+                    switch (code) {
+                        case "I_WORK_HERE" -> total -= total * 0.10; // 10% off
+                        case "STAY4_GET1" -> {
+                            if (checkout + checkin - 5 != 0){
+                                total = room.calcPrice(checkin + 1, checkout - 1); // first day is free
+                            }
+                        }
+                        case "PAYDAY" ->{
+                            if ((checkin <= 15 && checkout > 15) || (checkin <= 30 && checkout > 30)) {
+                                total -= total * 0.07; // 7% discount   
+                            }
+                        }
+                    }
+                }
+
                 // add reservation
                 int reservationNumber = this.getReservationCount() + 1;
-                double total = room.calcPrice(checkin, checkout);
 
                 Reservation newReservation = new Reservation(guestName, checkin, checkout, room, reservationNumber, total);
 
