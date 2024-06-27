@@ -128,7 +128,7 @@ public class HRS {
         } else {
             Hotel hotel = new Hotel(hotelName);
 
-            System.out.printf("\nEnter number of rooms to create: ");
+            System.out.printf("\nEnter number of Standard rooms to create: ");
 
             int num = getInput(sc);
 
@@ -136,7 +136,7 @@ public class HRS {
                 hotels.add(hotel);
                 for (int i = 0; i < num; i++) {
 
-                    Room newRoom = hotel.newRoom();
+                    Room newRoom = hotel.newRoom(1); // add a standard room
 
                     if (newRoom != null) {
 
@@ -201,7 +201,9 @@ public class HRS {
                     System.out.printf("You selected to \033[34mview high-level information\033[37m for hotel '%s'.\n",
                             hotel.getName());
                     System.out.printf("\n\033[33mHotel '%s':", hotel.getName());
-                    System.out.printf("\n\thas %d rooms", hotel.getRoomCount());
+                    System.out.printf("\n\thas %d Standard rooms", hotel.roomTypeCount()[0]);
+                    System.out.printf("\n\thas %d Deluxe rooms", hotel.roomTypeCount()[1]);
+                    System.out.printf("\n\thas %d Executive rooms", hotel.roomTypeCount()[2]);
                     System.out.printf("\n\thas earned %.2f", hotel.getEarnings());
                     System.out.printf("\n\thas %d reservations", hotel.getReservationCount());
                     System.out.printf("\n\tRoom base price range from %.2f to %.2f", hotel.getBasePrice(), hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
@@ -377,10 +379,19 @@ public class HRS {
 
                     int num = getInput(sc);
 
+                    System.out.printf("\n========== ROOM TYPES ==========\n");
+                    System.out.printf("\033[33m1\033[37m\t:\t Standard Room\n");
+                    System.out.printf("\033[33m2\033[37m\t:\t Deluxe Room\n");
+                    System.out.printf("\033[33m3\033[37m\t:\t Executive Room\n");
+                    System.out.printf("================================\n");
+                    System.out.printf("\nEnter the type of room: ");
+
+                    int type = getInput(sc);
+
                     if (num > 0 && hotel.getRoomCount() + num < 51) {
                         for (int i = 0; i < num; i++) {
 
-                            Room newRoom = hotel.newRoom();
+                            Room newRoom = hotel.newRoom(type);
 
                             if (newRoom != null) {
 

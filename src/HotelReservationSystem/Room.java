@@ -15,6 +15,7 @@ public class Room {
     private boolean[] availability;
     private Reservation reservation;
     private double[] DPM;
+    private final int type;
 
     /**
      * Constructor for the Room object
@@ -23,16 +24,25 @@ public class Room {
      * @param hotel the hotel of the room
      * @param basePrice the base price of the hotel the room is part of
      */
-    public Room(String name, Hotel hotel, double basePrice) {
+    public Room(String name, Hotel hotel, double basePrice, int type) {
         this.name = name;
-        this.basePrice = basePrice;
         this.daysBooked = 0; // init as 0
         this.hotel = hotel;
         this.availability = new boolean[31];
         this.DPM = new double[31];
+        this.type = type;
 
         Arrays.fill(this.availability, Boolean.FALSE);  // fill availability with false
         Arrays.fill(this.DPM, (double) 1.0);            // fill DPM with 1.0 (default price)
+        
+        switch (type) {
+            case 2 ->
+                this.basePrice = basePrice + (basePrice * 0.20); // deluxe costs 20% more
+            case 3 ->
+                this.basePrice = basePrice + (basePrice * 0.35); // executive costs 35% more
+            default ->
+                this.basePrice = basePrice;
+        }
     }
     
     /**
@@ -154,6 +164,10 @@ public class Room {
         this.DPM = DPM;
     }
 
+    public int getType(){
+        return type;
+    }
+
     /**
      * determines the days the room is booked and make it's availability for
      * those days true and increment the number of days the room is booked by
@@ -233,6 +247,15 @@ public class Room {
         this.DPM[day] = newDPM;
     }
 
+    /**
+     * Calculates the actual price of the room with the base price and the DPM
+     * 
+     * @param checkin the day of check in 
+     * 
+     * @param checkout the day of check out
+     * 
+     * @return the actual price of the room
+     */
     public double calcPrice(int checkin, int checkout){
         double total = 0;
         for(int i = checkin; i < checkout; i++){

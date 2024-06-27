@@ -161,16 +161,18 @@ public class Hotel {
     /**
      * creates a new room in the hotel, if possible
      *
+     * @param type the type of room
+     * 
      * @return {Room} if a new room is created, {null} if otherwise
      *
      * @author Zhean Ganituen
      */
-    public Room newRoom() {
+    public Room newRoom(int type) {
         for (int roomNumber = 1; roomNumber < 51; roomNumber++) {
             String roomName = name + "_Room_" + roomNumber;
             // the first room that doesnt exist yet make it
             if (fetchRoom(roomName) == null) {
-                Room newRoom = new Room(roomName, this, this.basePrice);
+                Room newRoom = new Room(roomName, this, this.basePrice, type);
                 rooms.add(newRoom);
                 roomCount++;
                 return newRoom;
@@ -408,5 +410,24 @@ public class Hotel {
         for (Room room : this.getRooms()){
             room.changeDPM(day, newDPM);
         }
+    }
+
+    public int[] roomTypeCount(){
+        int[] roomTypes = new int[3];
+
+        // set up counters
+        roomTypes[0] = 0; // counter for standard rooms
+        roomTypes[1] = 0; // counter for deluxe rooms
+        roomTypes[2] = 0; // counter for executive rooms
+
+        for (Room room : this.getRooms()){
+            switch (room.getType()) {
+                case 1 -> roomTypes[0] += 1;
+                case 2 -> roomTypes[1] += 1;
+                case 3 -> roomTypes[2] += 1;                    
+            }
+        }
+
+        return roomTypes;
     }
 }
