@@ -686,11 +686,21 @@ public class HRS {
                         System.out.print("\nEnter the day of your check-out: ");
 
                         int checkout = getInput(sc);
+                        
+                        // ask for the type of room
+                        System.out.printf("\n========== ROOM TYPES ==========\n");
+                        System.out.printf("\033[33m1\033[37m\t:\t Standard Room\n");
+                        System.out.printf("\033[33m2\033[37m\t:\t Deluxe Room\n");
+                        System.out.printf("\033[33m3\033[37m\t:\t Executive Room\n");
+                        System.out.printf("================================\n");
+                        System.out.printf("\nEnter the type of room: ");
+
+                        int roomType = getInput(sc);
 
                         // checks if the booking dates are in bound
                         if (checkout > checkin && (checkout >= 2 && checkout <= 31)
                                 && (checkin >= 1 && checkin <= 30)) {
-                            hotel.bookRoom(guestName, checkin, checkout);
+                            hotel.bookRoom(guestName, checkin, checkout, roomType);
 
                             run = false;
                         } else {

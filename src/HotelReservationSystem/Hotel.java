@@ -188,17 +188,18 @@ public class Hotel {
      * @param guestName the guests name
      * @param checkin date of checking in
      * @param checkout date of checking out
+     * @param type the type of room the user wants to book
      *
      * @return {true} if room booking is successful, {false} if room booking is
      * not successful
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
-    public boolean bookRoom(String guestName, int checkin, int checkout) {
+    public boolean bookRoom(String guestName, int checkin, int checkout, int type) {
         // iterate through all the rooms in hotel
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
-            if (room.isAvailable(checkin, checkout)) {
+            if (room.isAvailable(checkin, checkout) && room.getType() == type) {
                 // add reservation
                 int reservationNumber = this.getReservationCount() + 1;
                 double total = room.calcPrice(checkin, checkout);
