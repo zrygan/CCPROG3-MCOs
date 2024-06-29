@@ -2,7 +2,6 @@ package HotelReservationSystem;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import javax.swing.*;
 
 /**
  * HotelReservationSystem.Driver class for the Hotel Reservation System
@@ -23,10 +22,6 @@ public class Driver {
      */
     public static void main(String[] args) {
         HRS hrs = new HRS();            // make HRS instance
-        JFrame frame = new JFrame();    // make JFrame instance for GUI
-        
-        // set the size of the GUI window
-        frame.setSize(1000,600);
 
         boolean run = true; 
 
@@ -80,8 +75,5 @@ public class Driver {
             System.out.printf("\tJaztin Jacob Jimenez\n\n");
             System.out.println("Date Finished: June 26, 2024");
         }
-        
-        // FIXME: remove comment here when GUI implementation is going to s
-        // frame.setVisible(true);
     }
 }

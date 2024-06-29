@@ -13,10 +13,11 @@ See [issues](https://github.com/zrygan/CCPROG3-MCOs/issues).
 
 **To do list for the second part of the project implementation.**
 
-- [ ] Date Price Modifier
+- [X] Date Price Modifier
 - [ ] GUI
-- [ ] Discount Codes
-- [ ] Room Types
+- [X] Discount Codes
+- [ ]Additional features (re: discount codes)
+- [X] Room Types
 - [ ] Debugging
 - [ ] **Update** UML
 - [ ] Javadoc and internal Documentation
