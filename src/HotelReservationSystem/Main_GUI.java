@@ -13,7 +13,7 @@ import javax.swing.*;
  *      FONT_NAME   TTF_FILENAME    GOOGLE_FONTS_LINK
  *      ...
  * 
- * Colors: ADOBE_COLORS_LINK
+ * Colors: ADOBE_COLOR_LINK
  *      COLOR_NAME  HEX_CODE    DESC (is it for text, background, highlight, button?)
  *      ...
  * 
