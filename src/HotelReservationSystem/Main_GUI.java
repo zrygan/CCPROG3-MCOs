@@ -13,9 +13,13 @@ import javax.swing.*;
  *      FONT_NAME   TTF_FILENAME    GOOGLE_FONTS_LINK
  *      ...
  * 
- * Colors: ADOBE_COLOR_LINK
- *      COLOR_NAME  HEX_CODE    DESC (is it for text, background, highlight, button?)
- *      ...
+ * Colors: https://color.adobe.com/Pip-Boy-Theme-color-theme-cf4447b6-dfc5-41e6-a20f-ca988f1f5447/
+ *      COLOR_NAME  HEX_CODE    DESC (is it for text, background, highlight, button?) 
+ *      cName       #022601         
+ *      cName       #22F21B         
+ *      cName       #094007         
+ *      cName       #1A8C16         
+ *      cName       #0D0D0D         
  * 
  */
 
