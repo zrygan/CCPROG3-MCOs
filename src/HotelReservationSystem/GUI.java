@@ -23,9 +23,9 @@ import javax.swing.*;
  * 
  */
 
-public class Main_GUI extends JFrame {
+public class GUI extends JFrame {
 
-    public Main_GUI() {
+    public GUI() {
         super("Hotel Reservation System (Ganituen, Jimenez)");
         setSize(450, 500);
         initMain();
