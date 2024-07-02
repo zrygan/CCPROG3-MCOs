@@ -1,5 +1,6 @@
 package HotelReservationSystem;
 
+import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -21,10 +22,24 @@ public class Driver {
      * @param args arguments of the main method
      */
     public static void main(String[] args) {
-        HRS hrs = new HRS();            // make HRS instance
+        // Make instacnce of HRS
+        HRS hrs = new HRS();            
+
+        // Make an instance of the GUI
+        GUI gui = new GUI();
 
         boolean run = true; 
 
+        // LOAD Fonts
+        Font regular_12 = Fonts.get("Regular", 12f, false);
+        Font italic_12 = Fonts.get("Italic", 12f, false);
+        Font bold_12 = Fonts.get("Bold", 12f, false);
+
+        // Register the fonts
+s
+        // GUI
+
+        // CLI
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
         {   
             System.out.println("Welcome to the Hotel Reservation System or (HRS).");
