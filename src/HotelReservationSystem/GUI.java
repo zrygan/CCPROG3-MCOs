@@ -9,9 +9,10 @@ import javax.swing.*;
  *      W   450 (px)
  *      H   500 (px)
  * 
- * Fonts:
- *      FONT_NAME   TTF_FILENAME    GOOGLE_FONTS_LINK
- *      ...
+ * Fonts: 
+ *      Ubunto Mono Regular     UbuntuMono-Regular.ttf  https://fonts.google.com/specimen/Ubuntu+Mono
+ *      Ubunto Mono Italic      UbuntuMono-Italic.ttf   https://fonts.google.com/specimen/Ubuntu+Mono
+ *      Ubunto Mono Bold        UbuntuMono-Bold.ttf     https://fonts.google.com/specimen/Ubuntu+Mono
  * 
  * Colors: https://color.adobe.com/Pip-Boy-Theme-color-theme-cf4447b6-dfc5-41e6-a20f-ca988f1f5447/
  *      COLOR_NAME  HEX_CODE    DESC (is it for text, background, highlight, button?) 
