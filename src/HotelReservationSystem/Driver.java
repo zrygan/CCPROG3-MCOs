@@ -36,7 +36,7 @@ public class Driver {
         Font bold_12 = Fonts.get("Bold", 12f, false);
 
         // Register the fonts
-s
+        
         // GUI
 
         // CLI
