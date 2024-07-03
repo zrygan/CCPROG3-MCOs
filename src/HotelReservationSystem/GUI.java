@@ -1,6 +1,8 @@
 package HotelReservationSystem;
 
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 /*
@@ -50,20 +52,22 @@ import javax.swing.*;
  * 
  */
 
-public class GUI extends JFrame {
-    public GUI() {
+public class GUI {
+    public GUI(){
+        JFrame GUI = new JFrame("Hotel Reservation System");
+        JPanel panel = new JPanel();
 
-        super("Hotel Reservation System (Ganituen, Jimenez)");
-        setSize(450, 500);
-        initMain();
-        setVisible(true);
-        setResizable(false);
+        // Components
+        JButton button_createHotel = new JButton("Create Hotel");        
+        button_createHotel.addActionListener(e -> CREATE_UI());
+        panel.add(button_createHotel);
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
-    private void initMain() {
-
+        // initialize frame
+        GUI.add(panel);
+        GUI.setSize(450, 500);
+        GUI.setVisible(true);
+        GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     /**
@@ -97,4 +101,26 @@ public class GUI extends JFrame {
     public Color getNormGreen(){
         return Color.decode("#11790E");
     }
-}
+
+    private void CREATE_UI(){
+        JFrame GUI = new JFrame("HRS: Create Hotel");
+        JPanel panel = new JPanel();
+
+        // initialize frame
+        GUI.add(panel);
+        GUI.setSize(250, 250);
+        GUI.setVisible(true);
+
+        // make it so that when the user closes THIS window the entire app does
+        // not close
+        GUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        GUI.addWindowListener(new WindowAdapter(){
+            // if the close button is pressed only hide the window
+            // so, override the windowClosing function by just disposing it
+            @Override
+            public void windowClosing(WindowEvent e){
+                GUI.dispose();
+            }
+        });
+    }
+} 
