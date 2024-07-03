@@ -1,0 +1,65 @@
+.ubuntu-mono-regular {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ubuntu-mono-bold {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ubuntu-mono-regular-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ubuntu-mono-bold-italic {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Color Theme Swatches in Hex */
+.Pip-Boy-Theme-1-hex {
+  color: #022601;
+}
+.Pip-Boy-Theme-2-hex {
+  color: #22f21b;
+}
+.Pip-Boy-Theme-3-hex {
+  color: #0d0d0d;
+}
+.Pip-Boy-Theme-4-hex {
+  color: #11790e;
+}
+
+/* Color Theme Swatches in RGBA */
+.Pip-Boy-Theme-1-rgba {
+  color: rgba(2, 38, 1, 1);
+}
+.Pip-Boy-Theme-2-rgba {
+  color: rgba(34, 242, 27, 1);
+}
+.Pip-Boy-Theme-3-rgba {
+  color: rgba(13, 13, 13, 1);
+}
+.Pip-Boy-Theme-4-rgba {
+  color: rgba(17, 121, 14, 1);
+}
+
+/* Color Theme Swatches in HSLA */
+.Pip-Boy-Theme-1-hsla {
+  color: hsla(118, 94, 7, 1);
+}
+.Pip-Boy-Theme-2-hsla {
+  color: hsla(118, 89, 52, 1);
+}
+.Pip-Boy-Theme-3-hsla {
+  color: hsla(0, 0, 5, 1);
+}
+.Pip-Boy-Theme-4-hsla {
+  color: hsla(118, 79, 26, 1);
+}
