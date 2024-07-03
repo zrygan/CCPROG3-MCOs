@@ -1,6 +1,8 @@
 package HotelReservationSystem;
 
 import java.awt.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  * HotelReservationSystem.Driver class for the Hotel Reservation System
