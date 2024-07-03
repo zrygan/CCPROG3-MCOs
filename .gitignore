@@ -30,3 +30,5 @@ out/
 
 # VS Code
 .vscode/
+
+*.svg linguist-detectable linguist-language=SVG
