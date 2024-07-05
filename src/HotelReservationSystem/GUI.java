@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /*
  * ========== DESIGN SPECS for Main_GUI ==========
@@ -52,44 +53,29 @@ import javax.swing.*;
  * 
  */
 
-public class GUI {
+public final class GUI {
     public GUI(){
-        // load and register fonts
-        Font regular_12 = Fonts.get("Regular", 12f, false);
-        Font italic_12 = Fonts.get("Italic", 12f, false);
-        Font bold_12 = Fonts.get("Bold", 12f, false);
-
-        Font regular_14 = Fonts.get("Regular", 14f, true);
-        Font italic_14 = Fonts.get("Italic", 14f, true);
-        Font bold_14 = Fonts.get("Bold", 14f, true);
-
-        Font regular_16 = Fonts.get("Regular", 16f, true);
-        Font italic_16 = Fonts.get("Italic", 16f, true);
-        Font bold_16 = Fonts.get("Bold", 16f, true);
+        initFonts();
 
         JFrame GUI = new JFrame("Hotel Reservation System");
         JPanel panel = new JPanel();
 
         // Components
-        JButton button_createHotel = new JButton("Create Hotel");
-        button_createHotel.setFont(regular_12);        
+        JButton button_createHotel = ASSET_BASIC_BUTTON("Create Hotel");
         button_createHotel.addActionListener(e -> CREATE_HOTEL_UI());
+
         panel.add(button_createHotel);
 
-        JButton button_viewHotel = new JButton("View Hotel");   
-        button_createHotel.setFont(regular_12);        
+        JButton button_viewHotel = ASSET_BASIC_BUTTON("View Hotel");   
         button_viewHotel.addActionListener(e -> VIEW_HOTEL_UI());
         panel.add(button_viewHotel);
 
-        JButton button_manageHotel = new JButton("Manage Hotel");   
-        button_createHotel.setFont(regular_12);        
+        JButton button_manageHotel = ASSET_BASIC_BUTTON("Manage Hotel");   
         button_manageHotel.addActionListener(e -> MANAGE_HOTEL_UI());
         panel.add(button_manageHotel);
 
-        JButton button_simBooking = new JButton("Simulate Booking");
-        button_simBooking.setFont(bold_12);
-        button_simBooking.setForeground(getDarkGreen());
-        button_simBooking.setBackground(getVividGreen());
+        JButton button_simBooking = ASSET_ACCENT_BUTTON("<html>Simulate<br>Booking</html>");
+        button_simBooking.setPreferredSize(new Dimension(100, 60));
         button_simBooking.addActionListener(e -> SIM_BOOKING_UI());
         panel.add(button_simBooking);
 
@@ -101,6 +87,37 @@ public class GUI {
         GUI.setVisible(true);
         GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+
+    public JButton ASSET_ACCENT_BUTTON (String text){
+        Font f = Fonts.get("Regular", 12);
+        JButton btn = new JButton(text);
+        
+        btn.setFont(f);
+        btn.setForeground(getDarkGreen());
+        btn.setBackground(getVividGreen());
+
+        return btn;
+    }
+
+    public JButton ASSET_BASIC_BUTTON (String text){
+        Font f = Fonts.get("Regular", 12);
+        JButton btn = new JButton(text);
+
+        btn.setFont(f);
+        btn.setForeground(getVividGreen());
+        btn.setBackground(getDarkGreen());
+
+        // add the vivid green border with thickness 3 units
+        Border border = BorderFactory.createLineBorder(getVividGreen(), 3);
+        btn.setBorder(border);
+
+        // set default size, can be changed after button is created
+        btn.setPreferredSize(new Dimension(100, 30));
+
+        return btn;
+    }
+
+    
 
     /**
      * returns the vivid green color from the hex code
@@ -132,6 +149,16 @@ public class GUI {
      */
     public final Color getNormGreen(){
         return Color.decode("#11790E");
+    }
+
+    /**
+     * function that initializes the fonts that will be used by the GUI.
+     */
+    public void initFonts(){
+        // load and register fonts    
+        Fonts.get("Regular", 12f, false);    
+        Fonts.get("Italic", 12f, false);
+        Fonts.get("Bold", 12f, false);
     }
 
     /**

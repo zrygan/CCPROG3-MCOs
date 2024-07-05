@@ -1,1 +1,715 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1931px" height="1044px" viewBox="-0.5 -0.5 1931 1044" content="&lt;mxfile&gt;&lt;diagram id=&quot;-B78dE5ehC7MIdu6jiop&quot; name=&quot;Page-1&quot;&gt;7Z3rb6O6EsD/mkjdK7UKJLTpxzbZx5G6q1W70r3noxvcBC3BETh9nL/+2GDziMckDYaurqZadYt5BPwbD+N5OKPJfPP6NSXb9XcW0njkj8PX0WQx8n3fu/bFf7LlrWiZepOiYZVGYdHkVQ0P0T9UNY5V6y4KadY4kDMW82jbbFyyJKFL3mgjacpemoc9sbj5qVuyokbDw5LEZut/o5Cvi9ZZMK7av9Fotdaf7I3Vnkey/L1K2S5RnzfyJ0/5T7F7Q/S11PHZmoTspdY0+TyazFPGePHX5nVOY9m3utuK875Y9pb3ndKEH3OC4vRM4p169G+M0/ieZjR9JjxiycNbxunmIm9W98zfdD9lL9EmJonYun1iCX9QezyxTeJolYi/l+JOaCoanmnKI9HFN2oHZ1vRulxHcXhH3thO3m/GRf/prds1S6N/xGVJrK4pdqdcSYt/2TjiQZ4pmseiNaWZOOan7gRvr+k7eW0ceEcyrhqWLI7JNosey8fYkHQVJbeMc7ZRB5l9rLpdPiF9rTWpPv9K2Yby9E0covaee/5VUJykRshES8RLJW/TqWpb12RtphuJkvFVefWKs/hDoYaxTwzs52IzIRsq/htNbsTvB55GycogLh6Q5yRS9pvOWcwE2kXCChGI4nivSUtBTJ+4VQayLVmKz7rLj1lMq5Z79diyiYlzn+J8rKyjMKSJ5Mc44aSAJclsWZTwvFuCW/FPdNR8fBGMAnHjc7HtVdvinzw85XOWiGchUY6SCkl4oVIaAMj+0ZAVUiGhRxHVx3UBegkCFXpkk5VE78WW3BB9I38vkO3pbAN/OLZXMNtKRdcQV40N0nN/dDNG3qfzvpoNx1sbQcBgngvLgpe05YMi05OZeuPpgFCvDg7jAi6SdUB2cqQx5YSsB4KlJE1ER1a6OWQ72V+I9XSswYAWlTeFjeRHktGfabSkCNYd2NmA5tTUwGqgi6McSYFOOwC8k7htBIGYVqB+SY6Lc8+AOTFhTgBwMXmk8U+WRbmNN1mkxbF7QA8xawpllKxpGrma9YyPNJVm3VEGAEpp8rb5MM6AWe4nHLwdgHuDamVzplswX1F+q1Xz2SdUzu74TgdUzt7UNJMLvlmdr+0lXHF/ZuKSSL2D82rIGa9papWD+odQ17XxjG7JzmSvh5z2Tmf28ZyjhV/HOIqdsD46quCGtX0US99zVhvG6It2CHk6pAHm+RbKmabcHnXAwe2M+9WAhlnQhr0WijhLmyGItrAEioIzUbge0lqbXrco+rosfDokAcj8dOZTf9DwRfu7PY9d1HhjAKMb22BIu01/mO2VXsAF44+owp0hvxrSipuZQStIheOwdps1Mh7SlaaDKgdMNjW6bXFoHOHucoaGNNJsfhcxwD+r0DS6yV3SDYY0x6we06yG15KCgCPaGfPZgGZaYEOe0BdppRneNeR6KtfL8ZC2WGCzxR4Z+52TXe3Eo/2AsrPF1cfLNV3+jipvS26klTtkKj1osIurx5QkKCcd5GQypAfO5l5/ony5zuWkNZaCSqEj7GBI883qb81p3zyTKM7O+NuWmsM+JJzCQ15rDXTAORGI2YAWX2DLe1muSbJSaRHCEmjPikCd35n6lTeoa85m9IU0zlV+lITivtEj1wfpyaBWoO31XgxwCRvzJXpHfjmkgy6w5a+mdCP6ruajO24GsLC++FHvdxeN2aDmn+11v02pfIwvLL2XQkLiMxz9rhDPvCENOjOiaklbByduWHlfAX1X5f2V4tmSIVe21ZmXPqFO0E2vPBbeHxrH5UjpUnkPMnVSeQ+X/5kZ6gsMsXTlClTd98fVdMBIrlF2ywSoEE0rh1yB6vr+uMJlnSF52yeLyQ7dqEL19f1hNafPEuu6WLZIEX2KEiK34MWMkG23Cvv+2JrzZMmWSCc4eYziiL+Z6hh93G5AAzX3vYEOoMTiPXhYm92FJlBoD9J0UJx9acsqtYUqC19WU2MrTT0HLeoyuoHj+3SJuB5QkQNr4GCdZ3+zYKAwvze0nnW4Y6HnILCBKv3+DDIs0v9DqANV+v1Rb0kpxqU3+uEL1Or393ZuqQlZlO4RrAZxRvfo2IMTui3v5xpd2A+GKtsddKBavz/ophO7HNLFalgVWXSKdUYLFOT3aHDb1LUY0Dc119jZsX4yHOTuJAGox+9PEkC3mRrlDUkAEoLQTeoEOFSM359WP279BdvyC4j5dMxAXX6PGr6lyK/O+cCSK6jX3fEHivR75G9LCSZheKtrw06s/kJR6JqLAtTy9ygKNkM+pRsUhY8WBaCwv0dRsGWNR5ky9mIqp/EwbExXcsAbKPXvjffMZgTUcWMJ8McJA7AGQH/CYFoEtqTxFosfc8crru/LHddcWxy4AcS+PLATfDgNKi8NKoe0TnHD+Pke7XLodMkiB+E6GdhwYcC+Xtd0MfLSDS2QSN4fWtNbU6KVGlN9NxsSdkoYSCnvjbBOodojzBknZu4xRsU7s4USy/uDa8689bfxGWxxiZWuZIG08v4UM1RjuwcPs4270ARyx0GaDrKNZ7aUNKOKvhy1J6+hVexpaIBi5OfN1ef92G0exSSqOfVG7XC6PF0OqPe9san4yyjbVylImK3sFC6QiN7fS93mQxVs54UqwDw3dxNpIBG9P7QtXxA3V8oc2bpjC+Sd96eTgUUzGl9DgGugunR/DTmFbgH7S86jMa/cKVsgr7y/UasFqQaLhiuq4w4KyJpvdMSAvkb8f7LnRJcUW3/X9ix0ICDfeNMbibit2kly8+/6vuq0fKs6L7xJ05zeY8xkNEI2fYlifTNmf6vAQcZ26VI9j6eXDuIkFSKrGn0Vu5NP24olpbGYMTzTxvW7LRBuRorEDPFZTkf2UNT63fqo74iReIE2rrRhBwRJPA+QtcBBjKTs8sMRsm/3D0ZfYGTsVOqXOgzaEhrzZwD1Mmm6G3bz/WEu/1BkuBdekX7fHvu+nj/8BVKNmi7BMRCvkxcI+EXf6KmzeepOwAkExECcDjx1nm+boQmNfIYesk4cL4/Uum6GZct3++a6NjsrFPC+9sXcQ3fEZ4Mq4pbKA0V8v6BsiNft/zni8jt3B2GsQ3AQ47+S7Y6fZcuS8cOSJAlN0Z/mDvbEdLv0CLul5juHvbi9a+WNzhgHyIG4Vo/IfQvy/JtFiqrg1rVasFC4O3Eg2NUjcWsd2Zq9GK9tNMk6z42BeFePdK3fDJNSwmkxoNtUOALvDBwIgvUI3BYreY7oC+Iewvc1qIlmm2VvSEJWOL6HAA6Ey3oEbptkZ1Fe6yk6FHn3yvvo4IUT3lPbhFuaZ99pskPjzCVbYP2l/tjqlRLfH/oeVYHvKgxuC32XIewwIhuWhKOTgtiqL5shbPUAHxDCvjT1oHdxcaHDxMd36eHuOTV5IGW7JKTh6EAgtd6jvuv+VKf+ZLnrTUdk9QRzX6PpKxTc1UkVFOM657PJ9GJc+/Gb19VrD+nrFo9qXFcAyCvS9WFKKxx7+77Skda7LBdmOfYEbxwEbWeIP4p7rmS1hHOc+OpyzXY5bUqQc0Xwax0lpykDfft12XWeznKSbJxf7ecaKCF0h86cUo+F5vkPCPRORneb7A7mipQR5jxjw/q2XMCwykLg/ZeemPMzYQsu9ftX3jdMSHfl+MK73hvS52qzowI69ybN8dW8AHt6yijfw/Z+UEe9Xg+OMe8PGmP6K8I+4IULFCF7YP9+gMjb1mV4t8iPL/zLSeBGxF0ItdhMGeP1w1OyXX9noeziz/8C&lt;/diagram&gt;&lt;/mxfile&gt;" style="background-color: rgb(255, 255, 255);"><defs><clipPath id="mx-clip-409-231-432-26-0"><rect x="409" y="231" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-257-432-26-0"><rect x="409" y="257" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-283-432-26-0"><rect x="409" y="283" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-309-432-26-0"><rect x="409" y="309" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-335-432-26-0"><rect x="409" y="335" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-361-432-26-0"><rect x="409" y="361" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-387-432-26-0"><rect x="409" y="387" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-421-432-26-0"><rect x="409" y="421" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-447-432-26-0"><rect x="409" y="447" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-473-432-26-0"><rect x="409" y="473" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-499-432-26-0"><rect x="409" y="499" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-525-432-26-0"><rect x="409" y="525" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-551-432-26-0"><rect x="409" y="551" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-577-432-26-0"><rect x="409" y="577" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-603-432-26-0"><rect x="409" y="603" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-629-432-26-0"><rect x="409" y="629" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-655-432-26-0"><rect x="409" y="655" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-681-432-26-0"><rect x="409" y="681" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-707-432-26-0"><rect x="409" y="707" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-733-432-26-0"><rect x="409" y="733" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-759-432-26-0"><rect x="409" y="759" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-785-432-26-0"><rect x="409" y="785" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-811-432-26-0"><rect x="409" y="811" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-837-432-26-0"><rect x="409" y="837" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-863-432-26-0"><rect x="409" y="863" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-889-432-26-0"><rect x="409" y="889" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-915-432-26-0"><rect x="409" y="915" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-941-432-26-0"><rect x="409" y="941" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-967-432-26-0"><rect x="409" y="967" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-993-432-26-0"><rect x="409" y="993" width="432" height="26"/></clipPath><clipPath id="mx-clip-409-1019-432-26-0"><rect x="409" y="1019" width="432" height="26"/></clipPath><clipPath id="mx-clip-1614-231-312-26-0"><rect x="1614" y="231" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-257-312-26-0"><rect x="1614" y="257" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-283-312-26-0"><rect x="1614" y="283" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-309-312-26-0"><rect x="1614" y="309" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-335-312-26-0"><rect x="1614" y="335" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-361-312-26-0"><rect x="1614" y="361" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-395-312-26-0"><rect x="1614" y="395" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-421-312-26-0"><rect x="1614" y="421" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-447-312-26-0"><rect x="1614" y="447" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-473-312-26-0"><rect x="1614" y="473" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-499-312-26-0"><rect x="1614" y="499" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-525-312-26-0"><rect x="1614" y="525" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-551-312-26-0"><rect x="1614" y="551" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-577-312-26-0"><rect x="1614" y="577" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-603-312-26-0"><rect x="1614" y="603" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-629-312-26-0"><rect x="1614" y="629" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-655-312-26-0"><rect x="1614" y="655" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-681-312-26-0"><rect x="1614" y="681" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-707-312-26-0"><rect x="1614" y="707" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-733-312-26-0"><rect x="1614" y="733" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-759-312-26-0"><rect x="1614" y="759" width="312" height="26"/></clipPath><clipPath id="mx-clip-1614-785-312-26-0"><rect x="1614" y="785" width="312" height="26"/></clipPath><clipPath id="mx-clip-964-231-512-26-0"><rect x="964" y="231" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-257-512-26-0"><rect x="964" y="257" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-283-512-26-0"><rect x="964" y="283" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-309-512-26-0"><rect x="964" y="309" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-335-512-26-0"><rect x="964" y="335" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-369-512-26-0"><rect x="964" y="369" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-395-512-26-0"><rect x="964" y="395" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-421-512-26-0"><rect x="964" y="421" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-447-512-26-0"><rect x="964" y="447" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-473-512-26-0"><rect x="964" y="473" width="512" height="26"/></clipPath><clipPath id="mx-clip-964-499-512-26-0"><rect x="964" y="499" width="512" height="26"/></clipPath><clipPath id="mx-clip-4-226-272-26-0"><rect x="4" y="226" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-265-272-26-0"><rect x="4" y="265" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-291-272-26-0"><rect x="4" y="291" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-317-272-26-0"><rect x="4" y="317" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-343-272-26-0"><rect x="4" y="343" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-369-272-26-0"><rect x="4" y="369" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-395-272-26-0"><rect x="4" y="395" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-421-272-26-0"><rect x="4" y="421" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-447-272-26-0"><rect x="4" y="447" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-473-272-26-0"><rect x="4" y="473" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-499-272-26-0"><rect x="4" y="499" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-525-272-26-0"><rect x="4" y="525" width="272" height="26"/></clipPath><clipPath id="mx-clip-4-551-272-26-0"><rect x="4" y="551" width="272" height="26"/></clipPath></defs><g><path d="M 405 226 L 405 200 L 845 200 L 845 226" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/><path d="M 405 226 L 405 1040 L 845 1040 L 845 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 405 226 L 845 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="624.5" y="217.5">HotelReservationSystem.Hotel</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-231-432-26-0)" font-size="12px"><text x="410.5" y="243.5">- name : String</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-257-432-26-0)" font-size="12px"><text x="410.5" y="269.5">- rooms : Room [ ]</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-283-432-26-0)" font-size="12px"><text x="410.5" y="295.5">- reservations : Reservation [ ] </text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-309-432-26-0)" font-size="12px"><text x="410.5" y="321.5">- roomCount : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-335-432-26-0)" font-size="12px"><text x="410.5" y="347.5">- reservationCount: int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-361-432-26-0)" font-size="12px"><text x="410.5" y="373.5">- earnings : double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-387-432-26-0)" font-size="12px"><text x="410.5" y="399.5">- basePrice : double</text></g><path d="M 405 412 L 845 412" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-421-432-26-0)" font-size="12px"><text x="410.5" y="433.5">+ HotelReservationSystem.Hotel(name : String)</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-447-432-26-0)" font-size="12px"><text x="410.5" y="459.5">+ getBasePrice() : double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-473-432-26-0)" font-size="12px"><text x="410.5" y="485.5">+ setBasePrice(basePrice : double) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-499-432-26-0)" font-size="12px"><text x="410.5" y="511.5">+ getName() : String</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-525-432-26-0)" font-size="12px"><text x="410.5" y="537.5">+ setName(name : String) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-551-432-26-0)" font-size="12px"><text x="410.5" y="563.5">+ getRooms() : Room [ ]</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-577-432-26-0)" font-size="12px"><text x="410.5" y="589.5">+ setRooms(rooms : Room [ ]) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-603-432-26-0)" font-size="12px"><text x="410.5" y="615.5">+ setReservations(reservation : Reservation [ ]) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-629-432-26-0)" font-size="12px"><text x="410.5" y="641.5">+ getReservations() : Reservation [ ]</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-655-432-26-0)" font-size="12px"><text x="410.5" y="667.5">+ getRoomCount() : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-681-432-26-0)" font-size="12px"><text x="410.5" y="693.5">+ setRoomCount(roomCount : int) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-707-432-26-0)" font-size="12px"><text x="410.5" y="719.5">+ getReservationCount() : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-733-432-26-0)" font-size="12px"><text x="410.5" y="745.5">+ setReservationCount(reservationCount: int) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-759-432-26-0)" font-size="12px"><text x="410.5" y="771.5">+ getEarnings() : double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-785-432-26-0)" font-size="12px"><text x="410.5" y="797.5">+ setEarnings(earnings : double) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-811-432-26-0)" font-size="12px"><text x="410.5" y="823.5">+ newRoom() : Room</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-837-432-26-0)" font-size="12px"><text x="410.5" y="849.5">+ bookRoom(guestName : String, checkin : int, checkout : int) : boolean</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-863-432-26-0)" font-size="12px"><text x="410.5" y="875.5">+ fetchRoom(name : String) : Room</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-889-432-26-0)" font-size="12px"><text x="410.5" y="901.5">+ fetchAvails(type : int, date : int) : String [ ]</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-915-432-26-0)" font-size="12px"><text x="410.5" y="927.5">+ changePrice(newPrice : double) : boolean</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-941-432-26-0)" font-size="12px"><text x="410.5" y="953.5">+ delRoom(index : int) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-967-432-26-0)" font-size="12px"><text x="410.5" y="979.5">+ changeRoomName(name : String) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-993-432-26-0)" font-size="12px"><text x="410.5" y="1005.5">+ removeReservation(guestName : String, checkinDate : int) : boolean</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-409-1019-432-26-0)" font-size="12px"><text x="410.5" y="1031.5">+ prepareForRemoval() : void</text></g><path d="M 1610 226 L 1610 200 L 1930 200 L 1930 226" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 1610 226 L 1610 806 L 1930 806 L 1930 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 1610 226 L 1930 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="1769.5" y="217.5">HotelReservationSystem.Room</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-231-312-26-0)" font-size="12px"><text x="1615.5" y="243.5">- name : String</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-257-312-26-0)" font-size="12px"><text x="1615.5" y="269.5">- basePrice : Double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-283-312-26-0)" font-size="12px"><text x="1615.5" y="295.5">- isBooked : boolean</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-309-312-26-0)" font-size="12px"><text x="1615.5" y="321.5">- daysBooked : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-335-312-26-0)" font-size="12px"><text x="1615.5" y="347.5">- hotel : final Hotel</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-361-312-26-0)" font-size="12px"><text x="1615.5" y="373.5">- availability : boolean [ ]</text></g><path d="M 1610 386 L 1930 386" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-395-312-26-0)" font-size="12px"><text x="1615.5" y="407.5">+ Room(name : String, hotel : Hotel, basePrice : double)</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-421-312-26-0)" font-size="12px"><text x="1615.5" y="433.5">+ getName() : String</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-447-312-26-0)" font-size="12px"><text x="1615.5" y="459.5">+ setName(name : String) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-473-312-26-0)" font-size="12px"><text x="1615.5" y="485.5">+ setBasePrice(basePrice : double) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-499-312-26-0)" font-size="12px"><text x="1615.5" y="511.5">+ getBasePrice() : double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-525-312-26-0)" font-size="12px"><text x="1615.5" y="537.5">+ getDaysBooked() : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-551-312-26-0)" font-size="12px"><text x="1615.5" y="563.5">+ setDaysBooked(daysBooked : int) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-577-312-26-0)" font-size="12px"><text x="1615.5" y="589.5">+ getHotel() : Hotel</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-603-312-26-0)" font-size="12px"><text x="1615.5" y="615.5">+ setAvailability(availability : boolean [ ]) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-629-312-26-0)" font-size="12px"><text x="1615.5" y="641.5">+ getAvailability() : boolean [ ]</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-655-312-26-0)" font-size="12px"><text x="1615.5" y="667.5">+ getReservation() : Reservation</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-681-312-26-0)" font-size="12px"><text x="1615.5" y="693.5">+ setReservation(reservation : Reservation) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-707-312-26-0)" font-size="12px"><text x="1615.5" y="719.5">+ addBookRoom(checkin : int, checkout : int) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-733-312-26-0)" font-size="12px"><text x="1615.5" y="745.5">+ remBookRoom(checkin : int, checkout : int) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-759-312-26-0)" font-size="12px"><text x="1615.5" y="771.5">+ isAvailable(day : int) : boolean</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-1614-785-312-26-0)" font-size="12px"><text x="1615.5" y="797.5">+ isAvailable(checkin : int, checkout : int) : boolean</text></g><path d="M 960 226 L 960 200 L 1480 200 L 1480 226" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 960 226 L 960 520 L 1480 520 L 1480 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 960 226 L 1480 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="1219.5" y="217.5">HotelReservationSystem.Reservation</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-231-512-26-0)" font-size="12px"><text x="965.5" y="243.5">- guest : final String</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-257-512-26-0)" font-size="12px"><text x="965.5" y="269.5">- checkin : final int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-283-512-26-0)" font-size="12px"><text x="965.5" y="295.5">- checkout  : final int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-309-512-26-0)" font-size="12px"><text x="965.5" y="321.5">- total : final double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-335-512-26-0)" font-size="12px"><text x="965.5" y="347.5">- room : final Room</text></g><path d="M 960 360 L 1480 360" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-369-512-26-0)" font-size="12px"><text x="965.5" y="381.5">+ Reservation(guest : String, checkin : int, checkout : int, room : Room, reservationNumber : int)</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-395-512-26-0)" font-size="12px"><text x="965.5" y="407.5">+ getGuest() : String</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-421-512-26-0)" font-size="12px"><text x="965.5" y="433.5">+ getCheckin() : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-447-512-26-0)" font-size="12px"><text x="965.5" y="459.5">+ getCheckout() : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-473-512-26-0)" font-size="12px"><text x="965.5" y="485.5">+ getRoom() : Room</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-964-499-512-26-0)" font-size="12px"><text x="965.5" y="511.5">+ getTotal() : double</text></g><path d="M 140 50 L 140 191.88" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 140 198.88 L 136.5 191.88 L 143.5 191.88 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><rect x="85" y="0" width="110" height="50" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="none"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 25px; margin-left: 140px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">Driver</div></div></div></foreignObject><text x="140" y="29" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">Driver</text></switch></g><path d="M 0 226 L 0 200 L 280 200 L 280 226" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 226 L 0 572 L 280 572 L 280 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 0 226 L 280 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none" text-anchor="middle" font-size="12px"><text x="139.5" y="217.5">HotelReservationSystem.HRS</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-226-272-26-0)" font-size="12px"><text x="5.5" y="243.5">- hotel : Hotel[]</text></g><path d="M 0 256 L 280 256" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-265-272-26-0)" font-size="12px"><text x="5.5" y="277.5">+ HRS()</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-291-272-26-0)" font-size="12px"><text x="5.5" y="303.5">+ setHotels(hotel: Hotel[]) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-317-272-26-0)" font-size="12px"><text x="5.5" y="329.5">+ getHotels() : Hotel[]</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-343-272-26-0)" font-size="12px"><text x="5.5" y="355.5">+ getInput(sc : Scanner) : int</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-369-272-26-0)" font-size="12px"><text x="5.5" y="381.5">+ getInputDBL(sc : Scanner) : double</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-395-272-26-0)" font-size="12px"><text x="5.5" y="407.5">+ fetchHotel(name : String) : Hotel</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-421-272-26-0)" font-size="12px"><text x="5.5" y="433.5">+ showHotels() : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-447-272-26-0)" font-size="12px"><text x="5.5" y="459.5">+ createHotel(sc : Scanner) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-473-272-26-0)" font-size="12px"><text x="5.5" y="485.5">+ viewHotel(sc : Scanner) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-499-272-26-0)" font-size="12px"><text x="5.5" y="511.5">+ manageHotel(sc : Scanner) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-525-272-26-0)" font-size="12px"><text x="5.5" y="537.5">+ simBooking(sc : Scanner) : void</text></g><g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none" clip-path="url(#mx-clip-4-551-272-26-0)" font-size="12px"><text x="5.5" y="563.5">+ showMenu() : void</text></g><path d="M 405 239 L 287.71 239" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 280.71 239 L 284.21 235.5 L 287.71 239 L 284.21 242.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 1770 200 L 1770 120 L 1230 120 L 625 120 L 625 192.29" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 625 199.29 L 621.5 195.79 L 625 192.29 L 628.5 195.79 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 120px; margin-left: 1197px;"><div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">1...50</div></div></div></foreignObject><text x="1197" y="123" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">1...50</text></switch></g><path d="M 960 239 L 900 239 L 852.99 239" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 845.99 239 L 849.49 236.94 L 852.99 239 L 849.49 241.06 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 240px; margin-left: 901px;"><div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">0...*</div></div></div></foreignObject><text x="901" y="243" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">0...*</text></switch></g><path d="M 1480 239 L 1602.01 239" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><path d="M 1609.01 239 L 1605.51 241.06 L 1602.01 239 L 1605.51 236.94 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 240px; margin-left: 1541px;"><div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">1</div></div></div></foreignObject><text x="1541" y="243" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">1</text></switch></g></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a></switch></svg>
+<!-- 
+    CCPRORG3 MCO1 and MCO2 UML diagram
+    Zhean Robby Ganituen
+    Jaztin Jacob Jimenez
+
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+    width="1931px" height="1044px" viewBox="-0.5 -0.5 1931 1044"
+    content="&lt;mxfile&gt;&lt;diagram id=&quot;-B78dE5ehC7MIdu6jiop&quot; name=&quot;Page-1&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;"
+    style="background-color: rgb(255, 255, 255);">
+    <defs>
+        <clipPath id="mx-clip-409-231-432-26-0">
+            <rect x="409" y="231" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-257-432-26-0">
+            <rect x="409" y="257" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-283-432-26-0">
+            <rect x="409" y="283" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-309-432-26-0">
+            <rect x="409" y="309" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-335-432-26-0">
+            <rect x="409" y="335" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-361-432-26-0">
+            <rect x="409" y="361" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-387-432-26-0">
+            <rect x="409" y="387" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-421-432-26-0">
+            <rect x="409" y="421" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-447-432-26-0">
+            <rect x="409" y="447" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-473-432-26-0">
+            <rect x="409" y="473" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-499-432-26-0">
+            <rect x="409" y="499" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-525-432-26-0">
+            <rect x="409" y="525" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-551-432-26-0">
+            <rect x="409" y="551" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-577-432-26-0">
+            <rect x="409" y="577" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-603-432-26-0">
+            <rect x="409" y="603" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-629-432-26-0">
+            <rect x="409" y="629" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-655-432-26-0">
+            <rect x="409" y="655" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-681-432-26-0">
+            <rect x="409" y="681" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-707-432-26-0">
+            <rect x="409" y="707" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-733-432-26-0">
+            <rect x="409" y="733" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-759-432-26-0">
+            <rect x="409" y="759" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-785-432-26-0">
+            <rect x="409" y="785" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-811-432-26-0">
+            <rect x="409" y="811" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-837-432-26-0">
+            <rect x="409" y="837" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-863-432-26-0">
+            <rect x="409" y="863" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-889-432-26-0">
+            <rect x="409" y="889" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-915-432-26-0">
+            <rect x="409" y="915" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-941-432-26-0">
+            <rect x="409" y="941" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-967-432-26-0">
+            <rect x="409" y="967" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-993-432-26-0">
+            <rect x="409" y="993" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-409-1019-432-26-0">
+            <rect x="409" y="1019" width="432" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-231-312-26-0">
+            <rect x="1614" y="231" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-257-312-26-0">
+            <rect x="1614" y="257" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-283-312-26-0">
+            <rect x="1614" y="283" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-309-312-26-0">
+            <rect x="1614" y="309" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-335-312-26-0">
+            <rect x="1614" y="335" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-361-312-26-0">
+            <rect x="1614" y="361" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-395-312-26-0">
+            <rect x="1614" y="395" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-421-312-26-0">
+            <rect x="1614" y="421" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-447-312-26-0">
+            <rect x="1614" y="447" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-473-312-26-0">
+            <rect x="1614" y="473" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-499-312-26-0">
+            <rect x="1614" y="499" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-525-312-26-0">
+            <rect x="1614" y="525" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-551-312-26-0">
+            <rect x="1614" y="551" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-577-312-26-0">
+            <rect x="1614" y="577" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-603-312-26-0">
+            <rect x="1614" y="603" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-629-312-26-0">
+            <rect x="1614" y="629" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-655-312-26-0">
+            <rect x="1614" y="655" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-681-312-26-0">
+            <rect x="1614" y="681" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-707-312-26-0">
+            <rect x="1614" y="707" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-733-312-26-0">
+            <rect x="1614" y="733" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-759-312-26-0">
+            <rect x="1614" y="759" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-1614-785-312-26-0">
+            <rect x="1614" y="785" width="312" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-231-512-26-0">
+            <rect x="964" y="231" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-257-512-26-0">
+            <rect x="964" y="257" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-283-512-26-0">
+            <rect x="964" y="283" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-309-512-26-0">
+            <rect x="964" y="309" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-335-512-26-0">
+            <rect x="964" y="335" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-369-512-26-0">
+            <rect x="964" y="369" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-395-512-26-0">
+            <rect x="964" y="395" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-421-512-26-0">
+            <rect x="964" y="421" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-447-512-26-0">
+            <rect x="964" y="447" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-473-512-26-0">
+            <rect x="964" y="473" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-964-499-512-26-0">
+            <rect x="964" y="499" width="512" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-226-272-26-0">
+            <rect x="4" y="226" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-265-272-26-0">
+            <rect x="4" y="265" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-291-272-26-0">
+            <rect x="4" y="291" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-317-272-26-0">
+            <rect x="4" y="317" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-343-272-26-0">
+            <rect x="4" y="343" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-369-272-26-0">
+            <rect x="4" y="369" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-395-272-26-0">
+            <rect x="4" y="395" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-421-272-26-0">
+            <rect x="4" y="421" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-447-272-26-0">
+            <rect x="4" y="447" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-473-272-26-0">
+            <rect x="4" y="473" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-499-272-26-0">
+            <rect x="4" y="499" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-525-272-26-0">
+            <rect x="4" y="525" width="272" height="26" />
+        </clipPath>
+        <clipPath id="mx-clip-4-551-272-26-0">
+            <rect x="4" y="551" width="272" height="26" />
+        </clipPath>
+    </defs>
+    <g>
+        <path d="M 405 226 L 405 200 L 845 200 L 845 226" fill="rgb(255, 255, 255)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
+        <path d="M 405 226 L 405 1040 L 845 1040 L 845 226" fill="none" stroke="rgb(0, 0, 0)"
+            stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 405 226 L 845 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none"
+            text-anchor="middle" font-size="12px">
+            <text x="624.5" y="217.5">HotelReservationSystem.Hotel</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-231-432-26-0)" font-size="12px">
+            <text x="410.5" y="243.5">- name : String</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-257-432-26-0)" font-size="12px">
+            <text x="410.5" y="269.5">- rooms : Room [ ]</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-283-432-26-0)" font-size="12px">
+            <text x="410.5" y="295.5">- reservations : Reservation [ ] </text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-309-432-26-0)" font-size="12px">
+            <text x="410.5" y="321.5">- roomCount : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-335-432-26-0)" font-size="12px">
+            <text x="410.5" y="347.5">- reservationCount: int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-361-432-26-0)" font-size="12px">
+            <text x="410.5" y="373.5">- earnings : double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-387-432-26-0)" font-size="12px">
+            <text x="410.5" y="399.5">- basePrice : double</text>
+        </g>
+        <path d="M 405 412 L 845 412" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-421-432-26-0)" font-size="12px">
+            <text x="410.5" y="433.5">+ HotelReservationSystem.Hotel(name : String)</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-447-432-26-0)" font-size="12px">
+            <text x="410.5" y="459.5">+ getBasePrice() : double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-473-432-26-0)" font-size="12px">
+            <text x="410.5" y="485.5">+ setBasePrice(basePrice : double) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-499-432-26-0)" font-size="12px">
+            <text x="410.5" y="511.5">+ getName() : String</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-525-432-26-0)" font-size="12px">
+            <text x="410.5" y="537.5">+ setName(name : String) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-551-432-26-0)" font-size="12px">
+            <text x="410.5" y="563.5">+ getRooms() : Room [ ]</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-577-432-26-0)" font-size="12px">
+            <text x="410.5" y="589.5">+ setRooms(rooms : Room [ ]) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-603-432-26-0)" font-size="12px">
+            <text x="410.5" y="615.5">+ setReservations(reservation : Reservation [ ]) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-629-432-26-0)" font-size="12px">
+            <text x="410.5" y="641.5">+ getReservations() : Reservation [ ]</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-655-432-26-0)" font-size="12px">
+            <text x="410.5" y="667.5">+ getRoomCount() : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-681-432-26-0)" font-size="12px">
+            <text x="410.5" y="693.5">+ setRoomCount(roomCount : int) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-707-432-26-0)" font-size="12px">
+            <text x="410.5" y="719.5">+ getReservationCount() : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-733-432-26-0)" font-size="12px">
+            <text x="410.5" y="745.5">+ setReservationCount(reservationCount: int) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-759-432-26-0)" font-size="12px">
+            <text x="410.5" y="771.5">+ getEarnings() : double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-785-432-26-0)" font-size="12px">
+            <text x="410.5" y="797.5">+ setEarnings(earnings : double) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-811-432-26-0)" font-size="12px">
+            <text x="410.5" y="823.5">+ newRoom() : Room</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-837-432-26-0)" font-size="12px">
+            <text x="410.5" y="849.5">+ bookRoom(guestName : String, checkin : int, checkout : int)
+                : boolean</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-863-432-26-0)" font-size="12px">
+            <text x="410.5" y="875.5">+ fetchRoom(name : String) : Room</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-889-432-26-0)" font-size="12px">
+            <text x="410.5" y="901.5">+ fetchAvails(type : int, date : int) : String [ ]</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-915-432-26-0)" font-size="12px">
+            <text x="410.5" y="927.5">+ changePrice(newPrice : double) : boolean</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-941-432-26-0)" font-size="12px">
+            <text x="410.5" y="953.5">+ delRoom(index : int) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-967-432-26-0)" font-size="12px">
+            <text x="410.5" y="979.5">+ changeRoomName(name : String) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-993-432-26-0)" font-size="12px">
+            <text x="410.5" y="1005.5">+ removeReservation(guestName : String, checkinDate : int) :
+                boolean</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-409-1019-432-26-0)" font-size="12px">
+            <text x="410.5" y="1031.5">+ prepareForRemoval() : void</text>
+        </g>
+        <path d="M 1610 226 L 1610 200 L 1930 200 L 1930 226" fill="rgb(255, 255, 255)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 1610 226 L 1610 806 L 1930 806 L 1930 226" fill="none" stroke="rgb(0, 0, 0)"
+            stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 1610 226 L 1930 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none"
+            text-anchor="middle" font-size="12px">
+            <text x="1769.5" y="217.5">HotelReservationSystem.Room</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-231-312-26-0)" font-size="12px">
+            <text x="1615.5" y="243.5">- name : String</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-257-312-26-0)" font-size="12px">
+            <text x="1615.5" y="269.5">- basePrice : Double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-283-312-26-0)" font-size="12px">
+            <text x="1615.5" y="295.5">- isBooked : boolean</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-309-312-26-0)" font-size="12px">
+            <text x="1615.5" y="321.5">- daysBooked : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-335-312-26-0)" font-size="12px">
+            <text x="1615.5" y="347.5">- hotel : final Hotel</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-361-312-26-0)" font-size="12px">
+            <text x="1615.5" y="373.5">- availability : boolean [ ]</text>
+        </g>
+        <path d="M 1610 386 L 1930 386" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-395-312-26-0)" font-size="12px">
+            <text x="1615.5" y="407.5">+ Room(name : String, hotel : Hotel, basePrice : double)</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-421-312-26-0)" font-size="12px">
+            <text x="1615.5" y="433.5">+ getName() : String</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-447-312-26-0)" font-size="12px">
+            <text x="1615.5" y="459.5">+ setName(name : String) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-473-312-26-0)" font-size="12px">
+            <text x="1615.5" y="485.5">+ setBasePrice(basePrice : double) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-499-312-26-0)" font-size="12px">
+            <text x="1615.5" y="511.5">+ getBasePrice() : double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-525-312-26-0)" font-size="12px">
+            <text x="1615.5" y="537.5">+ getDaysBooked() : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-551-312-26-0)" font-size="12px">
+            <text x="1615.5" y="563.5">+ setDaysBooked(daysBooked : int) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-577-312-26-0)" font-size="12px">
+            <text x="1615.5" y="589.5">+ getHotel() : Hotel</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-603-312-26-0)" font-size="12px">
+            <text x="1615.5" y="615.5">+ setAvailability(availability : boolean [ ]) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-629-312-26-0)" font-size="12px">
+            <text x="1615.5" y="641.5">+ getAvailability() : boolean [ ]</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-655-312-26-0)" font-size="12px">
+            <text x="1615.5" y="667.5">+ getReservation() : Reservation</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-681-312-26-0)" font-size="12px">
+            <text x="1615.5" y="693.5">+ setReservation(reservation : Reservation) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-707-312-26-0)" font-size="12px">
+            <text x="1615.5" y="719.5">+ addBookRoom(checkin : int, checkout : int) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-733-312-26-0)" font-size="12px">
+            <text x="1615.5" y="745.5">+ remBookRoom(checkin : int, checkout : int) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-759-312-26-0)" font-size="12px">
+            <text x="1615.5" y="771.5">+ isAvailable(day : int) : boolean</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-1614-785-312-26-0)" font-size="12px">
+            <text x="1615.5" y="797.5">+ isAvailable(checkin : int, checkout : int) : boolean</text>
+        </g>
+        <path d="M 960 226 L 960 200 L 1480 200 L 1480 226" fill="rgb(255, 255, 255)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 960 226 L 960 520 L 1480 520 L 1480 226" fill="none" stroke="rgb(0, 0, 0)"
+            stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 960 226 L 1480 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none"
+            text-anchor="middle" font-size="12px">
+            <text x="1219.5" y="217.5">HotelReservationSystem.Reservation</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-231-512-26-0)" font-size="12px">
+            <text x="965.5" y="243.5">- guest : final String</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-257-512-26-0)" font-size="12px">
+            <text x="965.5" y="269.5">- checkin : final int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-283-512-26-0)" font-size="12px">
+            <text x="965.5" y="295.5">- checkout  : final int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-309-512-26-0)" font-size="12px">
+            <text x="965.5" y="321.5">- total : final double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-335-512-26-0)" font-size="12px">
+            <text x="965.5" y="347.5">- room : final Room</text>
+        </g>
+        <path d="M 960 360 L 1480 360" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-369-512-26-0)" font-size="12px">
+            <text x="965.5" y="381.5">+ Reservation(guest : String, checkin : int, checkout : int,
+                room : Room, reservationNumber : int)</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-395-512-26-0)" font-size="12px">
+            <text x="965.5" y="407.5">+ getGuest() : String</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-421-512-26-0)" font-size="12px">
+            <text x="965.5" y="433.5">+ getCheckin() : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-447-512-26-0)" font-size="12px">
+            <text x="965.5" y="459.5">+ getCheckout() : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-473-512-26-0)" font-size="12px">
+            <text x="965.5" y="485.5">+ getRoom() : Room</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-964-499-512-26-0)" font-size="12px">
+            <text x="965.5" y="511.5">+ getTotal() : double</text>
+        </g>
+        <path d="M 140 50 L 140 191.88" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <path d="M 140 198.88 L 136.5 191.88 L 143.5 191.88 Z" fill="rgb(0, 0, 0)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <rect x="85" y="0" width="110" height="50" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)"
+            pointer-events="none" />
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%"
+                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+                    style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 25px; margin-left: 140px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); "
+                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div
+                                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">
+                                Driver</div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="140" y="29" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px"
+                    text-anchor="middle">Driver</text>
+            </switch>
+        </g>
+        <path d="M 0 226 L 0 200 L 280 200 L 280 226" fill="rgb(255, 255, 255)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 0 226 L 0 572 L 280 572 L 280 226" fill="none" stroke="rgb(0, 0, 0)"
+            stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 0 226 L 280 226" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" font-weight="bold" pointer-events="none"
+            text-anchor="middle" font-size="12px">
+            <text x="139.5" y="217.5">HotelReservationSystem.HRS</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-226-272-26-0)" font-size="12px">
+            <text x="5.5" y="243.5">- hotel : Hotel[]</text>
+        </g>
+        <path d="M 0 256 L 280 256" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-265-272-26-0)" font-size="12px">
+            <text x="5.5" y="277.5">+ HRS()</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-291-272-26-0)" font-size="12px">
+            <text x="5.5" y="303.5">+ setHotels(hotel: Hotel[]) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-317-272-26-0)" font-size="12px">
+            <text x="5.5" y="329.5">+ getHotels() : Hotel[]</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-343-272-26-0)" font-size="12px">
+            <text x="5.5" y="355.5">+ getInput(sc : Scanner) : int</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-369-272-26-0)" font-size="12px">
+            <text x="5.5" y="381.5">+ getInputDBL(sc : Scanner) : double</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-395-272-26-0)" font-size="12px">
+            <text x="5.5" y="407.5">+ fetchHotel(name : String) : Hotel</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-421-272-26-0)" font-size="12px">
+            <text x="5.5" y="433.5">+ showHotels() : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-447-272-26-0)" font-size="12px">
+            <text x="5.5" y="459.5">+ createHotel(sc : Scanner) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-473-272-26-0)" font-size="12px">
+            <text x="5.5" y="485.5">+ viewHotel(sc : Scanner) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-499-272-26-0)" font-size="12px">
+            <text x="5.5" y="511.5">+ manageHotel(sc : Scanner) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-525-272-26-0)" font-size="12px">
+            <text x="5.5" y="537.5">+ simBooking(sc : Scanner) : void</text>
+        </g>
+        <g fill="rgb(0, 0, 0)" font-family="Helvetica" pointer-events="none"
+            clip-path="url(#mx-clip-4-551-272-26-0)" font-size="12px">
+            <text x="5.5" y="563.5">+ showMenu() : void</text>
+        </g>
+        <path d="M 405 239 L 287.71 239" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <path d="M 280.71 239 L 284.21 235.5 L 287.71 239 L 284.21 242.5 Z" fill="rgb(0, 0, 0)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 1770 200 L 1770 120 L 1230 120 L 625 120 L 625 192.29" fill="none"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 625 199.29 L 621.5 195.79 L 625 192.29 L 628.5 195.79 Z" fill="rgb(0, 0, 0)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%"
+                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+                    style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 120px; margin-left: 1197px;">
+                        <div
+                            data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); "
+                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div
+                                style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                1...50</div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1197" y="123" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px"
+                    text-anchor="middle">1...50</text>
+            </switch>
+        </g>
+        <path d="M 960 239 L 900 239 L 852.99 239" fill="none" stroke="rgb(0, 0, 0)"
+            stroke-miterlimit="10" pointer-events="none" />
+        <path d="M 845.99 239 L 849.49 236.94 L 852.99 239 L 849.49 241.06 Z" fill="rgb(0, 0, 0)"
+            stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%"
+                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+                    style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 240px; margin-left: 901px;">
+                        <div
+                            data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); "
+                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div
+                                style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                0...*</div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="901" y="243" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px"
+                    text-anchor="middle">0...*</text>
+            </switch>
+        </g>
+        <path d="M 1480 239 L 1602.01 239" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10"
+            pointer-events="none" />
+        <path d="M 1609.01 239 L 1605.51 241.06 L 1602.01 239 L 1605.51 236.94 Z"
+            fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="none" />
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%"
+                    requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+                    style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                        style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 240px; margin-left: 1541px;">
+                        <div
+                            data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); "
+                            style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div
+                                style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                1</div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="1541" y="243" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px"
+                    text-anchor="middle">1</text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" />
+        <a transform="translate(0,-5)"
+            xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot
+                display</text>
+        </a>
+    </switch>
+</svg>

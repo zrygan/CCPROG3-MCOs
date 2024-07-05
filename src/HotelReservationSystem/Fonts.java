@@ -11,7 +11,7 @@
          * @param type the type (regular, bold, italic) of the font
          * @param pt the size of the font
          * @param isRegistered checker if the font is already registered in the local graphics Environment
-         * @return the derived font with the approriate size
+         * @return the derived font with the approriate size and type
          */
         public static Font get(String type, float pt, boolean isRegistered) {
             // get the file name from the type
@@ -42,5 +42,15 @@
                 // return some default font with a default font size
                 return new Font(Font.SANS_SERIF, Font.PLAIN, 20);
             }
+        }
+
+        /**
+         * Method overloading of get() without isRegistered parameter
+         * @param type the type (regular, italic, bold) of the font
+         * @param pt the size of the font
+         * @return the font with the appropriate size and type
+         */
+        public static Font get(String type, float pt){
+            return get(type, pt, false);
         }
     }
