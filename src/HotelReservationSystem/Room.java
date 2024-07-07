@@ -22,11 +22,13 @@ public class Room {
      *
      * @param name the name of the room, must be different for each room
      * @param hotel the hotel of the room
-     * @param basePrice the base price of the hotel the room is part of
+     * @param basePrice the base price of the room
+     * @param type the type of the room
      */
     public Room(String name, Hotel hotel, double basePrice, int type) {
         this.name = name;
         this.daysBooked = 0; // init as 0
+        this.basePrice = basePrice;
         this.hotel = hotel;
         this.availability = new boolean[31];
         this.DPM = new double[31];
@@ -149,7 +151,7 @@ public class Room {
 
     /**
      * Getter for the reservation of the room
-     * @return
+     * @return the date price modifier of the room
      */
     public double[] getDPM(){
         return DPM;
@@ -158,12 +160,16 @@ public class Room {
     /**
      * Setter for the DPM of the hotel.
      * 
-     * @param DPM
+     * @param DPM the new date price modifier of the room
      */
     public void setDPM(double[] DPM){
         this.DPM = DPM;
     }
 
+    /**
+     * Getter for the type of the room
+     * @return the type of the room
+     */
     public int getType(){
         return type;
     }

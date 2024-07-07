@@ -4,7 +4,17 @@
     import java.io.IOException;
     import java.io.InputStream;
 
+    /**
+     * A class that handles fonts for the GUI of the Hotel Reservation System.
+     */
     public class Fonts {
+
+        /**
+         * Default empty constructor
+         */
+        public Fonts(){
+
+        }
 
         /**
          * Created a font that can be used by the Java Swing GUI from a .ttf file

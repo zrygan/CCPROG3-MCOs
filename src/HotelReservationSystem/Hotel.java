@@ -427,12 +427,21 @@ public class Hotel {
         return total / 31 / this.getRoomCount();
     }
 
+    /**
+     * Changes the date price modifier for a specific day
+     * @param day the day that will be changed
+     * @param newDPM the new DPM for the day
+     */
     public void changeDPMs(int day, double newDPM){
         for (Room room : this.getRooms()){
             room.changeDPM(day, newDPM);
         }
     }
 
+    /**
+     * Counts the number of rooms for each room type
+     * @return an array of rooms with the same type.
+     */
     public int[] roomTypeCount(){
         int[] roomTypes = new int[3];
 
