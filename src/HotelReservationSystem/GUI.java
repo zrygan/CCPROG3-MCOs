@@ -1,13 +1,13 @@
 package HotelReservationSystem;
 
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.DateFormatter;
+import java.awt.*;                          // for general awt stuff
+import java.awt.event.ActionEvent;          // for ActionEvent (used in dynamic clock)
+import java.awt.event.WindowAdapter;        // for handling window closing
+import java.awt.event.WindowEvent;          // for handling window closing
+import java.time.LocalDateTime;             // for clock, get time
+import java.time.format.DateTimeFormatter;  // for clock, time format
+import javax.swing.*;                       // for general swing stuff
+import javax.swing.border.Border;           // for borders
 
 /*
  * ========== DESIGN SPECS for Main_GUI ==========
@@ -55,17 +55,23 @@ import javax.swing.text.DateFormatter;
  *                                      button tertiary text color
  * 
  */
-public final class GUI {
-    private JLabel clock;
-
+public final class GUI extends JFrame {
+    private final Timer timer;
     public GUI() {
         initFonts();
-
-        JFrame GUI = new JFrame("Hotel Reservation System");
-        JPanel panel = new JPanel(new GridBagLayout());
+        JFrame GUI = new JFrame("Hotel Reservation System"); // the name of the "home" window
+        JPanel panel = new JPanel(new GridBagLayout());            // the panel
         GridBagConstraints grid = new GridBagConstraints();
 
-        // Components
+        /* 
+            ----------------------
+            ----- COMPONENTS -----
+            ----------------------
+        */ 
+
+        // LEFT TITLE
+        // :: "Hotel Reservation System"
+        // :: Version Number
         JEditorPane titleLeft = new JEditorPane();
         titleLeft.setContentType("text/html"); // set text in JEditorPane as HTML
         titleLeft.setFont(Fonts.get("Regular", 14));
@@ -79,22 +85,22 @@ public final class GUI {
         titleLeft.setPreferredSize(new Dimension(168, 90));
         panel.add(titleLeft, grid);
 
+        // RIGHT TITLE
+        // :: The date today
+        // :: "All Rights Reserved."
         JEditorPane titleRight = new JEditorPane();
-
-        // FIXME TIME
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter form = DateTimeFormatter.ofPattern("MMM-dd");
-        String date = currentDate.format(form);
-
         titleRight.setContentType("text/html"); // set text in JEditorPane as HTML
         titleRight.setFont(Fonts.get("Regular", 14));
         titleRight.setForeground(getVividGreen());
         titleRight.setBackground(getBlack());
         titleRight.setEditable(false); // Make it non-editable
         titleRight.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
-        titleRight.setText("<html><body style='text-align: right;'" + date + ">All Rights Reserved.</body></html>");
         grid.gridx = 10;
         grid.gridy = 0;
+        timer = new Timer(1000, (ActionEvent e) -> {
+            clock(titleRight);
+        });
+        timer.start();
         titleRight.setPreferredSize(new Dimension(241, 90));
         panel.add(titleRight, grid);
 
@@ -218,6 +224,13 @@ public final class GUI {
         Fonts.get("Regular", 12f, false);
         Fonts.get("Italic", 12f, false);
         Fonts.get("Bold", 12f, false);
+    }
+
+    private void clock(JEditorPane titleRight){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd HH:mm:ss");
+        String formattedDate = now.format(format);
+        titleRight.setText("<html><body style='text-align: right;'>" + formattedDate + "<br>All Rights Reserved.</body></html>");
     }
 
     /**
