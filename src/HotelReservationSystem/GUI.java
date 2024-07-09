@@ -81,8 +81,9 @@ public final class GUI extends JFrame {
      * @param hrs the Hotel Reservation System
      */
     public GUI(HRS hrs) {
-        initFonts();        // initialize the fonts
-        this.hrs = hrs;     // the HRS database
+        initFonts();         // initialize the fonts
+        this.hrs = hrs;      // the HRS database
+        boolean window = false; // checker if there's a subwindow
 
         JPanel panel = new JPanel(new GridBagLayout());            // the panel
         GridBagConstraints grid = new GridBagConstraints();
@@ -142,7 +143,7 @@ public final class GUI extends JFrame {
 
         // [TEXT BOX] HOTEL List
         // :: the list of HotelReservationSystem
-        // FIXME left-alignment 
+        // FIXME make it scrollable
         JTextArea outputBox = new JTextArea();
         outputBox.setEditable(false);
         Border outputBox_border = BorderFactory.createLineBorder(getVividGreen(), 2);
@@ -162,6 +163,9 @@ public final class GUI extends JFrame {
         // [BUTTON] CREATE Hotel
         JButton button_createHotel = ASSET_BASIC_BUTTON("Create Hotel");
         button_createHotel.addActionListener(e -> CREATE_HOTEL_UI());
+        // button_createHotel.addActionListener(e -> if (window == true) { // FIXME: MAKE THIS WORK
+        //     CREATE_HOTEL_UI();
+        // });
         grid.gridx = 8;
         grid.gridy = 3;
         grid.gridheight = 3;
@@ -285,6 +289,10 @@ public final class GUI extends JFrame {
         Fonts.get("Bold", 12f, false);
     }
 
+    /**
+     * adds the clock in the home GUI's right title box.
+     * @param titleRight the JEditorPane that contains the text of the right title
+     */
     private void clock(JEditorPane titleRight) {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -292,6 +300,10 @@ public final class GUI extends JFrame {
         titleRight.setText("<html><body style='text-align: right;'>" + formattedDate + "<br>All Rights Reserved.</body></html>");
     }
 
+    /**
+     * updates the list of hotels in the database in the home GUI's output box 
+     * @param outputBox the JTextArea that contains the text of the list of hotels
+     */
     private void updateOutputBox(JTextArea outputBox){
 
         StringBuilder output = new StringBuilder(); // use StringBuilder so we can use append
@@ -335,8 +347,6 @@ public final class GUI extends JFrame {
 
         // components
 
-
-
         // initialize frame (this should be at the end)
         panel.setBackground(getBlack());
         GUI.add(panel);
@@ -354,8 +364,6 @@ public final class GUI extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
 
         // components
-
-
 
         // initialize frame (this should be at the end)
         panel.setBackground(getBlack());
