@@ -113,7 +113,7 @@ public final class GUI extends JFrame {
         grid.gridy = 0;
         grid.gridwidth = 5;
         grid.anchor = GridBagConstraints.NORTHEAST;
-        titleLeft.setPreferredSize(new Dimension(262, 90));
+        titleLeft.setPreferredSize(new Dimension(260, 90));
         panel.add(titleLeft, grid);
 
         // [TEXT BOX] RIGHT TITLE
