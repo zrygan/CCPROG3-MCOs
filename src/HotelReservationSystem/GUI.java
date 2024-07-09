@@ -55,35 +55,40 @@ import javax.swing.border.Border;           // for borders
  *                                      button tertiary text color
  * 
  */
-
- /**
-  * This class handles all GUIs of the Hotel Reservation System.
-  */
+/**
+ * This class handles all GUIs of the Hotel Reservation System.
+ */
 public final class GUI extends JFrame {
 
     /**
      * the timer for the clock
      */
-    private final Timer timer_clock; 
-    
+    private final Timer timer_clock;
+
     /**
      * the timer for the outputBox
      */
     private final Timer timer_outputBox;
-    
+
     /**
      * the HRS
      */
-    private final HRS hrs;              
+    private final HRS hrs;
+
+    /**
+     * the checker if a window is already open 
+     */
+    private boolean window;
 
     /**
      * The constructor for the GUI of the HRS.
+     *
      * @param hrs the Hotel Reservation System
      */
     public GUI(HRS hrs) {
         initFonts();         // initialize the fonts
         this.hrs = hrs;      // the HRS database
-        boolean window = false; // checker if there's a subwindow
+        this.window = false; // checker if there's a subwindow
 
         JPanel panel = new JPanel(new GridBagLayout());            // the panel
         GridBagConstraints grid = new GridBagConstraints();
@@ -162,10 +167,12 @@ public final class GUI extends JFrame {
 
         // [BUTTON] CREATE Hotel
         JButton button_createHotel = ASSET_BASIC_BUTTON("Create Hotel");
-        button_createHotel.addActionListener(e -> CREATE_HOTEL_UI());
-        // button_createHotel.addActionListener(e -> if (window == true) { // FIXME: MAKE THIS WORK
-        //     CREATE_HOTEL_UI();
-        // });
+        button_createHotel.addActionListener(e -> {
+            if (!this.window) {
+                CREATE_HOTEL_UI();
+                this.window = true;
+            }
+        });
         grid.gridx = 8;
         grid.gridy = 3;
         grid.gridheight = 3;
@@ -174,20 +181,35 @@ public final class GUI extends JFrame {
 
         // [BUTTON] VIEW Hotel
         JButton button_viewHotel = ASSET_BASIC_BUTTON("View Hotel");
-        button_viewHotel.addActionListener(e -> VIEW_HOTEL_UI());
+        button_viewHotel.addActionListener(e -> {
+            if (!this.window) {
+                VIEW_HOTEL_UI();
+                this.window = true;
+            }
+        });
         grid.gridy = 6;
         panel.add(button_viewHotel, grid);
 
         // [BUTTON] MANAGE Hotel
         JButton button_manageHotel = ASSET_BASIC_BUTTON("Manage Hotel");
-        button_manageHotel.addActionListener(e -> MANAGE_HOTEL_UI());
+        button_manageHotel.addActionListener(e -> {
+            if (!this.window) {
+                MANAGE_HOTEL_UI();
+                this.window = true;
+            }
+        });
         grid.gridy = 9;
         panel.add(button_manageHotel, grid);
 
         // [BUTTON] SIMULATE Booking
         JButton button_simBooking = ASSET_ACCENT_BUTTON("<html>Simulate<br>Booking</html>");
         button_simBooking.setPreferredSize(new Dimension(100, 60));
-        button_simBooking.addActionListener(e -> SIM_BOOKING_UI());
+        button_simBooking.addActionListener(e -> {
+            if (!this.window) {
+                SIM_BOOKING_UI();
+                this.window = true;
+            }
+        });
         grid.gridy = 12;
         grid.gridheight = 6;
         panel.add(button_simBooking, grid);
@@ -291,7 +313,9 @@ public final class GUI extends JFrame {
 
     /**
      * adds the clock in the home GUI's right title box.
-     * @param titleRight the JEditorPane that contains the text of the right title
+     *
+     * @param titleRight the JEditorPane that contains the text of the right
+     * title
      */
     private void clock(JEditorPane titleRight) {
         LocalDateTime now = LocalDateTime.now();
@@ -301,17 +325,19 @@ public final class GUI extends JFrame {
     }
 
     /**
-     * updates the list of hotels in the database in the home GUI's output box 
-     * @param outputBox the JTextArea that contains the text of the list of hotels
+     * updates the list of hotels in the database in the home GUI's output box
+     *
+     * @param outputBox the JTextArea that contains the text of the list of
+     * hotels
      */
-    private void updateOutputBox(JTextArea outputBox){
+    private void updateOutputBox(JTextArea outputBox) {
 
         StringBuilder output = new StringBuilder(); // use StringBuilder so we can use append
-        for (Hotel hotel : hrs.getHotels()){
+        for (Hotel hotel : hrs.getHotels()) {
             output.append("\n     ").append(hotel.getName());
         }
         outputBox.setText(output.toString()); // convert it first to String 
-                                              // since it is a StringBuilder
+        // since it is a StringBuilder
 
         outputBox.setFont(Fonts.get("Regular", 18));
         outputBox.setForeground(getVividGreen());
@@ -324,7 +350,7 @@ public final class GUI extends JFrame {
     private void CREATE_HOTEL_UI() {
         JFrame GUI = new JFrame("HRS: Create Hotel");
         JPanel panel = new JPanel(new GridBagLayout());
-        
+
         // components
         JLabel label = new JLabel("Hello, World!");
         panel.add(label);
@@ -336,6 +362,7 @@ public final class GUI extends JFrame {
         GUI.setVisible(true);
 
         onCloseSubWindow(GUI);
+        this.window = false;
     }
 
     /**
@@ -346,7 +373,6 @@ public final class GUI extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
 
         // components
-
         // initialize frame (this should be at the end)
         panel.setBackground(getBlack());
         GUI.add(panel);
@@ -364,7 +390,6 @@ public final class GUI extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
 
         // components
-
         // initialize frame (this should be at the end)
         panel.setBackground(getBlack());
         GUI.add(panel);
@@ -382,9 +407,6 @@ public final class GUI extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
 
         // components
-
-
-
         // initialize frame (this should be at the end)
         panel.setBackground(getBlack());
         GUI.add(panel);
@@ -396,8 +418,9 @@ public final class GUI extends JFrame {
 
     /**
      * GUI class that makes the user-interface for the create room window
-     * 
-     * @param hotelName the name of the hotel where the room is going to be created
+     *
+     * @param hotelName the name of the hotel where the room is going to be
+     * created
      */
     private void CREATE_ROOM_UI(String hotelName) {
         String title = "HRS: Create Room in " + hotelName;
@@ -405,9 +428,6 @@ public final class GUI extends JFrame {
         JPanel panel = new JPanel(new GridBagLayout());
 
         // components
-
-
-
         // initialize frame (this should be at the end)
         panel.setBackground(getBlack());
         GUI.add(panel);
