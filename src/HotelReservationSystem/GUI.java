@@ -85,7 +85,6 @@ public final class GUI extends JFrame {
         this.hrs = hrs;     // the HRS database
 
         JPanel panel = new JPanel(new GridBagLayout());            // the panel
-        panel.setPreferredSize(new Dimension(900, 1000));
         GridBagConstraints grid = new GridBagConstraints();
 
         /* 
@@ -98,7 +97,7 @@ public final class GUI extends JFrame {
         // :: Version Number
         JEditorPane titleLeft = new JEditorPane();
         titleLeft.setContentType("text/html"); // set text in JEditorPane as HTML
-        titleLeft.setFont(Fonts.get("Regular", 16));
+        titleLeft.setFont(Fonts.get("Regular", 14));
         titleLeft.setForeground(getVividGreen());
         titleLeft.setBackground(getBlack());
         titleLeft.setEditable(false); // Make it non-editable
@@ -108,7 +107,7 @@ public final class GUI extends JFrame {
         grid.gridy = 0;
         grid.gridwidth = 5;
         grid.anchor = GridBagConstraints.NORTHEAST;
-        titleLeft.setPreferredSize(new Dimension(168, 90));
+        titleLeft.setPreferredSize(new Dimension(262, 90));
         panel.add(titleLeft, grid);
 
         // [TEXT BOX] RIGHT TITLE
@@ -116,7 +115,7 @@ public final class GUI extends JFrame {
         // :: "All Rights Reserved."
         JEditorPane titleRight = new JEditorPane();
         titleRight.setContentType("text/html"); // set text in JEditorPane as HTML
-        titleRight.setFont(Fonts.get("Regular", 16));
+        titleRight.setFont(Fonts.get("Regular", 14));
         titleRight.setForeground(getVividGreen());
         titleRight.setBackground(getBlack());
         titleRight.setEditable(false); // Make it non-editable
@@ -129,7 +128,7 @@ public final class GUI extends JFrame {
             clock(titleRight);
         });
         timer_clock.start();
-        titleRight.setPreferredSize(new Dimension(241, 90));
+        titleRight.setPreferredSize(new Dimension(240, 90));
         panel.add(titleRight, grid);
 
         // [SEPARATOR] Horizontal line separator
@@ -157,7 +156,7 @@ public final class GUI extends JFrame {
             updateOutputBox(outputBox);
         });
         timer_outputBox.start();
-        outputBox.setPreferredSize(new Dimension(260, 406));
+        outputBox.setPreferredSize(new Dimension(260, 400));
         panel.add(outputBox, grid); // make it scrollable
 
         // [BUTTON] CREATE Hotel
