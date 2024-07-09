@@ -81,6 +81,22 @@ public final class GUI extends JFrame {
     private boolean window;
 
     /**
+     * getter for the widow checker
+     * @return the window checker value
+     */
+    public boolean getWindow(){
+        return window;
+    }
+
+    /**
+     * setter for window checker
+     * @param window new window checker value
+     */
+    public void setWindow(boolean window){
+        this.window = window;
+    }
+
+    /**
      * The constructor for the GUI of the HRS.
      *
      * @param hrs the Hotel Reservation System
@@ -344,6 +360,16 @@ public final class GUI extends JFrame {
         outputBox.setBackground(getBlack());
     }
 
+    private void atClose(JFrame frame){
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter(){
+            @Override
+            public void windowClosing(WindowEvent e){
+                setWindow(false);
+            }
+        });
+    }
+
     /**
      * GUI class that makes the user-interface for the create hotel window
      */
@@ -361,8 +387,7 @@ public final class GUI extends JFrame {
         GUI.setSize(500, 500);
         GUI.setVisible(true);
 
-        onCloseSubWindow(GUI);
-        this.window = false;
+        atClose(GUI);
     }
 
     /**
@@ -379,7 +404,7 @@ public final class GUI extends JFrame {
         GUI.setSize(900, 750);
         GUI.setVisible(true);
 
-        onCloseSubWindow(GUI);
+        atClose(GUI);
     }
 
     /**
@@ -396,7 +421,7 @@ public final class GUI extends JFrame {
         GUI.setSize(500, 750);
         GUI.setVisible(true);
 
-        onCloseSubWindow(GUI);
+        atClose(GUI);
     }
 
     /**
@@ -413,7 +438,7 @@ public final class GUI extends JFrame {
         GUI.setSize(900, 750);
         GUI.setVisible(true);
 
-        onCloseSubWindow(GUI);
+        atClose(GUI);
     }
 
     /**
@@ -434,26 +459,31 @@ public final class GUI extends JFrame {
         GUI.setSize(500, 550);
         GUI.setVisible(true);
 
-        onCloseSubWindow(GUI);
+        atClose(GUI);
     }
 
-    /**
-     * Method that handles closing the "sub-windows" without terminating the
-     * entire application
-     *
-     * @param GUI The GUI itself
-     */
-    private void onCloseSubWindow(JFrame GUI) {
-        // make it so that when the user closes THIS window the entire app does
-        // not close
-        GUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        GUI.addWindowListener(new WindowAdapter() {
-            // if the close button is pressed only hide the window
-            // so, override the windowClosing function by just disposing it
-            @Override
-            public void windowClosing(WindowEvent e) {
-                GUI.dispose();
-            }
-        });
-    }
+
+
+    // [ZRY]    Commented this out because idk what it's for?
+    //          I remember having a reason to add this, but I think i changed the implementation
+    //          Left it as a comment if needed
+    // /**
+    //  * Method that handles closing the "sub-windows" without terminating the
+    //  * entire application
+    //  *
+    //  * @param GUI The GUI itself
+    //  */
+    // private void onCloseSubWindow(JFrame GUI) {
+    //     // make it so that when the user closes THIS window the entire app does
+    //     // not close
+    //     GUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    //     GUI.addWindowListener(new WindowAdapter() {
+    //         // if the close button is pressed only hide the window
+    //         // so, override the windowClosing function by just disposing it
+    //         @Override
+    //         public void windowClosing(WindowEvent e) {
+    //             GUI.dispose();
+    //         }
+    //     });
+    // }
 }
