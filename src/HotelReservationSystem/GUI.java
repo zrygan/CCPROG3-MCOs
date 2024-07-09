@@ -360,6 +360,11 @@ public final class GUI extends JFrame {
         outputBox.setBackground(getBlack());
     }
 
+    /**
+     * Method that handles window closing and makes another window available for openning
+     * 
+     * @param frame the frame to be closed
+     */
     private void atClose(JFrame frame){
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter(){
