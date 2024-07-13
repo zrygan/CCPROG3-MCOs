@@ -63,4 +63,13 @@
         public static Font get(String type, float pt){
             return get(type, pt, false);
         }
+
+        /**
+         * Initializes the fonts and the types.
+         */
+        public static void init(){
+            get("Regular", 14, false);
+            get("Bold", 14, false);
+            get("Italic", 14, false);
+        }
     }

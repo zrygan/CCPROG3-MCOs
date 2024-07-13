@@ -266,11 +266,11 @@ public final class GUI extends JFrame {
         JButton btn = new JButton(text);
 
         btn.setFont(f);
-        btn.setForeground(getVividGreen());
-        btn.setBackground(getDarkGreen());
+        btn.setForeground(Colors.getVividGreen());
+        btn.setBackground(Colors.getDarkGreen());
 
         // add the vivid green border with thickness 3 units
-        Border border = BorderFactory.createLineBorder(getVividGreen(), 3);
+        Border border = BorderFactory.createLineBorder(Colors.getVividGreen(), 3);
         btn.setBorder(border);
 
         // FIXME: add rounded borders (if needed)
@@ -279,52 +279,6 @@ public final class GUI extends JFrame {
         btn.setPreferredSize(new Dimension(100, 30));
 
         return btn;
-    }
-
-    /**
-     * returns the vivid green color from the hex code
-     *
-     * @return color from the vivid green hex code
-     */
-    public final Color getVividGreen() {
-        return Color.decode("#22F21B");
-    }
-
-    /**
-     * returns the dark green color from the hex code
-     *
-     * @return color from the dark green hex code
-     */
-    public final Color getDarkGreen() {
-        return Color.decode("#022601");
-    }
-
-    /**
-     * returns the black color from the hex code
-     *
-     * @return color from the black hex code
-     */
-    public final Color getBlack() {
-        return Color.decode("#0d0d0d");
-    }
-
-    /**
-     * returns the black color from the hex code
-     *
-     * @return color from the black hex code
-     */
-    public final Color getNormGreen() {
-        return Color.decode("#11790E");
-    }
-
-    /**
-     * function that initializes the fonts that will be used by the GUI.
-     */
-    public void initFonts() {
-        // load and register fonts    
-        Fonts.get("Regular", 12f, false);
-        Fonts.get("Italic", 12f, false);
-        Fonts.get("Bold", 12f, false);
     }
 
     /**
