@@ -28,8 +28,5 @@ replay_pid*
 out/
 *.iml
 
-# VS Code
-.vscode/
-
 # playground
 .playground/
