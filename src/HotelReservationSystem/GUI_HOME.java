@@ -1,17 +1,17 @@
 package HotelReservationSystem;
 
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
-public class GUI_HOME extends JFrame {
+class GUI_HOME extends JFrame {
     private final HRS hrs;
     private boolean window_checker;
 
@@ -136,12 +136,22 @@ public class GUI_HOME extends JFrame {
         return now.format(format);
     }
 
-    public GUI(HRS hrs){
+    public void init(JFrame frm){
         Fonts.init();               // init the fonts
+
+        setVisible(true);
+        setTitle("Hotel Reservation System [Ganituen, Jimenez]");
+        setSize(900, 1000);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        JPanel panel = new JPanel();
+        panel.setBackground(Colors.getBlack());
+
+        frm.add(panel);
+    }
+
+    public GUI_HOME(HRS hrs){
         this.hrs = hrs;             // init HRS
         this.window_checker= false; // init the window checker as false
-
-        setTitle("Hotel Reservation System [Ganituen, Jimenez]");
-        setVisible(true);
     }
 }

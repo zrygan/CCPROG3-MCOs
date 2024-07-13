@@ -26,9 +26,10 @@ public class Driver {
 
         new Thread(() -> {
             GUI_HOME gui = new GUI_HOME(hrs);
+            gui.init(gui);
         }).start();
 
-        boolean run = false;
+        boolean run = true;
         
         // CLI
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
