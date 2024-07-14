@@ -16,8 +16,8 @@
     class GUI_HOME extends JFrame {
         private final HRS hrs;
         private boolean window_checker;
-        private int window_height;
-        private int window_width;
+        private final int window_height;
+        private final int window_width;
 
         public boolean getWindow_checker(){
             return window_checker;
@@ -111,10 +111,12 @@
         }
 
         public JTextArea ASSET_OUTPUT_BOX(int width, int height){
+            Font f = Fonts.get("Regular", 16);
             JTextArea a = new JTextArea();
             a.setEditable(false);
             a.setForeground(Colors.getVividGreen());
             a.setBackground(Colors.getBlack());
+            a.setFont(f);
 
             Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 2);
             a.setBorder(bdr);
@@ -260,13 +262,13 @@
             // [BASIC BUTTON] Create Hotel Button
             panels.get(2).add(ASSET_BASIC_BUTTON("Create Hotel"));
 
-            panels.get(2).add(ASSET_SEPARATOR(450)); // let width be 450 to take up entire space
+            panels.get(2).add(ASSET_SEPARATOR(window_width/2));
             panels.get(2).add(ASSET_BASIC_BUTTON("View Hotel"));
 
-            panels.get(2).add(ASSET_SEPARATOR(450));
+            panels.get(2).add(ASSET_SEPARATOR(window_width/2));
             panels.get(2).add(ASSET_BASIC_BUTTON("Manage Hotel"));
 
-            panels.get(2).add(ASSET_SEPARATOR(450));
+            panels.get(2).add(ASSET_SEPARATOR(window_width/2));
             JButton simButton = ASSET_ACCENT_BUTTON("Simulate Booking");
             simButton.setPreferredSize(new Dimension(150, 90));
             panels.get(2).add(simButton);
