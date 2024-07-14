@@ -13,6 +13,53 @@
     import javax.swing.event.DocumentEvent;
     import javax.swing.event.DocumentListener;
 
+    /*
+     * ========== DESIGN SPECS for Main_GUI ==========
+     *
+     * Dimensions:
+     *      home HRS
+     *          W   900 (px)
+     *          H   1000 (px)
+     *
+     *      create hotel
+     *          W   500 (px)
+     *          H   500 (px)
+     *
+     *      view hotel
+     *          W   900 (px)
+     *          H   750 (px)
+     *
+     *      manage hotel
+     *          W   500 (px)
+     *          H   750 (px)
+     *
+     *      sim booking
+     *          W   900 (px)
+     *          H   750 (px)
+     *
+     *      create room
+     *          W   500 (px)
+     *          H   550 (px)
+     *
+     * Fonts:
+     *      Ubunto Mono Regular     UbuntuMono-Regular.ttf  https://fonts.google.com/specimen/Ubuntu+Mono
+     *      Ubunto Mono Italic      UbuntuMono-Italic.ttf   https://fonts.google.com/specimen/Ubuntu+Mono
+     *      Ubunto Mono Bold        UbuntuMono-Bold.ttf     https://fonts.google.com/specimen/Ubuntu+Mono
+     *
+     * Colors: https://color.adobe.com/Pip-Boy-Theme-color-theme-1ec50007-9a2e-4434-a972-8b398274ffe5/
+     *      Dark Forest Green   #022601     button primary background color,
+     *                                      button secondary text color.
+     *
+     *      Vivid Green         #22F21B     button primary text color,
+     *                                      button secondary background color.
+     *
+     *      Radical Green       #11790E     placeholder text color for input fields.
+     *
+     *      Woodsome            #0d0d0d     window fill color,
+     *                                      button tertiary text color
+     *
+     */
+
     class GUI_HOME extends JFrame {
         private final HRS hrs;
         private boolean window_checker;
