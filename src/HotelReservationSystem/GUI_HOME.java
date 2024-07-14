@@ -19,7 +19,7 @@
      * Dimensions:
      *      home HRS
      *          W   900 (px)
-     *          H   1000 (px)
+     *          H   800 (px)
      *
      *      create hotel
      *          W   500 (px)
