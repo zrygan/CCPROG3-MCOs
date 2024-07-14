@@ -25,13 +25,10 @@ public class Driver {
         HRS hrs = new HRS();            
 
         new Thread(() -> {
-            GUI gui = new GUI(hrs);
-            gui.setTitle("Hotel Reservation System");
-            gui.setDefaultCloseOperation(GUI.EXIT_ON_CLOSE);
-            gui.setVisible(true);
+            GUIs gui = new GUIs(hrs);
         }).start();
 
-        boolean run = true; 
+        boolean run = true;
         
         // CLI
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
