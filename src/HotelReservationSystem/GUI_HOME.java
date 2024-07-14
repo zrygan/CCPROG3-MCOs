@@ -9,12 +9,15 @@
     import java.util.ArrayList;
     import javax.swing.*;
     import javax.swing.border.Border;
+    import javax.swing.border.EmptyBorder;
     import javax.swing.event.DocumentEvent;
     import javax.swing.event.DocumentListener;
 
     class GUI_HOME extends JFrame {
         private final HRS hrs;
         private boolean window_checker;
+        private int window_height;
+        private int window_width;
 
         public boolean getWindow_checker(){
             return window_checker;
@@ -46,7 +49,7 @@
             Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 3);
             b.setBorder(bdr);
 
-            b.setPreferredSize(new Dimension(100, 30));
+            b.setPreferredSize(new Dimension(150, 45));
             b.setMargin(new Insets(10, 0, 10, 0));
 
             return b;
@@ -63,7 +66,7 @@
             Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 3);
             b.setBorder(bdr);
 
-            b.setPreferredSize(new Dimension(100, 30));
+            b.setPreferredSize(new Dimension(150, 45));
             b.setMargin(new Insets(10, 0, 10, 0));
 
             return b;
@@ -101,7 +104,7 @@
             t.setBackground(Colors.getDarkGreen());
             t.setToolTipText(dummy);
 
-            t.setPreferredSize(new Dimension(100, 30));
+            t.setPreferredSize(new Dimension(150, 45));
             t.setMargin(new Insets(10, 0, 10, 0));
 
             return t;
@@ -110,6 +113,8 @@
         public JTextArea ASSET_OUTPUT_BOX(int width, int height){
             JTextArea a = new JTextArea();
             a.setEditable(false);
+            a.setForeground(Colors.getVividGreen());
+            a.setBackground(Colors.getBlack());
 
             Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 2);
             a.setBorder(bdr);
@@ -151,6 +156,14 @@
             ep.setPreferredSize(new Dimension(width, height));
 
             return ep;
+        }
+
+        public static JPanel ASSET_SEPARATOR(int width){
+            JPanel p = new JPanel();
+            p.setBackground(Colors.getBlack());
+            p.setPreferredSize(new Dimension(width, 30));
+            p.setBorder(new EmptyBorder(5,0,5,0));
+            return p;
         }
 
         public JEditorPane UPDATE_TITLE_BOX(JEditorPane ep, String[] contents, String alignment){
@@ -203,10 +216,10 @@
             Fonts.init();               // init the fonts
 
             setTitle("Hotel Reservation System [Ganituen, Jimenez]");
-            setBackground(Colors.getBlack());
-            setSize(900, 1000);
+            setSize(window_width, window_height);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLayout(null);
+            setResizable(false);
 
             ArrayList<JPanel> panels  = ADD_PANELS(3);
 
@@ -214,16 +227,16 @@
              *  contains:   LEFT TITLE
              *              RIGHT TITLE
              */
-            panels.getFirst().setBounds( 0, 0, 900, 50);        // panels[0] = top panel
-            panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 0));
+            panels.getFirst().setBounds( 0, 0, window_width, 100);        // panels[0] = top panel
+            panels.getFirst().setLayout(new FlowLayout(FlowLayout.LEFT, 50, 20));
 
-            // [TITLE BOX] LEFT TITLE
+            // [TITLE BOX] Left Title (Hotel Reservation System and Version)
             String[] title_left = new String[] {"<b>Hotel Reservation System</b>", "Version 2.1.1"};
-            panels.getFirst().add(ASSET_TITLE_BOX(title_left, "left", 260, 180));
+            panels.getFirst().add(ASSET_TITLE_BOX(title_left, "left", 450, 35));
 
-            // [TITLE BOX] RIGHT TITLE
+            // [TITLE BOX] Right title (current time and All Rights Reserved)s
             String[] title_right_text = new String[] {ASSET_CLOCK_TIME(), "All Rights Reserved"};
-            JEditorPane title_right = ASSET_TITLE_BOX(title_right_text, "right", 260, 180);
+            JEditorPane title_right = ASSET_TITLE_BOX(title_right_text, "right", 200, 35);
             panels.getFirst().add(title_right);
             Timer timer_clock = new Timer(1000, (ActionEvent e) ->{
                 title_right_text[0] = ASSET_CLOCK_TIME();
@@ -234,18 +247,35 @@
             /* code of LEFT PANEL (panel : 1)
              *  contains:
              */
-            panels.get(1).setBounds( 0, 50, 450, 950);      // panels[1] = left panel
+            panels.get(1).setBounds( 0, 100, window_width/2, window_height); // panels[1] = left panel
+            panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
+            panels.get(1).add(ASSET_OUTPUT_BOX(350,500));
 
             /* code of RIGHT PANEL (panel : 2)
              *  contains:
              */
+            panels.get(2).setBounds( window_width/2,100, window_width/2, window_height); // panels[2] = right panel
+            panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+
+            // [BASIC BUTTON] Create Hotel Button
+            panels.get(2).add(ASSET_BASIC_BUTTON("Create Hotel"));
+
+            panels.get(2).add(ASSET_SEPARATOR(450)); // let width be 450 to take up entire space
+            panels.get(2).add(ASSET_BASIC_BUTTON("View Hotel"));
+
+            panels.get(2).add(ASSET_SEPARATOR(450));
+            panels.get(2).add(ASSET_BASIC_BUTTON("Manage Hotel"));
+
+            panels.get(2).add(ASSET_SEPARATOR(450));
+            JButton simButton = ASSET_ACCENT_BUTTON("Simulate Booking");
+            simButton.setPreferredSize(new Dimension(150, 90));
+            panels.get(2).add(simButton);
 
             // set the bgcolor and add the panels
             for (JPanel panel : panels){
                 panel.setBackground(Colors.getBlack());
                 add(panel);
             }
-            panels.get(2).setBounds( 450, 50, 450, 950);    // panels[2] = right panel
 
             setVisible(true);
         }
@@ -253,6 +283,8 @@
         public GUI_HOME(HRS hrs){
             this.hrs = hrs;              // init HRS
             this.window_checker = false; // init the window checker as false
+            this.window_height = 800;
+            this.window_width = 900;
             init();
         }
     }
