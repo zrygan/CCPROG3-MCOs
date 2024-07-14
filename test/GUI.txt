@@ -1,5 +1,3 @@
-package HotelReservationSystem;
-
 import java.awt.*;                          // for general awt stuff
 import java.awt.event.ActionEvent;          // for ActionEvent (used in dynamic clock)
 import java.awt.event.WindowAdapter;        // for handling window closing

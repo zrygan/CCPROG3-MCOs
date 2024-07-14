@@ -26,7 +26,6 @@ public class Driver {
 
         new Thread(() -> {
             GUI_HOME gui = new GUI_HOME(hrs);
-            gui.init(gui);
         }).start();
 
         boolean run = true;
