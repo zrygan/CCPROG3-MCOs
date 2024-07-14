@@ -27,24 +27,24 @@
      *
      *      view hotel
      *          W   900 (px)
-     *          H   750 (px)
+     *          H   800 (px)
      *
      *      manage hotel
      *          W   500 (px)
-     *          H   750 (px)
+     *          H   800 (px)
      *
      *      sim booking
      *          W   900 (px)
-     *          H   750 (px)
+     *          H   800 (px)
      *
      *      create room
      *          W   500 (px)
-     *          H   550 (px)
+     *          H   600 (px)
      *
      * Fonts:
-     *      Ubunto Mono Regular     UbuntuMono-Regular.ttf  https://fonts.google.com/specimen/Ubuntu+Mono
-     *      Ubunto Mono Italic      UbuntuMono-Italic.ttf   https://fonts.google.com/specimen/Ubuntu+Mono
-     *      Ubunto Mono Bold        UbuntuMono-Bold.ttf     https://fonts.google.com/specimen/Ubuntu+Mono
+     *      Ubuntu Mono Regular     UbuntuMono-Regular.ttf  https://fonts.google.com/specimen/Ubuntu+Mono
+     *      Ubuntu Mono Italic      UbuntuMono-Italic.ttf   https://fonts.google.com/specimen/Ubuntu+Mono
+     *      Ubuntu Mono Bold        UbuntuMono-Bold.ttf     https://fonts.google.com/specimen/Ubuntu+Mono
      *
      * Colors: https://color.adobe.com/Pip-Boy-Theme-color-theme-1ec50007-9a2e-4434-a972-8b398274ffe5/
      *      Dark Forest Green   #022601     button primary background color,
@@ -60,30 +60,20 @@
      *
      */
 
-    class GUI_HOME extends JFrame {
+    class GUI_MAIN extends JFrame {
         private final HRS hrs;
-        private boolean window_checker;
-        private final int window_height;
-        private final int window_width;
+        private JFrame current;
+        private boolean isOpen;
+        protected final int window_height;
+        protected final int window_width;
 
-        public boolean getWindow_checker(){
-            return window_checker;
+        public boolean getIsOpen(){
+            return isOpen;
         }
 
-        public void setWindow_checker(boolean window_checker){
-            this.window_checker = window_checker;
+        public void setIsOpen(boolean isOpen){
+            this.isOpen = isOpen;
         }
-
-        public void close_handler(JFrame frame){
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.addWindowListener((new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                   setWindow_checker(true);
-                }
-            }));
-        }
-
 
         public JButton ASSET_BASIC_BUTTON(String text){
             Font f = Fonts.get("Regular", 14);
@@ -170,9 +160,7 @@
 
             a.setPreferredSize(new Dimension(width, height));
 
-            Timer timer_outputBox = new Timer(1000, (ActionEvent e) ->{
-                a.setText(UPDATE_OUTPUT_BOX().toString());
-            });
+            Timer timer_outputBox = new Timer(1000, (ActionEvent _) -> a.setText(UPDATE_OUTPUT_BOX().toString()));
             timer_outputBox.start();
 
             return a;
@@ -261,9 +249,46 @@
             return panels;
         }
 
-        private void init(){
-            Fonts.init();               // init the fonts
+        public void CONFIG_AT_CLOSE(){
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    setIsOpen(false);
+                    System.out.println(getIsOpen());
+                }
+            });
+        }
 
+        private void WINDOW_createHotel(){
+            if(!getIsOpen()){
+                current = new GUI_CREATE(hrs);
+                setIsOpen(true);
+            }
+        }
+
+        private void WINDOW_viewHotel(){
+            if(!getIsOpen()) {
+                current = new GUI_VIEW(hrs);
+                setIsOpen(true);
+            }
+        }
+
+        private void WINDOW_manageHotel(){
+            if(!getIsOpen()) {
+                current = new GUI_MANAGE(hrs);
+                setIsOpen(true);
+            }
+        }
+
+        private void WINDOW_simBooking(){
+            if(!getIsOpen()) {
+                current = new GUI_BOOKING(hrs);
+                setIsOpen(true);
+            }
+        }
+
+        private void init(){
             setTitle("Hotel Reservation System [Ganituen, Jimenez]");
             setSize(window_width, window_height);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -287,7 +312,7 @@
             String[] title_right_text = new String[] {ASSET_CLOCK_TIME(), "All Rights Reserved"};
             JEditorPane title_right = ASSET_TITLE_BOX(title_right_text, "right", 200, 35);
             panels.getFirst().add(title_right);
-            Timer timer_clock = new Timer(1000, (ActionEvent e) ->{
+            Timer timer_clock = new Timer(1000, (ActionEvent _) ->{
                 title_right_text[0] = ASSET_CLOCK_TIME();
                 UPDATE_TITLE_BOX(title_right, title_right_text, "right");
             });
@@ -307,20 +332,30 @@
             panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
 
             // [BASIC BUTTON] Create Hotel Button
-            panels.get(2).add(ASSET_BASIC_BUTTON("Create Hotel"));
+            JButton btn_create = ASSET_BASIC_BUTTON("Create Hotel");
+            btn_create.addActionListener(_ -> WINDOW_createHotel());
+            panels.get(2).add(btn_create);
 
             panels.get(2).add(ASSET_SEPARATOR(window_width/2));
-            panels.get(2).add(ASSET_BASIC_BUTTON("View Hotel"));
+
+            JButton btn_view = ASSET_BASIC_BUTTON("View Hotel");
+            btn_create.addActionListener(_ -> WINDOW_viewHotel());
+            panels.get(2).add(btn_view);
 
             panels.get(2).add(ASSET_SEPARATOR(window_width/2));
-            panels.get(2).add(ASSET_BASIC_BUTTON("Manage Hotel"));
+
+            JButton btn_manage = ASSET_BASIC_BUTTON("Manage Hotel");
+            btn_view.addActionListener(_ -> WINDOW_manageHotel());
+            panels.get(2).add(btn_manage);
 
             panels.get(2).add(ASSET_SEPARATOR(window_width/2));
-            JButton simButton = ASSET_ACCENT_BUTTON("Simulate Booking");
-            simButton.setPreferredSize(new Dimension(150, 90));
-            panels.get(2).add(simButton);
 
-            // set the bgcolor and add the panels
+            JButton btn_simbook = ASSET_ACCENT_BUTTON("Simulate Booking");
+            btn_simbook.addActionListener(_ -> WINDOW_simBooking());
+            btn_simbook.setPreferredSize(new Dimension(150, 90));
+            panels.get(2).add(btn_simbook);
+
+            // set the background color and add the panels
             for (JPanel panel : panels){
                 panel.setBackground(Colors.getBlack());
                 add(panel);
@@ -329,11 +364,22 @@
             setVisible(true);
         }
 
-        public GUI_HOME(HRS hrs){
+        public GUI_MAIN(HRS hrs){
             this.hrs = hrs;              // init HRS
-            this.window_checker = false; // init the window checker as false
+            this.isOpen = false; // init the window checker as false
+            this.current = null;
             this.window_height = 800;
             this.window_width = 900;
             init();
+            Fonts.init();
+        }
+
+        public GUI_MAIN(HRS hrs, int window_height, int window_width){
+            this.hrs = hrs;
+            this.isOpen = false;
+            this.current = null;
+            this.window_height = window_height;
+            this.window_width = window_width;
+            Fonts.init();
         }
     }

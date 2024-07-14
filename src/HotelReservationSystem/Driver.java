@@ -25,7 +25,7 @@ public class Driver {
         HRS hrs = new HRS();            
 
         new Thread(() -> {
-            GUI_HOME gui = new GUI_HOME(hrs);
+            GUI_MAIN gui = new GUI_MAIN(hrs);
         }).start();
 
         boolean run = true;
