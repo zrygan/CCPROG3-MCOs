@@ -64,8 +64,8 @@
         private final HRS hrs;
         private JFrame current;
         private boolean isOpen;
-        protected final int window_height;
-        protected final int window_width;
+        private final int window_height;
+        private final int window_width;
 
         public boolean getIsOpen(){
             return isOpen;
@@ -249,42 +249,49 @@
             return panels;
         }
 
-        public void CONFIG_AT_CLOSE(){
+        protected void CONFIG_AT_CLOSE(){
             setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
                     setIsOpen(false);
-                    System.out.println(getIsOpen());
                 }
             });
         }
 
         private void WINDOW_createHotel(){
             if(!getIsOpen()){
-                current = new GUI_CREATE(hrs);
+                current = new GUI_CREATE(hrs, 500);
                 setIsOpen(true);
+            } else{
+                System.out.println(getIsOpen());
             }
         }
 
         private void WINDOW_viewHotel(){
             if(!getIsOpen()) {
-                current = new GUI_VIEW(hrs);
+                current = new GUI_VIEW(hrs, 800, 900);
                 setIsOpen(true);
+            }else{
+                System.out.println(getIsOpen());
             }
         }
 
         private void WINDOW_manageHotel(){
             if(!getIsOpen()) {
-                current = new GUI_MANAGE(hrs);
+                current = new GUI_MANAGE(hrs, 800, 500);
                 setIsOpen(true);
+            }else{
+                System.out.println(getIsOpen());
             }
         }
 
         private void WINDOW_simBooking(){
             if(!getIsOpen()) {
-                current = new GUI_BOOKING(hrs);
+                current = new GUI_BOOKING(hrs, 800, 900);
                 setIsOpen(true);
+            }else{
+                System.out.println(getIsOpen());
             }
         }
 
