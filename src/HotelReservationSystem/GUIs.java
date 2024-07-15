@@ -153,45 +153,25 @@ class GUIs extends JFrame {
 
         // [BASIC BUTTON] Create Hotel Button
         JButton btn_create = Assets.ASSET_BASIC_BUTTON("Create Hotel");
-        btn_create.addActionListener(_ -> {
-            if (!getIsOpen()) {
-                GUI_create_hotel();
-                setIsOpen(true);
-            }
-        });
+        btn_create.addActionListener(_ -> { if (!getIsOpen()) MAKE_CREATE(); });
         panels.get(2).add(btn_create);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
         JButton btn_view = Assets.ASSET_BASIC_BUTTON("View Hotel");
-        btn_view.addActionListener(_ -> {
-            if (!getIsOpen()) {
-                GUI_view_hotel();
-                setIsOpen(true);
-            }
-        });
+        btn_view.addActionListener(_ -> { if (!getIsOpen()) MAKE_VIEW(); });
         panels.get(2).add(btn_view);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
         JButton btn_manage = Assets.ASSET_BASIC_BUTTON("Manage Hotel");
-        btn_manage.addActionListener(_ -> {
-            if (!getIsOpen()) {
-                GUI_manage_hotel();
-                setIsOpen(true);
-            }
-        });
+        btn_manage.addActionListener(_ -> { if (!getIsOpen()) MAKE_MANAGE(); });
         panels.get(2).add(btn_manage);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
         JButton btn_simbook = Assets.ASSET_ACCENT_BUTTON("Simulate Booking");
-        btn_simbook.addActionListener(_ -> {
-            if (!getIsOpen()) {
-                GUI_sim_book();
-                setIsOpen(true);
-            }
-        });
+        btn_simbook.addActionListener(_ -> { if (!getIsOpen()) MAKE_SIM(); });
         btn_simbook.setPreferredSize(new Dimension(150, 90));
         panels.get(2).add(btn_simbook);
 
@@ -207,7 +187,9 @@ class GUIs extends JFrame {
     /**
      * The GUI for create hotel
      */
-    private void GUI_create_hotel(){
+    private void MAKE_CREATE(){
+        setIsOpen(true);
+
         JFrame GUI = new JFrame("HRS: Create Hotel");
         GUI.setSize(500,500);
         GUI.setVisible(true);
@@ -217,7 +199,9 @@ class GUIs extends JFrame {
     /**
      * The GUI for view hotel
      */
-    private void GUI_view_hotel(){
+    private void MAKE_VIEW(){
+        setIsOpen(true);
+        
         JFrame GUI = new JFrame("HRS: View Hotel");
         GUI.setSize(900,800);
         GUI.setVisible(true);
@@ -227,7 +211,9 @@ class GUIs extends JFrame {
     /**
      * The GUI for manage hotel
      */
-    private void GUI_manage_hotel(){
+    private void MAKE_MANAGE(){
+        setIsOpen(true);
+
         JFrame GUI = new JFrame("HRS: Manage Hotel");
         GUI.setSize(500,800);
         GUI.setVisible(true);
@@ -237,7 +223,9 @@ class GUIs extends JFrame {
     /**
      * The GUI for simulate booking
      */
-    private void GUI_sim_book(){
+    private void MAKE_SIM(){
+        setIsOpen(true);
+
         JFrame GUI = new JFrame("HRS: Simulate Booking");
         GUI.setSize(900,800);
         GUI.setVisible(true);
@@ -247,7 +235,9 @@ class GUIs extends JFrame {
     /**
      * The GUI for creating a room. Can only be called by GUI_manage_hotel
      */
-    private void GUI_create_room(){
+    private void MAKE_ROOM(){
+        setIsOpen(true);
+
         JFrame GUI = new JFrame("HRS: Create Room");
         GUI.setSize(500,600);
         GUI.setVisible(true);
