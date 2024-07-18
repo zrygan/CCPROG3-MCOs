@@ -200,7 +200,7 @@ public class Assets {
         StringBuilder s = new StringBuilder();
 
         ep.setContentType("text/html");
-        ep.setFont(Fonts.get("Regular", 14));
+        ep.setFont(Fonts.get("Regular", 18));
         ep.setForeground(Colors.getVividGreen());
         ep.setBackground(Colors.getBlack());
         ep.setEditable(false);
