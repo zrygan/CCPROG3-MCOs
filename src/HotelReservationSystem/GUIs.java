@@ -126,11 +126,11 @@ class GUIs extends JFrame {
 
         // [TITLE BOX] Left Title (Hotel Reservation System and Version)
         String[] title_left = new String[] {"<b>Hotel Reservation System</b>", "Version 2.1.1"};
-        panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_left, "left", 450, 35));
+        panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_left, "left", 450, 50, 21));
 
         // [TITLE BOX] Right title (current time and All Rights Reserved)s
         String[] title_right_text = new String[] {Assets.UPDATE_CLOCK_TIME(), "All Rights Reserved"};
-        JEditorPane title_right = Assets.ASSET_TITLE_BOX(title_right_text, "right", 200, 35);
+        JEditorPane title_right = Assets.ASSET_TITLE_BOX(title_right_text, "right", 200, 50, 21);
         panels.getFirst().add(title_right);
         Timer timer_clock = new Timer(1000, (ActionEvent _) ->{
             title_right_text[0] = Assets.UPDATE_CLOCK_TIME();
@@ -153,7 +153,7 @@ class GUIs extends JFrame {
 
         // [BASIC BUTTON] Create Hotel Button
         JButton btn_create = Assets.ASSET_BASIC_BUTTON("Create Hotel");
-        btn_create.addActionListener(_ -> { if (!getIsOpen()) MAKE_CREATE(); });
+        btn_create.addActionListener(_ -> { if (!getIsOpen()) MAKE_CREATE(); dispose(); });
         panels.get(2).add(btn_create);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
@@ -192,7 +192,29 @@ class GUIs extends JFrame {
 
         JFrame GUI = new JFrame("HRS: Create Hotel");
         GUI.setSize(500,500);
+        GUI.setLayout(null);
+        GUI.setResizable(false);
+        
+
+        ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(2);
+
+        /* code of TOP PANEL (panel : 0)
+        *  contains:   TOP TITLE
+        */
+        panels.getFirst().setBounds( 0, 0, 500, 100);        // panels[0] = top panel
+        panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
+
+        // [TITLE BOX] Top Title (Hotel Reservation System and Version)
+        String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Creating a Hotel"};
+        panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50, 21));
+
+        for (JPanel panel : panels){
+            panel.setBackground(Colors.getBlack());
+            GUI.add(panel);
+        }
+
         GUI.setVisible(true);
+        
         CONFIG_AT_CLOSE();
     }
 

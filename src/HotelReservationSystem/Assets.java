@@ -195,12 +195,12 @@ public class Assets {
      * @param height the height of the box
      * @return the created title box
      */
-    public static JEditorPane ASSET_TITLE_BOX(String[] contents, String alignment, int width, int height){
+    public static JEditorPane ASSET_TITLE_BOX(String[] contents, String alignment, int width, int height, int fontsize){
         JEditorPane ep = new JEditorPane();
         StringBuilder s = new StringBuilder();
 
         ep.setContentType("text/html");
-        ep.setFont(Fonts.get("Regular", 14));
+        ep.setFont(Fonts.get("Regular", fontsize));
         ep.setForeground(Colors.getVividGreen());
         ep.setBackground(Colors.getBlack());
         ep.setEditable(false);
