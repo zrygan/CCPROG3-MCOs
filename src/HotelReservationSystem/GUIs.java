@@ -207,6 +207,29 @@ class GUIs extends JFrame {
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
         String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Creating a Hotel"};
         panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
+        
+        
+        /* code of Bottom PANEL (panel : 1)
+        *  contains:
+        */
+        panels.get(1).setBounds( 0, 100, 500, 400); // panels[1] = left panel
+        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
+
+        JTextField hot_name = Assets.ASSET_TEXT_FIELD("Name of Hotel");
+        // ADD ACTION LISTENER
+        panels.get(1).add(hot_name);
+
+        panels.get(1).add(Assets.ASSET_SEPARATOR(500/2));
+
+        JTextField num_room = Assets.ASSET_TEXT_FIELD("# of Rooms");
+        // ADD ACTION LISTENER
+        panels.get(1).add(num_room);
+
+        panels.get(1).add(Assets.ASSET_SEPARATOR(500/2));
+
+        JMenuBar room_type = Assets.ASSET_MENU_BAR("Room Type");
+        // ADD ACTION LISTENER
+        panels.get(1).add(room_type);
 
         for (JPanel panel : panels){
             panel.setBackground(Colors.getBlack());
