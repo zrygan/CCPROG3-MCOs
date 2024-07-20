@@ -310,4 +310,61 @@ public class Assets {
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm:ss");
         return now.format(format);
     }
+
+    /**
+     * Creates a JMenuBar for the dropdown buttons
+     * @return the created JMenuBar
+     */
+    public static JMenuBar ASSET_MENU_BAR(String title) {
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setBackground(Colors.getDarkGreen());
+        menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 1));
+    
+        // Add menus to the menu bar
+        menuBar.add(createMenu(title));
+
+        menuBar.setPreferredSize(new Dimension(150, 45));
+        menuBar.setMargin(new Insets(10, 0, 10, 0));
+    
+        return menuBar;
+    }
+    
+    /**
+     * Helper method to create the options of the menu bar
+     * @param name the name of the menu
+     * @return the created JMenu
+     */
+    private static JMenu createMenu(String name) {
+        JMenu menu = new JMenu(name);
+        menu.setForeground(Colors.getVividGreen());
+        menu.setFont(Fonts.get("Regular", 18));
+    
+        // Add some sample menu items
+        menu.add(createMenuItem("Standard Room"));
+        menu.add(createMenuItem("Deluxe Room"));
+        menu.add(createMenuItem("ADD WHATEVER WE NEED")); //FIXME: Remember
+
+        menu.setPreferredSize(new Dimension(150, 45));
+        menu.setMargin(new Insets(10, 0, 10, 0));
+    
+        return menu;
+    }
+    
+    /**
+     * Helper method to create a JMenuItem and their actions listeners
+     * @param name the name of the menu item
+     * @return the created JMenuItem
+     */
+    private static JMenuItem createMenuItem(String name) {
+        JMenuItem menuItem = new JMenuItem(name);
+        menuItem.setBackground(Colors.getDarkGreen());
+        menuItem.setForeground(Colors.getVividGreen());
+        menuItem.setFont(Fonts.get("Regular", 18));
+    
+        // Add action listener for the menu item
+
+        menuItem.setPreferredSize(new Dimension(150, 45));
+    
+        return menuItem;
+    }
 }
