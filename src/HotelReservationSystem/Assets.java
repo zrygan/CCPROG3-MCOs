@@ -195,7 +195,7 @@ public class Assets {
      * @param height the height of the box
      * @return the created title box
      */
-    public static JEditorPane ASSET_TITLE_BOX(String[] contents, String alignment, int width, int height, int fontsize){
+    public static JEditorPane ASSET_TITLE_BOX(String[] contents, String alignment, int width, int height){
         JEditorPane ep = new JEditorPane();
         StringBuilder s = new StringBuilder();
 

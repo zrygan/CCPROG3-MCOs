@@ -206,7 +206,7 @@ class GUIs extends JFrame {
 
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
         String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Creating a Hotel"};
-        panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50, 21));
+        panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
 
         for (JPanel panel : panels){
             panel.setBackground(Colors.getBlack());
