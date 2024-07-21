@@ -188,10 +188,11 @@ class GUIs extends JFrame {
      * The GUI for create hotel
      */
     private void MAKE_CREATE(){
+        int create_win_size = 500;
         setIsOpen(true);
 
         JFrame GUI = new JFrame("HRS: Create Hotel");
-        GUI.setSize(500,500);
+        GUI.setSize(create_win_size,create_win_size);
         GUI.setLayout(null);
         GUI.setResizable(false);
         
@@ -201,7 +202,7 @@ class GUIs extends JFrame {
         /* code of TOP PANEL (panel : 0)
         *  contains:   TOP TITLE
         */
-        panels.getFirst().setBounds( 0, 0, 500, 100);        // panels[0] = top panel
+        panels.getFirst().setBounds( 0, 0, create_win_size, 100);        // panels[0] = top panel
         panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
@@ -212,20 +213,20 @@ class GUIs extends JFrame {
         /* code of Bottom PANEL (panel : 1)
         *  contains:
         */
-        panels.get(1).setBounds( 0, 100, 500, 400); // panels[1] = left panel
+        panels.get(1).setBounds( 0, 100, create_win_size, 400); // panels[1] = left panel
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
 
         JTextField hot_name = Assets.ASSET_TEXT_FIELD("Name of Hotel");
         // ADD ACTION LISTENER
         panels.get(1).add(hot_name);
 
-        panels.get(1).add(Assets.ASSET_SEPARATOR(500/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2));
 
         JTextField num_room = Assets.ASSET_TEXT_FIELD("# of Rooms");
         // ADD ACTION LISTENER
         panels.get(1).add(num_room);
 
-        panels.get(1).add(Assets.ASSET_SEPARATOR(500/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2));
 
         JMenuBar room_type = Assets.ASSET_MENU_BAR("Room Type");
         // ADD ACTION LISTENER
@@ -245,11 +246,74 @@ class GUIs extends JFrame {
      * The GUI for view hotel
      */
     private void MAKE_VIEW(){
+        int view_win_width = 900;
+        int view_win_height = 750;
+
         setIsOpen(true);
         
         JFrame GUI = new JFrame("HRS: View Hotel");
-        GUI.setSize(900,800);
+        GUI.setSize(view_win_width,view_win_height);
+        
+
+        GUI.setLayout(null);
+        GUI.setResizable(false);
+        
+
+        ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(3);
+
+        /* code of TOP PANEL (panel : 0)
+        *  contains:   TOP TITLE
+        */
+        panels.getFirst().setBounds( 0, 0, view_win_width, 100);        // panels[0] = top panel
+        panels.getFirst().setLayout(new FlowLayout(FlowLayout.LEFT, 50, 20));
+
+        // [TITLE BOX] Top Title (Hotel Reservation System and Version)
+        String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Viewing a Hotel"};
+        panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
+        
+
+        /* code of LEFT PANEL (panel : 1)
+            *  contains:
+            */
+            panels.get(1).setBounds( 0, 100, view_win_width/2, view_win_height); // panels[1] = left panel
+            panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
+            panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,500, hrs));
+    
+            /* code of RIGHT PANEL (panel : 2)
+                *  contains:
+                */
+            panels.get(2).setBounds( view_win_width/2,100, view_win_width/2, view_win_height); // panels[2] = right panel
+            panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+    
+            // [BASIC BUTTON] Create Hotel Button
+            JTextField view_hot_name = Assets.ASSET_TEXT_FIELD("Hotel Name");
+            // ADD ACTION LISTENER
+            panels.get(2).add(view_hot_name);
+    
+            panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+    
+            JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("Hight Level Info");
+            panels.get(2).add(high_lvl_info);
+    
+            panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+    
+            JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
+            // ADD ACTION LISTENER
+            panels.get(2).add(ent_day);
+    
+            panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+
+            JTextField res_name = Assets.ASSET_TEXT_FIELD("Reservation Name");
+            // ADD ACTION LISTENER
+            panels.get(2).add(res_name);
+
+        for (JPanel panel : panels){
+            panel.setBackground(Colors.getBlack());
+            GUI.add(panel);
+        }
+
         GUI.setVisible(true);
+
         CONFIG_AT_CLOSE();
     }
 
