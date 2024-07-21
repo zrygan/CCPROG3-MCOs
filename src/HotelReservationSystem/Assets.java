@@ -2,6 +2,7 @@ package HotelReservationSystem;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -42,6 +43,8 @@ public class Assets {
         b.setPreferredSize(new Dimension(150, 45));
         b.setMargin(new Insets(10, 0, 10, 0));
 
+        b.setHorizontalAlignment(JButton.CENTER);
+
         return b;
     }
 
@@ -64,51 +67,77 @@ public class Assets {
         b.setPreferredSize(new Dimension(150, 45));
         b.setMargin(new Insets(10, 0, 10, 0));
 
+        b.setHorizontalAlignment(JButton.CENTER);
+
         return b;
     }
 
     /**
-     * Makes a text field for the user to fill in
-     * @param dummy the dummy text inside the text field
-     * @return the text field created
-     */
-    public static JTextField ASSET_TEXT_FIELD(String dummy){
-        Font f = Fonts.get("Regular", 14);
-        JTextField t = new JTextField();
+ * Makes a text field for the user to fill in
+ * @param dummy the dummy text inside the text field
+ * @return the text field created
+ */
+public static JTextField ASSET_TEXT_FIELD(String dummy){
+    Font f = Fonts.get("Regular", 14);
+    JTextField t = new JTextField();
 
-        t.setFont(f);
-
-        t.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                ASSET_TEXT_FIELD_UPDATE();
+    t.setText(dummy);
+    t.setFont(f);
+    
+    //add temporary text field for the dummy text field
+    t.addFocusListener(new FocusListener() {
+        @Override
+        public void focusGained(java.awt.event.FocusEvent e) {
+            if (t.getText().equals(dummy)) {
+                t.setText("");
             }
+        }
 
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                ASSET_TEXT_FIELD_UPDATE();
+        @Override
+        public void focusLost(java.awt.event.FocusEvent e) {
+            if (t.getText().isEmpty()) {
+                t.setText(dummy);
             }
+        }
+    });
 
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                ASSET_TEXT_FIELD_UPDATE();
-            }
+    t.getDocument().addDocumentListener(new DocumentListener() {
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            ASSET_TEXT_FIELD_UPDATE();
+        }
 
-            private void ASSET_TEXT_FIELD_UPDATE(){
-                String text = t.getText().trim();
-                Color color = text.isEmpty() ? Colors.getNormGreen() : Colors.getVividGreen();
-                t.setForeground(color);
-            }
-        });
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            ASSET_TEXT_FIELD_UPDATE();
+        }
 
-        t.setBackground(Colors.getDarkGreen());
-        t.setToolTipText(dummy);
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            ASSET_TEXT_FIELD_UPDATE();
+        }
 
-        t.setPreferredSize(new Dimension(150, 45));
-        t.setMargin(new Insets(10, 0, 10, 0));
+        private void ASSET_TEXT_FIELD_UPDATE(){
+            String text = t.getText().trim();
+            Color color = text.isEmpty() ? Colors.getNormGreen() : Colors.getVividGreen();
+            t.setForeground(color);
+        }
+    });
 
-        return t;
-    }
+    Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 3);
+    t.setBorder(bdr);
+
+    t.setForeground(Colors.getNormGreen());
+    t.setBackground(Colors.getDarkGreen());
+    t.setToolTipText(dummy);
+
+    t.setPreferredSize(new Dimension(150, 45));
+    t.setMargin(new Insets(10, 0, 10, 0));
+
+    t.setHorizontalAlignment(JTextField.CENTER);
+
+    return t;
+}
 
     /**
      * Not meant to be called. Creates the preliminaries for the ASSET_OUTPUT_BOX
@@ -318,13 +347,15 @@ public class Assets {
     public static JMenuBar ASSET_MENU_BAR(String title) {
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(Colors.getDarkGreen());
-        menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 1));
+        menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
     
         // Add menus to the menu bar
         menuBar.add(createMenu(title));
 
         menuBar.setPreferredSize(new Dimension(150, 45));
         menuBar.setMargin(new Insets(10, 0, 10, 0));
+
+        
     
         return menuBar;
     }
@@ -347,6 +378,8 @@ public class Assets {
         menu.setPreferredSize(new Dimension(150, 45));
         menu.setMargin(new Insets(10, 0, 10, 0));
     
+        menu.setHorizontalAlignment(JMenu.CENTER);
+
         return menu;
     }
     
@@ -364,6 +397,8 @@ public class Assets {
         // Add action listener for the menu item
 
         menuItem.setPreferredSize(new Dimension(150, 45));
+
+        menuItem.setHorizontalAlignment(JMenuItem.CENTER);
     
         return menuItem;
     }
