@@ -23,9 +23,11 @@ public class Driver {
     public static void main(String[] args) {
         // Make instacnce of HRS
         HRS hrs = new HRS();            
+        Fonts.init(); // initialize fonts
 
         new Thread(() -> {
             GUIs gui = new GUIs(hrs);
+            gui.init();
         }).start();
 
         boolean run = true;
