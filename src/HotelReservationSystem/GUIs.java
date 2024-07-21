@@ -186,6 +186,9 @@ class GUIs extends JFrame {
 
     /**
      * The GUI for create hotel
+     * 
+     * //FIXME: ive been trying to move the textfields more upwards but im flopping CC @zrygan
+     * 
      */
     private void MAKE_CREATE(){
         int create_win_size = 500;
@@ -213,24 +216,29 @@ class GUIs extends JFrame {
         /* code of Bottom PANEL (panel : 1)
         *  contains:
         */
-        panels.get(1).setBounds( 0, 100, create_win_size, 400); // panels[1] = left panel
-        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
+        panels.get(1).setBounds( 0, 100, create_win_size, 400); // panels[1] = bottom panel
+        panels.get(1).setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.NORTH;
+        gbc.insets = new Insets(5, 0, 5, 0);
 
         JTextField hot_name = Assets.ASSET_TEXT_FIELD("Name of Hotel");
         // ADD ACTION LISTENER
-        panels.get(1).add(hot_name);
+        panels.get(1).add(hot_name, gbc);
 
-        panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2), gbc);
 
         JTextField num_room = Assets.ASSET_TEXT_FIELD("# of Rooms");
         // ADD ACTION LISTENER
-        panels.get(1).add(num_room);
+        panels.get(1).add(num_room, gbc);
 
-        panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2), gbc);
 
         JMenuBar room_type = Assets.ASSET_MENU_BAR("Room Type");
         // ADD ACTION LISTENER
-        panels.get(1).add(room_type);
+        panels.get(1).add(room_type, gbc);
 
         for (JPanel panel : panels){
             panel.setBackground(Colors.getBlack());
