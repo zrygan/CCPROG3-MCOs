@@ -344,19 +344,38 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
      * Creates a JMenuBar for the dropdown buttons
      * @return the created JMenuBar
      */
-    public static JMenuBar ASSET_MENU_BAR(String title) {
+    public static JMenuBar ASSET_MENU_BAR() {
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(Colors.getDarkGreen());
         menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
-    
-        // Add menus to the menu bar
-        menuBar.add(createMenu(title));
 
         menuBar.setPreferredSize(new Dimension(150, 45));
         menuBar.setMargin(new Insets(10, 0, 10, 0));
-
-        
     
+        return menuBar;
+    }
+
+    /**
+     * Creates a dynamically updating menu bar for the hotel list
+     *
+     * @param hrs the hotel reservation system
+     * @return the menu bar created
+     */
+    public static JMenuBar ASSET_MENU_BAR(HRS hrs , String dummy){
+        JMenuBar menuBar = ASSET_MENU_BAR();
+        
+        JMenu hotelMenu = createMenu(dummy);
+        menuBar.add(hotelMenu);
+        for (Hotel hotel : hrs.getHotels()) {
+            JMenuItem hotelList = createMenu(hotel.getName());
+            hotelMenu.add(hotelList);
+        }
+
+
+        menuBar.setBackground(Colors.getDarkGreen());
+        menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
+        menuBar.setPreferredSize(new Dimension(150, 45));
+        menuBar.setMargin(new Insets(10, 0, 10, 0));
         return menuBar;
     }
     
@@ -365,15 +384,10 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
      * @param name the name of the menu
      * @return the created JMenu
      */
-    private static JMenu createMenu(String name) {
+    public static JMenu createMenu(String name) {
         JMenu menu = new JMenu(name);
         menu.setForeground(Colors.getVividGreen());
         menu.setFont(Fonts.get("Regular", 18));
-    
-        // Add some sample menu items
-        menu.add(createMenuItem("Standard Room"));
-        menu.add(createMenuItem("Deluxe Room"));
-        menu.add(createMenuItem("ADD WHATEVER WE NEED")); //FIXME: Remember
 
         menu.setPreferredSize(new Dimension(150, 45));
         menu.setMargin(new Insets(10, 0, 10, 0));
@@ -388,7 +402,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
      * @param name the name of the menu item
      * @return the created JMenuItem
      */
-    private static JMenuItem createMenuItem(String name) {
+    public static JMenuItem createMenuItem(String name) {
         JMenuItem menuItem = new JMenuItem(name);
         menuItem.setBackground(Colors.getDarkGreen());
         menuItem.setForeground(Colors.getVividGreen());
