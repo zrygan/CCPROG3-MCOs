@@ -236,7 +236,13 @@ class GUIs extends JFrame {
 
         panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2), gbc);
 
-        JMenuBar room_type = Assets.ASSET_MENU_BAR("Room Type");
+        JMenuBar room_type = Assets.ASSET_MENU_BAR();
+        JMenu menu_types = Assets.createMenu("Room Type");
+        room_type.add(menu_types);
+        JMenuItem st_room = Assets.createMenuItem("Standard Room");
+        menu_types.add(st_room);
+        JMenuItem del_room = Assets.createMenuItem("Deluxe Room");
+        menu_types.add(del_room);
         // ADD ACTION LISTENER
         panels.get(1).add(room_type, gbc);
 
@@ -281,39 +287,39 @@ class GUIs extends JFrame {
         
 
         /* code of LEFT PANEL (panel : 1)
-            *  contains:
-            */
-            panels.get(1).setBounds( 0, 100, view_win_width/2, view_win_height); // panels[1] = left panel
-            panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
-            panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,500, hrs));
-    
-            /* code of RIGHT PANEL (panel : 2)
-                *  contains:
-                */
-            panels.get(2).setBounds( view_win_width/2,100, view_win_width/2, view_win_height); // panels[2] = right panel
-            panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
-    
-            // [BASIC BUTTON] Create Hotel Button
-            JTextField view_hot_name = Assets.ASSET_TEXT_FIELD("Hotel Name");
-            // ADD ACTION LISTENER
-            panels.get(2).add(view_hot_name);
-    
-            panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
-    
-            JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("Hight Level Info");
-            panels.get(2).add(high_lvl_info);
-    
-            panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
-    
-            JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
-            // ADD ACTION LISTENER
-            panels.get(2).add(ent_day);
-    
-            panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+        *  contains:
+        */
+        panels.get(1).setBounds( 0, 100, view_win_width/2, view_win_height); // panels[1] = left panel
+        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
+        panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,500, hrs));
 
-            JTextField res_name = Assets.ASSET_TEXT_FIELD("Reservation Name");
-            // ADD ACTION LISTENER
-            panels.get(2).add(res_name);
+        /* code of RIGHT PANEL (panel : 2)
+        *  contains:
+        */
+        panels.get(2).setBounds( view_win_width/2,100, view_win_width/2, view_win_height); // panels[2] = right panel
+        panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+
+        // [MENU BAR] Create Hotel Button
+        JMenuBar view_hot_name = Assets.ASSET_MENU_BAR(hrs, "Hotel Name");
+        // ADD ACTION LISTENER
+        panels.get(2).add(view_hot_name);
+
+        panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+
+        JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("Hight Level Info");
+        panels.get(2).add(high_lvl_info);
+
+        panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+
+        JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
+        // ADD ACTION LISTENER
+        panels.get(2).add(ent_day);
+
+        panels.get(2).add(Assets.ASSET_SEPARATOR(view_win_width/2));
+
+        JTextField res_name = Assets.ASSET_TEXT_FIELD("Reservation Name");
+        // ADD ACTION LISTENER
+        panels.get(2).add(res_name);
 
         for (JPanel panel : panels){
             panel.setBackground(Colors.getBlack());
