@@ -168,6 +168,21 @@ public class HRS {
     }
 
     /**
+     * GUI for creating hotel
+     * @param hotelName the name of the hotel
+     * @param type the type of rooms to create the hotel at the start
+     * @param count the number of rooms to create with the hotel
+     */
+    public void createHotel(String hotelName, int type, int count){
+        Hotel hotel = new Hotel(hotelName);
+        hotel.setBasePrice(1299);
+        hotels.add(hotel);
+        for (int i = 0; i < count; i++) {
+            hotel.newRoom(type);
+        }
+    }
+
+    /**
      * User I/O for viewing the details of a hotel
      *
      * @param sc Scanner object

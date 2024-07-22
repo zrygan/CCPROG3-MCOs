@@ -72,8 +72,6 @@ class GUIs extends JFrame {
         this.isOpen = false; // init the window checker as false
         this.window_height = 800;
         this.window_width = 900;
-        Fonts.init();
-        init();
     }
 
     /**
@@ -108,7 +106,7 @@ class GUIs extends JFrame {
     /**
      * The main GUI window.
      */
-    private void init(){
+    public void init(){
         setTitle("Hotel Reservation System [Ganituen, Jimenez]");
         setSize(window_width, window_height);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -191,6 +189,10 @@ class GUIs extends JFrame {
      * 
      */
     private void MAKE_CREATE(){
+        String hotelName = null;
+        int type = -1;
+        int count = -1;
+
         int create_win_size = 500;
         setIsOpen(true);
 
@@ -199,7 +201,6 @@ class GUIs extends JFrame {
         GUI.setLayout(null);
         GUI.setResizable(false);
         
-
         ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(2);
 
         /* code of TOP PANEL (panel : 0)
@@ -225,13 +226,16 @@ class GUIs extends JFrame {
         gbc.insets = new Insets(5, 0, 5, 0);
 
         JTextField hot_name = Assets.ASSET_TEXT_FIELD("Name of Hotel");
-        // ADD ACTION LISTENER
+        hot_name.addActionListener(e -> {
+                hotelName = hot_name.getText();
+                System.out.println("Hotel Name: " + hotelName);
+        });
         panels.get(1).add(hot_name, gbc);
 
         panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2), gbc);
 
         JTextField num_room = Assets.ASSET_TEXT_FIELD("# of Rooms");
-        // ADD ACTION LISTENER
+        // FIXME: ADD ACTION LISTENER
         panels.get(1).add(num_room, gbc);
 
         panels.get(1).add(Assets.ASSET_SEPARATOR(create_win_size/2), gbc);
@@ -243,7 +247,8 @@ class GUIs extends JFrame {
         menu_types.add(st_room);
         JMenuItem del_room = Assets.createMenuItem("Deluxe Room");
         menu_types.add(del_room);
-        // ADD ACTION LISTENER
+        // FIXME: ADD ACTION LISTENER
+        
         panels.get(1).add(room_type, gbc);
 
         for (JPanel panel : panels){
