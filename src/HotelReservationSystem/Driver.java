@@ -26,8 +26,8 @@ public class Driver {
         Fonts.init(); // initialize fonts
 
         new Thread(() -> {
-            GUIs gui = new GUIs(hrs);
-            gui.init();
+            GUI_MAIN main = new GUI_MAIN(hrs, 800, 900);
+            main.init();
         }).start();
 
         boolean run = true;
