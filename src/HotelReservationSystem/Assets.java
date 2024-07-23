@@ -355,14 +355,15 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         return menuBar;
     }
 
-    /**
-     * Creates a dynamically updating menu bar for the hotel list
-     *
-     * @param hrs the hotel reservation system
-     * @return the menu bar created
-     */
-    public static JMenuBar ASSET_MENU_BAR(HRS hrs, String dummy){
-        JMenuBar menuBar = ASSET_MENU_BAR();
+    // /**
+    //  * Creates a dynamically updating menu bar for the hotel list
+    //  *
+    //  * @param hrs the hotel reservation system
+    //  * @return the menu bar created
+    //  * FIXME: REMOVE THIS 
+    //  */
+    // public static JMenuBar ASSET_MENU_BAR(HRS hrs , String dummy){
+    //     JMenuBar menuBar = ASSET_MENU_BAR();
         
         JMenu hotelMenu = createMenu(dummy);
         menuBar.add(hotelMenu);
@@ -371,15 +372,16 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
             hotelMenu.add(hotelList);
         }
 
-        menuBar.setBackground(Colors.getDarkGreen());
-        menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
-        menuBar.setPreferredSize(new Dimension(150, 45));
-        menuBar.setMargin(new Insets(10, 0, 10, 0));
-        return menuBar;
-    }
+
+    //     menuBar.setBackground(Colors.getDarkGreen());
+    //     menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
+    //     menuBar.setPreferredSize(new Dimension(150, 45));
+    //     menuBar.setMargin(new Insets(10, 0, 10, 0));
+    //     return menuBar;
+    // }
     
     /**
-     * Helper method to create the options of the menu bar
+     * Creates the options of the menu bar
      * @param name the name of the menu
      * @return the created JMenu
      */
@@ -397,7 +399,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     }
     
     /**
-     * Helper method to create a JMenuItem and their actions listeners
+     * Creates a JMenuItem and their actions listeners
      * @param name the name of the menu item
      * @return the created JMenuItem
      */
@@ -406,9 +408,6 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         menuItem.setBackground(Colors.getDarkGreen());
         menuItem.setForeground(Colors.getVividGreen());
         menuItem.setFont(Fonts.get("Regular", 18));
-    
-        // Add action listener for the menu item
-
         menuItem.setPreferredSize(new Dimension(150, 45));
 
         menuItem.setHorizontalAlignment(JMenuItem.CENTER);

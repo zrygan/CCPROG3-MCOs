@@ -79,8 +79,8 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_view = Assets.ASSET_BASIC_BUTTON("View Hotel");
         btn_view.addActionListener(_ -> { if (!getWindowChecker()) {
-            GUI_VIEW view = new GUI_VIEW(hrs, 750, 900, this);
-            view.init();
+            GUI_VIEW view = new GUI_VIEW(hrs, 600, 900, this);
+            view.init();    
             setWindowChecker(true);
         } });
         panels.get(2).add(btn_view);
@@ -89,7 +89,9 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_manage = Assets.ASSET_BASIC_BUTTON("Manage Hotel");
         btn_manage.addActionListener(_ -> { if (!getWindowChecker()) {
-            // FIXME: ADD GUI_SIM
+            GUI_MANAGE manage = new GUI_MANAGE(hrs, 800, 500, this);
+            manage.init();
+            setWindowChecker(true);
         } });
         panels.get(2).add(btn_manage);
 
@@ -97,7 +99,9 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_simbook = Assets.ASSET_ACCENT_BUTTON("Simulate Booking");
         btn_simbook.addActionListener(_ -> { if (!getWindowChecker()) {
-            // FIXME: ADD GUI_SIM
+            GUI_SIM_BOOK sim = new GUI_SIM_BOOK(hrs, 750, 500, this);
+            sim.init();
+            setWindowChecker(true);
         } });
         btn_simbook.setPreferredSize(new Dimension(150, 90));
         panels.get(2).add(btn_simbook);

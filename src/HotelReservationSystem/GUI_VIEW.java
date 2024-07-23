@@ -6,16 +6,23 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class GUI_VIEW extends GUI{
+public class GUI_CREATE extends GUI{
     private final GUI_MAIN mains;
-    private int USER_DAY;
-    private String USER_NAME;
+    private String hotel_name;
+
+    public String getHotel_name() {
+        return hotel_name;
+    }
+
+    public void setHotel_name(String hotel_name) {
+        this.hotel_name = hotel_name;
+    }
 
     public GUI_MAIN getMains(){
         return mains;
     }
 
-    public GUI_VIEW(HRS hrs, int window_height, int window_width, GUI_MAIN mains){
+    public GUI_CREATE(HRS hrs, int window_height, int window_width, GUI_MAIN mains){
         super(hrs, window_height, window_width);
         this.mains = mains;
     }
@@ -37,7 +44,7 @@ public class GUI_VIEW extends GUI{
 
     @Override
     public void init(){
-        setTitle("Hotel Reservation System: Viewing a hotel");
+        setTitle("Hotel Reservation System: Creating a hotel");
         setSize(window_width, window_height);
         GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
@@ -69,14 +76,24 @@ public class GUI_VIEW extends GUI{
         panels.get(2).setBounds( window_width/2,100, window_width/2, window_height); // panels[2] = right panel
         panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
 
-        // [MENU BAR] Create Hotel Button
-        JMenuBar view_hot_name = Assets.ASSET_MENU_BAR(hrs, "Hotel Name");
-        // ADD ACTION LISTENER
-        panels.get(2).add(view_hot_name);
+        // [MENU BAR] Hotel Name Menu Bar
+        JMenuBar hotel_bar = Assets.ASSET_MENU_BAR();
+        JMenu hotelMenu = Assets.createMenu("Hotel Name");
+        hotel_bar.add(hotelMenu);
+        for (Hotel hotel : hrs.getHotels()) {
+            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
+            hotelList.addActionListener(e -> {
+                setHotel_name(hotel.getName());
+                hotelMenu.setText(hotel.getName());
+            });
+            hotelMenu.add(hotelList);
+        }
+        hotel_bar.setPreferredSize(new Dimension(400, 45));
+        panels.get(2).add(hotel_bar);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
-        JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("High Level Info");
+        JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("Hight Level Info");
         panels.get(2).add(high_lvl_info);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
