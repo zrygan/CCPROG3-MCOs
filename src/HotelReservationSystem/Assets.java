@@ -361,7 +361,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
      * @param hrs the hotel reservation system
      * @return the menu bar created
      */
-    public static JMenuBar ASSET_MENU_BAR(HRS hrs , String dummy){
+    public static JMenuBar ASSET_MENU_BAR(HRS hrs, String dummy){
         JMenuBar menuBar = ASSET_MENU_BAR();
         
         JMenu hotelMenu = createMenu(dummy);
@@ -370,7 +370,6 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
             JMenuItem hotelList = createMenu(hotel.getName());
             hotelMenu.add(hotelList);
         }
-
 
         menuBar.setBackground(Colors.getDarkGreen());
         menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));

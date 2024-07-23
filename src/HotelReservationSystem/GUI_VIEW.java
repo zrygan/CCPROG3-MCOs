@@ -1,20 +1,21 @@
 package HotelReservationSystem;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class GUI_CREATE extends GUI{
+public class GUI_VIEW extends GUI{
     private final GUI_MAIN mains;
+    private int USER_DAY;
+    private String USER_NAME;
 
     public GUI_MAIN getMains(){
         return mains;
     }
 
-    public GUI_CREATE(HRS hrs, int window_height, int window_width, GUI_MAIN mains){
+    public GUI_VIEW(HRS hrs, int window_height, int window_width, GUI_MAIN mains){
         super(hrs, window_height, window_width);
         this.mains = mains;
     }
@@ -36,7 +37,7 @@ public class GUI_CREATE extends GUI{
 
     @Override
     public void init(){
-        setTitle("Hotel Reservation System: Creating a hotel");
+        setTitle("Hotel Reservation System: Viewing a hotel");
         setSize(window_width, window_height);
         GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
@@ -75,7 +76,7 @@ public class GUI_CREATE extends GUI{
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
-        JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("Hight Level Info");
+        JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("High Level Info");
         panels.get(2).add(high_lvl_info);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
