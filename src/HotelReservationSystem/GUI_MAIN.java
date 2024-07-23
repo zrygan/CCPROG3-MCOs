@@ -2,8 +2,6 @@ package HotelReservationSystem;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -83,7 +81,9 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_view = Assets.ASSET_BASIC_BUTTON("View Hotel");
         btn_view.addActionListener(_ -> { if (!getWindowChecker()) {
-            // FIXME: ADD GUI_VIEW
+            GUI_VIEW view = new GUI_VIEW(hrs, 750, 900, this);
+            view.init();
+            setWindowChecker(true);
         } });
         panels.get(2).add(btn_view);
 
@@ -91,7 +91,9 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_manage = Assets.ASSET_BASIC_BUTTON("Manage Hotel");
         btn_manage.addActionListener(_ -> { if (!getWindowChecker()) {
-            // FIXME: ADD GUI_SIM
+            GUI_MANAGE manage = new GUI_MANAGE(hrs, 800, 500, this);
+            manage.init();
+            setWindowChecker(true);
         } });
         panels.get(2).add(btn_manage);
 

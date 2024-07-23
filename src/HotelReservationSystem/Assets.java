@@ -380,7 +380,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     }
     
     /**
-     * Helper method to create the options of the menu bar
+     * Creates the options of the menu bar
      * @param name the name of the menu
      * @return the created JMenu
      */
@@ -398,7 +398,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     }
     
     /**
-     * Helper method to create a JMenuItem and their actions listeners
+     * Creates a JMenuItem and their actions listeners
      * @param name the name of the menu item
      * @return the created JMenuItem
      */
