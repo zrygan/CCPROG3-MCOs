@@ -376,30 +376,29 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         return menuBar;
     }
 
-    // /**
-    //  * Creates a dynamically updating menu bar for the hotel list
-    //  *
-    //  * @param hrs the hotel reservation system
-    //  * @return the menu bar created
-    //  * FIXME: REMOVE THIS 
-    //  */
-    // public static JMenuBar ASSET_MENU_BAR(HRS hrs , String dummy){
-    //     JMenuBar menuBar = ASSET_MENU_BAR();
+    /**
+     * Creates a dynamically updating menu bar for the hotel list
+     *
+     * @param hrs the hotel reservation system
+     * @return the menu bar created
+     * FIXME: REMOVE THIS
+     */
+    public static JMenuBar ASSET_MENU_BAR(HRS hrs , String dummy){
+        JMenuBar menuBar = ASSET_MENU_BAR();
         
-    //     JMenu hotelMenu = createMenu(dummy);
-    //     menuBar.add(hotelMenu);
-    //     for (Hotel hotel : hrs.getHotels()) {
-    //         JMenuItem hotelList = createMenu(hotel.getName());
-    //         hotelMenu.add(hotelList);
-    //     }
+        JMenu hotelMenu = createMenu(dummy);
+        menuBar.add(hotelMenu);
+        for (Hotel hotel : hrs.getHotels()) {
+            JMenuItem hotelList = createMenu(hotel.getName());
+            hotelMenu.add(hotelList);
+        }
 
-
-    //     menuBar.setBackground(Colors.getDarkGreen());
-    //     menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
-    //     menuBar.setPreferredSize(new Dimension(150, 45));
-    //     menuBar.setMargin(new Insets(10, 0, 10, 0));
-    //     return menuBar;
-    // }
+        menuBar.setBackground(Colors.getDarkGreen());
+        menuBar.setBorder(BorderFactory.createLineBorder(Colors.getVividGreen(), 2));
+        menuBar.setPreferredSize(new Dimension(150, 45));
+        menuBar.setMargin(new Insets(10, 0, 10, 0));
+        return menuBar;
+    }
     
     /**
      * Creates the options of the menu bar
