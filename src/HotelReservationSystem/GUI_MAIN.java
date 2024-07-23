@@ -72,6 +72,8 @@ public class GUI_MAIN extends GUI {
         JButton btn_create = Assets.ASSET_BASIC_BUTTON("Create Hotel");
         btn_create.addActionListener(_ -> { if (!getWindowChecker()) {
             GUI_CREATE create = new GUI_CREATE(hrs, 500, 500, this);
+            create.init();
+            setWindowChecker(true);
         }  });
         panels.get(2).add(btn_create);
 

@@ -9,6 +9,7 @@ import javax.swing.*;
 public class GUI_MANAGE extends GUI {
     private final GUI_MAIN mains;
     private String hotel_name;
+    private boolean windowChecker_manage;
 
     public String getHotel_name() {
         return hotel_name;
@@ -22,9 +23,18 @@ public class GUI_MANAGE extends GUI {
         return mains;
     }
 
+    public boolean getWindowChecker_manage(){
+        return windowChecker_manage;
+    }
+
+    public void setWindowChecker_manage(boolean windowChecker_manage){
+        this.windowChecker_manage = windowChecker_manage;
+    }
+
     public GUI_MANAGE(HRS hrs, int window_height, int window_width, GUI_MAIN mains){
         super(hrs, window_height, window_width);
         this.mains = mains;
+        windowChecker_manage = false;
     }
 
     @Override
@@ -41,6 +51,7 @@ public class GUI_MANAGE extends GUI {
             }
         });
     }
+
     @Override
     public void init() {
         setTitle("Hotel Reservation System: Managing a Hotel");
@@ -95,7 +106,16 @@ public class GUI_MANAGE extends GUI {
 
         // [BUTTON] Add Room Button
         JButton add_room = Assets.ASSET_ACCENT_BUTTON("Add Room");
-        // ADD ACTION LISTENER
+        add_room.addActionListener(_ -> {
+            if (!getWindowChecker_manage()){
+                GUI_ROOM room = new GUI_ROOM(hrs, 600, 500, this, hotel_name);
+                // FIXME: add the hotel name here, check if the implementation is correct
+                // maybe we do a checker so that if the hotel_name is null the status box displays:
+                // "Select a hotel first"
+                room.init();
+                setWindowChecker_manage(true);
+            }
+        });
         panels.get(2).add(add_room);
         
         // [TEXT FIELD] Room Number to Remove
