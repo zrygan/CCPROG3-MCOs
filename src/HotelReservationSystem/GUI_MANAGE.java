@@ -59,9 +59,9 @@ public class GUI_MANAGE extends GUI {
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 20,  10));
 
         // [MENU BAR] Hotel Name Menu Bar
-        JMenuBar room_type = Assets.ASSET_MENU_BAR(hrs, "Hotel name");
-        room_type.setPreferredSize(new Dimension(400, 45));
-        panels.get(1).add(room_type);
+        JMenuBar hotel_name = Assets.ASSET_MENU_BAR(hrs, "Hotel Name");
+        hotel_name.setPreferredSize(new Dimension(400, 45));
+        panels.get(1).add(hotel_name);
 
         /* code of MID-LEFT PANEL (panel : 2)
          * contains: New Hotel Name Text Field, Add Room Button, Room Number to Remove
@@ -112,6 +112,7 @@ public class GUI_MANAGE extends GUI {
         panels.get(4).setLayout(new FlowLayout(FlowLayout.LEFT, 50, 60));
 
         // [OUTPUX BOX] Output box
+        // FIXME: add an actionlistener for the text area box
         JTextArea output_box = Assets.ASSET_OUTPUT_BOX(window_width, 50, "HELLO");
         output_box.setPreferredSize(new Dimension(window_width-100, 45));
         panels.get(4).add(output_box);

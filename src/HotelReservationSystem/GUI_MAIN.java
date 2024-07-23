@@ -101,7 +101,9 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_simbook = Assets.ASSET_ACCENT_BUTTON("Simulate Booking");
         btn_simbook.addActionListener(_ -> { if (!getWindowChecker()) {
-            // FIXME: ADD GUI_SIM
+            GUI_SIM_BOOK sim = new GUI_SIM_BOOK(hrs, 750, 500, this);
+            sim.init();
+            setWindowChecker(true);
         } });
         btn_simbook.setPreferredSize(new Dimension(150, 90));
         panels.get(2).add(btn_simbook);
