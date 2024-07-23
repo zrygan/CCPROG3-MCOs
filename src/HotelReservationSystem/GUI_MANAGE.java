@@ -8,6 +8,15 @@ import javax.swing.*;
 
 public class GUI_MANAGE extends GUI {
     private final GUI_MAIN mains;
+    private String hotel_name;
+
+    public String getHotel_name() {
+        return hotel_name;
+    }
+
+    public void setHotel_name(String hotel_name) {
+        this.hotel_name = hotel_name;
+    }
 
     public GUI_MAIN getMains(){
         return mains;
@@ -59,9 +68,19 @@ public class GUI_MANAGE extends GUI {
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 20,  10));
 
         // [MENU BAR] Hotel Name Menu Bar
-        JMenuBar hotel_name = Assets.ASSET_MENU_BAR(hrs, "Hotel Name");
-        hotel_name.setPreferredSize(new Dimension(400, 45));
-        panels.get(1).add(hotel_name);
+        JMenuBar hotel_bar = Assets.ASSET_MENU_BAR();
+        JMenu hotelMenu = Assets.createMenu("Hotel Name");
+        hotel_bar.add(hotelMenu);
+        for (Hotel hotel : hrs.getHotels()) {
+            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
+            hotelList.addActionListener(e -> {
+                setHotel_name(hotel.getName());
+                hotelMenu.setText(hotel.getName());
+            });
+            hotelMenu.add(hotelList);
+        }
+        hotel_bar.setPreferredSize(new Dimension(400, 45));
+        panels.get(1).add(hotel_bar);
 
         /* code of MID-LEFT PANEL (panel : 2)
          * contains: New Hotel Name Text Field, Add Room Button, Room Number to Remove

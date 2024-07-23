@@ -8,6 +8,15 @@ import javax.swing.*;
 
 public class GUI_SIM_BOOK extends GUI {
     private final GUI_MAIN mains;
+    private String hotel_name;
+
+    public String getHotel_name() {
+        return hotel_name;
+    }
+
+    public void setHotel_name(String hotel_name) {
+        this.hotel_name = hotel_name;
+    }
 
     public GUI_MAIN getMains(){
         return mains;
@@ -65,9 +74,19 @@ public class GUI_SIM_BOOK extends GUI {
         panels.get(1).add(guest_name);
 
         // [MENU BAR] Hotel Name Menu Bar
-        JMenuBar hotel_name = Assets.ASSET_MENU_BAR(hrs, "Hotel Name");
-        hotel_name.setPreferredSize(new Dimension(300, 45));
-        panels.get(1).add(hotel_name);
+        JMenuBar hotel_bar = Assets.ASSET_MENU_BAR();
+        JMenu hotelMenu = Assets.createMenu("Hotel Name");
+        hotel_bar.add(hotelMenu);
+        for (Hotel hotel : hrs.getHotels()) {
+            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
+            hotelList.addActionListener(e -> {
+                setHotel_name(hotel.getName());
+                hotelMenu.setText(hotel.getName());
+            });
+            hotelMenu.add(hotelList);
+        }
+        hotel_bar.setPreferredSize(new Dimension(300, 45));
+        panels.get(1).add(hotel_bar);
 
         /* code of MID-LEFT PANEL (panel : 2)
          * contains: In-Day text box
@@ -97,15 +116,12 @@ public class GUI_SIM_BOOK extends GUI {
         panels.get(4).setBounds( 0, 310, window_width, 130);
         panels.get(4).setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
 
-        // [MENU BAR] Room Type
-        JMenuBar room_type = Assets.ASSET_MENU_BAR(hrs, "Room Type");
-        room_type.setPreferredSize(new Dimension(300, 45));
-        panels.get(4).add(room_type);
 
-        // [TEXT BOX] Discount Code
-        JTextField discount_code = Assets.ASSET_TEXT_FIELD("Discount Code");
-        discount_code.setPreferredSize(new Dimension(300, 45));
-        panels.get(4).add(discount_code);
+        // // [TEXT BOX] Discount Code
+        // FIXME: hey ayusin mo toh
+        // JTextField discount_code = Assets.ASSET_TEXT_FIELD("Discount Code");
+        // discount_code.setPreferredSize(new Dimension(300, 45));
+        // panels.get(4).add(discount_code);
 
         /* code of LOW PANEL (panel : 5)
          * contains: Book Room Button

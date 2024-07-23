@@ -183,6 +183,10 @@ public class HRS {
     }
 
     /**
+     * GUI for 
+     */
+
+    /**
      * User I/O for viewing the details of a hotel
      *
      * @param sc Scanner object
