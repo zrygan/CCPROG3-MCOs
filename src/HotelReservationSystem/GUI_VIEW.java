@@ -66,17 +66,19 @@ public class GUI_VIEW extends GUI {
         /* code of LEFT PANEL (panel : 1)
          *  contains:
          */
-        panels.get(1).setBounds( 0, 100, window_width/2, window_height); // panels[1] = left panel
+        panels.get(1).setBounds( 0, 100, window_width/2 + 200, window_height); // panels[1] = left panel
         panels.get(1).setLayout(new FlowLayout(FlowLayout.RIGHT, 0,10));
-        panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,400, hrs));
+        JTextArea output = Assets.ASSET_OUTPUT_BOX();
+        output.setPreferredSize(new Dimension(500, 400));
+        panels.get(1).add(output);
 
         /* code of RIGHT PANEL (panel : 2)
          *  contains:
          */
-        panels.get(2).setBounds( window_width/2,100, window_width/2, window_height); // panels[2] = right panel
+        panels.get(2).setBounds( window_width/2 + 200,100, window_width/2 - 200, window_height); // panels[2] = right panel
         panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
 
-        // [MENU BAR] Create Hotel Button
+        // [MENU BAR] Hotel Name Button
         JMenuBar view_name = Assets.ASSET_MENU_BAR();
         JMenu hotelMenu = Assets.createMenu("Hotel Name");
         view_name.add(hotelMenu);
@@ -93,7 +95,9 @@ public class GUI_VIEW extends GUI {
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
         JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("High Level Info");
-
+        high_lvl_info.addActionListener(e -> {
+            output.setText(Assets.UPDATE_OUTPUT_BOX(hrs, getHotel_name()).toString());
+        });
         panels.get(2).add(high_lvl_info);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));

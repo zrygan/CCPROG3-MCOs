@@ -318,6 +318,27 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         }
 
         return out;
+    } 
+
+    /**
+     * Specifically for the view Hotel. Updates the list of information inside the output box
+     *
+     * @param hrs the hotel reservation system
+     *
+     * @return a StringBuilder of the list of information
+     */
+    public static StringBuilder UPDATE_OUTPUT_BOX(HRS hrs, String hotel_name){
+        StringBuilder out = new StringBuilder();
+        Hotel hotel = hrs.fetchHotel(hotel_name);
+        out.append("\n     Hotel: ").append(hotel.getName());
+        out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
+        out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
+        out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
+        out.append("\n     \thas earned ").append(hotel.getEarnings());
+        out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ").append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
+        out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
+        
+        return out;
     }
 
     /**
