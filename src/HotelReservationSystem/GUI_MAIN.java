@@ -81,7 +81,7 @@ public class GUI_MAIN extends GUI {
 
         JButton btn_view = Assets.ASSET_BASIC_BUTTON("View Hotel");
         btn_view.addActionListener(_ -> { if (!getWindowChecker()) {
-            GUI_VIEW view = new GUI_VIEW(hrs, 750, 900, this);
+            GUI_VIEW view = new GUI_VIEW(hrs, 600, 900, this);
             view.init();
             setWindowChecker(true);
         } });

@@ -58,8 +58,8 @@ public class GUI_VIEW extends GUI {
          *  contains:
          */
         panels.get(1).setBounds( 0, 100, window_width/2, window_height); // panels[1] = left panel
-        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
-        panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,500, hrs));
+        panels.get(1).setLayout(new FlowLayout(FlowLayout.RIGHT, 0,10));
+        panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,400, hrs));
 
         /* code of RIGHT PANEL (panel : 2)
          *  contains:
@@ -69,7 +69,7 @@ public class GUI_VIEW extends GUI {
 
         // [MENU BAR] Create Hotel Button
         JMenuBar view_hot_name = Assets.ASSET_MENU_BAR(hrs, "Hotel Name");
-        // ADD ACTION LISTENER
+        
         panels.get(2).add(view_hot_name);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
