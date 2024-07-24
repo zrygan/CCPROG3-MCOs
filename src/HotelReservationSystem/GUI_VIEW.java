@@ -96,14 +96,45 @@ public class GUI_VIEW extends GUI {
 
         JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("High Level Info");
         high_lvl_info.addActionListener(e -> {
-            output.setText(Assets.UPDATE_OUTPUT_BOX(hrs, getHotel_name()).toString());
+            StringBuilder out = new StringBuilder();
+            Hotel hotel = hrs.fetchHotel(getHotel_name());
+            out.append("\n     Hotel: ").append(hotel.getName());
+            out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
+            out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
+            out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
+            out.append("\n     \thas earned ").append(hotel.getEarnings());
+            out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ").append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
+            out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
+            output.setText(out.toString());
         });
         panels.get(2).add(high_lvl_info);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
+        // FIXME: find a way to handle the case where the strings are too long for the window
         JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
-        // ADD ACTION LISTENER
+        ent_day.addActionListener(e -> {
+            StringBuilder out = new StringBuilder();
+            int day = Integer.parseInt(ent_day.getText());
+            Hotel hotel = hrs.fetchHotel(getHotel_name());
+            if (hotel.fetchAvails(1, day).isEmpty()) {
+                out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": NONE");
+            } else {
+                out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": ");
+                for (String room : hotel.fetchAvails(1, day)) {
+                    out.append("\n     \t").append(room);
+                }
+            }
+            if (hotel.fetchAvails(0, day).isEmpty()) {
+                out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": NONE");
+            } else {
+                out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": ");
+                for (String room : hotel.fetchAvails(0, day)) {
+                    out.append("\n     \t").append(room);
+                }
+            }
+            output.setText(out.toString());
+        });
         panels.get(2).add(ent_day);
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
