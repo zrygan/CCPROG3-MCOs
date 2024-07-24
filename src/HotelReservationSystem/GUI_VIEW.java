@@ -139,8 +139,25 @@ public class GUI_VIEW extends GUI {
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
-        JTextField res_name = Assets.ASSET_TEXT_FIELD("Reservation Name");
-        // ADD ACTION LISTENER
+        JTextField res_name = Assets.ASSET_TEXT_FIELD("Guest Name");
+        res_name.addActionListener(e -> {
+            StringBuilder out = new StringBuilder();
+            String reservation = res_name.getText();
+            Hotel hotel = hrs.fetchHotel(getHotel_name());
+            for (Reservation guest_res : hotel.getReservations()) {
+                if (guest_res.getGuest().equals(reservation)) {
+                    out.append("\nReservation %d under guest %s\n", guest_res.getReservationNumber(), reservation.getGuest());
+                    out.append("\n===== RECEIPT =====");
+                    out.append("\nname:\t").append(guest_res.getGuest());
+                    out.append("\nhtl :\thotel ").append(hotel.getName());
+                    out.append("\nroom:\t").append(guest_res.getRoom().getName());
+                    out.append("\nin  :\t%d").append(guest_res.getCheckin());
+                    out.append("\nout :\t%d").append(guest_res.getCheckout());
+                    out.append("\ncost\tPHP ").append(guest_res.getTotal());
+                    out.append("\n===================\n");
+                }
+            }
+        });
         panels.get(2).add(res_name);
 
         for (JPanel panel : panels){
