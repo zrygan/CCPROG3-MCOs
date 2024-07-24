@@ -146,7 +146,7 @@ public class GUI_VIEW extends GUI {
             Hotel hotel = hrs.fetchHotel(getHotel_name());
             for (Reservation guest_res : hotel.getReservations()) {
                 if (guest_res.getGuest().equals(reservation)) {
-                    out.append("\nReservation %d under guest %s\n", guest_res.getReservationNumber(), reservation.getGuest());
+                    out.append("\nReservation ").append(guest_res.getReservationNumber()).append(" under guest ").append(guest_res.getGuest()).append("\n");
                     out.append("\n===== RECEIPT =====");
                     out.append("\nname:\t").append(guest_res.getGuest());
                     out.append("\nhtl :\thotel ").append(hotel.getName());
