@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class GUI_CREATE extends GUI{
+public class GUI_CREATE extends GUI {
     private final GUI_MAIN mains;
     private String hotel_name;
     private int type_num;
@@ -154,7 +154,7 @@ public class GUI_CREATE extends GUI{
 
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
         createButton.addActionListener(e -> {
-            if(hotel_name == null || type_num == 0 || room_tot == 0){
+            if(hotel_name == null /*FIXME: Might Remove this cuz kinda useless*/ || type_num == 0 || room_tot == 0){
                 JOptionPane.showMessageDialog(this, "Please fill out all required fields.");
             } else {
                 hrs.createHotel(getHotel_name(), getType_num(), getRoom_tot());

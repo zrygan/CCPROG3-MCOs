@@ -5,11 +5,22 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class GUI_MANAGE extends GUI {
     private final GUI_MAIN mains;
     private String hotel_name;
     private boolean windowChecker_manage;
+    private String new_hotel;
+
+    public String getNew_hotel() {
+        return new_hotel;
+    }
+
+    public void setNew_hotel(String new_hotel) {
+        this.new_hotel = new_hotel;
+    }
 
     public String getHotel_name() {
         return hotel_name;
@@ -101,19 +112,41 @@ public class GUI_MANAGE extends GUI {
 
         // [TEXT FIELD] New Hotel Name Text Field
         JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("Enter New Hotel Name");
-        // ADD ACTION LISTENER
+        new_hot_name.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                setNew_hotel(new_hot_name.getText());
+            }
+
+            @Override 
+            public void removeUpdate(DocumentEvent e) {
+                setNew_hotel(new_hot_name.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Not needed for plain text fields
+            }
+            
+        });
         panels.get(2).add(new_hot_name);
 
         // [BUTTON] Add Room Button
         JButton add_room = Assets.ASSET_ACCENT_BUTTON("Add Room");
         add_room.addActionListener(_ -> {
             if (!getWindowChecker_manage()){
-                GUI_ROOM room = new GUI_ROOM(hrs, 600, 500, this, hotel_name);
+                
                 // FIXME: add the hotel name here, check if the implementation is correct
                 // maybe we do a checker so that if the hotel_name is null the status box displays:
                 // "Select a hotel first"
-                room.init();
-                setWindowChecker_manage(true);
+                if (getHotel_name() != null) {
+                    GUI_ROOM room = new GUI_ROOM(hrs, 600, 500, this, hotel_name);
+                    room.init();
+                    setWindowChecker_manage(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Please fill out all required fields.");
+                }
+                
             }
         });
         panels.get(2).add(add_room);
