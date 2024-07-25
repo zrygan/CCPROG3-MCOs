@@ -417,8 +417,8 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     /**
      * 
      */
-    public static JSpinner ASSET_SPINNER() {
-        JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 31, 1));
+    public static JSpinner ASSET_SPINNER(int min, int max) {
+        JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, min, max, 1));
         JSpinner.NumberEditor editor = (JSpinner.NumberEditor) spinner.getEditor();
         editor.getComponent(0).setBackground(Colors.getDarkGreen());
         editor.getComponent(0).setForeground(Colors.getVividGreen());

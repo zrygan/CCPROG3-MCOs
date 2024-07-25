@@ -5,10 +5,30 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class GUI_CREATE extends GUI{
     private final GUI_MAIN mains;
     private String hotel_name;
+    private int type_num;
+    private int room_tot;
+
+    public int getRoom_tot() {
+        return room_tot;
+    }
+
+    public void setRoom_tot(int room_tot) {
+        this.room_tot = room_tot;
+    }
+
+    public int getType_num() {
+        return type_num;
+    }
+
+    public void setType_num(int type_num) {
+        this.type_num = type_num;
+    }
 
     public String getHotel_name() {
         return hotel_name;
@@ -50,63 +70,100 @@ public class GUI_CREATE extends GUI{
         setLayout(null);
         setResizable(false);
 
-        ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(3);
+        ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(2);
 
         /* code of TOP PANEL (panel : 0)
-         *  contains:   TOP TITLE
-         */
+        *  contains:   TOP TITLE
+        */
         panels.getFirst().setBounds( 0, 0, window_width, 100);        // panels[0] = top panel
-        panels.getFirst().setLayout(new FlowLayout(FlowLayout.LEFT, 50, 20));
+        panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
-        String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Viewing a Hotel"};
+        String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Creating a Hotel"};
         panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
-
-
-        /* code of LEFT PANEL (panel : 1)
-         *  contains:
-         */
-        panels.get(1).setBounds( 0, 100, window_width/2, window_height); // panels[1] = left panel
-        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 0,10));
-        panels.get(1).add(Assets.ASSET_OUTPUT_BOX(350,500, hrs));
-
-        /* code of RIGHT PANEL (panel : 2)
-         *  contains:
-         */
-        panels.get(2).setBounds( window_width/2,100, window_width/2, window_height); // panels[2] = right panel
-        panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 10));
+        
+        
+        /* code of Bottom PANEL (panel : 1)
+        *  contains:
+        */
+        panels.get(1).setBounds( 0, 100, window_width, 400); // panels[1] = bottom panel
+        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [MENU BAR] Hotel Name Menu Bar
-        JMenuBar hotel_bar = Assets.ASSET_MENU_BAR();
-        JMenu hotelMenu = Assets.createMenu("Hotel Name");
-        hotel_bar.add(hotelMenu);
-        for (Hotel hotel : hrs.getHotels()) {
-            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
-            hotelList.addActionListener(e -> {
-                setHotel_name(hotel.getName());
-                hotelMenu.setText(hotel.getName());
-            });
-            hotelMenu.add(hotelList);
-        }
-        hotel_bar.setPreferredSize(new Dimension(400, 45));
-        panels.get(2).add(hotel_bar);
+        JTextField hotel_name = Assets.ASSET_TEXT_FIELD("Hotel Name");
+        hotel_name.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                setHotel_name(hotel_name.getText());
+            }
 
-        panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                setHotel_name(hotel_name.getText());
+            }
 
-        JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("Hight Level Info");
-        panels.get(2).add(high_lvl_info);
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                // Not needed for plain text fields
+            }
+        });
+        hotel_name.setPreferredSize(new Dimension(300, 45));
+        panels.get(1).add(hotel_name);
 
-        panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(window_width/2));
 
-        JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
-        // ADD ACTION LISTENER
-        panels.get(2).add(ent_day);
+        JSpinner num_room = Assets.ASSET_SPINNER(1, 50);
+        num_room.setValue(1);
+        setRoom_tot((int) num_room.getValue());
+        num_room.setPreferredSize(new Dimension(75, 45));
+        num_room.addChangeListener(e -> {
+            setRoom_tot((int) num_room.getValue());
+        });
+        panels.get(1).add(num_room);
 
-        panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(window_width/2));
 
-        JTextField res_name = Assets.ASSET_TEXT_FIELD("Reservation Name");
-        // ADD ACTION LISTENER
-        panels.get(2).add(res_name);
+        // [MENU BAR] Room Type Menu Bar
+        JMenuBar room_type = Assets.ASSET_MENU_BAR();
+        JMenu type_menu = Assets.createMenu("Room Type");
+        room_type.add(type_menu);
+        JMenuItem std_type = Assets.createMenuItem("Standard Room");
+        std_type.addActionListener(e -> {
+            setType_num(1);
+            type_menu.setText(std_type.getText());
+        });
+        JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
+        del_type.addActionListener(e -> {
+            setType_num(2);
+            type_menu.setText(del_type.getText());
+        });
+        JMenuItem ex_type = Assets.createMenuItem("Executive Room");
+        ex_type.addActionListener(e -> {
+            setType_num(3);
+            type_menu.setText(ex_type.getText());
+        });
+        type_menu.add(std_type);
+        type_menu.add(del_type);
+        type_menu.add(ex_type);
+        room_type.setPreferredSize(new Dimension(300, 45));
+        type_menu.setPreferredSize(new Dimension(300, 45));
+        std_type.setPreferredSize(new Dimension(300, 45));
+        del_type.setPreferredSize(new Dimension(300, 45));
+        ex_type.setPreferredSize(new Dimension(300, 45));
+        panels.get(1).add(room_type);
+
+        JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
+        createButton.addActionListener(e -> {
+            if(hotel_name == null || type_num == 0 || room_tot == 0){
+                JOptionPane.showMessageDialog(this, "Please fill out all required fields.");
+            } else {
+                hrs.createHotel(getHotel_name(), getType_num(), getRoom_tot());
+                JOptionPane.showMessageDialog(this, "Hotel created successfully.");
+                mains.setWindowChecker(false);
+                dispose();
+            }
+        });
+        panels.get(1).add(createButton);
 
         for (JPanel panel : panels){
             panel.setBackground(Colors.getBlack());
@@ -115,4 +172,5 @@ public class GUI_CREATE extends GUI{
 
         setVisible(true);
     }
+
 }
