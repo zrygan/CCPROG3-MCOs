@@ -413,4 +413,19 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     
         return menuItem;
     }
+
+    /**
+     * 
+     */
+    public static JSpinner ASSET_SPINNER() {
+        JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, 1, 31, 1));
+        JSpinner.NumberEditor editor = (JSpinner.NumberEditor) spinner.getEditor();
+        editor.getComponent(0).setBackground(Colors.getDarkGreen());
+        editor.getComponent(0).setForeground(Colors.getVividGreen());
+        spinner.setFont(Fonts.get("Regular", 18));
+        spinner.setPreferredSize(new Dimension(150, 45));
+        spinner.setFocusable(false);
+    
+        return spinner;
+    }
 }
