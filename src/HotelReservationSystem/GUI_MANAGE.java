@@ -120,7 +120,7 @@ public class GUI_MANAGE extends GUI {
         // [TEXT FIELD] New Hotel Name Text Field
         JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("Enter New Hotel Name");
         new_hot_name.addActionListener(e -> {
-            if (hrs.fetchHotel(new_hot_name.getText()) != null) {
+            if (hrs.fetchHotel(new_hot_name.getText()) == null) {
                 JOptionPane.showMessageDialog(this, "Hotel Name already exists.");
             }
             else {

@@ -428,4 +428,6 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     
         return spinner;
     }
+
+    // FIXME: 
 }
