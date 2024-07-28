@@ -84,7 +84,17 @@ public class GUI_DPM extends GUI {
         room_pick.add(all_rooms);
         panels.get(1).add(room_choice);
 
-        // [JSpinner] 
+        // [JSpinner] Day selection
+        JSpinner day_spinner = Assets.ASSET_SPINNER(1, 31);
+        day_spinner.setValue(1);
+        // FIXME: Add action listener
+        panels.get(1).add(day_spinner);
+
+        // [JTextField] Price modifier
+        JTextField price_modifier = Assets.ASSET_TEXT_FIELD("Enter Price Modifier");
+        // FIXME: Add action listener
+        
+        panels.get(1).add(price_modifier);
 
         
 }
