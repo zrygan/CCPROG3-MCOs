@@ -550,7 +550,7 @@ public class HRS {
                                 System.out.printf("\nEnter the new date price modifer for day %d: ", day);
                                 double newDPM = getInputDBL(sc);
 
-                                // check if newDPM is valis (i.e, >0)
+                                // check if newDPM is valid (i.e, >0)
                                 if (newDPM > 0) {
 
                                     // check if for one day or all rooms

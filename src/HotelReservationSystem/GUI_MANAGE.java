@@ -134,7 +134,6 @@ public class GUI_MANAGE extends GUI {
                 setHotel_name(getNew_hotel());
                 hotelMenu.setText(getNew_hotel());
             }
-            
         });
         panels.get(2).add(new_hot_name);
 
@@ -223,8 +222,17 @@ public class GUI_MANAGE extends GUI {
 
         // FIXME: Skipped for now because i think it might be necessary to have a whole new window for this function
         // [TEXT FIELD] New DPM Text Field
-        JTextField new_DPM = Assets.ASSET_TEXT_FIELD("New DPM");
-        // ADD ACTION LISTENER
+        JButton new_DPM = Assets.ASSET_ACCENT_BUTTON("New DPM");
+        new_DPM.addActionListener(e -> {
+            if (!getWindowChecker_manage()){
+                if (getHotel_name() != null) {
+                    GUI_DPM dpm = new GUI_DPM(hrs, 600, 500, this, getHotel_name());
+                    dpm.init();
+                    setWindowChecker_manage(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Select a hotel first.");
+                }
+        });
         panels.get(3).add(new_DPM);
 
         // [TEXT FIELD] Remove Reservation Text Field
