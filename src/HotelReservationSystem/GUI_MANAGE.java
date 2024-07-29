@@ -220,10 +220,9 @@ public class GUI_MANAGE extends GUI {
         });
         panels.get(3).add(delete_hot);
 
-        // FIXME: Skipped for now because i think it might be necessary to have a whole new window for this function
         // [TEXT FIELD] New DPM Text Field
         JButton new_DPM = Assets.ASSET_ACCENT_BUTTON("New DPM");
-        new_DPM.addActionListener(e -> {
+        new_DPM.addActionListener(_ -> {
             if (!getWindowChecker_manage()){
                 if (getHotel_name() != null) {
                     GUI_DPM dpm = new GUI_DPM(hrs, 600, 500, this, getHotel_name());
@@ -232,17 +231,18 @@ public class GUI_MANAGE extends GUI {
                 } else {
                     JOptionPane.showMessageDialog(this, "Select a hotel first.");
                 }
+            }
         });
         panels.get(3).add(new_DPM);
 
         // [TEXT FIELD] Remove Reservation Text Field
         // FIXME: necessary for another text field so maybe add a new window for this too
         JTextField rem_res = Assets.ASSET_TEXT_FIELD("Reservation Guest Name to Remove");
-        rem_res.addActionListener(e -> {
+        rem_res.addActionListener(_ -> {
             if (getHotel_name()!= null) {
                 Hotel hotel = hrs.fetchHotel(getHotel_name());
                 String reservationName = rem_res.getText();
-            }
+            }   
         });
         panels.get(3).add(rem_res);
 
