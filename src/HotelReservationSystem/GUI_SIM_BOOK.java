@@ -219,6 +219,7 @@ public class GUI_SIM_BOOK extends GUI {
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
         JMenu type_menu = Assets.createMenu("Room Type");
+        setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
         std_type.addActionListener(e -> {
@@ -255,14 +256,37 @@ public class GUI_SIM_BOOK extends GUI {
         JButton book_room = Assets.ASSET_ACCENT_BUTTON("Book Room");
         book_room.addActionListener(e -> {
             Hotel hotel = hrs.fetchHotel(getHotel_name());
-            // [DEBUGGING] Print out all the values
-            System.out.println("Guest Name: " + getGuest_name());
-            System.out.println("Hotel Name: " + getHotel_name());
-            System.out.println("In-Day: " + getIn_Day());
-            System.out.println("Out-Day: " + getOut_Day());
-            System.out.println("Room Type: " + getType_num());
-            System.out.println("Discount Code: " + getDiscount());
-            hotel.bookRoom(getGuest_name(), getIn_Day(), getOut_Day(), getType_num(), getDiscount());
+            if (hotel != null) {
+                if (getGuest_name() == null || getType_num() == 0) {
+                    Assets.ASSET_PANE(this, "Fill out the required boxes.", "HRS: Error");
+                } else if (!(getOut_Day() > getIn_Day() && (getOut_Day() >= 2 && getOut_Day() <= 31) && (getIn_Day() >= 1 && getIn_Day() <= 30))) {
+                    Assets.ASSET_PANE(this, "Invalid dates.", "HRS: Error");
+                } else {
+                    if (hotel.bookRoom(getGuest_name(), getIn_Day(), getOut_Day(), getType_num(), getDiscount())) {
+                        Assets.ASSET_PANE(this, "Successfully booked.", "HRS");
+                        dispose();
+                    }
+                    else {
+                        Assets.ASSET_PANE(this, "Failed to book room.", "HRS: Error");
+                    }
+                    // String receipt = "\n Room booked successfully for " + getGuest_name() + 
+                    // "\n\n===== RECEIPT =====" + 
+                    // "\nname :\t" + getGuest_name() + 
+                    // "\nhtl :\thotel " + getHotel_name() + 
+                    // LACKING ROOM
+                    // "\nin :\t" + getIn_Day() + 
+                    // "\nout :\t" + getOut_Day() + 
+                    // LACKING TOTAL
+                    // "\n===================\n";
+                    // Assets.ASSET_PANE(this, receipt , "HRS");
+                    // FIXME: REMOVE IF NO RECEIPT
+                }
+                
+            } else {
+                Assets.ASSET_PANE(this, "Hotel not found.", "HRS: Error");
+                dispose();
+            }
+            
         });
         book_room.setPreferredSize(new Dimension(300, 100));
         panels.get(5).add(book_room);

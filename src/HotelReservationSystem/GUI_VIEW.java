@@ -115,7 +115,6 @@ public class GUI_VIEW extends GUI {
 
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width/2));
 
-        // FIXME: find a way to handle the case where the strings are too long for the window
         JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
         ent_day.addActionListener(e -> {
             StringBuilder out = new StringBuilder();
@@ -127,9 +126,13 @@ public class GUI_VIEW extends GUI {
                 } else {
                     out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": \n");
                     out.append("     \t");
+                    int index = 0;
                     for (String room : hotel.fetchAvails(1, day)) {
-                    String roomNum = room.replace(hotel.getName() + "_Room_", "");
-                       out.append(roomNum).append(" ");
+                        index++;
+                        if (index % 16 == 0) out.append("\n\t");
+                        String roomNum = room.replace(hotel.getName() + "_Room_", "");
+                        out.append(roomNum).append(" ");
+                        
                     }
                 }
                 if (hotel.fetchAvails(0, day).isEmpty()) {
@@ -137,7 +140,10 @@ public class GUI_VIEW extends GUI {
                 } else {
                     out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": \n");
                     out.append("     \t");
+                    int index2 = 0;
                     for (String room : hotel.fetchAvails(0, day)) {
+                        index2++;
+                        if (index2 % 16 == 0) out.append("\n\t");
                         String roomNum = room.replace(hotel.getName() + "_Room_", "");
                         out.append(roomNum).append(" ");  
                     }
