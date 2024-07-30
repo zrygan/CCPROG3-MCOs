@@ -204,15 +204,10 @@ public class GUI_MANAGE extends GUI {
         delete_hot.addActionListener(_ -> {
             if (getHotel_name()!= null) {
                 Hotel hotel = hrs.fetchHotel(getHotel_name());
-                int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete Hotel " + getHotel_name() + "?", "Confirm Delete Hotel", JOptionPane.YES_NO_OPTION);
-                if (confirm == 0) {
-                    hotel.prepareForRemoval();
-                    hrs.getHotels().remove(hotel);
-                    JOptionPane.showMessageDialog(this, "Hotel " + getHotel_name() + " is deleted.");
-                    // FIXME: Find a way to update the Hotel MenuItem List
-                    setHotel_name(null);
-                    hotelMenu.setText("Hotel Name");
-                }
+                hotel.prepareForRemoval();
+                hrs.getHotels().remove(hotel);
+                JOptionPane.showMessageDialog(this, "Hotel " + getHotel_name() + " is deleted.");
+                dispose();
             }
             else {
                 JOptionPane.showMessageDialog(this, "Select a hotel first.");

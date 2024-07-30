@@ -126,6 +126,7 @@ public class GUI_CREATE extends GUI {
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
         JMenu type_menu = Assets.createMenu("Room Type");
+        setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
         std_type.addActionListener(e -> {
@@ -154,7 +155,7 @@ public class GUI_CREATE extends GUI {
 
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
         createButton.addActionListener(e -> {
-            if (getHotel_name().isEmpty() || getRoom_tot() == 0 || getType_num() == 0) {
+            if (getHotel_name() != null || getRoom_tot() == 0 || getType_num() == 0) { // FIXME: WTF IS WRONG WITH THIS
                 JOptionPane.showMessageDialog(this, "Please fill out all required fields.");
             } else {
                 if (hrs.fetchHotel(getHotel_name()) != null) {
