@@ -1,5 +1,5 @@
 /*
-* ========== DESIGN SPECS for Main_GUI ==========
+* ========== DESIGN SPECS for GUI ==========
 *
 * Dimensions:
 *      home HRS
@@ -15,9 +15,9 @@
 *          H   600 (px)
 *
 *      manage hotel
-*          W   800 (px)
-*          H   500 (px)
-*
+*          W   500 (px)
+*          H   600 (px)
+*      
 *      sim booking
 *          W   500 (px)
 *          H   750 (px)
@@ -25,6 +25,16 @@
 *      create room
 *          W   500 (px)
 *          H   600 (px)
+*
+*      new DPM
+*          W   600 (px)
+*          H   500 (px)
+*      remove reservation
+*          W   600 (px)
+*          H   500 (px)
+*      add room
+*          W   600 (px)
+*          H   500 (px)
 *
 * Fonts:
 *      Ubuntu Mono Regular     UbuntuMono-Regular.ttf  https://fonts.google.com/specimen/Ubuntu+Mono
