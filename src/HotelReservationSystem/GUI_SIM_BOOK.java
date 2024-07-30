@@ -240,33 +240,32 @@ public class GUI_SIM_BOOK extends GUI {
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
 
         // [TEXT BOX] Guest Name
-        JTextField guest_name = Assets.ASSET_TEXT_FIELD("Guest Name");
-        guest_name.setPreferredSize(new Dimension(300, 45));
-        guest_name.getDocument().addDocumentListener(new DocumentListener() {
+        JTextField guestNameField = Assets.ASSET_TEXT_FIELD("Guest Name");
+        guestNameField.setPreferredSize(new Dimension(300, 45));
+        guestNameField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                setGuest_name(guest_name.getText());
+                setGuest_name(guestNameField.getText());
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                setGuest_name(guest_name.getText());
+                setGuest_name(guestNameField.getText());
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 // Not needed for plain text fields
             }
-
         });
-        panels.get(1).add(guest_name);
+        panels.get(1).add(guestNameField);
 
         // [MENU BAR] Hotel Name Menu Bar
         JMenuBar hotel_bar = Assets.ASSET_MENU_BAR();
-        JMenu hotelMenu = Assets.createMenu("Hotel Name");
+        JMenu hotelMenu = Assets.ASSET_MENU("Hotel Name");
         hotel_bar.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
-            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
+            JMenuItem hotelList = Assets.CREATE_MENU_ITEM(hotel.getName());
             hotelList.addActionListener(_ -> {
                 setHotel_name(hotel.getName());
                 hotelMenu.setText(hotel.getName());
@@ -306,7 +305,7 @@ public class GUI_SIM_BOOK extends GUI {
         JSpinner out_day = Assets.ASSET_SPINNER(2, 31);
         setOut_Day(2);
         setOut_Day((int) out_day.getValue());
-        
+
         out_day.addChangeListener(_ -> {
             setOut_Day((int) out_day.getValue());
         });
@@ -345,20 +344,20 @@ public class GUI_SIM_BOOK extends GUI {
 
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
-        JMenu type_menu = Assets.createMenu("Room Type");
+        JMenu type_menu = Assets.ASSET_MENU("Room Type");
         setType_num(0);
         room_type.add(type_menu);
-        JMenuItem std_type = Assets.createMenuItem("Standard Room");
+        JMenuItem std_type = Assets.CREATE_MENU_ITEM("Standard Room");
         std_type.addActionListener(_ -> {
             setType_num(1);
             type_menu.setText(std_type.getText());
         });
-        JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
+        JMenuItem del_type = Assets.CREATE_MENU_ITEM("Deluxe Room");
         del_type.addActionListener(_ -> {
             setType_num(2);
             type_menu.setText(del_type.getText());
         });
-        JMenuItem ex_type = Assets.createMenuItem("Executive Room");
+        JMenuItem ex_type = Assets.CREATE_MENU_ITEM("Executive Room");
         ex_type.addActionListener(_ -> {
             setType_num(3);
             type_menu.setText(ex_type.getText());
@@ -387,23 +386,23 @@ public class GUI_SIM_BOOK extends GUI {
             if (hotel != null) {
                 if (getGuest_name() == null || getType_num() == 0) {
                     Assets.ASSET_PANE(this, "Fill out the required boxes.", "HRS: Error");
-                } else if (!(getOut_Day() > getIn_Day() && (getOut_Day() >= 2 && getOut_Day() <= 31) && (getIn_Day() >= 1 && getIn_Day() <= 30))) {
+                } else if (!(getOut_Day() > getIn_Day() && (getOut_Day() >= 2 && getOut_Day() <= 31)
+                        && (getIn_Day() >= 1 && getIn_Day() <= 30))) {
                     Assets.ASSET_PANE(this, "Invalid dates.", "HRS: Error");
                 } else {
                     if (hotel.bookRoom(getGuest_name(), getIn_Day(), getOut_Day(), getType_num(), getDiscount())) {
                         Assets.ASSET_PANE(this, "Successfully booked.", "HRS");
                         dispose();
-                    }
-                    else {
+                    } else {
                         Assets.ASSET_PANE(this, "Failed to book room.", "HRS: Error");
                     }
                 }
-                
+
             } else {
                 Assets.ASSET_PANE(this, "Hotel not found.", "HRS: Error");
                 dispose();
             }
-            
+
         });
         book_room.setPreferredSize(new Dimension(300, 100));
         panels.get(5).add(book_room);

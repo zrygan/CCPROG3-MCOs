@@ -136,10 +136,10 @@ public class GUI_VIEW extends GUI {
 
         // [MENU BAR] Hotel Name Button
         JMenuBar view_name = Assets.ASSET_MENU_BAR();
-        JMenu hotelMenu = Assets.createMenu("Hotel Name");
+        JMenu hotelMenu = Assets.ASSET_MENU("Hotel Name");
         view_name.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
-            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
+            JMenuItem hotelList = Assets.CREATE_MENU_ITEM(hotel.getName());
             hotelList.addActionListener(_ -> {
                 setHotel_name(hotel.getName());
                 hotelMenu.setText(hotel.getName());
@@ -251,7 +251,7 @@ public class GUI_VIEW extends GUI {
                     }
                     output.setText(out.toString());
                 } else {
-                    output.setText("\n\tThere are no reservations under " + getHotel_name());
+                    output.setText("\n\tNo reservations for guest " + reservation +".");
                 }
             } else {
                 Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");

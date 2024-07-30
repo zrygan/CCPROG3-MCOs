@@ -170,16 +170,16 @@ public class GUI_CREATE extends GUI {
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // [MENU BAR] Hotel Name Menu Bar
-        JTextField hotel_name = Assets.ASSET_TEXT_FIELD("Hotel Name");
-        hotel_name.getDocument().addDocumentListener(new DocumentListener() {
+        JTextField hotelNameField = Assets.ASSET_TEXT_FIELD("Hotel Name");
+        hotelNameField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                setHotel_name(hotel_name.getText());
+                setHotel_name(hotelNameField.getText());
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                setHotel_name(hotel_name.getText());
+                setHotel_name(hotelNameField.getText());
             }
 
             @Override
@@ -187,8 +187,8 @@ public class GUI_CREATE extends GUI {
                 // Not needed for plain text fields
             }
         });
-        hotel_name.setPreferredSize(new Dimension(300, 45));
-        panels.get(1).add(hotel_name);
+        hotelNameField.setPreferredSize(new Dimension(300, 45));
+        panels.get(1).add(hotelNameField);
 
         panels.get(1).add(Assets.ASSET_SEPARATOR(window_width / 2));
 
@@ -203,20 +203,20 @@ public class GUI_CREATE extends GUI {
 
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
-        JMenu type_menu = Assets.createMenu("Room Type");
+        JMenu type_menu = Assets.ASSET_MENU("Room Type");
         setType_num(0);
         room_type.add(type_menu);
-        JMenuItem std_type = Assets.createMenuItem("Standard Room");
+        JMenuItem std_type = Assets.CREATE_MENU_ITEM("Standard Room");
         std_type.addActionListener(_ -> {
             setType_num(1);
             type_menu.setText(std_type.getText());
         });
-        JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
+        JMenuItem del_type = Assets.CREATE_MENU_ITEM("Deluxe Room");
         del_type.addActionListener(_ -> {
             setType_num(2);
             type_menu.setText(del_type.getText());
         });
-        JMenuItem ex_type = Assets.createMenuItem("Executive Room");
+        JMenuItem ex_type = Assets.CREATE_MENU_ITEM("Executive Room");
         ex_type.addActionListener(_ -> {
             setType_num(3);
             type_menu.setText(ex_type.getText());
@@ -234,7 +234,7 @@ public class GUI_CREATE extends GUI {
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
         createButton.addActionListener(_ -> {
             if (getHotel_name() == null || getRoom_tot() == 0 || getType_num() == 0) {
-                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");                
+                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");
             } else {
                 if (hrs.fetchHotel(getHotel_name()) != null) {
                     Assets.ASSET_PANE(this, "Hotel name already exists.", "HRS: Error");

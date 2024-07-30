@@ -193,10 +193,10 @@ public class GUI_MANAGE extends GUI {
 
         // [MENU BAR] Hotel Name Menu Bar
         JMenuBar hotel_bar = Assets.ASSET_MENU_BAR();
-        JMenu hotelMenu = Assets.createMenu("Hotel Name");
+        JMenu hotelMenu = Assets.ASSET_MENU("Hotel Name");
         hotel_bar.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
-            JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
+            JMenuItem hotelList = Assets.CREATE_MENU_ITEM(hotel.getName());
             hotelList.addActionListener(_ -> {
                 setHotel_name(hotel.getName());
                 hotelMenu.setText(hotel.getName());

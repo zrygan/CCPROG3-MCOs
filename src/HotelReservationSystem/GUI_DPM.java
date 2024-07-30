@@ -213,14 +213,14 @@ public class GUI_DPM extends GUI {
 
         // [JMenu] Room selection
         JMenuBar room_choice = Assets.ASSET_MENU_BAR();
-        JMenu room_pick = Assets.createMenu("Choose Room Option");
+        JMenu room_pick = Assets.ASSET_MENU("Choose Room Option");
         room_choice.add(room_pick);
-        JMenuItem one_room = Assets.createMenuItem("One Room");
+        JMenuItem one_room = Assets.CREATE_MENU_ITEM("One Room");
         one_room.addActionListener(_ -> {
             setRoom_opt(1);
             room_pick.setText(one_room.getText());
         });
-        JMenuItem all_rooms = Assets.createMenuItem("All Rooms");
+        JMenuItem all_rooms = Assets.CREATE_MENU_ITEM("All Rooms");
         all_rooms.addActionListener(_ -> {
             setRoom_opt(2);
             room_pick.setText(all_rooms.getText());

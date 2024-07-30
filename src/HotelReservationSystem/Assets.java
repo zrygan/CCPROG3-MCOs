@@ -2,7 +2,6 @@ package HotelReservationSystem;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -143,7 +142,11 @@ public class Assets {
         return t;
     }
 
-    // FIXME: JAVADOC
+    /**
+     * Makes a JScrollPane with the appropriate design.
+     * 
+     * @return the JScrollPane created.
+     */
     public static JScrollPane ASSET_SCROLL_BOX() {
         Font f = Fonts.get("Regular", 16);
         JTextArea a = new JTextArea();
@@ -395,10 +398,10 @@ public class Assets {
     public static JMenuBar ASSET_MENU_BAR(HRS hrs, String dummy) {
         JMenuBar menuBar = ASSET_MENU_BAR();
 
-        JMenu hotelMenu = createMenu(dummy);
+        JMenu hotelMenu = ASSET_MENU(dummy);
         menuBar.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
-            JMenuItem hotelList = createMenu(hotel.getName());
+            JMenuItem hotelList = ASSET_MENU(hotel.getName());
             hotelMenu.add(hotelList);
         }
 
@@ -415,7 +418,7 @@ public class Assets {
      * @param name the name of the menu
      * @return the created JMenu
      */
-    public static JMenu createMenu(String name) {
+    public static JMenu ASSET_MENU(String name) {
         JMenu menu = new JMenu(name);
         menu.setForeground(Colors.getVividGreen());
         menu.setFont(Fonts.get("Regular", 18));
@@ -434,7 +437,7 @@ public class Assets {
      * @param name the name of the menu item
      * @return the created JMenuItem
      */
-    public static JMenuItem createMenuItem(String name) {
+    public static JMenuItem CREATE_MENU_ITEM(String name) {
         JMenuItem menuItem = new JMenuItem(name);
         menuItem.setBackground(Colors.getDarkGreen());
         menuItem.setForeground(Colors.getVividGreen());

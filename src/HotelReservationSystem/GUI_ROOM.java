@@ -170,20 +170,20 @@ public class GUI_ROOM extends GUI {
 
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
-        JMenu type_menu = Assets.createMenu("Room Type");
+        JMenu type_menu = Assets.ASSET_MENU("Room Type");
         setType_num(0);
         room_type.add(type_menu);
-        JMenuItem std_type = Assets.createMenuItem("Standard Room");
+        JMenuItem std_type = Assets.CREATE_MENU_ITEM("Standard Room");
         std_type.addActionListener(_ -> {
             setType_num(1);
             type_menu.setText(std_type.getText());
         });
-        JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
+        JMenuItem del_type = Assets.CREATE_MENU_ITEM("Deluxe Room");
         del_type.addActionListener(_ -> {
             setType_num(2);
             type_menu.setText(del_type.getText());
         });
-        JMenuItem ex_type = Assets.createMenuItem("Executive Room");
+        JMenuItem ex_type = Assets.CREATE_MENU_ITEM("Executive Room");
         ex_type.addActionListener(_ -> {
             setType_num(3);
             type_menu.setText(ex_type.getText());
