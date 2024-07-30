@@ -3,6 +3,7 @@ package HotelReservationSystem;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -153,13 +154,14 @@ public class GUI_VIEW extends GUI {
             StringBuilder out = new StringBuilder();
             Hotel hotel = hrs.fetchHotel(getHotel_name());
             if (hotel != null) {
+                DecimalFormat df = new DecimalFormat("#.00");
                 out.append("\n     Hotel: ").append(hotel.getName());
                 out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
                 out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
                 out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
-                out.append("\n     \thas earned ").append(hotel.getEarnings());
-                out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ")
-                        .append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
+                out.append("\n     \thas earned ").append(df.format(hotel.getEarnings()));
+                out.append("\n     \tRoom base price range from ").append(df.format(hotel.getBasePrice())).append(" to ")
+                        .append(df.format(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35)));
                 out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPM());
                 output.setText(out.toString());
             } else {
