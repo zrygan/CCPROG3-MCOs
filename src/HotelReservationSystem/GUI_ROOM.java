@@ -134,7 +134,7 @@ public class GUI_ROOM extends GUI {
      */
     @Override
     public void init() {
-        setTitle("Hotel Reservation System: Adding a Room in " + hotelName);
+        setTitle("Hotel Reservation System: Adding a Room in " + getHotelName());
         setSize(window_width, window_height);
         GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
@@ -157,8 +157,8 @@ public class GUI_ROOM extends GUI {
          * code of MID PANEL (panel : 1)
          * contains: num_rooms, room_type, add_room button
          */
-        panels.get(1).setBounds(0, 100, window_width, 400); // panels[1] = mid panel
-        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
+        panels.get(1).setBounds(0, 100, window_width, 500); // panels[1] = mid panel
+        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 60));
 
         // [JSpinner] num_rooms
         JSpinner num_rooms = Assets.ASSET_SPINNER(1, 50);
@@ -167,11 +167,13 @@ public class GUI_ROOM extends GUI {
         num_rooms.addChangeListener(e -> {
             setNum_room((int) num_rooms.getValue());
         });
+        num_rooms.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(num_rooms);
 
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
         JMenu type_menu = Assets.createMenu("Room Type");
+        setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
         std_type.addActionListener(e -> {
@@ -191,23 +193,39 @@ public class GUI_ROOM extends GUI {
         type_menu.add(std_type);
         type_menu.add(del_type);
         type_menu.add(ex_type);
+        room_type.setPreferredSize(new Dimension(300, 45));
+        type_menu.setPreferredSize(new Dimension(300, 45));
+        std_type.setPreferredSize(new Dimension(300, 45));
+        del_type.setPreferredSize(new Dimension(300, 45));
+        ex_type.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(room_type);
 
         // [JButton] Add Room Button
         JButton add_room = Assets.ASSET_ACCENT_BUTTON("Add Room");
         add_room.addActionListener(e -> {
-            Hotel hotel = hrs.fetchHotel(getHotelName());
-            if (hotel.getRoomCount() + num_room < 51) {
-                for (int i = 0; i < num_room; i++) {
-                    Room newRoom = hotel.newRoom(getType_num());
+            if (getType_num() != 0) {
+                Hotel hotel = hrs.fetchHotel(getHotelName());
+                if (hotel.getRoomCount() + num_room < 51) {
+                    for (int i = 0; i < num_room; i++) {
+                        Room newRoom = hotel.newRoom(getType_num());
+                    }
+                    Assets.ASSET_PANE(this, "Successfully added " + num_room + " rooms.", "HRS");
+                    dispose();
+                } else {
+                    Assets.ASSET_PANE(this, "Hotel cannot accommodate more than 50 rooms.", "HRS: Error");
                 }
-                JOptionPane.showMessageDialog(this, "Successfully added " + num_room + " rooms.");
-                dispose();
             } else {
-                JOptionPane.showMessageDialog(this, "Hotel cannot accommodate more than 50 rooms.");
+                Assets.ASSET_PANE(this, "Fill out the required boxes.", "HRS: Error");
             }
+
         });
+        add_room.setPreferredSize(new Dimension(300, 90));
         panels.get(1).add(add_room);
+
+        for (JPanel panel : panels) {
+            panel.setBackground(Colors.getBlack());
+            add(panel);
+        }
 
         setVisible(true);
     }

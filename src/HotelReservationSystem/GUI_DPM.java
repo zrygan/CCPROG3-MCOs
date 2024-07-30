@@ -188,7 +188,7 @@ public class GUI_DPM extends GUI {
         setLayout(null);
         setResizable(false);
 
-        ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(3);
+        ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(2);
 
         /*
          * code of TOP PANEL (panel : 0)
@@ -206,7 +206,7 @@ public class GUI_DPM extends GUI {
          * code of MIDDLE PANEL (panel : 1)
          * contains: Hotel Name Menu Bar
          */
-        panels.get(1).setBounds(0, 100, window_width, 400);
+        panels.get(1).setBounds(0, 100, window_width, 500);
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [JMenu] Room selection
@@ -225,6 +225,10 @@ public class GUI_DPM extends GUI {
         });
         room_pick.add(one_room);
         room_pick.add(all_rooms);
+        room_choice.setPreferredSize(new Dimension(300, 45));
+        room_pick.setPreferredSize(new Dimension(300, 45));
+        one_room.setPreferredSize(new Dimension(300, 45));
+        all_rooms.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(room_choice);
 
         // [JSpinner] Day selection
@@ -235,6 +239,7 @@ public class GUI_DPM extends GUI {
         day_spinner.addChangeListener(e -> {
             setDay_num((int) day_spinner.getValue());
         });
+        day_spinner.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(day_spinner);
 
         // [JTextField] Room number selection
@@ -255,6 +260,7 @@ public class GUI_DPM extends GUI {
                 // Not needed for plain text fields
             }
         });
+        room_number.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(room_number);
 
         // [JTextField] Price modifier
@@ -275,6 +281,7 @@ public class GUI_DPM extends GUI {
                 // Not needed for plain text fields
             }
         });
+        price_modifier.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(price_modifier);
 
         // [JButton] DPM Button
@@ -301,6 +308,7 @@ public class GUI_DPM extends GUI {
                 JOptionPane.showMessageDialog(null, "Please fill out all required fields.");
             }
         });
+        dpm_button.setPreferredSize(new Dimension(300, 90));
         panels.get(1).add(dpm_button);
 
         for (JPanel panel : panels) {

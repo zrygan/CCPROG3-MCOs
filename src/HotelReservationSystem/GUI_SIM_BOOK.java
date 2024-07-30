@@ -286,7 +286,7 @@ public class GUI_SIM_BOOK extends GUI {
         panels.get(2).setLayout(new FlowLayout(FlowLayout.RIGHT, 30, 30));
 
         // [TEXT BOX] In-Day
-        JSpinner in_day = Assets.ASSET_SPINNER(1, 31);
+        JSpinner in_day = Assets.ASSET_SPINNER(1, 30);
         in_day.setValue(1);
         setIn_Day((int) in_day.getValue());
         in_day.setPreferredSize(new Dimension(75, 45));
@@ -302,9 +302,9 @@ public class GUI_SIM_BOOK extends GUI {
         panels.get(3).setBounds(window_width / 2, 210, window_width, 100);
         panels.get(3).setLayout(new FlowLayout(FlowLayout.LEFT, 30, 30));
 
-        // [TEXT BOX] In-Day
-        JSpinner out_day = Assets.ASSET_SPINNER(1, 31);
-        out_day.setValue(1);
+        // [TEXT BOX] Out-Day
+        JSpinner out_day = Assets.ASSET_SPINNER(2, 31);
+        out_day.setValue(2);
         setOut_Day((int) out_day.getValue());
         out_day.setPreferredSize(new Dimension(75, 45));
         out_day.addChangeListener(e -> {
