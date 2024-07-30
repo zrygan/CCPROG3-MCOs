@@ -143,6 +143,24 @@ public class Assets {
         return t;
     }
 
+    // FIXME: JAVADOC
+    public static JScrollPane ASSET_SCROLL_BOX() {
+        Font f = Fonts.get("Regular", 16);
+        JTextArea a = new JTextArea();
+        a.setEditable(false);
+        a.setForeground(Colors.getVividGreen());
+        a.setBackground(Colors.getBlack());
+        a.setFont(f);
+    
+        Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 2);
+        a.setBorder(bdr);
+    
+        JScrollPane scrollPane = new JScrollPane(a);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+    
+        return scrollPane;
+    }
+
     /**
      * Not meant to be called. Creates the preliminaries for the ASSET_OUTPUT_BOX
      * 

@@ -121,9 +121,10 @@ public class GUI_VIEW extends GUI {
          */
         panels.get(1).setBounds(0, 100, window_width / 2 + 200, window_height); // panels[1] = left panel
         panels.get(1).setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 10));
-        JTextArea output = Assets.ASSET_OUTPUT_BOX();
-        output.setPreferredSize(new Dimension(500, 400));
-        panels.get(1).add(output);
+        JScrollPane outputbox = Assets.ASSET_SCROLL_BOX();
+        JTextArea output = (JTextArea) outputbox.getViewport().getView();
+        outputbox.setPreferredSize(new Dimension(500, 400));
+        panels.get(1).add(outputbox);
 
         /*
          * code of RIGHT PANEL (panel : 2)
@@ -250,7 +251,7 @@ public class GUI_VIEW extends GUI {
                     }
                     output.setText(out.toString());
                 } else {
-                    output.setText("\n\tThere are no reservations under" + getHotel_name());
+                    output.setText("\n\tThere are no reservations under " + getHotel_name());
                 }
             } else {
                 Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
