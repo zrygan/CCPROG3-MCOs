@@ -255,9 +255,12 @@ public class GUI_VIEW extends GUI {
                             out.append("\n\t\t===================\n");
                         }
                     }
+                    if (out.isEmpty()) {
+                        out.append("\n\tNo reservations found for guest ").append(reservation).append(".");
+                    }
                     output.setText(out.toString());
                 } else {
-                    output.setText("\n\tNo reservations for guest " + reservation + ".");
+                    output.setText("\n\tNo reservations for hotel " + getHotel_name() + ".");
                 }
             } else {
                 Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");

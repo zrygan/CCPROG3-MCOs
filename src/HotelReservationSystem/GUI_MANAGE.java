@@ -224,6 +224,11 @@ public class GUI_MANAGE extends GUI {
                         Hotel hotel = hrs.fetchHotel(getHotel_name());
                         setNew_hotel(new_hot_name.getText());
                         hotel.setName(getNew_hotel());
+
+                        Hotel changeName = hrs.fetchHotel(getNew_hotel());
+
+                        changeName.changeRoomName(getNew_hotel());
+
                         new_hot_name.setText(getNew_hotel());
                         Assets.ASSET_PANE(this,
                                 "Hotel " + getHotel_name() + " is changed to Hotel " + getNew_hotel(), "HRS");
