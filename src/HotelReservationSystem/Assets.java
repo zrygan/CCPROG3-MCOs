@@ -143,6 +143,7 @@ public class Assets {
         return t;
     }
 
+    // FIXME: JAVADOC
     public static JScrollPane ASSET_SCROLL_BOX() {
         Font f = Fonts.get("Regular", 16);
         JTextArea a = new JTextArea();
