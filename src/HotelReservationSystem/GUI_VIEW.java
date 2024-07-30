@@ -98,14 +98,18 @@ public class GUI_VIEW extends GUI {
         high_lvl_info.addActionListener(e -> {
             StringBuilder out = new StringBuilder();
             Hotel hotel = hrs.fetchHotel(getHotel_name());
-            out.append("\n     Hotel: ").append(hotel.getName());
-            out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
-            out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
-            out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
-            out.append("\n     \thas earned ").append(hotel.getEarnings());
-            out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ").append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
-            out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
-            output.setText(out.toString());
+            if (hotel != null) {
+                out.append("\n     Hotel: ").append(hotel.getName());
+                out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
+                out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
+                out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
+                out.append("\n     \thas earned ").append(hotel.getEarnings());
+                out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ").append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
+                out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
+                output.setText(out.toString());
+            } else {
+                JOptionPane.showMessageDialog(this, "Hotel not found!");
+            }
         });
         panels.get(2).add(high_lvl_info);
 
