@@ -184,7 +184,7 @@ public class GUI_DPM extends GUI {
      */
     @Override
     public void init() {
-        setTitle("Discount Price Modifier");
+        setTitle("DPM");
         setSize(window_width, window_height); // width and height = 500
         GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
@@ -242,7 +242,7 @@ public class GUI_DPM extends GUI {
         panels.get(1).add(day_spinner);
 
         // [JTextField] Room number selection
-        JTextField room_number = Assets.ASSET_TEXT_FIELD("Enter Room Number");
+        JTextField room_number = Assets.ASSET_TEXT_FIELD("Enter Room Number (if needed)");
         room_number.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -303,7 +303,7 @@ public class GUI_DPM extends GUI {
                         Room room = hotel.fetchRoom(hotel.getName() + "_Room_" + getRoom_num());
                         if (room != null) {
                             room.changeDPM(getDay_num() - 1, getPrice_mod());
-                            Assets.ASSET_PANE(this, "Discount Price Modifier applied successfully.", "HRS");
+                            Assets.ASSET_PANE(this, "DPM applied successfully.", "HRS");
                         } else {
                             Assets.ASSET_PANE(this, "Room not found.", "HRS: Error");
                         }
@@ -312,7 +312,7 @@ public class GUI_DPM extends GUI {
                     }
                 } else if (getRoom_opt() == 2) {
                     hotel.changeDPMs(getDay_num() - 1, getPrice_mod());
-                    Assets.ASSET_PANE(this, "Discount Price Modifier applied successfully for all rooms.", "HRS");
+                    Assets.ASSET_PANE(this, "DPM applied successfully for all rooms.", "HRS");
                 }
             } else {
                 Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");

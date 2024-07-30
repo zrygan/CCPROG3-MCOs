@@ -214,7 +214,7 @@ public class GUI_MANAGE extends GUI {
         panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 60));
 
         // [TEXT FIELD] New Hotel Name Text Field
-        JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("Enter New Hotel Name");
+        JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("New Hotel Name");
         new_hot_name.addActionListener(_ -> {
             if (!getWindowChecker_manage()) {
                 if (getHotel_name() != null) {

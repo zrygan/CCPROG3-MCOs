@@ -181,46 +181,52 @@ public class GUI_VIEW extends GUI {
 
         JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
         ent_day.addActionListener(_ -> {
-            StringBuilder out = new StringBuilder();
-            int day = Integer.parseInt(ent_day.getText());
-            Hotel hotel = hrs.fetchHotel(getHotel_name());
-            if (getHotel_name() != null) {
-                if (hotel.fetchAvails(1, day).isEmpty()) {
-                    out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ")
-                            .append(day).append(": NONE");
-                } else {
-                    out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ")
-                            .append(day).append(": \n");
-                    out.append("     \t");
-                    int index = 0;
-                    for (String room : hotel.fetchAvails(1, day)) {
-                        index++;
-                        if (index % 16 == 0)
-                            out.append("\n\t");
-                        String roomNum = room.replace(hotel.getName() + "_Room_", "");
-                        out.append(roomNum).append(" ");
+            try {
+                int day = Integer.parseInt(ent_day.getText());
+                Hotel hotel = hrs.fetchHotel(getHotel_name());
+                if (getHotel_name() != null) {
+                    StringBuilder out = new StringBuilder();
+                    if (hotel.fetchAvails(1, day).isEmpty()) {
+                        out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ")
+                                .append(day).append(": NONE");
+                    } else {
+                        out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ")
+                                .append(day).append(": \n");
+                        out.append("     \t");
+                        int index = 0;
+                        for (String room : hotel.fetchAvails(1, day)) {
+                            index++;
+                            if (index % 16 == 0)
+                                out.append("\n\t");
+                            String roomNum = room.replace(hotel.getName() + "_Room_", "");
+                            out.append(roomNum).append(" ");
+                        }
                     }
-                }
-                if (hotel.fetchAvails(0, day).isEmpty()) {
-                    out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day)
-                            .append(": NONE");
-                } else {
-                    out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day)
-                            .append(": \n");
-                    out.append("     \t");
-                    int index2 = 0;
-                    for (String room : hotel.fetchAvails(0, day)) {
-                        index2++;
-                        if (index2 % 16 == 0)
-                            out.append("\n\t");
-                        String roomNum = room.replace(hotel.getName() + "_Room_", "");
-                        out.append(roomNum).append(" ");
+                    if (hotel.fetchAvails(0, day).isEmpty()) {
+                        out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ")
+                                .append(day)
+                                .append(": NONE");
+                    } else {
+                        out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ")
+                                .append(day)
+                                .append(": \n");
+                        out.append("     \t");
+                        int index2 = 0;
+                        for (String room : hotel.fetchAvails(0, day)) {
+                            index2++;
+                            if (index2 % 16 == 0)
+                                out.append("\n\t");
+                            String roomNum = room.replace(hotel.getName() + "_Room_", "");
+                            out.append(roomNum).append(" ");
+                        }
                     }
+                    output.setText(out.toString());
+                } else {
+                    Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
                 }
-            } else {
-                Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
+            } catch (NumberFormatException ex) {
+                Assets.ASSET_PANE(this, "Please enter a valid day.", "HRS: Error");
             }
-            output.setText(out.toString());
         });
         panels.get(2).add(ent_day);
 
@@ -251,7 +257,7 @@ public class GUI_VIEW extends GUI {
                     }
                     output.setText(out.toString());
                 } else {
-                    output.setText("\n\tNo reservations for guest " + reservation +".");
+                    output.setText("\n\tNo reservations for guest " + reservation + ".");
                 }
             } else {
                 Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
