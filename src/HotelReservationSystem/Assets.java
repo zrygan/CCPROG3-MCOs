@@ -436,7 +436,7 @@ public class Assets {
      * @return A JSpinner component with the specified range and custom appearance
      */
     public static JSpinner ASSET_SPINNER(int min, int max) {
-        JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, min, max, 1));
+        JSpinner spinner = new JSpinner(new SpinnerNumberModel(min, min, max, 1));
         JSpinner.NumberEditor editor = (JSpinner.NumberEditor) spinner.getEditor();
         editor.getComponent(0).setBackground(Colors.getDarkGreen());
         editor.getComponent(0).setForeground(Colors.getVividGreen());

@@ -289,8 +289,10 @@ public class GUI_SIM_BOOK extends GUI {
         JSpinner in_day = Assets.ASSET_SPINNER(1, 30);
         in_day.setValue(1);
         setIn_Day((int) in_day.getValue());
+        in_day.addChangeListener(_ -> {
+            setIn_Day((int) in_day.getValue());
+        });
         in_day.setPreferredSize(new Dimension(75, 45));
-        in_day.addChangeListener(_ -> setIn_Day((int) in_day.getValue()));
         panels.get(2).add(in_day);
 
         /*
@@ -302,10 +304,13 @@ public class GUI_SIM_BOOK extends GUI {
 
         // [TEXT BOX] Out-Day
         JSpinner out_day = Assets.ASSET_SPINNER(2, 31);
-        out_day.setValue(2);
+        setOut_Day(2);
         setOut_Day((int) out_day.getValue());
+        
+        out_day.addChangeListener(_ -> {
+            setOut_Day((int) out_day.getValue());
+        });
         out_day.setPreferredSize(new Dimension(75, 45));
-        out_day.addChangeListener(_ -> setOut_Day((int) out_day.getValue()));
         panels.get(3).add(out_day);
 
         /*

@@ -235,7 +235,6 @@ public class GUI_DPM extends GUI {
         JSpinner day_spinner = Assets.ASSET_SPINNER(1, 31);
         day_spinner.setValue(1);
         setDay_num((int) day_spinner.getValue());
-        day_spinner.setPreferredSize(new Dimension(75, 45));
         day_spinner.addChangeListener(_ -> setDay_num((int) day_spinner.getValue()));
         day_spinner.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(day_spinner);
