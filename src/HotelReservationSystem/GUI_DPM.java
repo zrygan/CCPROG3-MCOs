@@ -1,15 +1,14 @@
 package HotelReservationSystem;
 
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 /**
  * A class that extends GUI that creates the change DPM window under manage hotel
@@ -187,7 +186,7 @@ public class GUI_DPM extends GUI {
     public void init() {
         setTitle("Discount Price Modifier");
         setSize(window_width, window_height); // width and height = 500
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
         setResizable(false);
 
