@@ -138,7 +138,7 @@ public class GUI_VIEW extends GUI {
         view_name.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
             JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
-            hotelList.addActionListener(e -> {
+            hotelList.addActionListener(_ -> {
                 setHotel_name(hotel.getName());
                 hotelMenu.setText(hotel.getName());
             });
@@ -149,7 +149,7 @@ public class GUI_VIEW extends GUI {
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width / 2));
 
         JButton high_lvl_info = Assets.ASSET_ACCENT_BUTTON("High Level Info");
-        high_lvl_info.addActionListener(e -> {
+        high_lvl_info.addActionListener(_ -> {
             StringBuilder out = new StringBuilder();
             Hotel hotel = hrs.fetchHotel(getHotel_name());
             if (hotel != null) {
@@ -171,7 +171,7 @@ public class GUI_VIEW extends GUI {
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width / 2));
 
         JTextField ent_day = Assets.ASSET_TEXT_FIELD("Enter Day");
-        ent_day.addActionListener(e -> {
+        ent_day.addActionListener(_ -> {
             StringBuilder out = new StringBuilder();
             int day = Integer.parseInt(ent_day.getText());
             Hotel hotel = hrs.fetchHotel(getHotel_name());
@@ -183,7 +183,6 @@ public class GUI_VIEW extends GUI {
                     out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ")
                             .append(day).append(": \n");
                     out.append("     \t");
-                    int index = 0;
                     for (String room : hotel.fetchAvails(1, day)) {
                     String roomNum = room.replace(hotel.getName() + "_Room_", "");
                        out.append(roomNum).append(" ");
@@ -214,7 +213,7 @@ public class GUI_VIEW extends GUI {
         panels.get(2).add(Assets.ASSET_SEPARATOR(window_width / 2));
 
         JTextField res_name = Assets.ASSET_TEXT_FIELD("Guest Name");
-        res_name.addActionListener(e -> {
+        res_name.addActionListener(_ -> {
             StringBuilder out = new StringBuilder();
             String reservation = res_name.getText();
             Hotel hotel = hrs.fetchHotel(getHotel_name());

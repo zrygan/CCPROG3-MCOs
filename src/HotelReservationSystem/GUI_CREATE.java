@@ -196,9 +196,7 @@ public class GUI_CREATE extends GUI {
         num_room.setValue(1);
         setRoom_tot((int) num_room.getValue());
         num_room.setPreferredSize(new Dimension(300, 45));
-        num_room.addChangeListener(e -> {
-            setRoom_tot((int) num_room.getValue());
-        });
+        num_room.addChangeListener(_ -> setRoom_tot((int) num_room.getValue()));
         panels.get(1).add(num_room);
 
         panels.get(1).add(Assets.ASSET_SEPARATOR(window_width / 2));
@@ -209,17 +207,17 @@ public class GUI_CREATE extends GUI {
         setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
-        std_type.addActionListener(e -> {
+        std_type.addActionListener(_ -> {
             setType_num(1);
             type_menu.setText(std_type.getText());
         });
         JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
-        del_type.addActionListener(e -> {
+        del_type.addActionListener(_ -> {
             setType_num(2);
             type_menu.setText(del_type.getText());
         });
         JMenuItem ex_type = Assets.createMenuItem("Executive Room");
-        ex_type.addActionListener(e -> {
+        ex_type.addActionListener(_ -> {
             setType_num(3);
             type_menu.setText(ex_type.getText());
         });
@@ -234,7 +232,7 @@ public class GUI_CREATE extends GUI {
         panels.get(1).add(room_type);
 
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
-        createButton.addActionListener(e -> {
+        createButton.addActionListener(_ -> {
             if (getHotel_name() == null || getRoom_tot() == 0 || getType_num() == 0) {
                 Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");                
             } else {

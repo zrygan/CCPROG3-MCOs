@@ -197,7 +197,7 @@ public class GUI_MANAGE extends GUI {
         hotel_bar.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
             JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
-            hotelList.addActionListener(e -> {
+            hotelList.addActionListener(_ -> {
                 setHotel_name(hotel.getName());
                 hotelMenu.setText(hotel.getName());
             });
@@ -215,7 +215,7 @@ public class GUI_MANAGE extends GUI {
 
         // [TEXT FIELD] New Hotel Name Text Field
         JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("Enter New Hotel Name");
-        new_hot_name.addActionListener(e -> {
+        new_hot_name.addActionListener(_ -> {
             if (!getWindowChecker_manage()) {
                 if (getHotel_name() != null) {
                     if (hrs.fetchHotel(new_hot_name.getText()) != null) {
@@ -255,7 +255,7 @@ public class GUI_MANAGE extends GUI {
 
         // [TEXT FIELD] Room Number to Remove
         JTextField room_rem = Assets.ASSET_TEXT_FIELD("Room # to Remove");
-        room_rem.addActionListener(e -> {
+        room_rem.addActionListener(_ -> {
             if (!getWindowChecker_manage()) {
                 if (getHotel_name() != null) {
                     Hotel hotel = hrs.fetchHotel(getHotel_name());
