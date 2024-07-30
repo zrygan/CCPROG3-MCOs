@@ -423,7 +423,7 @@ public class Assets {
         menuItem.setFont(Fonts.get("Regular", 18));
         menuItem.setPreferredSize(new Dimension(150, 45));
 
-        menuItem.setHorizontalAlignment(JMenuItem.CENTER);
+        menuItem.setHorizontalAlignment(JMenuItem.LEFT);
 
         return menuItem;
     }
