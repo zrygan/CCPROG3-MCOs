@@ -416,11 +416,11 @@ public class Hotel {
     }
 
     /**
-     * Gets the average DPC of all the rooms in the hotel
+     * Gets the average DPM of all the rooms in the hotel
      * 
-     * @return the average DPC
+     * @return the average DPM
      */
-    public double getAverageDPC() {
+    public double getAverageDPM() {
         double total = 0;
         for (Room room : rooms) {
             for (int i = 0; i < 31; i++) {

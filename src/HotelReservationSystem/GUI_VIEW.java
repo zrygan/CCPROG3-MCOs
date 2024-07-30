@@ -160,7 +160,7 @@ public class GUI_VIEW extends GUI {
                 out.append("\n     \thas earned ").append(hotel.getEarnings());
                 out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ")
                         .append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
-                out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
+                out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPM());
                 output.setText(out.toString());
             } else {
                 JOptionPane.showMessageDialog(this, "Hotel not found!");
