@@ -437,8 +437,10 @@ public class Hotel {
      * @param newDPM the new DPM for the day
      */
     public void changeDPMs(int day, double newDPM) {
-        for (Room room : this.getRooms()) {
-            room.changeDPM(day, newDPM);
+        if (1 <= day && day >= 31) {
+            for (Room room : this.getRooms()) {
+                room.changeDPM(day, newDPM);
+            }
         }
     }
 
