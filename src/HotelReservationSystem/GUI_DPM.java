@@ -306,16 +306,17 @@ public class GUI_DPM extends GUI {
                             room.changeDPM(getDay_num() - 1, getPrice_mod());
                             Assets.ASSET_PANE(this, "Discount Price Modifier applied successfully.", "HRS");
                         } else {
-                            JOptionPane.showMessageDialog(null, "Room not found.");
+                            Assets.ASSET_PANE(this, "Room not found.", "HRS: Error");
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Please fill out all required fields.");
+                        Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");
                     }
                 } else if (getRoom_opt() == 2) {
                     hotel.changeDPMs(getDay_num() - 1, getPrice_mod());
+                    Assets.ASSET_PANE(this, "Discount Price Modifier applied successfully for all rooms.", "HRS");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Please fill out all required fields.");
+                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");
             }
         });
         dpm_button.setPreferredSize(new Dimension(300, 90));
