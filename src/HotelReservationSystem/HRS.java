@@ -172,6 +172,7 @@ public class HRS {
      * @param hotelName the name of the hotel
      * @param type the type of rooms to create the hotel at the start
      * @param count the number of rooms to create with the hotel
+     * FIXME: Add Testscript for this
      */
     public void createHotel(String hotelName, int type, int count){
         Hotel hotel = new Hotel(hotelName);
@@ -550,7 +551,7 @@ public class HRS {
                                 System.out.printf("\nEnter the new date price modifer for day %d: ", day);
                                 double newDPM = getInputDBL(sc);
 
-                                // check if newDPM is valis (i.e, >0)
+                                // check if newDPM is valid (i.e, >0)
                                 if (newDPM > 0) {
 
                                     // check if for one day or all rooms

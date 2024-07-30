@@ -10,6 +10,24 @@ public class GUI_MANAGE extends GUI {
     private final GUI_MAIN mains;
     private String hotel_name;
     private boolean windowChecker_manage;
+    private String new_hotel;
+    private int room_num;
+
+    public int getRoom_num() {
+        return room_num;
+    }
+
+    public void setRoom_num(int room_num) {
+        this.room_num = room_num;
+    }
+
+    public String getNew_hotel() {
+        return new_hotel;
+    }
+
+    public void setNew_hotel(String new_hotel) {
+        this.new_hotel = new_hotel;
+    }
 
     public String getHotel_name() {
         return hotel_name;
@@ -101,26 +119,78 @@ public class GUI_MANAGE extends GUI {
 
         // [TEXT FIELD] New Hotel Name Text Field
         JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("Enter New Hotel Name");
-        // ADD ACTION LISTENER
+        new_hot_name.addActionListener(e -> {
+            if (hrs.fetchHotel(new_hot_name.getText()) == null) {
+                JOptionPane.showMessageDialog(this, "Hotel Name already exists.");
+            }
+            else {
+                Hotel hotel = hrs.fetchHotel(getHotel_name());
+                setNew_hotel(new_hot_name.getText());
+                hotel.setName(getNew_hotel());
+                new_hot_name.setText(getNew_hotel());
+                JOptionPane.showMessageDialog(this, "Hotel " + getHotel_name() + " is changed to Hotel " + getNew_hotel());
+                // FIXME: Find a way to Update hotel menu after the changes
+                // I think rerun the for loop for the hotel hotel : getHotels() stuff
+                setHotel_name(getNew_hotel());
+                hotelMenu.setText(getNew_hotel());
+            }
+        });
         panels.get(2).add(new_hot_name);
 
         // [BUTTON] Add Room Button
         JButton add_room = Assets.ASSET_ACCENT_BUTTON("Add Room");
         add_room.addActionListener(_ -> {
             if (!getWindowChecker_manage()){
-                GUI_ROOM room = new GUI_ROOM(hrs, 600, 500, this, hotel_name);
-                // FIXME: add the hotel name here, check if the implementation is correct
-                // maybe we do a checker so that if the hotel_name is null the status box displays:
-                // "Select a hotel first"
-                room.init();
-                setWindowChecker_manage(true);
+                if (getHotel_name() != null) {
+                    GUI_ROOM room = new GUI_ROOM(hrs, 600, 500, this, hotel_name);
+                    room.init();
+                    setWindowChecker_manage(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Select a hotel first.");
+                }
             }
         });
         panels.get(2).add(add_room);
         
         // [TEXT FIELD] Room Number to Remove
         JTextField room_rem = Assets.ASSET_TEXT_FIELD("Room # to Remove");
-        // ADD ACTION LISTENER
+        room_rem.addActionListener(e -> {
+            if (getHotel_name() != null) {
+                Hotel hotel = hrs.fetchHotel(getHotel_name());
+                int index = Integer.parseInt(room_rem.getText());
+                if (hotel.getRoomCount() > 1) {
+                    if (room_rem.getText() != null && (index < 0 || index > 51)) {
+                        JOptionPane.showMessageDialog(this, "Invalid Room Number.");
+                    }
+                    else {
+                        // format the name
+                        String roomName = hotel.getName() + "_Room_" + index;
+    
+                        // get the room
+                        Room room = hotel.fetchRoom(roomName);
+    
+                        // check if the room exists
+                        if (room!= null) {
+                            if (room.getReservation() == null) {
+                                hotel.delRoom(index);
+                                JOptionPane.showMessageDialog(this, roomName + " is removed.");
+                            }
+                            else {
+                                JOptionPane.showMessageDialog(this, "Room " + roomName + " is reserved by " + room.getReservation().getGuest());
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Room " + roomName + " does not exist.");
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Hotel must have at least 2 rooms.");
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select a hotel first.");
+            }
+            
+        });
         panels.get(2).add(room_rem);
 
         /* code of MID-RIGHT PANEL (panel: 3)
@@ -131,17 +201,44 @@ public class GUI_MANAGE extends GUI {
 
         // [BUTTON] Delete Hotel Button
         JButton delete_hot = Assets.ASSET_ACCENT_BUTTON("Delete Hotel");
-        // ADD ACTION LISTENER
+        delete_hot.addActionListener(_ -> {
+            if (getHotel_name()!= null) {
+                Hotel hotel = hrs.fetchHotel(getHotel_name());
+                hotel.prepareForRemoval();
+                hrs.getHotels().remove(hotel);
+                JOptionPane.showMessageDialog(this, "Hotel " + getHotel_name() + " is deleted.");
+                dispose();
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "Select a hotel first.");
+            }
+        });
         panels.get(3).add(delete_hot);
 
         // [TEXT FIELD] New DPM Text Field
-        JTextField new_DPM = Assets.ASSET_TEXT_FIELD("New DPM");
-        // ADD ACTION LISTENER
+        JButton new_DPM = Assets.ASSET_ACCENT_BUTTON("New DPM");
+        new_DPM.addActionListener(_ -> {
+            if (!getWindowChecker_manage()){
+                if (getHotel_name() != null) {
+                    GUI_DPM dpm = new GUI_DPM(hrs, 600, 500, this, getHotel_name());
+                    dpm.init();
+                    setWindowChecker_manage(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Select a hotel first.");
+                }
+            }
+        });
         panels.get(3).add(new_DPM);
 
         // [TEXT FIELD] Remove Reservation Text Field
-        JTextField rem_res = Assets.ASSET_TEXT_FIELD("Reservation Name to Remove");
-        // ADD ACTION LISTENER
+        // FIXME: necessary for another text field so maybe add a new window for this too
+        JTextField rem_res = Assets.ASSET_TEXT_FIELD("Reservation Guest Name to Remove");
+        rem_res.addActionListener(_ -> {
+            if (getHotel_name()!= null) {
+                Hotel hotel = hrs.fetchHotel(getHotel_name());
+                String reservationName = rem_res.getText();
+            }   
+        });
         panels.get(3).add(rem_res);
 
         /* code of BOTTOM PANEL (panel: 4)

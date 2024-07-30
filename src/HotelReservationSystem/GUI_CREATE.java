@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-public class GUI_CREATE extends GUI{
+public class GUI_CREATE extends GUI {
     private final GUI_MAIN mains;
     private String hotel_name;
     private int type_num;
@@ -87,7 +87,7 @@ public class GUI_CREATE extends GUI{
         *  contains:
         */
         panels.get(1).setBounds( 0, 100, window_width, 400); // panels[1] = bottom panel
-        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
+        panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // [MENU BAR] Hotel Name Menu Bar
         JTextField hotel_name = Assets.ASSET_TEXT_FIELD("Hotel Name");
@@ -115,7 +115,7 @@ public class GUI_CREATE extends GUI{
         JSpinner num_room = Assets.ASSET_SPINNER(1, 50);
         num_room.setValue(1);
         setRoom_tot((int) num_room.getValue());
-        num_room.setPreferredSize(new Dimension(75, 45));
+        num_room.setPreferredSize(new Dimension(300, 45));
         num_room.addChangeListener(e -> {
             setRoom_tot((int) num_room.getValue());
         });
@@ -126,6 +126,7 @@ public class GUI_CREATE extends GUI{
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
         JMenu type_menu = Assets.createMenu("Room Type");
+        setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
         std_type.addActionListener(e -> {
@@ -154,14 +155,18 @@ public class GUI_CREATE extends GUI{
 
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
         createButton.addActionListener(e -> {
-            if(hotel_name == null || type_num == 0 || room_tot == 0){
-                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS");
+            if (getHotel_name() != null || getRoom_tot() == 0 || getType_num() == 0) { // FIXME: WTF IS WRONG WITH THIS
+                JOptionPane.showMessageDialog(this, "Please fill out all required fields.");
             } else {
-                hrs.createHotel(getHotel_name(), getType_num(), getRoom_tot());
-                Assets.ASSET_PANE(this, "Hotel created successfully.", "HRS");
-                JOptionPane.showMessageDialog(this, "Hotel created successfully.");
-                mains.setWindowChecker(false);
-                dispose();
+                if (hrs.fetchHotel(getHotel_name()) != null) {
+                    JOptionPane.showMessageDialog(this, "Hotel name already exists.");
+                }
+                else {
+                    hrs.createHotel(getHotel_name(), getType_num(), getRoom_tot());
+                    JOptionPane.showMessageDialog(this, "Hotel created successfully.");
+                    mains.setWindowChecker(false);
+                    dispose();
+                } 
             }
         });
         panels.get(1).add(createButton);

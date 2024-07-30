@@ -98,14 +98,18 @@ public class GUI_VIEW extends GUI {
         high_lvl_info.addActionListener(e -> {
             StringBuilder out = new StringBuilder();
             Hotel hotel = hrs.fetchHotel(getHotel_name());
-            out.append("\n     Hotel: ").append(hotel.getName());
-            out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
-            out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
-            out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
-            out.append("\n     \thas earned ").append(hotel.getEarnings());
-            out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ").append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
-            out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
-            output.setText(out.toString());
+            if (hotel != null) {
+                out.append("\n     Hotel: ").append(hotel.getName());
+                out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
+                out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
+                out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
+                out.append("\n     \thas earned ").append(hotel.getEarnings());
+                out.append("\n     \tRoom base price range from ").append(hotel.getBasePrice()).append(" to ").append(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35));
+                out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPC());
+                output.setText(out.toString());
+            } else {
+                JOptionPane.showMessageDialog(this, "Hotel not found!");
+            }
         });
         panels.get(2).add(high_lvl_info);
 
@@ -117,21 +121,29 @@ public class GUI_VIEW extends GUI {
             StringBuilder out = new StringBuilder();
             int day = Integer.parseInt(ent_day.getText());
             Hotel hotel = hrs.fetchHotel(getHotel_name());
-            if (hotel.fetchAvails(1, day).isEmpty()) {
-                out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": NONE");
-            } else {
-                out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": ");
-                for (String room : hotel.fetchAvails(1, day)) {
-                    out.append("\n     \t").append(room);
+            if (getHotel_name() != null) {
+                if (hotel.fetchAvails(1, day).isEmpty()) {
+                    out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": NONE");
+                } else {
+                    out.append("\n     Available rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": \n");
+                    out.append("     \t");
+                    for (String room : hotel.fetchAvails(1, day)) {
+                    String roomNum = room.replace(hotel.getName() + "_Room_", "");
+                       out.append(roomNum).append(" ");
+                    }
                 }
-            }
-            if (hotel.fetchAvails(0, day).isEmpty()) {
-                out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": NONE");
-            } else {
-                out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": ");
-                for (String room : hotel.fetchAvails(0, day)) {
-                    out.append("\n     \t").append(room);
+                if (hotel.fetchAvails(0, day).isEmpty()) {
+                    out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": NONE");
+                } else {
+                    out.append("\n     Booked rooms of hotel ").append(hotel.getName()).append(" on day ").append(day).append(": \n");
+                    out.append("     \t");
+                    for (String room : hotel.fetchAvails(0, day)) {
+                        String roomNum = room.replace(hotel.getName() + "_Room_", "");
+                        out.append(roomNum).append(" ");  
+                    }
                 }
+            } else {
+                JOptionPane.showMessageDialog(this, "Hotel not found!");
             }
             output.setText(out.toString());
         });
@@ -144,20 +156,25 @@ public class GUI_VIEW extends GUI {
             StringBuilder out = new StringBuilder();
             String reservation = res_name.getText();
             Hotel hotel = hrs.fetchHotel(getHotel_name());
-            for (Reservation guest_res : hotel.getReservations()) {
-                if (guest_res.getGuest().equals(reservation)) {
-                    out.append("\n\tReservation ").append(guest_res.getReservationNumber()).append(" under guest ").append(guest_res.getGuest()).append("\n");
-                    out.append("\n\t\t===== RECEIPT =====");
-                    out.append("\n\t\tname:\t").append(guest_res.getGuest());
-                    out.append("\n\t\thtl :\thotel ").append(hotel.getName());
-                    out.append("\n\t\troom:\t").append(guest_res.getRoom().getName());
-                    out.append("\n\t\tin  :\t%d").append(guest_res.getCheckin());
-                    out.append("\n\t\tout :\t%d").append(guest_res.getCheckout());
-                    out.append("\n\t\tcost\tPHP ").append(guest_res.getTotal());
-                    out.append("\n\t\t===================\n");
+            if (hotel != null) {
+                for (Reservation guest_res : hotel.getReservations()) {
+                    if (guest_res.getGuest().equals(reservation)) {
+                        out.append("\n\tReservation ").append(guest_res.getReservationNumber()).append(" under guest ").append(guest_res.getGuest()).append("\n");
+                        out.append("\n\t\t===== RECEIPT =====");
+                        out.append("\n\t\tname:\t").append(guest_res.getGuest());
+                        out.append("\n\t\thtl :\thotel ").append(hotel.getName());
+                        out.append("\n\t\troom:\t").append(guest_res.getRoom().getName());
+                        out.append("\n\t\tin  :\t%d").append(guest_res.getCheckin());
+                        out.append("\n\t\tout :\t%d").append(guest_res.getCheckout());
+                        out.append("\n\t\tcost\tPHP ").append(guest_res.getTotal());
+                        out.append("\n\t\t===================\n");
+                    }
                 }
+                output.setText(out.toString());
+            } else {
+                JOptionPane.showMessageDialog(this, "Hotel not found!");
             }
-            output.setText(out.toString());
+            
         });
         panels.get(2).add(res_name);
 
