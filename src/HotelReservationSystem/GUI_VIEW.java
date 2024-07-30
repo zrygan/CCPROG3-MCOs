@@ -223,24 +223,28 @@ public class GUI_VIEW extends GUI {
             String reservation = res_name.getText();
             Hotel hotel = hrs.fetchHotel(getHotel_name());
             if (hotel != null) {
-                for (Reservation guest_res : hotel.getReservations()) {
-                    if (guest_res.getGuest().equals(reservation)) {
-                        DecimalFormat df = new DecimalFormat("#.00");
-                        out.append("\n\tReservation ").append(guest_res.getReservationNumber()).append(" under guest ")
-                                .append(guest_res.getGuest()).append("\n");
-                        out.append("\n\t\t===== RECEIPT =====");
-                        out.append("\n\t\tname:\t").append(guest_res.getGuest());
-                        out.append("\n\t\thtl :\thotel ").append(hotel.getName());
-                        out.append("\n\t\troom:\t").append(guest_res.getRoom().getName());
-                        out.append("\n\t\tin  :\t").append(guest_res.getCheckin());
-                        out.append("\n\t\tout :\t").append(guest_res.getCheckout());
-                        out.append("\n\t\tcost\tPHP ").append(df.format(guest_res.getTotal()));
-                        out.append("\n\t\t===================\n");
+                if (!hotel.getReservations().isEmpty()) {
+                    for (Reservation guest_res : hotel.getReservations()) {
+                        if (guest_res.getGuest().equals(reservation)) {
+                            DecimalFormat df = new DecimalFormat("#.00");
+                            out.append("\n\tReservation ").append(guest_res.getReservationNumber()).append(" under guest ")
+                                    .append(guest_res.getGuest()).append("\n");
+                            out.append("\n\t\t===== RECEIPT =====");
+                            out.append("\n\t\tname:\t").append(guest_res.getGuest());
+                            out.append("\n\t\thtl :\thotel ").append(hotel.getName());
+                            out.append("\n\t\troom:\t").append(guest_res.getRoom().getName());
+                            out.append("\n\t\tin  :\t").append(guest_res.getCheckin());
+                            out.append("\n\t\tout :\t").append(guest_res.getCheckout());
+                            out.append("\n\t\tcost\tPHP ").append(df.format(guest_res.getTotal()));
+                            out.append("\n\t\t===================\n");
+                        }
                     }
+                    output.setText(out.toString());
+                } else{
+                    output.setText("\n\tThere are no reservations under" + getHotel_name());
                 }
-                output.setText(out.toString());
             } else {
-                JOptionPane.showMessageDialog(this, "Hotel not found!");
+                Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
             }
 
         });
