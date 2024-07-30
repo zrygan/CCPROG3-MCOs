@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  * A class that extends GUI that creates the change DPM window under manage hotel
@@ -262,20 +265,30 @@ public class GUI_DPM extends GUI {
 
         // [JTextField] Price modifier
         JTextField price_modifier = Assets.ASSET_TEXT_FIELD("Enter Price Modifier");
-        price_modifier.getDocument().addDocumentListener(new DocumentListener() {
+        price_modifier.addFocusListener(new FocusAdapter() {
             @Override
-            public void insertUpdate(DocumentEvent e) {
-                setPrice_mod(Double.parseDouble(price_modifier.getText()));
+            public void focusGained(FocusEvent e) {
+                // Not used
+            }
+            
+            @Override
+            public void focusLost(FocusEvent e) {
+                updatePriceModifier();
             }
 
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                setPrice_mod(Double.parseDouble(price_modifier.getText()));
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                // Not needed for plain text fields
+            private void updatePriceModifier() {
+                String text = price_modifier.getText();
+                if (text.isEmpty()) {
+                    // Don't try to parse if the field is empty
+                    return;
+                }
+                try {
+                    setPrice_mod(Double.parseDouble(text));
+                } catch (NumberFormatException ex) {
+                    // Handle the exception, for example, clear the field or show an error message
+                    price_modifier.setText("");
+                    Assets.ASSET_PANE(getMains(), "Please enter a valid number.", "HRS: Error");
+                }
             }
         });
         price_modifier.setPreferredSize(new Dimension(300, 45));
@@ -291,7 +304,7 @@ public class GUI_DPM extends GUI {
                         Room room = hotel.fetchRoom(hotel.getName() + "_Room_" + getRoom_num());
                         if (room != null) {
                             room.changeDPM(getDay_num() - 1, getPrice_mod());
-                            JOptionPane.showMessageDialog(null, "Discount Price Modifier applied successfully.");
+                            Assets.ASSET_PANE(this, "Discount Price Modifier applied successfully.", "HRS");
                         } else {
                             JOptionPane.showMessageDialog(null, "Room not found.");
                         }
