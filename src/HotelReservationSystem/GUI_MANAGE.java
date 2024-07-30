@@ -171,7 +171,7 @@ public class GUI_MANAGE extends GUI {
         setLayout(null);
         setResizable(false);
 
-        ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(5);
+        ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(4);
 
         /*
          * code of TOP PANEL (panel : 0)
@@ -210,8 +210,8 @@ public class GUI_MANAGE extends GUI {
          * code of MID-LEFT PANEL (panel : 2)
          * contains: New Hotel Name Text Field, Add Room Button, Room Number to Remove
          */
-        panels.get(2).setBounds(0, 145, window_width / 2, 400); // panels[2] = mid-left panel
-        panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 80));
+        panels.get(2).setBounds(0, 145, window_width / 2, 450); // panels[2] = mid-left panel
+        panels.get(2).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 60));
 
         // [TEXT FIELD] New Hotel Name Text Field
         JTextField new_hot_name = Assets.ASSET_TEXT_FIELD("Enter New Hotel Name");
@@ -298,8 +298,8 @@ public class GUI_MANAGE extends GUI {
          * contains: Delete Hotel Button, New DPM Text Field, Remove Reservation Text
          * Field
          */
-        panels.get(3).setBounds(window_width / 2, 145, window_width / 2, 400); // panels[3] = mid-right panel
-        panels.get(3).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 80));
+        panels.get(3).setBounds(window_width / 2, 145, window_width / 2, 450); // panels[3] = mid-right panel
+        panels.get(3).setLayout(new FlowLayout(FlowLayout.CENTER, 0, 60));
 
         // [BUTTON] Delete Hotel Button
         JButton delete_hot = Assets.ASSET_ACCENT_BUTTON("Delete Hotel");
@@ -347,19 +347,6 @@ public class GUI_MANAGE extends GUI {
             }
         });
         panels.get(3).add(rem_res);
-
-        /*
-         * code of BOTTOM PANEL (panel: 4)
-         * contains: FOOTER
-         */
-        panels.get(4).setBounds(0, 545, window_width, 255); // panels[4] = bottom panel
-        panels.get(4).setLayout(new FlowLayout(FlowLayout.LEFT, 50, 60));
-
-        // [OUTPUX BOX] Output box
-        // FIXME: add an actionlistener for the text area box
-        JTextArea output_box = Assets.ASSET_OUTPUT_BOX(window_width, 50, "HELLO");
-        output_box.setPreferredSize(new Dimension(window_width - 100, 45));
-        panels.get(4).add(output_box);
 
         for (JPanel panel : panels) {
             panel.setBackground(Colors.getBlack());

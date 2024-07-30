@@ -140,7 +140,7 @@ public class GUI_MAIN extends GUI {
         JButton btn_manage = Assets.ASSET_BASIC_BUTTON("Manage Hotel");
         btn_manage.addActionListener(_ -> {
             if (!getWindowChecker()) {
-                GUI_MANAGE manage = new GUI_MANAGE(hrs, 800, 500, this);
+                GUI_MANAGE manage = new GUI_MANAGE(hrs, 600, 500, this);
                 manage.init();
                 setWindowChecker(true);
             }

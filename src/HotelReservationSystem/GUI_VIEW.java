@@ -171,7 +171,7 @@ public class GUI_VIEW extends GUI {
                 out.append("\n     \thas average date price modifier ").append(df.format(hotel.getAverageDPM()));
                 output.setText(out.toString());
             } else {
-                JOptionPane.showMessageDialog(this, "Hotel not found!");
+                Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
             }
         });
         panels.get(2).add(high_lvl_info);
@@ -217,7 +217,7 @@ public class GUI_VIEW extends GUI {
                     }
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Hotel not found!");
+                Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
             }
             output.setText(out.toString());
         });
