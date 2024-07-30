@@ -49,18 +49,46 @@ package HotelReservationSystem;
 
 import javax.swing.*;
 
+/**
+ * An abstract class for creating Graphical User Interfaces (GUIs) for the Hotel
+ * Reservation System (HRS).
+ */
 public abstract class GUI extends JFrame {
+    /**
+     * The Hotel Reservation System (HRS) instance
+     */
     protected final HRS hrs;
+
+    /**
+     * The height of the GUI window
+     */
     protected final int window_height;
+
+    /**
+     * The width of the GUI window
+     */
     protected final int window_width;
 
-    public GUI(HRS hrs, int window_height, int window_width){
+    /**
+     * Constructor for the GUI class
+     * 
+     * @param hrs           The Hotel Reservation System (HRS) instance
+     * @param window_height The height of the GUI window
+     * @param window_width  The width of the GUI window
+     */
+    public GUI(HRS hrs, int window_height, int window_width) {
         this.hrs = hrs;
         this.window_height = window_height;
         this.window_width = window_width;
     }
-    
+
+    /**
+     * Initializes the GUI components
+     */
     public abstract void init();
 
+    /**
+     * Configures the GUI window close operation
+     */
     public abstract void GUI_CONFIG_WINDOW_CLOSE();
 }

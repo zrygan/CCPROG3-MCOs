@@ -8,45 +8,116 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+/**
+ * A class that extends GUI that creates the new hotel window
+ */
 public class GUI_CREATE extends GUI {
+    /**
+     * The main GUI component
+     */
     private final GUI_MAIN mains;
+
+    /**
+     * The name of the hotel
+     */
     private String hotel_name;
+
+    /**
+     * The type of room (e.g. single, double, suite, etc.)
+     */
     private int type_num;
+
+    /**
+     * The total number of rooms
+     */
     private int room_tot;
 
+    /**
+     * Getter for the total number of rooms
+     * 
+     * @return the total number of rooms
+     */
     public int getRoom_tot() {
         return room_tot;
     }
 
+    /**
+     * Setter for the total number of rooms
+     * 
+     * @param room_tot the total number of rooms
+     */
     public void setRoom_tot(int room_tot) {
         this.room_tot = room_tot;
     }
 
+    /**
+     * Getter for the room type number
+     * 
+     * @return the room type number
+     */
     public int getType_num() {
         return type_num;
     }
 
+    /**
+     * Setter for the room type number
+     * 
+     * @param type_num the room type number
+     */
     public void setType_num(int type_num) {
         this.type_num = type_num;
     }
 
+    /**
+     * Getter for the hotel name
+     * 
+     * @return the hotel name
+     */
     public String getHotel_name() {
         return hotel_name;
     }
 
+    /**
+     * Setter for the hotel name
+     * 
+     * @param hotel_name the hotel name
+     */
     public void setHotel_name(String hotel_name) {
         this.hotel_name = hotel_name;
     }
 
-    public GUI_MAIN getMains(){
+    /**
+     * Getter for the main GUI component
+     * 
+     * @return the main GUI component
+     */
+    public GUI_MAIN getMains() {
         return mains;
     }
 
-    public GUI_CREATE(HRS hrs, int window_height, int window_width, GUI_MAIN mains){
+    /**
+     * The constructor for GUI_CREATE
+     * 
+     * @param hrs           the hrs database
+     * @param window_height the window height
+     * @param window_width  the window width
+     * @param mains         the main window
+     */
+    public GUI_CREATE(HRS hrs, int window_height, int window_width, GUI_MAIN mains) {
         super(hrs, window_height, window_width);
         this.mains = mains;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * This method overrides the {@code GUI_CONFIG_WINDOW_CLOSE} method in
+     * {@code GUI}.
+     * This sets the setWindowChecker attribute of the mains attribute of GUI_DPM
+     * as false.
+     * 
+     * @see GUI#GUI_CONFIG_WINDOW_CLOSE()
+     */
     @Override
     public void GUI_CONFIG_WINDOW_CLOSE() {
         addWindowListener(new WindowAdapter() {
@@ -62,31 +133,40 @@ public class GUI_CREATE extends GUI {
         });
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * This method overrides the {@code init} method in {@code GUI}.
+     * This method initializes the GUI.
+     * 
+     * @see GUI#init()
+     */
     @Override
-    public void init(){
+    public void init() {
         setTitle("Hotel Reservation System: Creating a hotel");
         setSize(window_width, window_height);
         GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
         setResizable(false);
 
-        ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(2);
+        ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(2);
 
-        /* code of TOP PANEL (panel : 0)
-        *  contains:   TOP TITLE
-        */
-        panels.getFirst().setBounds( 0, 0, window_width, 100);        // panels[0] = top panel
+        /*
+         * code of TOP PANEL (panel : 0)
+         * contains: TOP TITLE
+         */
+        panels.getFirst().setBounds(0, 0, window_width, 100); // panels[0] = top panel
         panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
-        String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Creating a Hotel"};
+        String[] title_top = new String[] { "<b>Hotel Reservation System</b>", ">>> Creating a Hotel" };
         panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
-        
-        
-        /* code of Bottom PANEL (panel : 1)
-        *  contains:
-        */
-        panels.get(1).setBounds( 0, 100, window_width, 400); // panels[1] = bottom panel
+
+        /*
+         * code of Bottom PANEL (panel : 1)
+         * contains:
+         */
+        panels.get(1).setBounds(0, 100, window_width, 400); // panels[1] = bottom panel
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 10));
 
         // [MENU BAR] Hotel Name Menu Bar
@@ -110,7 +190,7 @@ public class GUI_CREATE extends GUI {
         hotel_name.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(hotel_name);
 
-        panels.get(1).add(Assets.ASSET_SEPARATOR(window_width/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(window_width / 2));
 
         JSpinner num_room = Assets.ASSET_SPINNER(1, 50);
         num_room.setValue(1);
@@ -121,7 +201,7 @@ public class GUI_CREATE extends GUI {
         });
         panels.get(1).add(num_room);
 
-        panels.get(1).add(Assets.ASSET_SEPARATOR(window_width/2));
+        panels.get(1).add(Assets.ASSET_SEPARATOR(window_width / 2));
 
         // [MENU BAR] Room Type Menu Bar
         JMenuBar room_type = Assets.ASSET_MENU_BAR();
@@ -156,22 +236,21 @@ public class GUI_CREATE extends GUI {
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
         createButton.addActionListener(e -> {
             if (getHotel_name() != null || getRoom_tot() == 0 || getType_num() == 0) { // FIXME: WTF IS WRONG WITH THIS
-                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");                
+                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");
             } else {
                 if (hrs.fetchHotel(getHotel_name()) != null) {
-                    Assets.ASSET_PANE(this, "Hotel name already exists.", "HRS: Error");                
-                }
-                else {
+                    Assets.ASSET_PANE(this, "Hotel name already exists.", "HRS: Error");
+                } else {
                     hrs.createHotel(getHotel_name(), getType_num(), getRoom_tot());
-                    Assets.ASSET_PANE(this, "Hotel created successfully.", "HRS");                
+                    Assets.ASSET_PANE(this, "Hotel created successfully.", "HRS");
                     mains.setWindowChecker(false);
                     dispose();
-                } 
+                }
             }
         });
         panels.get(1).add(createButton);
 
-        for (JPanel panel : panels){
+        for (JPanel panel : panels) {
             panel.setBackground(Colors.getBlack());
             add(panel);
         }

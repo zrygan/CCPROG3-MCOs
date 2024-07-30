@@ -7,12 +7,13 @@ import java.util.Scanner;
  * HotelReservationSystem.Driver class for the Hotel Reservation System
  */
 public class Driver {
-    
+
     /**
      * Constructor for the Driver Class (blank)
      */
-    public Driver(){
-        // just added this to make javadoc stop crying with how there's no comment constructor for the Driver file
+    public Driver() {
+        // just added this to make javadoc stop crying with how there's no comment
+        // constructor for the Driver file
     }
 
     /**
@@ -22,7 +23,7 @@ public class Driver {
      */
     public static void main(String[] args) {
         // Make instacnce of HRS
-        HRS hrs = new HRS();            
+        HRS hrs = new HRS();
         Fonts.init(); // initialize fonts
 
         new Thread(() -> {
@@ -31,10 +32,10 @@ public class Driver {
         }).start();
 
         boolean run = true;
-        
+
         // CLI
         try (Scanner sc = new Scanner(System.in)) // initialize scanner
-        {   
+        {
             System.out.println("Welcome to the Hotel Reservation System or (HRS).");
 
             // add more instructions here if needed

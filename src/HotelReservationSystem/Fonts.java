@@ -12,15 +12,17 @@ public class Fonts {
     /**
      * Default empty constructor
      */
-    public Fonts(){
+    public Fonts() {
 
     }
 
     /**
      * Created a font that can be used by the Java Swing GUI from a .ttf file
-     * @param type the type (regular, bold, italic) of the font
-     * @param pt the size of the font
-     * @param isRegistered checker if the font is already registered in the local graphics Environment
+     * 
+     * @param type         the type (regular, bold, italic) of the font
+     * @param pt           the size of the font
+     * @param isRegistered checker if the font is already registered in the local
+     *                     graphics Environment
      * @return the derived font with the approriate size and type
      */
     public static Font get(String type, float pt, boolean isRegistered) {
@@ -30,8 +32,8 @@ public class Fonts {
         try {
             InputStream stream = Fonts.class.getResourceAsStream(filename);
 
-            if (stream == null){
-                throw new IOException("Error. Font file not found!");   
+            if (stream == null) {
+                throw new IOException("Error. Font file not found!");
             }
             // create and register a font with the filename created
             Font font = Font.createFont(Font.TRUETYPE_FONT, stream);
@@ -56,18 +58,19 @@ public class Fonts {
 
     /**
      * Method overloading of get() without isRegistered parameter
+     * 
      * @param type the type (regular, italic, bold) of the font
-     * @param pt the size of the font
+     * @param pt   the size of the font
      * @return the font with the appropriate size and type
      */
-    public static Font get(String type, float pt){
+    public static Font get(String type, float pt) {
         return get(type, pt, false);
     }
 
     /**
      * Initializes the fonts and the types.
      */
-    public static void init(){
+    public static void init() {
         get("Regular", 14, false);
         get("Bold", 14, false);
         get("Italic", 14, false);

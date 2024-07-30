@@ -615,6 +615,7 @@ public class HRS {
                                             }
                                         }
                                         System.out.printf("\n\033[33mDate Price Modifier changes successfully for hotel '%s'.\033[37m\n", hotel.getName());
+                            
                                     }
                                     case 2 -> {
                                         // 3x for weekend

@@ -10,7 +10,7 @@ public class Colors {
     /**
      * Empty colors constructor
      */
-    public Colors(){
+    public Colors() {
 
     }
 
