@@ -237,8 +237,6 @@ public class GUI_CREATE extends GUI {
         createButton.addActionListener(e -> {
             if (getHotel_name() == null || getRoom_tot() == 0 || getType_num() == 0) {
                 Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");                
-            if (getHotel_name() != null || getRoom_tot() == 0 || getType_num() == 0) { // FIXME: WTF IS WRONG WITH THIS
-                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS: Error");
             } else {
                 if (hrs.fetchHotel(getHotel_name()) != null) {
                     Assets.ASSET_PANE(this, "Hotel name already exists.", "HRS: Error");
