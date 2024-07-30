@@ -182,6 +182,7 @@ public class Hotel {
         return null;
     }
 
+
     /**
      * Books a room and makes a reservation, if possible
      *
@@ -220,7 +221,6 @@ public class Hotel {
                         }
                     }
                 }
-
                 // add reservation
                 int reservationNumber = this.getReservationCount() + 1;
 
