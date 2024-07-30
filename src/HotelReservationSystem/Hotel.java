@@ -172,10 +172,17 @@ public class Hotel {
             String roomName = name + "_Room_" + roomNumber;
             // the first room that doesnt exist yet make it
             if (fetchRoom(roomName) == null) {
-                Room newRoom = new Room(roomName, this, this.basePrice, type);
-                rooms.add(newRoom);
-                roomCount++;
-                return newRoom;
+                Room newRoom = switch (type) {
+                    case 1 -> new RoomSTD(name, this, getBasePrice());
+                    case 2 -> new RoomDLX(name, this, getBasePrice() * 0.2);
+                    case 3 -> new RoomEXC(name, this, getBasePrice() * 0.35);
+                    default -> null;
+                };
+                if (newRoom != null) {
+                    rooms.add(newRoom);
+                    roomCount++;
+                    return newRoom;
+                }
             }
         }
 
@@ -202,7 +209,7 @@ public class Hotel {
 
         for (Room room : this.rooms) {
             // look for a room that is available for the entire duration of the reservation
-            if (room.isAvailable(checkin, checkout) && room.getType() == type) {
+            if (room.isAvailable(checkin, checkout) && room.getRoomType() == type) {
                 double total = room.calcPrice(checkin, checkout);
 
                 // check for any applicable discount codes
@@ -458,7 +465,7 @@ public class Hotel {
         roomTypes[2] = 0; // counter for executive rooms
 
         for (Room room : this.getRooms()) {
-            switch (room.getType()) {
+            switch (room.getRoomType()) {
                 case 1 -> roomTypes[0] += 1;
                 case 2 -> roomTypes[1] += 1;
                 case 3 -> roomTypes[2] += 1;

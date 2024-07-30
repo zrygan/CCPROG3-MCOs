@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * A class that represents an object that represents the rooms in a hotel.
  */
-public class Room {
+public abstract class Room {
 
     // Variables
     private String name;
@@ -15,7 +15,6 @@ public class Room {
     private boolean[] availability;
     private Reservation reservation;
     private double[] DPM;
-    private final int type;
 
     /**
      * Constructor for the Room object
@@ -23,28 +22,17 @@ public class Room {
      * @param name      the name of the room, must be different for each room
      * @param hotel     the hotel of the room
      * @param basePrice the base price of the room
-     * @param type      the type of the room
      */
-    public Room(String name, Hotel hotel, double basePrice, int type) {
+    public Room(String name, Hotel hotel, double basePrice) {
         this.name = name;
         this.daysBooked = 0; // init as 0
         this.basePrice = basePrice;
         this.hotel = hotel;
         this.availability = new boolean[31];
         this.DPM = new double[31];
-        this.type = type;
 
         Arrays.fill(this.availability, Boolean.FALSE); // fill availability with false
         Arrays.fill(this.DPM, (double) 1.0); // fill DPM with 1.0 (default price)
-
-        switch (type) {
-            case 2 ->
-                this.basePrice = basePrice + (basePrice * 0.20); // deluxe costs 20% more
-            case 3 ->
-                this.basePrice = basePrice + (basePrice * 0.35); // executive costs 35% more
-            default ->
-                this.basePrice = basePrice;
-        }
     }
 
     /**
@@ -168,15 +156,6 @@ public class Room {
     }
 
     /**
-     * Getter for the type of the room
-     * 
-     * @return the type of the room
-     */
-    public int getType() {
-        return type;
-    }
-
-    /**
      * determines the days the room is booked and make it's availability for
      * those days true and increment the number of days the room is booked by
      * the total book book length
@@ -272,4 +251,11 @@ public class Room {
 
         return total;
     }
+
+    /**
+     * Returns the room type of the room
+     *
+     * @return the room type
+     */
+    public abstract int getRoomType();
 }
