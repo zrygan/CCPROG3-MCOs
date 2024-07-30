@@ -160,10 +160,16 @@ public class GUI_VIEW extends GUI {
                 out.append("\n     \thas ").append(hotel.roomTypeCount()[0]).append(" Standard rooms");
                 out.append("\n     \thas ").append(hotel.roomTypeCount()[1]).append(" Deluxe rooms");
                 out.append("\n     \thas ").append(hotel.roomTypeCount()[2]).append(" Executive rooms");
-                out.append("\n     \thas earned ").append(df.format(hotel.getEarnings()));
-                out.append("\n     \tRoom base price range from ").append(df.format(hotel.getBasePrice())).append(" to ")
+                double earnings = hotel.getEarnings();
+                if (earnings == 0) {
+                    out.append("\n     \thas not earned any revenue yet.");
+                } else {
+                    out.append("\n     \thas earned ").append(df.format(earnings));
+                }
+                out.append("\n     \tRoom base price range from ").append(df.format(hotel.getBasePrice()))
+                        .append(" to ")
                         .append(df.format(hotel.getBasePrice() + (hotel.getBasePrice() * 0.35)));
-                out.append("\n     \thas average date price modifier ").append(hotel.getAverageDPM());
+                out.append("\n     \thas average date price modifier ").append(df.format(hotel.getAverageDPM()));
                 output.setText(out.toString());
             } else {
                 Assets.ASSET_PANE(this, "Hotel not found!", "HRS: Error");
@@ -189,7 +195,8 @@ public class GUI_VIEW extends GUI {
                     int index = 0;
                     for (String room : hotel.fetchAvails(1, day)) {
                         index++;
-                        if (index % 16 == 0) out.append("\n\t");
+                        if (index % 16 == 0)
+                            out.append("\n\t");
                         String roomNum = room.replace(hotel.getName() + "_Room_", "");
                         out.append(roomNum).append(" ");
                     }
@@ -204,7 +211,8 @@ public class GUI_VIEW extends GUI {
                     int index2 = 0;
                     for (String room : hotel.fetchAvails(0, day)) {
                         index2++;
-                        if (index2 % 16 == 0) out.append("\n\t");
+                        if (index2 % 16 == 0)
+                            out.append("\n\t");
                         String roomNum = room.replace(hotel.getName() + "_Room_", "");
                         out.append(roomNum).append(" ");
                     }
@@ -228,7 +236,8 @@ public class GUI_VIEW extends GUI {
                     for (Reservation guest_res : hotel.getReservations()) {
                         if (guest_res.getGuest().equals(reservation)) {
                             DecimalFormat df = new DecimalFormat("#.00");
-                            out.append("\n\tReservation ").append(guest_res.getReservationNumber()).append(" under guest ")
+                            out.append("\n\tReservation ").append(guest_res.getReservationNumber())
+                                    .append(" under guest ")
                                     .append(guest_res.getGuest()).append("\n");
                             out.append("\n\t\t===== RECEIPT =====");
                             out.append("\n\t\tname:\t").append(guest_res.getGuest());
@@ -241,7 +250,7 @@ public class GUI_VIEW extends GUI {
                         }
                     }
                     output.setText(out.toString());
-                } else{
+                } else {
                     output.setText("\n\tThere are no reservations under " + getHotel_name());
                 }
             } else {
