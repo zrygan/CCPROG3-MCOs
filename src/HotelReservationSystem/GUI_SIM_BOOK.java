@@ -396,17 +396,6 @@ public class GUI_SIM_BOOK extends GUI {
                     else {
                         Assets.ASSET_PANE(this, "Failed to book room.", "HRS: Error");
                     }
-                    // String receipt = "\n Room booked successfully for " + getGuest_name() + 
-                    // "\n\n===== RECEIPT =====" + 
-                    // "\nname :\t" + getGuest_name() + 
-                    // "\nhtl :\thotel " + getHotel_name() + 
-                    // LACKING ROOM
-                    // "\nin :\t" + getIn_Day() + 
-                    // "\nout :\t" + getOut_Day() + 
-                    // LACKING TOTAL
-                    // "\n===================\n";
-                    // Assets.ASSET_PANE(this, receipt , "HRS");
-                    // FIXME: REMOVE IF NO RECEIPT
                 }
                 
             } else {
