@@ -164,9 +164,7 @@ public class GUI_ROOM extends GUI {
         JSpinner num_rooms = Assets.ASSET_SPINNER(1, 50);
         num_rooms.setValue(1);
         setNum_room((int) num_rooms.getValue());
-        num_rooms.addChangeListener(e -> {
-            setNum_room((int) num_rooms.getValue());
-        });
+        num_rooms.addChangeListener(_ -> setNum_room((int) num_rooms.getValue()));
         num_rooms.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(num_rooms);
 
@@ -176,17 +174,17 @@ public class GUI_ROOM extends GUI {
         setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
-        std_type.addActionListener(e -> {
+        std_type.addActionListener(_ -> {
             setType_num(1);
             type_menu.setText(std_type.getText());
         });
         JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
-        del_type.addActionListener(e -> {
+        del_type.addActionListener(_ -> {
             setType_num(2);
             type_menu.setText(del_type.getText());
         });
         JMenuItem ex_type = Assets.createMenuItem("Executive Room");
-        ex_type.addActionListener(e -> {
+        ex_type.addActionListener(_ -> {
             setType_num(3);
             type_menu.setText(ex_type.getText());
         });
@@ -202,7 +200,7 @@ public class GUI_ROOM extends GUI {
 
         // [JButton] Add Room Button
         JButton add_room = Assets.ASSET_ACCENT_BUTTON("Add Room");
-        add_room.addActionListener(e -> {
+        add_room.addActionListener(_ -> {
             if (getType_num() != 0) {
                 Hotel hotel = hrs.fetchHotel(getHotelName());
                 if (hotel.getRoomCount() + num_room < 51) {

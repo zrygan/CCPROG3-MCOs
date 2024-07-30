@@ -267,7 +267,7 @@ public class GUI_SIM_BOOK extends GUI {
         hotel_bar.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
             JMenuItem hotelList = Assets.createMenuItem(hotel.getName());
-            hotelList.addActionListener(e -> {
+            hotelList.addActionListener(_ -> {
                 setHotel_name(hotel.getName());
                 hotelMenu.setText(hotel.getName());
                 hotelList.setPreferredSize(new Dimension(300, 45));
@@ -290,9 +290,7 @@ public class GUI_SIM_BOOK extends GUI {
         in_day.setValue(1);
         setIn_Day((int) in_day.getValue());
         in_day.setPreferredSize(new Dimension(75, 45));
-        in_day.addChangeListener(e -> {
-            setIn_Day((int) in_day.getValue());
-        });
+        in_day.addChangeListener(_ -> setIn_Day((int) in_day.getValue()));
         panels.get(2).add(in_day);
 
         /*
@@ -307,9 +305,7 @@ public class GUI_SIM_BOOK extends GUI {
         out_day.setValue(2);
         setOut_Day((int) out_day.getValue());
         out_day.setPreferredSize(new Dimension(75, 45));
-        out_day.addChangeListener(e -> {
-            setOut_Day((int) out_day.getValue());
-        });
+        out_day.addChangeListener(_ -> setOut_Day((int) out_day.getValue()));
         panels.get(3).add(out_day);
 
         /*
@@ -348,17 +344,17 @@ public class GUI_SIM_BOOK extends GUI {
         setType_num(0);
         room_type.add(type_menu);
         JMenuItem std_type = Assets.createMenuItem("Standard Room");
-        std_type.addActionListener(e -> {
+        std_type.addActionListener(_ -> {
             setType_num(1);
             type_menu.setText(std_type.getText());
         });
         JMenuItem del_type = Assets.createMenuItem("Deluxe Room");
-        del_type.addActionListener(e -> {
+        del_type.addActionListener(_ -> {
             setType_num(2);
             type_menu.setText(del_type.getText());
         });
         JMenuItem ex_type = Assets.createMenuItem("Executive Room");
-        ex_type.addActionListener(e -> {
+        ex_type.addActionListener(_ -> {
             setType_num(3);
             type_menu.setText(ex_type.getText());
         });
@@ -381,7 +377,7 @@ public class GUI_SIM_BOOK extends GUI {
 
         // [BUTTON] Book Room
         JButton book_room = Assets.ASSET_ACCENT_BUTTON("Book Room");
-        book_room.addActionListener(e -> {
+        book_room.addActionListener(_ -> {
             Hotel hotel = hrs.fetchHotel(getHotel_name());
             if (hotel != null) {
                 if (getGuest_name() == null || getType_num() == 0) {

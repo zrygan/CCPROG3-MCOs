@@ -213,9 +213,7 @@ public class Assets {
             }
 
             private void updateTextArea() {
-                SwingUtilities.invokeLater(() -> {
-                    a.setText(display);
-                });
+                SwingUtilities.invokeLater(() -> a.setText(display));
             }
         });
 
@@ -479,12 +477,7 @@ public class Assets {
 
         JButton b = ASSET_BASIC_BUTTON("OK");
         b.setPreferredSize(new Dimension(40, 30));
-        b.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                d.dispose();
-            }
-        });
+        b.addActionListener(e -> d.dispose());
         JPanel bp = new JPanel();
         bp.setBackground(Colors.getDarkGreen());
         bp.add(b);

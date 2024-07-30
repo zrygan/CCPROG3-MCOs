@@ -8,6 +8,9 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+/**
+ * A class that extends GUI that creates a reservation under manage hotel
+ */
 public class GUI_RESERVATION extends GUI {
     /**
      * The main GUI component for managing hotel operations
@@ -28,7 +31,7 @@ public class GUI_RESERVATION extends GUI {
      * The day of the check in
      */
     private int checkin;
-    
+
     /**
      * The getter of the check in
      * 
@@ -40,6 +43,7 @@ public class GUI_RESERVATION extends GUI {
 
     /**
      * The setter of the check in
+     * 
      * @param checkin the check in day
      */
     public void setCheckin(int checkin) {
@@ -58,7 +62,7 @@ public class GUI_RESERVATION extends GUI {
     /**
      * The setter of the guest name
      * 
-     * @param guestName
+     * @param guestName the guest name
      */
     public void setGuestName(String guestName) {
         this.guestName = guestName;
@@ -129,8 +133,8 @@ public class GUI_RESERVATION extends GUI {
         GUI_CONFIG_WINDOW_CLOSE();
         setLayout(null);
         setResizable(false);
-        
-        ArrayList<JPanel> panels  = Assets.ASSET_ADD_PANELS(2);
+
+        ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(2);
 
         /*
          * code of TOP PANEL (panel : 0)
@@ -140,7 +144,8 @@ public class GUI_RESERVATION extends GUI {
         panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
-        String[] title_top = new String[] { "<b>Hotel Reservation System</b>", ">>> Deleting a Reservation in " + getHotelName() };
+        String[] title_top = new String[] { "<b>Hotel Reservation System</b>",
+                ">>> Deleting a Reservation in " + getHotelName() };
         panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
 
         /*
@@ -157,7 +162,7 @@ public class GUI_RESERVATION extends GUI {
             public void insertUpdate(DocumentEvent e) {
                 setGuestName(guest_name.getText());
             }
-            
+
             @Override
             public void removeUpdate(DocumentEvent e) {
                 setGuestName(guest_name.getText());
@@ -172,22 +177,20 @@ public class GUI_RESERVATION extends GUI {
         panels.get(1).add(guest_name);
 
         // [JSpinner] checkInDay
-        JSpinner checkinDate = Assets.ASSET_SPINNER(1,30);
+        JSpinner checkinDate = Assets.ASSET_SPINNER(1, 30);
         checkinDate.setValue(1);
         setCheckin((int) checkinDate.getValue());
-        checkinDate.addChangeListener(e -> {
-            setCheckin((int) checkinDate.getValue());
-        });
+        checkinDate.addChangeListener(_ -> setCheckin((int) checkinDate.getValue()));
         checkinDate.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(checkinDate);
 
         // [JButton] Delete Reservation Button
         JButton delete_button = Assets.ASSET_ACCENT_BUTTON("Delete Reservation");
-        delete_button.addActionListener(e -> {
+        delete_button.addActionListener(_ -> {
             Hotel hotel = hrs.fetchHotel(getHotelName());
             if (getGuestName() == null) {
                 Assets.ASSET_PANE(this, "Please fill in all fields", "HRS: error");
-            } else if (hotel.removeReservation(getGuestName(), getCheckin())){
+            } else if (hotel.removeReservation(getGuestName(), getCheckin())) {
                 Assets.ASSET_PANE(this, "Successfully removed reservation.", "HRS");
                 dispose();
             } else {

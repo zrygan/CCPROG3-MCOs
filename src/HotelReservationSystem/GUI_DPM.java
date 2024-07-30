@@ -214,12 +214,12 @@ public class GUI_DPM extends GUI {
         JMenu room_pick = Assets.createMenu("Choose Room Option");
         room_choice.add(room_pick);
         JMenuItem one_room = Assets.createMenuItem("One Room");
-        one_room.addActionListener(e -> {
+        one_room.addActionListener(_ -> {
             setRoom_opt(1);
             room_pick.setText(one_room.getText());
         });
         JMenuItem all_rooms = Assets.createMenuItem("All Rooms");
-        all_rooms.addActionListener(e -> {
+        all_rooms.addActionListener(_ -> {
             setRoom_opt(2);
             room_pick.setText(all_rooms.getText());
         });
@@ -236,9 +236,7 @@ public class GUI_DPM extends GUI {
         day_spinner.setValue(1);
         setDay_num((int) day_spinner.getValue());
         day_spinner.setPreferredSize(new Dimension(75, 45));
-        day_spinner.addChangeListener(e -> {
-            setDay_num((int) day_spinner.getValue());
-        });
+        day_spinner.addChangeListener(_ -> setDay_num((int) day_spinner.getValue()));
         day_spinner.setPreferredSize(new Dimension(300, 45));
         panels.get(1).add(day_spinner);
 
@@ -286,7 +284,7 @@ public class GUI_DPM extends GUI {
 
         // [JButton] DPM Button
         JButton dpm_button = Assets.ASSET_ACCENT_BUTTON("Apply DPM");
-        dpm_button.addActionListener(e -> {
+        dpm_button.addActionListener(_ -> {
             if ((getRoom_opt() == 1 || getRoom_opt() == 2) && getPrice_mod() > 0) {
                 Hotel hotel = hrs.fetchHotel(getHotelName());
                 if (getRoom_opt() == 1) {
