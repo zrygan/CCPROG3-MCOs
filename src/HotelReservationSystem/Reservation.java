@@ -12,15 +12,16 @@ public class Reservation {
     private final double total;
     private final Room room;
     private final int reservationNumber;
+
     /**
      * Constructor for the Reservation class
      *
-     * @param guest the guest name
-     * @param checkin the day of check in
-     * @param checkout the day of check out
-     * @param room the room of the reservation
+     * @param guest             the guest name
+     * @param checkin           the day of check in
+     * @param checkout          the day of check out
+     * @param room              the room of the reservation
      * @param reservationNumber the number of the reservation
-     * @param total the total cost of the reservation
+     * @param total             the total cost of the reservation
      */
     public Reservation(String guest, int checkin, int checkout, Room room, int reservationNumber, double total) {
         this.room = room;
@@ -85,3 +86,4 @@ public class Reservation {
         return reservationNumber;
     }
 }
+

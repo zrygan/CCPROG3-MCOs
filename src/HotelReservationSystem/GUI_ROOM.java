@@ -6,44 +6,111 @@ import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.*;
 
+/**
+ * A class that extends GUI that creates the new room window under manage hotel
+ */
 public class GUI_ROOM extends GUI {
+    /**
+     * The main GUI component for managing hotel operations
+     */
     private final GUI_MANAGE mains;
+
+    /**
+     * The name of the hotel
+     */
     private final String hotelName;
+
+    /**
+     * The number of rooms available
+     */
     private int num_room;
+
+    /**
+     * The type number of the room
+     */
     private int type_num;
 
+    /**
+     * Getter for the room Type
+     * 
+     * @return the room type
+     */
     public int getType_num() {
         return type_num;
     }
 
+    /**
+     * Setter for the room type
+     * 
+     * @param type_num the room type
+     */
     public void setType_num(int type_num) {
         this.type_num = type_num;
     }
 
+    /**
+     * Getter for num_room
+     * 
+     * @return the value of num_room
+     */
     public int getNum_room() {
         return num_room;
     }
 
+    /**
+     * Setter for num_room
+     * 
+     * @param num_room the value of num_room
+     */
     public void setNum_room(int num_room) {
         this.num_room = num_room;
     }
 
-    public GUI_MANAGE getMains(){
+    /**
+     * The getter of the root GUI
+     * 
+     * @return the GUI_MAIN component
+     */
+    public GUI_MANAGE getMains() {
         return mains;
     }
 
-    public String getHotelName(){
+    /**
+     * The getter of the hotel name
+     * 
+     * @return the hotel name
+     */
+    public String getHotelName() {
         return hotelName;
     }
 
-    public GUI_ROOM(HRS hrs, int window_height, int window_width, GUI_MANAGE mains, String hotelName){
+    /**
+     * Constructor for the GUI room
+     * 
+     * @param hrs           the hrs database
+     * @param window_height the window height
+     * @param window_width  the window width
+     * @param mains         the GUI_MAIN of the sub gui
+     * @param hotelName     the name of the hotel
+     */
+    public GUI_ROOM(HRS hrs, int window_height, int window_width, GUI_MANAGE mains, String hotelName) {
         super(hrs, window_height, window_width);
         this.mains = mains;
         this.hotelName = hotelName;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * This method overrides the {@code GUI_CONFIG_WINDOW_CLOSE} method in
+     * {@code GUI}.
+     * This sets the setWindowChecker attribute of the mains attribute of GUI_ROOM
+     * as false.
+     * 
+     * @see GUI#GUI_CONFIG_WINDOW_CLOSE()
+     */
     @Override
-    public void GUI_CONFIG_WINDOW_CLOSE(){
+    public void GUI_CONFIG_WINDOW_CLOSE() {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -57,8 +124,16 @@ public class GUI_ROOM extends GUI {
         });
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * This method overrides the {@code init} method in {@code GUI}.
+     * This method initializes the GUI.
+     * 
+     * @see GUI#init()
+     */
     @Override
-    public void init(){
+    public void init() {
         setTitle("Hotel Reservation System: Adding a Room in " + hotelName);
         setSize(window_width, window_height);
         GUI_CONFIG_WINDOW_CLOSE();
@@ -67,20 +142,22 @@ public class GUI_ROOM extends GUI {
 
         ArrayList<JPanel> panels = Assets.ASSET_ADD_PANELS(2);
 
-        /* code of TOP PANEL (panel : 0)
-        *  contains:   TOP TITLE
-        */
-        panels.getFirst().setBounds( 0, 0, window_width, 100);        // panels[0] = top panel
+        /*
+         * code of TOP PANEL (panel : 0)
+         * contains: TOP TITLE
+         */
+        panels.getFirst().setBounds(0, 0, window_width, 100); // panels[0] = top panel
         panels.getFirst().setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
-       
+
         // [TITLE BOX] Top Title (Hotel Reservation System and Version)
-        String[] title_top = new String[] {"<b>Hotel Reservation System</b>", ">>> Adding a Room in " + hotelName};
+        String[] title_top = new String[] { "<b>Hotel Reservation System</b>", ">>> Adding a Room in " + hotelName };
         panels.getFirst().add(Assets.ASSET_TITLE_BOX(title_top, "left", 450, 50));
 
-        /* code of MID PANEL (panel : 1)
-         *  contains: num_rooms, room_type, add_room button
+        /*
+         * code of MID PANEL (panel : 1)
+         * contains: num_rooms, room_type, add_room button
          */
-         panels.get(1).setBounds( 0, 100, window_width, 400);        // panels[1] = mid panel
+        panels.get(1).setBounds(0, 100, window_width, 400); // panels[1] = mid panel
         panels.get(1).setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
 
         // [JSpinner] num_rooms
@@ -121,18 +198,16 @@ public class GUI_ROOM extends GUI {
         add_room.addActionListener(e -> {
             Hotel hotel = hrs.fetchHotel(getHotelName());
             if (hotel.getRoomCount() + num_room < 51) {
-                for(int i = 0; i < num_room; i++){
+                for (int i = 0; i < num_room; i++) {
                     Room newRoom = hotel.newRoom(getType_num());
                 }
                 JOptionPane.showMessageDialog(this, "Successfully added " + num_room + " rooms.");
                 dispose();
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(this, "Hotel cannot accommodate more than 50 rooms.");
             }
         });
         panels.get(1).add(add_room);
-
 
         setVisible(true);
     }

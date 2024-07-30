@@ -20,10 +20,10 @@ public class Room {
     /**
      * Constructor for the Room object
      *
-     * @param name the name of the room, must be different for each room
-     * @param hotel the hotel of the room
+     * @param name      the name of the room, must be different for each room
+     * @param hotel     the hotel of the room
      * @param basePrice the base price of the room
-     * @param type the type of the room
+     * @param type      the type of the room
      */
     public Room(String name, Hotel hotel, double basePrice, int type) {
         this.name = name;
@@ -34,9 +34,9 @@ public class Room {
         this.DPM = new double[31];
         this.type = type;
 
-        Arrays.fill(this.availability, Boolean.FALSE);  // fill availability with false
-        Arrays.fill(this.DPM, (double) 1.0);            // fill DPM with 1.0 (default price)
-        
+        Arrays.fill(this.availability, Boolean.FALSE); // fill availability with false
+        Arrays.fill(this.DPM, (double) 1.0); // fill DPM with 1.0 (default price)
+
         switch (type) {
             case 2 ->
                 this.basePrice = basePrice + (basePrice * 0.20); // deluxe costs 20% more
@@ -46,7 +46,7 @@ public class Room {
                 this.basePrice = basePrice;
         }
     }
-    
+
     /**
      * Getter for the name of the room
      *
@@ -79,7 +79,7 @@ public class Room {
      * Setter for the base price
      *
      * @param basePrice the base price of the room, always 1299.00 but can be
-     * changed using the manage hotel method
+     *                  changed using the manage hotel method
      *
      */
     public void setBasePrice(double basePrice) {
@@ -124,10 +124,10 @@ public class Room {
 
     /**
      * Getter for availability which is an array of booleans.
-     *  
+     * 
      * @return the availability of the room per day
      */
-    public boolean[] getAvailability(){
+    public boolean[] getAvailability() {
         return availability;
     }
 
@@ -151,9 +151,10 @@ public class Room {
 
     /**
      * Getter for the reservation of the room
+     * 
      * @return the date price modifier of the room
      */
-    public double[] getDPM(){
+    public double[] getDPM() {
         return DPM;
     }
 
@@ -162,15 +163,16 @@ public class Room {
      * 
      * @param DPM the new date price modifier of the room
      */
-    public void setDPM(double[] DPM){
+    public void setDPM(double[] DPM) {
         this.DPM = DPM;
     }
 
     /**
      * Getter for the type of the room
+     * 
      * @return the type of the room
      */
-    public int getType(){
+    public int getType() {
         return type;
     }
 
@@ -179,7 +181,7 @@ public class Room {
      * those days true and increment the number of days the room is booked by
      * the total book book length
      *
-     * @param checkin day the customer checks in
+     * @param checkin  day the customer checks in
      * @param checkout day the customer checks out
      *
      * @author Jaztin Jimenez
@@ -196,7 +198,7 @@ public class Room {
      * removes the availability of the room and decrements the number of days
      * the room is booked
      *
-     * @param checkin day the customer checks in
+     * @param checkin  day the customer checks in
      * @param checkout day the customer checks out
      *
      * @author Jaztin Jimenez
@@ -212,7 +214,7 @@ public class Room {
     /**
      * a checker that determines if the room is a available for a range
      *
-     * @param checkin day the customer checks in
+     * @param checkin  day the customer checks in
      * @param checkout day the customer checks out
      *
      * @return {true} if the room is available, {false} if otherwise
@@ -245,26 +247,26 @@ public class Room {
     /**
      * changes the Date Price Modifer of a specific day of the room
      * 
-     * @param day the day of the Date Price Modifer
+     * @param day    the day of the Date Price Modifer
      * 
      * @param newDPM the new Date Price Modifer
      */
-    public void changeDPM(int day, double newDPM){
+    public void changeDPM(int day, double newDPM) {
         this.DPM[day] = newDPM;
     }
 
     /**
      * Calculates the actual price of the room with the base price and the DPM
      * 
-     * @param checkin the day of check in 
+     * @param checkin  the day of check in
      * 
      * @param checkout the day of check out
      * 
      * @return the actual price of the room
      */
-    public double calcPrice(int checkin, int checkout){
+    public double calcPrice(int checkin, int checkout) {
         double total = 0;
-        for(int i = checkin; i < checkout; i++){
+        for (int i = checkin; i < checkout; i++) {
             total += this.getBasePrice() * this.getDPM()[i - 1];
         }
 

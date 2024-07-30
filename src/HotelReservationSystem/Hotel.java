@@ -71,9 +71,9 @@ public class Hotel {
     /**
      * Getter for the ArrayList of reservation objects in the Hotel
      * 
-     * @return the ArrayList of Reservation objects 
+     * @return the ArrayList of Reservation objects
      */
-    public ArrayList<Reservation> getReservations(){
+    public ArrayList<Reservation> getReservations() {
         return reservations;
     }
 
@@ -136,11 +136,11 @@ public class Hotel {
      * 
      * @param roomCount The number of rooms in the hotel
      */
-    public void setRoomCount(int roomCount){
+    public void setRoomCount(int roomCount) {
         this.roomCount = roomCount;
     }
 
-     /**
+    /**
      * Getter for the number of reservations in the Hotel
      *
      * @return The number of reservations in the Hotel
@@ -154,7 +154,7 @@ public class Hotel {
      * 
      * @param reservationCount The number of reservations in the hotel
      */
-    public void setReservationCount(int reservationCount){
+    public void setReservationCount(int reservationCount) {
         this.reservationCount = reservationCount;
     }
 
@@ -187,13 +187,13 @@ public class Hotel {
      * Books a room and makes a reservation, if possible
      *
      * @param guestName the guests name
-     * @param checkin date of checking in
-     * @param checkout date of checking out
-     * @param type the type of room the user wants to book
-     * @param code discount code
+     * @param checkin   date of checking in
+     * @param checkout  date of checking out
+     * @param type      the type of room the user wants to book
+     * @param code      discount code
      *
      * @return {true} if room booking is successful, {false} if room booking is
-     * not successful
+     *         not successful
      *
      * @author Zhean Ganituen, Jaztin Jimenez
      */
@@ -206,17 +206,17 @@ public class Hotel {
                 double total = room.calcPrice(checkin, checkout);
 
                 // check for any applicable discount codes
-                if (code != null){
+                if (code != null) {
                     switch (code) {
                         case "I_WORK_HERE" -> total -= total * 0.10; // 10% off
                         case "STAY4_GET1" -> {
-                            if (checkout + checkin - 5 != 0){
+                            if (checkout + checkin - 5 != 0) {
                                 total = room.calcPrice(checkin + 1, checkout - 1); // first day is free
                             }
                         }
-                        case "PAYDAY" ->{
+                        case "PAYDAY" -> {
                             if ((checkin <= 15 && checkout > 15) || (checkin <= 30 && checkout > 30)) {
-                                total -= total * 0.07; // 7% discount   
+                                total -= total * 0.07; // 7% discount
                             }
                         }
                     }
@@ -224,7 +224,8 @@ public class Hotel {
                 // add reservation
                 int reservationNumber = this.getReservationCount() + 1;
 
-                Reservation newReservation = new Reservation(guestName, checkin, checkout, room, reservationNumber, total);
+                Reservation newReservation = new Reservation(guestName, checkin, checkout, room, reservationNumber,
+                        total);
 
                 this.reservations.add(newReservation);
 
@@ -248,7 +249,9 @@ public class Hotel {
             }
         }
 
-        System.out.printf("\n\033[31mError. There are currently no available rooms in hotel '%s' for the selected dates.\033[37m\n", this.getName());
+        System.out.printf(
+                "\n\033[31mError. There are currently no available rooms in hotel '%s' for the selected dates.\033[37m\n",
+                this.getName());
         return false;
     }
 
@@ -257,7 +260,7 @@ public class Hotel {
      *
      * @param name name of the room
      * @return {room} the room with the room name in the hotel, {null} the room
-     * was not found
+     *         was not found
      *
      * @author Zhean Ganituen
      */
@@ -275,10 +278,10 @@ public class Hotel {
      * return an array of the names of the available or booked for a day
      *
      * @param type {1} method gets the available rooms, {otherwise} method gets
-     * the booked rooms
+     *             the booked rooms
      * @param date the date
      * @return {avails} the names of the rooms that are available on the date,
-     * {booked} the names of the rooms that are booked on the date
+     *         {booked} the names of the rooms that are booked on the date
      */
     public ArrayList<String> fetchAvails(int type, int date) {
         ArrayList<String> avails = new ArrayList<>();
@@ -306,7 +309,7 @@ public class Hotel {
      *
      * @param newPrice the new price, constraint: newPrice >= 100
      * @return {true} if the base price is successfully changed, {false} if
-     * otherwise
+     *         otherwise
      *
      * @author Zhean Ganituen
      */
@@ -363,7 +366,7 @@ public class Hotel {
     /**
      * Removes the reservation from a hotel room.
      *
-     * @param guestName the name of the guest
+     * @param guestName   the name of the guest
      * @param checkinDate the date of the guest's check in
      *
      * @return {true} if the reservation was removed, {false} otherwise
@@ -372,12 +375,12 @@ public class Hotel {
      */
     public boolean removeReservation(String guestName, int checkinDate) {
         Reservation reservationToRemove = null; // assume not found
-        
+
         // check if checkinDate is out of bounds
-        if(checkinDate < 0 || checkinDate > 31){
+        if (checkinDate < 0 || checkinDate > 31) {
             return false;
         }
-        
+
         // go through all the reservations within the hotel
         for (Reservation reservation : reservations) {
             // checks if the guest name and the check-in date of the reservation is valid
@@ -413,13 +416,13 @@ public class Hotel {
     }
 
     /**
-     * Gets the average DPC of all the rooms in the hotel
+     * Gets the average DPM of all the rooms in the hotel
      * 
-     * @return the average DPC
+     * @return the average DPM
      */
-    public double getAverageDPC(){
+    public double getAverageDPM() {
         double total = 0;
-        for (Room room : rooms){
+        for (Room room : rooms) {
             for (int i = 0; i < 31; i++) {
                 total += room.getDPM()[i]; // get the DPM of the room at the ith day
             }
@@ -429,20 +432,22 @@ public class Hotel {
 
     /**
      * Changes the date price modifier for a specific day
-     * @param day the day that will be changed
+     * 
+     * @param day    the day that will be changed
      * @param newDPM the new DPM for the day
      */
-    public void changeDPMs(int day, double newDPM){
-        for (Room room : this.getRooms()){
+    public void changeDPMs(int day, double newDPM) {
+        for (Room room : this.getRooms()) {
             room.changeDPM(day, newDPM);
         }
     }
 
     /**
      * Counts the number of rooms for each room type
+     * 
      * @return an array of rooms with the same type.
      */
-    public int[] roomTypeCount(){
+    public int[] roomTypeCount() {
         int[] roomTypes = new int[3];
 
         // set up counters
@@ -450,11 +455,11 @@ public class Hotel {
         roomTypes[1] = 0; // counter for deluxe rooms
         roomTypes[2] = 0; // counter for executive rooms
 
-        for (Room room : this.getRooms()){
+        for (Room room : this.getRooms()) {
             switch (room.getType()) {
                 case 1 -> roomTypes[0] += 1;
                 case 2 -> roomTypes[1] += 1;
-                case 3 -> roomTypes[2] += 1;                    
+                case 3 -> roomTypes[2] += 1;
             }
         }
 

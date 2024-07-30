@@ -21,16 +21,17 @@ public class Assets {
     /**
      * Assets empty constructor
      */
-    public Assets(){
+    public Assets() {
 
     }
 
     /**
      * Makes a basic button
+     * 
      * @param text the text inside the button
      * @return the button created
      */
-    public static JButton ASSET_BASIC_BUTTON(String text){
+    public static JButton ASSET_BASIC_BUTTON(String text) {
         Font f = Fonts.get("Regular", 14);
         JButton b = new JButton(text);
 
@@ -51,10 +52,11 @@ public class Assets {
 
     /**
      * Makes a bright accented button
+     * 
      * @param text the text inside the button
      * @return the button created
      */
-    public static JButton ASSET_ACCENT_BUTTON(String text){
+    public static JButton ASSET_ACCENT_BUTTON(String text) {
         Font f = Fonts.get("Bold", 14);
         JButton b = new JButton(text);
 
@@ -74,77 +76,79 @@ public class Assets {
     }
 
     /**
- * Makes a text field for the user to fill in
- * @param dummy the dummy text inside the text field
- * @return the text field created
- */
-public static JTextField ASSET_TEXT_FIELD(String dummy){
-    Font f = Fonts.get("Regular", 14);
-    JTextField t = new JTextField();
+     * Makes a text field for the user to fill in
+     * 
+     * @param dummy the dummy text inside the text field
+     * @return the text field created
+     */
+    public static JTextField ASSET_TEXT_FIELD(String dummy) {
+        Font f = Fonts.get("Regular", 14);
+        JTextField t = new JTextField();
 
-    t.setText(dummy);
-    t.setFont(f);
-    
-    //add temporary text field for the dummy text field
-    t.addFocusListener(new FocusListener() {
-        @Override
-        public void focusGained(java.awt.event.FocusEvent e) {
-            if (t.getText().equals(dummy)) {
-                t.setText("");
+        t.setText(dummy);
+        t.setFont(f);
+
+        // add temporary text field for the dummy text field
+        t.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (t.getText().equals(dummy)) {
+                    t.setText("");
+                }
             }
-        }
 
-        @Override
-        public void focusLost(java.awt.event.FocusEvent e) {
-            if (t.getText().isEmpty()) {
-                t.setText(dummy);
+            @Override
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (t.getText().isEmpty()) {
+                    t.setText(dummy);
+                }
             }
-        }
-    });
+        });
 
-    t.getDocument().addDocumentListener(new DocumentListener() {
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            ASSET_TEXT_FIELD_UPDATE();
-        }
+        t.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                ASSET_TEXT_FIELD_UPDATE();
+            }
 
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-            ASSET_TEXT_FIELD_UPDATE();
-        }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                ASSET_TEXT_FIELD_UPDATE();
+            }
 
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-            ASSET_TEXT_FIELD_UPDATE();
-        }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                ASSET_TEXT_FIELD_UPDATE();
+            }
 
-        private void ASSET_TEXT_FIELD_UPDATE(){
-            String text = t.getText().trim();
-            Color color = text.isEmpty() ? Colors.getNormGreen() : Colors.getVividGreen();
-            t.setForeground(color);
-        }
-    });
+            private void ASSET_TEXT_FIELD_UPDATE() {
+                String text = t.getText().trim();
+                Color color = text.isEmpty() ? Colors.getNormGreen() : Colors.getVividGreen();
+                t.setForeground(color);
+            }
+        });
 
-    Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 3);
-    t.setBorder(bdr);
+        Border bdr = BorderFactory.createLineBorder(Colors.getVividGreen(), 3);
+        t.setBorder(bdr);
 
-    t.setForeground(Colors.getNormGreen());
-    t.setBackground(Colors.getDarkGreen());
-    t.setToolTipText(dummy);
+        t.setForeground(Colors.getNormGreen());
+        t.setBackground(Colors.getDarkGreen());
+        t.setToolTipText(dummy);
 
-    t.setPreferredSize(new Dimension(150, 45));
-    t.setMargin(new Insets(10, 0, 10, 0));
+        t.setPreferredSize(new Dimension(150, 45));
+        t.setMargin(new Insets(10, 0, 10, 0));
 
-    t.setHorizontalAlignment(JTextField.CENTER);
+        t.setHorizontalAlignment(JTextField.CENTER);
 
-    return t;
-}
+        return t;
+    }
 
     /**
      * Not meant to be called. Creates the preliminaries for the ASSET_OUTPUT_BOX
+     * 
      * @return a JTextArea of the output box with preliminary design
      */
-    public static JTextArea ASSET_OUTPUT_BOX(){
+    public static JTextArea ASSET_OUTPUT_BOX() {
         Font f = Fonts.get("Regular", 16);
         JTextArea a = new JTextArea();
         a.setEditable(false);
@@ -161,12 +165,12 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     /**
      * Creates a dynamically updating output box. For the hotel list
      *
-     * @param width the width of the box
+     * @param width  the width of the box
      * @param height the height of the box
-     * @param hrs the hotel reservation system
+     * @param hrs    the hotel reservation system
      * @return the output box created
      */
-    public static JTextArea ASSET_OUTPUT_BOX(int width, int height, HRS hrs){
+    public static JTextArea ASSET_OUTPUT_BOX(int width, int height, HRS hrs) {
         JTextArea a = ASSET_OUTPUT_BOX();
 
         a.setPreferredSize(new Dimension(width, height));
@@ -179,8 +183,9 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
     /**
      * Creates a dynamically updating output box. For display messages.
-     * @param width the width of the box
-     * @param height the height of the box
+     * 
+     * @param width   the width of the box
+     * @param height  the height of the box
      * @param display the display message
      * @return the output box created
      */
@@ -219,13 +224,14 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
     /**
      * Creates a title box.
-     * @param contents the contents of the title box, as an array of strings.
+     * 
+     * @param contents  the contents of the title box, as an array of strings.
      * @param alignment the alignment of the text
-     * @param width the width of the box
-     * @param height the height of the box
+     * @param width     the width of the box
+     * @param height    the height of the box
      * @return the created title box
      */
-    public static JEditorPane ASSET_TITLE_BOX(String[] contents, String alignment, int width, int height){
+    public static JEditorPane ASSET_TITLE_BOX(String[] contents, String alignment, int width, int height) {
         JEditorPane ep = new JEditorPane();
         StringBuilder s = new StringBuilder();
 
@@ -238,7 +244,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
         s.append("<html><body style=\"text-align:".concat(alignment).concat(";\">"));
 
-        for (int i = 0; i < contents.length; i++){
+        for (int i = 0; i < contents.length; i++) {
             s.append(contents[i]);
 
             if (i < contents.length - 1) {
@@ -256,26 +262,30 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
     /**
      * Creates a separator for the buttons.
+     * 
      * @param width the width of the buttons (the entire width of the JPanel)
      * @return the created separator.
      */
-    public static JPanel ASSET_SEPARATOR(int width){
+    public static JPanel ASSET_SEPARATOR(int width) {
         JPanel p = new JPanel();
         p.setBackground(Colors.getBlack());
         p.setPreferredSize(new Dimension(width, 30));
-        p.setBorder(new EmptyBorder(5,0,5,0));
+        p.setBorder(new EmptyBorder(5, 0, 5, 0));
         return p;
     }
 
     /**
      * Created an array of panels.
+     * 
      * @param count the number of panels to be created.
      * @return an ArrayList of the panels that were created.
      */
-    public static ArrayList<JPanel> ASSET_ADD_PANELS(int count){
+    public static ArrayList<JPanel> ASSET_ADD_PANELS(int count) {
         ArrayList<JPanel> panels = new ArrayList<>();
 
-        for (int i = 0; i < count; i++){ panels.add(new JPanel());}
+        for (int i = 0; i < count; i++) {
+            panels.add(new JPanel());
+        }
 
         return panels;
     }
@@ -283,16 +293,16 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     /**
      * Updates the text inside the title box. For the clock.
      *
-     * @param ep the editor pane of the title box
-     * @param contents the contents of the title box
+     * @param ep        the editor pane of the title box
+     * @param contents  the contents of the title box
      * @param alignment the alignment of the text
      */
-    public static void UPDATE_TITLE_BOX(JEditorPane ep, String[] contents, String alignment){
+    public static void UPDATE_TITLE_BOX(JEditorPane ep, String[] contents, String alignment) {
         StringBuilder s = new StringBuilder();
 
         s.append("<html><body style=\"text-align:".concat(alignment).concat(";\">"));
 
-        for (int i = 0; i < contents.length; i++){
+        for (int i = 0; i < contents.length; i++) {
             s.append(contents[i]);
 
             if (i < contents.length - 1) {
@@ -306,20 +316,21 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
     }
 
     /**
-     * Specifically for the hotel list. Updates the list of hotels inside the output box
+     * Specifically for the hotel list. Updates the list of hotels inside the output
+     * box
      *
      * @param hrs the hotel reservation system
      *
      * @return a StringBuilder of the list of hotels
      */
-    public static StringBuilder UPDATE_OUTPUT_BOX(HRS hrs){
+    public static StringBuilder UPDATE_OUTPUT_BOX(HRS hrs) {
         StringBuilder out = new StringBuilder();
-        for (Hotel hotel : hrs.getHotels()){
+        for (Hotel hotel : hrs.getHotels()) {
             out.append("\n     ").append(hotel.getName());
         }
 
         return out;
-    } 
+    }
 
     /**
      * Specifically for the status bar. Updates the message inside the output box.
@@ -327,15 +338,16 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
      * @param out the string to put in the status bar
      * @return the string
      */
-    public static String UPDATE_OUTPUT_BOX(String out){
+    public static String UPDATE_OUTPUT_BOX(String out) {
         return out;
     }
 
     /**
      * Gets the current time and formats it.
+     * 
      * @return the formatted time.
      */
-    public static String UPDATE_CLOCK_TIME(){
+    public static String UPDATE_CLOCK_TIME() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm:ss");
         return now.format(format);
@@ -343,6 +355,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
     /**
      * Creates a JMenuBar for the dropdown buttons
+     * 
      * @return the created JMenuBar
      */
     public static JMenuBar ASSET_MENU_BAR() {
@@ -352,20 +365,20 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
         menuBar.setPreferredSize(new Dimension(150, 45));
         menuBar.setMargin(new Insets(10, 0, 10, 0));
-    
+
         return menuBar;
     }
 
     /**
      * Creates a dynamically updating menu bar for the hotel list
      *
-     * @param hrs the hotel reservation system
+     * @param hrs   the hotel reservation system
+     * @param dummy dummy text
      * @return the menu bar created
-     * FIXME: REMOVE THIS
      */
-    public static JMenuBar ASSET_MENU_BAR(HRS hrs , String dummy){
+    public static JMenuBar ASSET_MENU_BAR(HRS hrs, String dummy) {
         JMenuBar menuBar = ASSET_MENU_BAR();
-        
+
         JMenu hotelMenu = createMenu(dummy);
         menuBar.add(hotelMenu);
         for (Hotel hotel : hrs.getHotels()) {
@@ -379,9 +392,10 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         menuBar.setMargin(new Insets(10, 0, 10, 0));
         return menuBar;
     }
-    
+
     /**
      * Creates the options of the menu bar
+     * 
      * @param name the name of the menu
      * @return the created JMenu
      */
@@ -392,14 +406,15 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
 
         menu.setPreferredSize(new Dimension(150, 45));
         menu.setMargin(new Insets(10, 0, 10, 0));
-    
+
         menu.setHorizontalAlignment(JMenu.CENTER);
 
         return menu;
     }
-    
+
     /**
      * Creates a JMenuItem and their actions listeners
+     * 
      * @param name the name of the menu item
      * @return the created JMenuItem
      */
@@ -411,10 +426,17 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         menuItem.setPreferredSize(new Dimension(150, 45));
 
         menuItem.setHorizontalAlignment(JMenuItem.CENTER);
-    
+
         return menuItem;
     }
 
+    /**
+     * Creates a JSpinner component.
+     * 
+     * @param min The minimum value for the spinner
+     * @param max The maximum value for the spinner
+     * @return A JSpinner component with the specified range and custom appearance
+     */
     public static JSpinner ASSET_SPINNER(int min, int max) {
         JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, min, max, 1));
         JSpinner.NumberEditor editor = (JSpinner.NumberEditor) spinner.getEditor();
@@ -423,11 +445,18 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         spinner.setFont(Fonts.get("Regular", 18));
         spinner.setPreferredSize(new Dimension(150, 45));
         spinner.setFocusable(false);
-    
+
         return spinner;
     }
 
-    public static void ASSET_PANE(JFrame f, String information, String title){
+    /**
+     * Creates a subwindow for information regarding the model
+     * 
+     * @param f           the current frame
+     * @param information the information to be printed
+     * @param title       the window title
+     */
+    public static void ASSET_PANE(JFrame f, String information, String title) {
         /*
          * this asset function does not return anything since JOptionPane is not a
          * component type
@@ -441,7 +470,7 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         JPanel p = new JPanel();
         p.setBackground(Colors.getDarkGreen());
         p.setLayout(new BorderLayout());
-        
+
         JLabel label = new JLabel(information);
         label.setForeground(Colors.getVividGreen());
         label.setFont(Fonts.get("Regular", 16));
@@ -449,10 +478,10 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         p.add(label, BorderLayout.CENTER);
 
         JButton b = ASSET_BASIC_BUTTON("OK");
-        b.setPreferredSize(new Dimension(40,30));
+        b.setPreferredSize(new Dimension(40, 30));
         b.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 d.dispose();
             }
         });
@@ -460,8 +489,8 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         bp.setBackground(Colors.getDarkGreen());
         bp.add(b);
         p.add(bp, BorderLayout.SOUTH);
-        
-        d.setSize(new Dimension(350,150));
+
+        d.setSize(new Dimension(350, 150));
         d.getContentPane().add(p);
         d.setVisible(true);
     }
