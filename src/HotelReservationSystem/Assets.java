@@ -2,6 +2,7 @@ package HotelReservationSystem;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -414,9 +415,6 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         return menuItem;
     }
 
-    /**
-     * 
-     */
     public static JSpinner ASSET_SPINNER(int min, int max) {
         JSpinner spinner = new JSpinner(new SpinnerNumberModel(1, min, max, 1));
         JSpinner.NumberEditor editor = (JSpinner.NumberEditor) spinner.getEditor();
@@ -427,5 +425,44 @@ public static JTextField ASSET_TEXT_FIELD(String dummy){
         spinner.setFocusable(false);
     
         return spinner;
+    }
+
+    public static void ASSET_PANE(JFrame f, String information, String title){
+        /*
+         * this asset function does not return anything since JOptionPane is not a
+         * component type
+         */
+        JDialog d = new JDialog(f, title, true);
+        d.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        d.pack();
+        d.setLocationRelativeTo(f);
+        d.setResizable(false);
+
+        JPanel p = new JPanel();
+        p.setBackground(Colors.getDarkGreen());
+        p.setLayout(new BorderLayout());
+        
+        JLabel label = new JLabel(information);
+        label.setForeground(Colors.getVividGreen());
+        label.setFont(Fonts.get("Regular", 16));
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        p.add(label, BorderLayout.CENTER);
+
+        JButton b = ASSET_BASIC_BUTTON("OK");
+        b.setPreferredSize(new Dimension(40,30));
+        b.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                d.dispose();
+            }
+        });
+        JPanel bp = new JPanel();
+        bp.setBackground(Colors.getDarkGreen());
+        bp.add(b);
+        p.add(bp, BorderLayout.SOUTH);
+        
+        d.setSize(new Dimension(350,150));
+        d.getContentPane().add(p);
+        d.setVisible(true);
     }
 }

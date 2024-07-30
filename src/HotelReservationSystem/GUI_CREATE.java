@@ -155,9 +155,10 @@ public class GUI_CREATE extends GUI{
         JButton createButton = Assets.ASSET_ACCENT_BUTTON("Create Hotel");
         createButton.addActionListener(e -> {
             if(hotel_name == null || type_num == 0 || room_tot == 0){
-                JOptionPane.showMessageDialog(this, "Please fill out all required fields.");
+                Assets.ASSET_PANE(this, "Please fill out all required fields.", "HRS");
             } else {
                 hrs.createHotel(getHotel_name(), getType_num(), getRoom_tot());
+                Assets.ASSET_PANE(this, "Hotel created successfully.", "HRS");
                 JOptionPane.showMessageDialog(this, "Hotel created successfully.");
                 mains.setWindowChecker(false);
                 dispose();
