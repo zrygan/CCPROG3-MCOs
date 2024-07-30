@@ -30,5 +30,4 @@ public class RoomSTD extends Room {
         return 1;
     }
 
-
 }

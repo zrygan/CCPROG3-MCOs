@@ -3,7 +3,7 @@ package HotelReservationSystem;
 /**
  * A class that represents executive room extends Room
  */
-public class RoomEXC extends Room{
+public class RoomEXC extends Room {
 
     /**
      * Constructor for the Room object
@@ -26,7 +26,7 @@ public class RoomEXC extends Room{
      * @see Room#getRoomType()
      */
     @Override
-    public int getRoomType(){
+    public int getRoomType() {
         return 3;
     }
 }
