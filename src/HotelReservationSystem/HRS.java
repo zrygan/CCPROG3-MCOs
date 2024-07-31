@@ -180,6 +180,7 @@ public class HRS {
         for (int i = 0; i < count; i++) {
             hotel.newRoom(type);
         }
+        hotel.changeRoomName(hotelName);
     }
 
     /**
