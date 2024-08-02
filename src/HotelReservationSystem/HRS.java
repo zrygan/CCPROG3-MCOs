@@ -420,6 +420,8 @@ public class HRS {
                                         "\n\033[31mError. A new room cannot be created since there are 50 rooms in hotel '%s' already.\033[37m\n",
                                         hotel.getName());
                             }
+
+                            hotel.changeRoomName(hotel.getName());
                         }
                     } else if (num <= 0) {
                         System.out.printf("\n\033[31mError. Invalid number of rooms to create (0).\033[37m\n");
