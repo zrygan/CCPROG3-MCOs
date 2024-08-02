@@ -207,6 +207,7 @@ public class GUI_ROOM extends GUI {
                     for (int i = 0; i < num_room; i++) {
                         Room newRoom = hotel.newRoom(getType_num());
                     }
+                    hotel.changeRoomName(hotelName);
                     Assets.ASSET_PANE(this, "Successfully added " + num_room + " rooms.", "HRS");
                     dispose();
                 } else {
