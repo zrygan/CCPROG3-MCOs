@@ -303,7 +303,7 @@ public class GUI_DPM extends GUI {
                         Room room = hotel.fetchRoom(hotel.getName() + "_Room_" + getRoom_num());
                         if (room != null) {
                             room.changeDPM(getDay_num() - 1, getPrice_mod());
-                            Assets.ASSET_PANE(this, "DPM applied successfully.", "HRS");
+                            Assets.ASSET_PANE(this, "DPM applied successfully with a modifier of" + getPrice_mod(), "HRS");
                         } else {
                             Assets.ASSET_PANE(this, "Room not found.", "HRS: Error");
                         }
