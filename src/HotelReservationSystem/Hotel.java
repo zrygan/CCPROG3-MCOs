@@ -218,7 +218,7 @@ public class Hotel {
                         case "I_WORK_HERE" -> total -= total * 0.10; // 10% off
                         case "STAY4_GET1" -> {
                             if (checkout + checkin - 5 != 0) {
-                                total = room.calcPrice(checkin + 1, checkout - 1); // first day is free
+                                total = room.calcPrice(checkin + 1, checkout); // first day is free
                             }
                         }
                         case "PAYDAY" -> {
@@ -228,6 +228,7 @@ public class Hotel {
                         }
                     }
                 }
+                
                 // add reservation
                 int reservationNumber = this.getReservationCount() + 1;
 
