@@ -194,7 +194,12 @@ public class GUI_RESERVATION extends GUI {
                 Assets.ASSET_PANE(this, "Successfully removed reservation.", "HRS");
                 dispose();
             } else {
-                Assets.ASSET_PANE(this, "Guest and Check-in day is invalid.", "HRS: error");
+                boolean temp = hotel.removeReservation(getGuestName(), getCheckin());
+                if (temp) {
+                    Assets.ASSET_PANE(this, "Successfully removed reservation", "HRS");
+                } else {
+                    Assets.ASSET_PANE(this, "Unsuccesfully removed reservation", "HRS: Error");
+                }
             }
         });
         delete_button.setPreferredSize(new Dimension(300, 90));
